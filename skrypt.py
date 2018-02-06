@@ -88,18 +88,6 @@ class TestTurboKodera(unittest.TestCase):
         self.assertEqual(expL, resL)
         self.assertEqual(expR, resR)
 
-class KoderSplotowy:
-    def koduj(self, daneBinarne):
-        pass
-
-class TestKoderaSplotowego(unittest.TestCase):
-    def setUp(self):
-        self.k = KoderSplotowy()
-
-    def test1(self):
-        dane = [1,1,1,0,1,0,1,1,0,0]
-        exp = []
-        self.assertEqual(exp, self.k.koduj(dane))
         
 if __name__ == '__main__':
     unittest.main()
