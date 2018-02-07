@@ -5,11 +5,12 @@ class KoderSplotowy:
         self.__rejestr = rejestrPrzesuwny
         self.__ileBitowNaRaz = ileBitowNaRaz
 
-    # todo - tryb krokowy
     def koduj(self, daneBinarne):
+        assert(len(daneBinarne) % self.__ileBitowNaRaz == 0)
+
         dl = self.__rejestr.getIleBitowWyjsciowych()*len(daneBinarne)//self.__ileBitowNaRaz
         out = [0]*dl
-        krok=self.__ileBitowNaRaz
+        krok = self.__ileBitowNaRaz
         idxOut=0
         for i in range(0, len(daneBinarne), krok):
             podCiag = daneBinarne[i:i+krok]

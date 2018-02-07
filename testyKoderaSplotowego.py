@@ -16,8 +16,8 @@ class TestKoderaSplotowego(unittest.TestCase):
         exp=[1,0,1,1,  1,0,1,1,  1,1,1,0,  0,1,0,0]
         self.assertEqual(exp, self.k.koduj(wejscie))
 
-    def testUnalignedData(self):
-        self.fail('todo') # len(wejscie) nie podzielne 3
-        
+    def test2(self):
+        self.assertEqual([1,0,1,1], self.k.koduj([1,1,1]))
+
 if __name__ == '__main__':
     unittest.main()
