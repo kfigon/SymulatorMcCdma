@@ -9,25 +9,28 @@ class RejestrPrzesuwny:
         self.__tab = [0]*dlugosc
         self.__odczepy = odczepy
 
-    # przesuwa, potem liczy
     def shift(self, bit):
         for i in range(len(self.__tab)-1, 0, -1):
             self.__tab[i] = self.__tab[i-1]
         self.__tab[0] = bit
-  
-        return self.__licz()
+
+    def licz(self):
+        out = []
+        for galazOdczepow in self.__odczepy:
+            out.append(self.__liczGalaz(galazOdczepow))
+        return tuple(out)
+
+    def getDlugoscRejestru(self):
+        return len(self.__tab)
+
+    def getIleBitowWyjsciowych(self):
+        return len(self.__odczepy)
 
     def __liczGalaz(self, odczepy):
         val = 0
         for idxRejestru in odczepy:
             val ^= self.__tab[idxRejestru]
         return val
-    
-    def __licz(self):
-        out = []
-        for galazOdczepow in self.__odczepy:         
-            out.append(self.__liczGalaz(galazOdczepow))
-        return tuple(out)
     
     def __str__(self):
         out=""
