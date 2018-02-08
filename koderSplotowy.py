@@ -28,3 +28,17 @@ class KoderSplotowy:
     def getNKM(self):
         return (self.__rejestr.getIleBitowWyjsciowych(),
                 self.__ileBitowNaRaz, self.__rejestr.getDlugoscRejestru())
+
+    def reset(self):
+        self.__rejestr.reset()
+
+    def dekoduj(self):
+        self.reset()
+        
+def odlegloscHamminga(daneA, daneB):
+    assert (len(daneA) == len(daneB))
+    roznica = 0
+    for i in range(len(daneA)):
+        if (daneA[i] != daneB[i]):
+            roznica += 1
+    return roznica

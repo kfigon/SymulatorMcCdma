@@ -1,6 +1,7 @@
 import unittest
 from rejestrPrzesuwny import RejestrPrzesuwny
 from koderSplotowy import KoderSplotowy
+from koderSplotowy import odlegloscHamminga
 
 class TestKoderaSplotowego(unittest.TestCase):
     def setUp(self):
@@ -18,6 +19,11 @@ class TestKoderaSplotowego(unittest.TestCase):
 
     def test2(self):
         self.assertEqual([1,0,1,1], self.k.koduj([1,1,1]))
+
+    def testHamminga(self):
+        self.assertEqual(0, odlegloscHamminga([1,1,1,0],[1,1,1,0]))
+        self.assertEqual(1, odlegloscHamminga([1,1,1,0],[1,1,1,1]))                        
+        self.assertEqual(2, odlegloscHamminga([1,0,1,0],[0,1,1,0]))
 
 if __name__ == '__main__':
     unittest.main()

@@ -9,6 +9,8 @@ class RejestrPrzesuwny:
         self.__tab = [0]*dlugosc
         self.__odczepy = odczepy
 
+    # bit 0 - te, ktory ostatnio wszedl.
+    # wg teorii to nie stan, to wejsciowy bit
     def shift(self, bit):
         for i in range(len(self.__tab)-1, 0, -1):
             self.__tab[i] = self.__tab[i-1]
@@ -26,6 +28,10 @@ class RejestrPrzesuwny:
     def getIleBitowWyjsciowych(self):
         return len(self.__odczepy)
 
+    def reset(self):
+        for i in range(len(self.__tab)):
+            self.__tab[i]=0
+
     def __liczGalaz(self, odczepy):
         val = 0
         for idxRejestru in odczepy:
@@ -34,8 +40,7 @@ class RejestrPrzesuwny:
     
     def __str__(self):
         out=""
-        # stan zawsze dlugoscRejestru - 1
-        for i in range(len(self.__tab)-1):
+        for i in range(len(self.__tab)):
             b = self.__tab[i]
             out += str(b)
         return out
