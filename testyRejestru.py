@@ -7,7 +7,7 @@ class TestyRejestruPrzesuwnego1(unittest.TestCase):
         self.assertEqual("000", str(self.r))
 
     def testStalych(self):
-        self.assertEqual(3, self.r.getDlugoscRejestru())
+        self.assertEqual(2, self.r.getDlugoscRejestru())
         self.assertEqual(2, self.r.getIleBitowWyjsciowych())
 
     def test1(self):
@@ -47,7 +47,7 @@ class TestyRejestruPrzesuwnego2(unittest.TestCase):
         self.assertEqual("000", str(self.r))
 
     def testStalych(self):
-        self.assertEqual(3, self.r.getDlugoscRejestru())
+        self.assertEqual(2, self.r.getDlugoscRejestru())
         self.assertEqual(3, self.r.getIleBitowWyjsciowych())
 
     def test(self):
@@ -72,7 +72,7 @@ class TestyRejestruPrzesuwnego3(unittest.TestCase):
         self.assertEqual("0000", str(self.r))
 
     def testStalych(self):
-        self.assertEqual(4, self.r.getDlugoscRejestru())
+        self.assertEqual(3, self.r.getDlugoscRejestru())
         self.assertEqual(3, self.r.getIleBitowWyjsciowych())
 
     def test(self):

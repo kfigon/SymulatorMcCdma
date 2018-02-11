@@ -34,7 +34,8 @@ class KoderSplotowy:
 
     def dekoduj(self):
         self.reset()
-        
+        pass
+    
 def odlegloscHamminga(daneA, daneB):
     assert (len(daneA) == len(daneB))
     roznica = 0

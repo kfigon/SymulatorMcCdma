@@ -4,6 +4,7 @@
 # 0 1 2 - indeksy komorek rejestru
 # | | | - odczepy -> [0,1,2]
 # |   | - odczepy -> [0,2]
+# dlugosc tutaj - 3 (2 na komorki i 1 na aktualny bit)
 class RejestrPrzesuwny:
     def __init__(self, dlugosc, odczepy):
         self.__tab = [0]*dlugosc
@@ -23,7 +24,7 @@ class RejestrPrzesuwny:
         return tuple(out)
 
     def getDlugoscRejestru(self):
-        return len(self.__tab)
+        return len(self.__tab)-1
 
     def getIleBitowWyjsciowych(self):
         return len(self.__odczepy)
