@@ -24,7 +24,7 @@ class RejestrPrzesuwny:
         return tuple(out)
 
     def getDlugoscRejestru(self):
-        return len(self.__tab)-1
+        return len(self.__tab)
 
     def getIleBitowWyjsciowych(self):
         return len(self.__odczepy)
