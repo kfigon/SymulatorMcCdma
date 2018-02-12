@@ -10,9 +10,8 @@ class MaszynaStanow:
         for i in range(ileStanow):
             self.__rej.reset()
             liczba = format(i, szablon)
-            
-            
-return out
+                  
+        return out
         
     # zwraca slownik
     # [in] = inptBits
