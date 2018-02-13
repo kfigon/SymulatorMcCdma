@@ -5,33 +5,40 @@ class MaszynaStanow:
         self.__ileNaRaz=ileNaRaz
         self.__stany={}
 
+        # lacznie z inputowymi 'komorkami'
         ileStanow = 2**self.__rej.getDlugoscRejestru()
         szablon = '0%db' % self.__rej.getDlugoscRejestru()
         for i in range(ileStanow):
             self.__rej.reset()
             liczba = format(i, szablon)
-            inputs = liczba[0:ileNaRaz]
-            stan = liczba[ileNaRaz:]
+ 
             for bitStanu in reversed(liczba):
                 b = 0
                 if(bitStanu == '1'):
                     b=1
                 self.__rej.shift(b)
 
-            stanNaWyjsciu = str(self.__rej)[ileNaRaz:]
+            stanNaWyjsciu = str(self.__rej)[0:-ileNaRaz]
             outcome = list(self.__rej.licz())
 
-            daneStanu = {'outputBits':outcome, 'destState': stanNaWyjsciu}
-            self.__stany[stan] = daneStanu
+            daneStanu = {'outputBits': outcome,
+                         'destState': stanNaWyjsciu}
+            self.__stany[liczba] = daneStanu
         print(self.__stany)
         print()
+        
     # zwraca slownik
     # [in] = inptBits
     # [out] = output bits
     # [inState] = inputState
     # [outState] = outputState
     def checkState(self, sourceState, inputBits):
-        st = self.__stany[sourceState]
+        stateKey = ""
+        for i in inputBits:
+            stateKey += str(i)
+        stateKey += sourceState
+        
+        st = self.__stany[stateKey]
         outputBits = st['outputBits']
         destState = st['destState']
         
@@ -39,4 +46,4 @@ class MaszynaStanow:
                 'inState':sourceState, 'outState':destState}
 
     def getNumberOfStates(self):
-        return len(self.__stany)
+        return 2**(self.__rej.getDlugoscRejestru()-self.__ileNaRaz)
