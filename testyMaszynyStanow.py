@@ -71,13 +71,125 @@ class TestMaszynyStanow(unittest.TestCase):
 class TestMaszynyStanow2(unittest.TestCase):
     def setUp(self):
         #inne odczepy
-        odczepy = [[0,1,2], [1,2]]
-        r = RejestrPrzesuwny(3, odczepy)
+        odczepy = [[0,2,3], [0,1,3], [0,2]]
+        r = RejestrPrzesuwny(4, odczepy)
         self.m = MaszynaStanow(r,1)
 
-    def test1(self):
-        self.fail()
+    def testDlugosc(self):
+        self.assertEqual(8, self.m.getNumberOfStates())
 
+    def testStan000_0(self):
+        stan = self.m.checkState("000", [0])
+        self.assertEqual([0], stan['in'])
+        self.assertEqual([0,0,0], stan['out'])
+        self.assertEqual("000", stan['inState'])
+        self.assertEqual("000", stan['outState'])
+
+    def testStan000_1(self):
+        stan = self.m.checkState("000", [1])
+        self.assertEqual([1], stan['in'])
+        self.assertEqual([1,1,1], stan['out'])
+        self.assertEqual("000", stan['inState'])
+        self.assertEqual("100", stan['outState'])
+
+    def testStan001_0(self):
+        stan = self.m.checkState("001", [0])
+        self.assertEqual([0], stan['in'])
+        self.assertEqual([1,1,0], stan['out'])
+        self.assertEqual("001", stan['inState'])
+        self.assertEqual("000", stan['outState'])
+
+    def testStan001_1(self):
+        stan = self.m.checkState("001", [1])
+        self.assertEqual([1], stan['in'])
+        self.assertEqual([0,0,1], stan['out'])
+        self.assertEqual("001", stan['inState'])
+        self.assertEqual("100", stan['outState'])
+
+    def testStan010_0(self):
+        stan = self.m.checkState("010", [0])
+        self.assertEqual([0], stan['in'])
+        self.assertEqual([1,0,1], stan['out'])
+        self.assertEqual("010", stan['inState'])
+        self.assertEqual("001", stan['outState'])
+
+    def testStan010_1(self):
+        stan = self.m.checkState("010", [1])
+        self.assertEqual([1], stan['in'])
+        self.assertEqual([0,1,0], stan['out'])
+        self.assertEqual("010", stan['inState'])
+        self.assertEqual("101", stan['outState'])
+
+    def testStan011_0(self):
+        stan = self.m.checkState("011", [0])
+        self.assertEqual([0], stan['in'])
+        self.assertEqual([0,1,1], stan['out'])
+        self.assertEqual("011", stan['inState'])
+        self.assertEqual("001", stan['outState'])
+
+    def testStan011_1(self):
+        stan = self.m.checkState("011", [1])
+        self.assertEqual([1], stan['in'])
+        self.assertEqual([1,0,0], stan['out'])
+        self.assertEqual("011", stan['inState'])
+        self.assertEqual("101", stan['outState'])
+
+    def testStan100_0(self):
+        stan = self.m.checkState("100", [0])
+        self.assertEqual([0], stan['in'])
+        self.assertEqual([0,1,0], stan['out'])
+        self.assertEqual("100", stan['inState'])
+        self.assertEqual("010", stan['outState'])
+
+    def testStan100_1(self):
+        stan = self.m.checkState("100", [1])
+        self.assertEqual([1], stan['in'])
+        self.assertEqual([1,0,1], stan['out'])
+        self.assertEqual("100", stan['inState'])
+        self.assertEqual("110", stan['outState'])
+
+    def testStan101_0(self):
+        stan = self.m.checkState("101", [0])
+        self.assertEqual([0], stan['in'])
+        self.assertEqual([1,0,0], stan['out'])
+        self.assertEqual("101", stan['inState'])
+        self.assertEqual("010", stan['outState'])
+
+    def testStan101_1(self):
+        stan = self.m.checkState("101", [1])
+        self.assertEqual([1], stan['in'])
+        self.assertEqual([0,1,1], stan['out'])
+        self.assertEqual("101", stan['inState'])
+        self.assertEqual("110", stan['outState'])
+
+    def testStan110_0(self):
+        stan = self.m.checkState("110", [0])
+        self.assertEqual([0], stan['in'])
+        self.assertEqual([1,1,1], stan['out'])
+        self.assertEqual("110", stan['inState'])
+        self.assertEqual("011", stan['outState'])
+
+    def testStan110_1(self):
+        stan = self.m.checkState("110", [1])
+        self.assertEqual([1], stan['in'])
+        self.assertEqual([0,0,0], stan['out'])
+        self.assertEqual("110", stan['inState'])
+        self.assertEqual("111", stan['outState'])
+
+    def testStan111_0(self):
+        stan = self.m.checkState("111", [0])
+        self.assertEqual([0], stan['in'])
+        self.assertEqual([0,0,1], stan['out'])
+        self.assertEqual("111", stan['inState'])
+        self.assertEqual("011", stan['outState'])
+
+    def testStan111_1(self):
+        stan = self.m.checkState("111", [1])
+        self.assertEqual([1], stan['in'])
+        self.assertEqual([1,1,0], stan['out'])
+        self.assertEqual("111", stan['inState'])
+        self.assertEqual("111", stan['outState'])
+        
 class TestMaszynyStanow3(unittest.TestCase):
     def setUp(self):
         # wiele inputow

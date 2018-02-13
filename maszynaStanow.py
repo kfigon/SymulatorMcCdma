@@ -5,7 +5,9 @@ class MaszynaStanow:
         self.__ileNaRaz=ileNaRaz
         self.__stany={}
 
-        # lacznie z inputowymi 'komorkami'
+        # lacznie z inputowymi 'komorkami',
+        # wiec metoda getNumberOfStates()
+        # nie moze byc
         ileStanow = 2**self.__rej.getDlugoscRejestru()
         szablon = '0%db' % self.__rej.getDlugoscRejestru()
         for i in range(ileStanow):
@@ -18,14 +20,14 @@ class MaszynaStanow:
                     b=1
                 self.__rej.shift(b)
 
+            # kolejny stan to tak naprawde to, co bedzie
+            # gdy zrobimy kolejnego shifta o ileNaRaz
             stanNaWyjsciu = str(self.__rej)[0:-ileNaRaz]
             outcome = list(self.__rej.licz())
 
             daneStanu = {'outputBits': outcome,
                          'destState': stanNaWyjsciu}
-            self.__stany[liczba] = daneStanu
-        print(self.__stany)
-        print()
+            self.__stany[liczba] = daneStanu  
         
     # zwraca slownik
     # [in] = inptBits
