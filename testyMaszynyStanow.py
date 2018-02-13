@@ -193,12 +193,57 @@ class TestMaszynyStanow2(unittest.TestCase):
 class TestMaszynyStanow3(unittest.TestCase):
     def setUp(self):
         # wiele inputow
-        odczepy = [[0,1,2], [1,2]]
-        r = RejestrPrzesuwny(3, odczepy)
+        odczepy = [[1,4,6,8],
+                   [0,2,4],
+                   [2,3,5,7],
+                   [1,5,6,8]]
+        r = RejestrPrzesuwny(9, odczepy)
         self.m = MaszynaStanow(r,3)
 
-    def test1(self):
-        self.fail()
+    def testDlugosc(self):
+        self.assertEqual(64, self.m.getNumberOfStates())
 
+    def testStan000110_110(self):
+        stan = self.m.checkState("000110", [1,1,0])
+        self.assertEqual([1,1,0], stan['in'])
+        self.assertEqual([0,1,1,0], stan['out'])
+        self.assertEqual("000110", stan['inState'])
+        self.assertEqual("110000", stan['outState'])
+
+    def testStan110000_001(self):
+        stan = self.m.checkState("110000", [0,0,1])
+        self.assertEqual([0,0,1], stan['in'])
+        self.assertEqual([1,0,0,0], stan['out'])
+        self.assertEqual("110000", stan['inState'])
+        self.assertEqual("001110", stan['outState'])
+
+    def testStan100101_010(self):
+        stan = self.m.checkState("100101", [0,1,0])
+        self.assertEqual([0,1,0], stan['in'])
+        self.assertEqual([1,0,1,1], stan['out'])
+        self.assertEqual("100101", stan['inState'])
+        self.assertEqual("010100", stan['outState'])
+
+    def testStan110111_010(self):
+        stan = self.m.checkState("110111", [0,1,0])
+        self.assertEqual([0,1,0], stan['in'])
+        self.assertEqual([0,1,0,1], stan['out'])
+        self.assertEqual("110111", stan['inState'])
+        self.assertEqual("010110", stan['outState'])
+
+    def testStan001000_000(self):
+        stan = self.m.checkState("001000", [0,0,0])
+        self.assertEqual([0,0,0], stan['in'])
+        self.assertEqual([0,0,1,1], stan['out'])
+        self.assertEqual("001000", stan['inState'])
+        self.assertEqual("000001", stan['outState'])
+
+    def testStan111010_100(self):
+        stan = self.m.checkState("111010", [1,0,0])
+        self.assertEqual([1,0,0], stan['in'])
+        self.assertEqual([1,0,1,1], stan['out'])
+        self.assertEqual("111010", stan['inState'])
+        self.assertEqual("100111", stan['outState'])
+        
 if __name__ == '__main__':
     unittest.main()
