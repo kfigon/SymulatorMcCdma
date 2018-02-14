@@ -67,6 +67,32 @@ class TestMaszynyStanow(unittest.TestCase):
         self.assertEqual([1,0], stan['out'])
         self.assertEqual("11", stan['inState'])
         self.assertEqual("11", stan['outState'])
+
+    def testPrzejscStanow00(self):
+        stany = self.m.getMozliwePrzejscia('00')
+        self.assertEqual(2, len(stany))
+        self.assertEqual("00", stany[0]['inState'])
+        self.assertEqual("00", stany[0]['outState'])
+        self.assertEqual([0], stany[0]['in'])
+        self.assertEqual([0,0], stany[0]['out'])
+
+        self.assertEqual("00", stany[1]['inState'])
+        self.assertEqual("10", stany[1]['outState'])
+        self.assertEqual([1], stany[1]['in'])
+        self.assertEqual([1,0], stany[1]['out'])
+
+    def testPrzejscStanow01(self):
+        stany = self.m.getMozliwePrzejscia('01')
+        self.assertEqual(2, len(stany))
+        self.assertEqual("01", stany[0]['inState'])
+        self.assertEqual("00", stany[0]['outState'])
+        self.assertEqual([0], stany[0]['in'])
+        self.assertEqual([1,1], stany[0]['out'])
+
+        self.assertEqual("01", stany[1]['inState'])
+        self.assertEqual("10", stany[1]['outState'])
+        self.assertEqual([1], stany[1]['in'])
+        self.assertEqual([0,1], stany[1]['out'])
         
 class TestMaszynyStanow2(unittest.TestCase):
     def setUp(self):
@@ -244,6 +270,15 @@ class TestMaszynyStanow3(unittest.TestCase):
         self.assertEqual([1,0,1,1], stan['out'])
         self.assertEqual("111010", stan['inState'])
         self.assertEqual("100111", stan['outState'])
+
+    def testPrzejscia000110(self):
+        stany = self.m.getMozliwePrzejscia("000110")
+        self.assertEqual(8, len(stany))
+        stan = stany[6]        
+        self.assertEqual([1,1,0], stan['in'])
+        self.assertEqual([0,1,1,0], stan['out'])
+        self.assertEqual("000110", stan['inState'])
+        self.assertEqual("110000", stan['outState'])
         
 if __name__ == '__main__':
     unittest.main()

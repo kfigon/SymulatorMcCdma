@@ -8,12 +8,9 @@ class MaszynaStanow:
         # lacznie z inputowymi 'komorkami',
         # wiec metoda getNumberOfStates()
         # nie moze byc
-        ileStanow = 2**self.__rej.getDlugoscRejestru()
-        szablon = '0%db' % self.__rej.getDlugoscRejestru()
-        for i in range(ileStanow):
+        permutacjeBinarne = self.__getPermutacje(self.__rej.getDlugoscRejestru())
+        for liczba in permutacjeBinarne:
             self.__rej.reset()
-            liczba = format(i, szablon)
- 
             for bitStanu in reversed(liczba):
                 b = 0
                 if(bitStanu == '1'):
@@ -35,10 +32,7 @@ class MaszynaStanow:
     # [inState] = inputState
     # [outState] = outputState
     def checkState(self, sourceState, inputBits):
-        stateKey = ""
-        for i in inputBits:
-            stateKey += str(i)
-        stateKey += sourceState
+        stateKey = self.__budujKluczStanu(sourceState, inputBits)
         
         st = self.__stany[stateKey]
         outputBits = st['outputBits']
@@ -47,5 +41,36 @@ class MaszynaStanow:
         return {'in':inputBits, 'out':outputBits,
                 'inState':sourceState, 'outState':destState}
 
+    def __budujKluczStanu(self, state, inputBits):
+        stateKey = ""
+        for i in inputBits:
+            stateKey += str(i)
+        stateKey += state
+        return stateKey
+    
+    def getMozliwePrzejscia(self, stan):
+        permutacjeWejsc = self.__getPermutacje(self.__ileNaRaz)
+        out = []
+        for wejscie in permutacjeWejsc:
+            out.append(self.checkState(stan, str2List(wejscie)))
+        return out
+                       
+    def __getPermutacje(self, ileZmiennych):
+        ileStanow = 2**ileZmiennych
+        szablon = '0%db' % ileZmiennych
+        out = [None] * ileStanow
+        
+        for i in range(ileStanow):
+            out[i] = format(i, szablon)
+        return out
+
     def getNumberOfStates(self):
         return 2**(self.__rej.getDlugoscRejestru()-self.__ileNaRaz)
+
+def str2List(data):
+    out = [0]*len(data)
+    for i in range(len(data)):
+        out[i]=int(data[i])
+    return out
+
+
