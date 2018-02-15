@@ -49,12 +49,25 @@ class MaszynaStanow:
         return stateKey
     
     def getMozliwePrzejscia(self, stan):
-        permutacjeWejsc = self.__getPermutacje(self.__ileNaRaz)
         out = []
-        for wejscie in permutacjeWejsc:
-            out.append(self.checkState(stan, str2List(wejscie)))
+        for klucz in self.__stany:
+            source = klucz[self.__ileNaRaz:]
+            inputs = str2List(klucz[:self.__ileNaRaz])
+            st = self.checkState(source, inputs)
+            if(st['inState']==stan):
+                out.append(st)
         return out
-                       
+    
+    def getMozliweDojscia(self, stan):
+        out = []
+        for klucz in self.__stany:
+            source = klucz[self.__ileNaRaz:]
+            inputs = str2List(klucz[:self.__ileNaRaz])
+            st = self.checkState(source, inputs)
+            if(st['outState']==stan):
+                out.append(st)
+        return out
+    
     def __getPermutacje(self, ileZmiennych):
         ileStanow = 2**ileZmiennych
         szablon = '0%db' % ileZmiennych

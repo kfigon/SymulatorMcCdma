@@ -93,6 +93,61 @@ class TestMaszynyStanow(unittest.TestCase):
         self.assertEqual("10", stany[1]['outState'])
         self.assertEqual([1], stany[1]['in'])
         self.assertEqual([0,1], stany[1]['out'])
+
+    def testDojsciaDo00(self):
+        stany = self.m.getMozliweDojscia('00')
+        self.assertEqual(2, len(stany))
+        self.assertEqual("00", stany[0]['inState'])
+        self.assertEqual("00", stany[0]['outState'])
+        self.assertEqual([0], stany[0]['in'])
+        self.assertEqual([0,0], stany[0]['out'])
+
+        self.assertEqual([0], stany[1]['in'])
+        self.assertEqual([1,1], stany[1]['out'])
+        self.assertEqual("01", stany[1]['inState'])
+        self.assertEqual("00", stany[1]['outState'])
+
+    def testDojsciaDo01(self):
+        stany = self.m.getMozliweDojscia('01')
+        self.assertEqual(2, len(stany))
+        
+        self.assertEqual([0], stany[1]['in'])
+        self.assertEqual([0,0], stany[1]['out'])
+        self.assertEqual("11", stany[1]['inState'])
+        self.assertEqual("01", stany[1]['outState'])
+
+        self.assertEqual([0], stany[0]['in'])
+        self.assertEqual([1,1], stany[0]['out'])
+        self.assertEqual("10", stany[0]['inState'])
+        self.assertEqual("01", stany[0]['outState'])
+
+    def testDojsciaDo10(self):
+        stany = self.m.getMozliweDojscia('10')
+        self.assertEqual(2, len(stany))
+
+        self.assertEqual([1], stany[0]['in'])
+        self.assertEqual([1,0], stany[0]['out'])
+        self.assertEqual("00", stany[0]['inState'])
+        self.assertEqual("10", stany[0]['outState'])
+        
+        self.assertEqual([1], stany[1]['in'])
+        self.assertEqual([0,1], stany[1]['out'])
+        self.assertEqual("01", stany[1]['inState'])
+        self.assertEqual("10", stany[1]['outState'])
+
+    def testDojsciaDo11(self):
+        stany = self.m.getMozliweDojscia('11')
+        self.assertEqual(2, len(stany))
+
+        self.assertEqual([1], stany[0]['in'])
+        self.assertEqual([0,1], stany[0]['out'])
+        self.assertEqual("10", stany[0]['inState'])
+        self.assertEqual("11", stany[0]['outState'])
+
+        self.assertEqual([1], stany[1]['in'])
+        self.assertEqual([1,0], stany[1]['out'])
+        self.assertEqual("11", stany[1]['inState'])
+        self.assertEqual("11", stany[1]['outState'])
         
 class TestMaszynyStanow2(unittest.TestCase):
     def setUp(self):
