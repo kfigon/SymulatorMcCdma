@@ -12,26 +12,23 @@ class TestMaszynyStanow(unittest.TestCase):
     def testDlugosc(self):
         self.assertEqual(4, self.m.getNumberOfStates())
 
+    def sprawdzajStan(self, stan, expIn, expOut, expInSt, expOutSt):
+        self.assertEqual(expIn, stan['in'])
+        self.assertEqual(expOut, stan['out'])
+        self.assertEqual(expInSt, stan['inState'])
+        self.assertEqual(expOutSt, stan['outState'])
+
     def testStan00_0(self):
         stan = self.m.checkState("00", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([0,0], stan['out'])
-        self.assertEqual("00", stan['inState'])
-        self.assertEqual("00", stan['outState'])
+        self.sprawdzajStan(stan, [0], [0,0], "00", "00")
 
     def testStan00_1(self):
         stan = self.m.checkState("00", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([1,0], stan['out'])
-        self.assertEqual("00", stan['inState'])
-        self.assertEqual("10", stan['outState'])
+        self.sprawdzajStan(stan, [1], [1,0], "00", "10")
 
     def testStan01_0(self):
         stan = self.m.checkState("01", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([1,1], stan['out'])
-        self.assertEqual("01", stan['inState'])
-        self.assertEqual("00", stan['outState'])
+        self.sprawdzajStan(stan, [0], [1,1], "01", "00")
 
     def testStan01_1(self):
         stan = self.m.checkState("01", [1])
@@ -42,31 +39,19 @@ class TestMaszynyStanow(unittest.TestCase):
 
     def testStan10_0(self):
         stan = self.m.checkState("10", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([1,1], stan['out'])
-        self.assertEqual("10", stan['inState'])
-        self.assertEqual("01", stan['outState'])
+        self.sprawdzajStan(stan, [0], [1,1], "10", "01")
 
     def testStan10_1(self):
         stan = self.m.checkState("10", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([0,1], stan['out'])
-        self.assertEqual("10", stan['inState'])
-        self.assertEqual("11", stan['outState'])
-        
+        self.sprawdzajStan(stan, [1], [0,1], "10", "11")
+
     def testStan11_0(self):
         stan = self.m.checkState("11", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([0,0], stan['out'])
-        self.assertEqual("11", stan['inState'])
-        self.assertEqual("01", stan['outState'])
+        self.sprawdzajStan(stan, [0], [0,0], "11", "01")
 
     def testStan11_1(self):
         stan = self.m.checkState("11", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([1,0], stan['out'])
-        self.assertEqual("11", stan['inState'])
-        self.assertEqual("11", stan['outState'])
+        self.sprawdzajStan(stan, [1], [1,0], "11", "11")
 
     def testPrzejscStanow00(self):
         stany = self.m.getMozliwePrzejscia('00')
@@ -161,116 +146,68 @@ class TestMaszynyStanow2(unittest.TestCase):
 
     def testStan000_0(self):
         stan = self.m.checkState("000", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([0,0,0], stan['out'])
-        self.assertEqual("000", stan['inState'])
-        self.assertEqual("000", stan['outState'])
+        self.sprawdzajStan(stan, [0], [0,0,0], "000", "000")
 
     def testStan000_1(self):
         stan = self.m.checkState("000", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([1,1,1], stan['out'])
-        self.assertEqual("000", stan['inState'])
-        self.assertEqual("100", stan['outState'])
+        self.sprawdzajStan(stan, [1], [1,1,1], "000", "100")
 
     def testStan001_0(self):
         stan = self.m.checkState("001", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([1,1,0], stan['out'])
-        self.assertEqual("001", stan['inState'])
-        self.assertEqual("000", stan['outState'])
+        self.sprawdzajStan(stan, [0], [1,1,0], "001", "000")
 
     def testStan001_1(self):
         stan = self.m.checkState("001", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([0,0,1], stan['out'])
-        self.assertEqual("001", stan['inState'])
-        self.assertEqual("100", stan['outState'])
+        self.sprawdzajStan(stan, [1], [0,0,1], "001", "100")
 
     def testStan010_0(self):
         stan = self.m.checkState("010", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([1,0,1], stan['out'])
-        self.assertEqual("010", stan['inState'])
-        self.assertEqual("001", stan['outState'])
+        self.sprawdzajStan(stan, [0], [1,0,1], "010", "001")
 
     def testStan010_1(self):
         stan = self.m.checkState("010", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([0,1,0], stan['out'])
-        self.assertEqual("010", stan['inState'])
-        self.assertEqual("101", stan['outState'])
+        self.sprawdzajStan(stan, [1], [0,1,0], "010", "101")
 
     def testStan011_0(self):
         stan = self.m.checkState("011", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([0,1,1], stan['out'])
-        self.assertEqual("011", stan['inState'])
-        self.assertEqual("001", stan['outState'])
+        self.sprawdzajStan(stan, [0], [0,1,1], "011", "001")
 
     def testStan011_1(self):
         stan = self.m.checkState("011", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([1,0,0], stan['out'])
-        self.assertEqual("011", stan['inState'])
-        self.assertEqual("101", stan['outState'])
+        self.sprawdzajStan(stan, [1], [1,0,0], "011", "101")
 
     def testStan100_0(self):
         stan = self.m.checkState("100", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([0,1,0], stan['out'])
-        self.assertEqual("100", stan['inState'])
-        self.assertEqual("010", stan['outState'])
+        self.sprawdzajStan(stan, [0], [0,1,0], "100", "010")
 
     def testStan100_1(self):
         stan = self.m.checkState("100", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([1,0,1], stan['out'])
-        self.assertEqual("100", stan['inState'])
-        self.assertEqual("110", stan['outState'])
+        self.sprawdzajStan(stan, [1], [1,0,1], "100", "110")
 
     def testStan101_0(self):
         stan = self.m.checkState("101", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([1,0,0], stan['out'])
-        self.assertEqual("101", stan['inState'])
-        self.assertEqual("010", stan['outState'])
+        self.sprawdzajStan(stan, [0], [1,0,0], "101", "010")
 
     def testStan101_1(self):
         stan = self.m.checkState("101", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([0,1,1], stan['out'])
-        self.assertEqual("101", stan['inState'])
-        self.assertEqual("110", stan['outState'])
+        self.sprawdzajStan(stan, [1], [0,1,1], "101", "110")
 
     def testStan110_0(self):
         stan = self.m.checkState("110", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([1,1,1], stan['out'])
-        self.assertEqual("110", stan['inState'])
-        self.assertEqual("011", stan['outState'])
+        self.sprawdzajStan(stan, [0], [1,1,1], "110", "011")
 
     def testStan110_1(self):
         stan = self.m.checkState("110", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([0,0,0], stan['out'])
-        self.assertEqual("110", stan['inState'])
-        self.assertEqual("111", stan['outState'])
+        self.sprawdzajStan(stan, [1], [0,0,0], "110", "111")
 
     def testStan111_0(self):
         stan = self.m.checkState("111", [0])
-        self.assertEqual([0], stan['in'])
-        self.assertEqual([0,0,1], stan['out'])
-        self.assertEqual("111", stan['inState'])
-        self.assertEqual("011", stan['outState'])
+        self.sprawdzajStan(stan, [0], [0,0,1], "111", "011")
 
     def testStan111_1(self):
         stan = self.m.checkState("111", [1])
-        self.assertEqual([1], stan['in'])
-        self.assertEqual([1,1,0], stan['out'])
-        self.assertEqual("111", stan['inState'])
-        self.assertEqual("111", stan['outState'])
-        
+        self.sprawdzajStan(stan, [1], [1,1,0], "111", "111")
+
 class TestMaszynyStanow3(unittest.TestCase):
     def setUp(self):
         # wiele inputow
@@ -329,7 +266,14 @@ class TestMaszynyStanow3(unittest.TestCase):
     def testPrzejscia000110(self):
         stany = self.m.getMozliwePrzejscia("000110")
         self.assertEqual(8, len(stany))
-        stan = stany[6]        
+
+        stan = None
+        for s in stany:
+            if(s['in'] == [1,1,0] and s['out'] == [0,1,1,0]):
+                stan=s
+                break
+
+        self.assertIsNotNone(stan)
         self.assertEqual([1,1,0], stan['in'])
         self.assertEqual([0,1,1,0], stan['out'])
         self.assertEqual("000110", stan['inState'])
