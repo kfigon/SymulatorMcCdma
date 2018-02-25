@@ -37,9 +37,16 @@ class KoderSplotowy:
     def dekoduj(self, daneBinarne):
         self.reset()
         m = MaszynaStanow(self.__rejestr, self.__ileBitowNaRaz)
+        podzielone = podziel(daneBinarne, self.__rejestr.getIleBitowWyjsciowych())
 
-        pass
-    
+        for i, porcja in enumerate(podzielone):
+            if(i == 0):
+                pocz = m.getStanPoczatkowy()
+                mozliweKroki = m.getMozliwePrzejscia(pocz)
+
+        return []
+
+# utils
 def odlegloscHamminga(daneA, daneB):
     assert (len(daneA) == len(daneB))
     roznica = 0
@@ -47,3 +54,12 @@ def odlegloscHamminga(daneA, daneB):
         if (daneA[i] != daneB[i]):
             roznica += 1
     return roznica
+
+# utils
+def podziel(dane, ileNaRaz):
+    assert (len(dane) % ileNaRaz == 0)
+    out=[None]* (len(dane)//ileNaRaz)
+    for i in range(len(out)):
+        out[i] = dane[i*ileNaRaz: ((i+1)*ileNaRaz)]
+
+    return out
