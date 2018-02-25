@@ -91,6 +91,10 @@ class TestMaszynyStanow(unittest.TestCase):
         self.sprawdzStan(stany[0], [1],[0,1], "10", "11")
         self.sprawdzStan(stany[1], [1],[1,0], "11", "11")
 
+    def testStanPoczatkowy(self):
+        stan = self.m.getStanPoczatkowy()
+        self.assertEqual('00', stan)
+
 class TestMaszynyStanow2(unittest.TestCase):
     def setUp(self):
         #inne odczepy
@@ -171,6 +175,10 @@ class TestMaszynyStanow2(unittest.TestCase):
         stan = self.m.checkState("111", [1])
         self.sprawdzStan(stan, [1],[1,1,0],"111","111")
 
+    def testStanPoczatkowy(self):
+        stan = self.m.getStanPoczatkowy()
+        self.assertEqual('000', stan)
+
 class TestMaszynyStanow3(unittest.TestCase):
     def setUp(self):
         # wiele inputow
@@ -220,6 +228,10 @@ class TestMaszynyStanow3(unittest.TestCase):
         self.assertEqual(8, len(stany))
         stan = stany[6]
         self.sprawdzStan(stan, [1,1,0],[0,1,1,0],"000110", "110000")
+
+    def testStanPoczatkowy(self):
+        stan = self.m.getStanPoczatkowy()
+        self.assertEqual('000000', stan)
 
 if __name__ == '__main__':
     unittest.main()

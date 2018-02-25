@@ -84,6 +84,11 @@ class MaszynaStanow:
     def getNumberOfStates(self):
         return 2**(self.__rej.getDlugoscRejestru()-self.__ileNaRaz)
 
+    def getStanPoczatkowy(self):
+        ile = self.__rej.getDlugoscRejestru() - self.__ileNaRaz
+        szablon = '0%db' % ile
+        return format(0, szablon)
+
 def str2List(data):
     out = [0]*len(data)
     for i in range(len(data)):

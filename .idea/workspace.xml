@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e417df85-78c9-473e-8c13-bbf94b07e7fa" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/koderSplotowy.py" afterPath="$PROJECT_DIR$/koderSplotowy.py" />
       <change beforePath="$PROJECT_DIR$/maszynaStanow.py" afterPath="$PROJECT_DIR$/maszynaStanow.py" />
-      <change beforePath="$PROJECT_DIR$/testyKoderaSplotowego.py" afterPath="$PROJECT_DIR$/testyKoderaSplotowego.py" />
+      <change beforePath="$PROJECT_DIR$/testyMaszynyStanow.py" afterPath="$PROJECT_DIR$/testyMaszynyStanow.py" />
     </list>
     <ignored path="SymulatorMcCdma.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,15 +22,31 @@
     <favorites_list name="SymulatorMcCdma" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5253268">
+    <splitter split-orientation="horizontal" split-proportion="0.3888889">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="testyKoderaSplotowego.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="testyKoderaSplotowego.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="128">
+                <state relative-caret-position="380">
                   <caret line="37" column="51" lean-forward="true" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="testyMaszynyStanow.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/testyMaszynyStanow.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="204">
+                  <caret line="233" column="24" lean-forward="false" selection-start-line="233" selection-start-column="24" selection-end-line="233" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#1929#2125#0" expanded="false" />
+                    <element signature="e#2166#2361#0" expanded="false" />
+                    <element signature="e#2402#2597#0" expanded="false" />
+                    <element signature="e#2638#2833#0" expanded="false" />
+                    <element signature="e#2874#3069#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -40,11 +55,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="koderSplotowy.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="koderSplotowy.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="317">
-                  <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+                <state relative-caret-position="254">
+                  <caret line="36" column="29" lean-forward="false" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -52,11 +67,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="maszynaStanow.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="maszynaStanow.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/maszynaStanow.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-378">
-                  <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+                <state relative-caret-position="126">
+                  <caret line="88" column="30" lean-forward="true" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
@@ -84,10 +99,10 @@
       <list>
         <option value="$PROJECT_DIR$/rejestrPrzesuwny.py" />
         <option value="$PROJECT_DIR$/testyRejestru.py" />
-        <option value="$PROJECT_DIR$/testyMaszynyStanow.py" />
-        <option value="$PROJECT_DIR$/maszynaStanow.py" />
-        <option value="$PROJECT_DIR$/koderSplotowy.py" />
         <option value="$PROJECT_DIR$/testyKoderaSplotowego.py" />
+        <option value="$PROJECT_DIR$/koderSplotowy.py" />
+        <option value="$PROJECT_DIR$/maszynaStanow.py" />
+        <option value="$PROJECT_DIR$/testyMaszynyStanow.py" />
       </list>
     </option>
   </component>
@@ -174,7 +189,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in testyKoderaSplotowego.py">
+  <component name="RunManager" selected="Python tests.Unittests in testyMaszynyStanow.py">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -439,10 +454,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in testyKoderaSplotowego.py" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestViterbiego.test1" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in testyRejestru" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testyMaszynyStanow.py" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in testyMaszynyStanow.py" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in testyKoderaSplotowego.py" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestViterbiego.test1" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testyRejestru" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyMaszynyStanow.TestMaszynyStanow" />
       </list>
     </recent_temporary>
@@ -476,19 +491,19 @@
     <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.02.25 at 15h 18m 17s.xml">
       <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_testyMaszynyStanow_py - 2018.02.24 at 21h 13m 09s.xml">
-      <configuration name="Unittests in testyMaszynyStanow.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_testyMaszynyStanow_py - 2018.02.24 at 21h 14m 35s.xml">
-      <configuration name="Unittests in testyMaszynyStanow.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_testyMaszynyStanow_py - 2018.02.24 at 21h 15m 25s.xml">
-      <configuration name="Unittests in testyMaszynyStanow.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_testyMaszynyStanow_py - 2018.02.24 at 21h 16m 14s.xml">
       <configuration name="Unittests in testyMaszynyStanow.py" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_in_testyMaszynyStanow_py - 2018.02.25 at 14h 34m 57s.xml">
+      <configuration name="Unittests in testyMaszynyStanow.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_testyMaszynyStanow_py - 2018.02.25 at 15h 27m 51s.xml">
+      <configuration name="Unittests in testyMaszynyStanow.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_testyMaszynyStanow_py - 2018.02.25 at 15h 28m 17s.xml">
+      <configuration name="Unittests in testyMaszynyStanow.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_testyMaszynyStanow_py - 2018.02.25 at 15h 28m 23s.xml">
       <configuration name="Unittests in testyMaszynyStanow.py" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_in_testyRejestru - 2018.02.25 at 14h 34m 58s.xml">
@@ -533,7 +548,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -633,39 +648,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testyMaszynyStanow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="225" column="0" lean-forward="true" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rejestrPrzesuwny.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/maszynaStanow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -679,9 +666,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
+        <state relative-caret-position="380">
           <caret line="37" column="51" lean-forward="true" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="36" column="29" lean-forward="false" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maszynaStanow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="88" column="30" lean-forward="true" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testyMaszynyStanow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="233" column="24" lean-forward="false" selection-start-line="233" selection-start-column="24" selection-end-line="233" selection-end-column="24" />
+          <folding>
+            <element signature="e#1929#2125#0" expanded="false" />
+            <element signature="e#2166#2361#0" expanded="false" />
+            <element signature="e#2402#2597#0" expanded="false" />
+            <element signature="e#2638#2833#0" expanded="false" />
+            <element signature="e#2874#3069#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
