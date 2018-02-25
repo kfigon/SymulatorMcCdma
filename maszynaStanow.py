@@ -5,6 +5,10 @@ class MaszynaStanow:
         self.__ileNaRaz=ileNaRaz
         self.__stany={}
 
+        # stan w srodku to
+        # bityWej_StaNRej
+        # 001 - stan 01, wejscie 0
+
         # lacznie z inputowymi 'komorkami',
         # wiec metoda getNumberOfStates()
         # nie moze byc

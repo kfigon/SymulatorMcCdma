@@ -25,5 +25,23 @@ class TestKoderaSplotowego(unittest.TestCase):
         self.assertEqual(1, odlegloscHamminga([1,1,1,0],[1,1,1,1]))                        
         self.assertEqual(2, odlegloscHamminga([1,0,1,0],[0,1,1,0]))
 
+class TestViterbiego(unittest.TestCase):
+    def setUp(self):
+        odczepy = [[0,1,2], [0,2]]
+        r = RejestrPrzesuwny(3, odczepy)
+        self.k = KoderSplotowy(r,1)
+
+    def testBezBledu(self):
+        nadany = [1, 0, 1, 1, 0, 0]
+        expZakodowany = [1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
+        zakodowany = self.k.koduj(nadany)
+        self.assertEqual(expZakodowany, zakodowany)
+        self.assertEqual(nadany, self.k.dekoduj(zakodowany))
+
+    def testZBledem(self):
+        expNadany = [1,0,1,1,0,0]
+        otrzymany = [1,0, 1,0, 0,0, 0,0, 0,1, 1,1]
+        self.assertEqual(expNadany, self.k.dekoduj(otrzymany))
+
 if __name__ == '__main__':
     unittest.main()

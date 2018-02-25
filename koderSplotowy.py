@@ -1,5 +1,7 @@
 from rejestrPrzesuwny import RejestrPrzesuwny
+from maszynaStanow import MaszynaStanow
 import math
+
 class KoderSplotowy:
     def __init__(self, rejestrPrzesuwny, ileBitowNaRaz):
         self.__rejestr = rejestrPrzesuwny
@@ -32,8 +34,10 @@ class KoderSplotowy:
     def reset(self):
         self.__rejestr.reset()
 
-    def dekoduj(self):
+    def dekoduj(self, daneBinarne):
         self.reset()
+        m = MaszynaStanow(self.__rejestr, self.__ileBitowNaRaz)
+
         pass
     
 def odlegloscHamminga(daneA, daneB):
