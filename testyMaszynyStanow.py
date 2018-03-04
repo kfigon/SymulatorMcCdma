@@ -95,12 +95,32 @@ class TestMaszynyStanow(unittest.TestCase):
         stan = self.m.getStanPoczatkowy()
         self.assertEqual('00', stan)
 
+    def testListyStanow(self):
+        stany = self.m.getListaStanow()
+        self.assertEqual(4, len(stany))
+        self.assertEqual('00', stany[0])
+        self.assertEqual('01', stany[1])
+        self.assertEqual('10', stany[2])
+        self.assertEqual('11', stany[3])
+
 class TestMaszynyStanow2(unittest.TestCase):
     def setUp(self):
         #inne odczepy
         odczepy = [[0,2,3], [0,1,3], [0,2]]
         r = RejestrPrzesuwny(4, odczepy)
         self.m = MaszynaStanow(r,1)
+
+    def testListyStanow(self):
+        stany = self.m.getListaStanow()
+        self.assertEqual(8, len(stany))
+        self.assertEqual('000', stany[0])
+        self.assertEqual('001', stany[1])
+        self.assertEqual('010', stany[2])
+        self.assertEqual('011', stany[3])
+        self.assertEqual('100', stany[4])
+        self.assertEqual('101', stany[5])
+        self.assertEqual('110', stany[6])
+        self.assertEqual('111', stany[7])
 
     def sprawdzStan(self, stan, expIn, expOut, expInSt, expOutSt):
         self.assertEqual(expIn, stan['in'])
@@ -188,6 +208,10 @@ class TestMaszynyStanow3(unittest.TestCase):
                    [1,5,6,8]]
         r = RejestrPrzesuwny(9, odczepy)
         self.m = MaszynaStanow(r,3)
+
+    def testListyStanow(self):
+        stany = self.m.getListaStanow()
+        self.assertEqual(64, len(stany))
 
     def testDlugosc(self):
         self.assertEqual(64, self.m.getNumberOfStates())

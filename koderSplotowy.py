@@ -48,14 +48,21 @@ class KoderSplotowy:
                     sciezka = Sciezka()
                     sciezka.dodajStan(s, odlegloscHamminga(porcja, s[MaszynaStanow.OUT]))
                     sciezki.append(sciezka)
-                
+            # else:
+            #     wszystkieStany = m.getListaStanow()
+            #     for potencjalnyStan in wszystkieStany:
+            #         sciezkiDojsciaDoStanu = []
+            #         for sciezka in sciezki:
+            #             ostatniStan = sciezka.getOstatniStan()
+            # nie tak. outState to stan wejsciowy dla nowego stanu ;<
+            #             if(ostatniStan[MaszynaStanow.OUT_STATE] == potencjalnyStan):
+
 
         najlepszaSciezka = sciezki[0]
-
-
         for s in sciezki:
             if(s.getZakumulowanyHamming() < najlepszaSciezka.getZakumulowanyHamming()):
                 najlepszaSciezka = s
+
         return najlepszaSciezka.traceBack()
 
 class Sciezka:
@@ -66,6 +73,9 @@ class Sciezka:
     def dodajStan(self, stan, hamming):
         self.__zakumulowanyStan += hamming
         self.__stany.append(stan)
+
+    def getOstatniStan(self):
+        return self.__stany[len(self.__stany)-1]
 
     def traceBack(self):
         out = []

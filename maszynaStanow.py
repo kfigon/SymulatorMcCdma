@@ -57,10 +57,7 @@ class MaszynaStanow:
         return stateKey
 
     # zwraca slownik
-    # [in] = inptBits
-    # [out] = output bits
-    # [inState] = inputState
-    # [outState] = outputState
+    # input - str stanu np. '00'
     def getMozliwePrzejscia(self, stan):
         out = []
         for klucz in self.__stany:
@@ -70,7 +67,8 @@ class MaszynaStanow:
             if(st['inState']==stan):
                 out.append(st)
         return out
-    
+
+    # input - str stanu np. '00'
     def getMozliweDojscia(self, stan):
         out = []
         for klucz in self.__stany:
@@ -97,6 +95,9 @@ class MaszynaStanow:
         ile = self.__rej.getDlugoscRejestru() - self.__ileNaRaz
         szablon = '0%db' % ile
         return format(0, szablon)
+
+    def getListaStanow(self):
+        return self.__getPermutacje(self.__rej.getDlugoscRejestru()-self.__ileNaRaz)
 
 # utils
 def str2List(data):
