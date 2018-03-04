@@ -39,12 +39,42 @@ class KoderSplotowy:
         m = MaszynaStanow(self.__rejestr, self.__ileBitowNaRaz)
         podzielone = podziel(daneBinarne, self.__rejestr.getIleBitowWyjsciowych())
 
+        sciezki = []
         for i, porcja in enumerate(podzielone):
             if(i == 0):
                 pocz = m.getStanPoczatkowy()
-                mozliweKroki = m.getMozliwePrzejscia(pocz)
+                mozliweStany = m.getMozliwePrzejscia(pocz)
+                for s in mozliweStany:
+                    sciezka = Sciezka()
+                    sciezka.dodajStan(s, odlegloscHamminga(porcja, s[MaszynaStanow.OUT]))
+                    sciezki.append(sciezka)
+                
 
-        return []
+        najlepszaSciezka = sciezki[0]
+
+
+        for s in sciezki:
+            if(s.getZakumulowanyHamming() < najlepszaSciezka.getZakumulowanyHamming()):
+                najlepszaSciezka = s
+        return najlepszaSciezka.traceBack()
+
+class Sciezka:
+    def __init__(self):
+        self.__stany = []
+        self.__zakumulowanyStan = 0
+
+    def dodajStan(self, stan, hamming):
+        self.__zakumulowanyStan += hamming
+        self.__stany.append(stan)
+
+    def traceBack(self):
+        out = []
+        for s in self.__stany:
+            out.extend(s[MaszynaStanow.IN])
+        return out
+
+    def getZakumulowanyHamming(self):
+        return self.__zakumulowanyStan
 
 # utils
 def odlegloscHamminga(daneA, daneB):

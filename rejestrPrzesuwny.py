@@ -21,7 +21,7 @@ class RejestrPrzesuwny:
         out = []
         for galazOdczepow in self.__odczepy:
             out.append(self.__liczGalaz(galazOdczepow))
-        return tuple(out)
+        return out
 
     def getDlugoscRejestru(self):
         return len(self.__tab)

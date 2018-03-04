@@ -12,34 +12,34 @@ class TestyRejestruPrzesuwnego1(unittest.TestCase):
 
     def test1(self):
         self.r.shift(1)
-        self.assertEqual((1,1), self.r.licz())
+        self.assertEqual([1,1], self.r.licz())
         self.assertEqual("100", str(self.r))
 
         self.r.shift(0)
-        self.assertEqual((1,0), self.r.licz())
+        self.assertEqual([1,0], self.r.licz())
         self.assertEqual("010", str(self.r))
 
         self.r.shift(0)
-        self.assertEqual((1,1), self.r.licz())
+        self.assertEqual([1,1], self.r.licz())
         self.assertEqual("001", str(self.r))
 
         self.r.shift(1)
-        self.assertEqual((1,1), self.r.licz())
+        self.assertEqual([1,1], self.r.licz())
         self.assertEqual("100", str(self.r))
 
         self.r.shift(1)
-        self.assertEqual((0,1), self.r.licz())
+        self.assertEqual([0,1], self.r.licz())
         self.assertEqual("110", str(self.r))
 
     def test2(self):
         self.r.shift(0)
-        self.assertEqual((0,0), self.r.licz())
+        self.assertEqual([0,0], self.r.licz())
         self.r.shift(1)
-        self.assertEqual((1,1), self.r.licz())
+        self.assertEqual([1,1], self.r.licz())
         self.r.shift(1)
-        self.assertEqual((0,1), self.r.licz())
+        self.assertEqual([0,1], self.r.licz())
         self.r.shift(0)
-        self.assertEqual((0,1), self.r.licz())
+        self.assertEqual([0,1], self.r.licz())
 
 class TestyRejestruPrzesuwnego2(unittest.TestCase):
     def setUp(self):
@@ -52,19 +52,19 @@ class TestyRejestruPrzesuwnego2(unittest.TestCase):
 
     def test(self):
         self.r.shift(1)
-        self.assertEqual((1,1,1), self.r.licz())
+        self.assertEqual([1,1,1], self.r.licz())
         self.r.shift(0)
-        self.assertEqual((0,0,1), self.r.licz())
+        self.assertEqual([0,0,1], self.r.licz())
         self.r.shift(0)
-        self.assertEqual((0,1,1), self.r.licz())
+        self.assertEqual([0,1,1], self.r.licz())
         self.r.shift(1)
-        self.assertEqual((1,1,1), self.r.licz())
+        self.assertEqual([1,1,1], self.r.licz())
         self.r.shift(1)
-        self.assertEqual((1,1,0), self.r.licz())
+        self.assertEqual([1,1,0], self.r.licz())
         self.r.shift(0)
-        self.assertEqual((0,1,0), self.r.licz())
+        self.assertEqual([0,1,0], self.r.licz())
         self.r.shift(1)
-        self.assertEqual((1,0,0), self.r.licz())
+        self.assertEqual([1,0,0], self.r.licz())
 
 class TestyRejestruPrzesuwnego3(unittest.TestCase):
     def setUp(self):
@@ -77,19 +77,19 @@ class TestyRejestruPrzesuwnego3(unittest.TestCase):
 
     def test(self):
         self.r.shift(1)
-        self.assertEqual((1,1,1), self.r.licz())
+        self.assertEqual([1,1,1], self.r.licz())
         self.r.shift(0)
-        self.assertEqual((0,1,0), self.r.licz())
+        self.assertEqual([0,1,0], self.r.licz())
         self.r.shift(0)
-        self.assertEqual((1,0,1), self.r.licz())
+        self.assertEqual([1,0,1], self.r.licz())
         self.r.shift(1)
-        self.assertEqual((0,0,1), self.r.licz())
+        self.assertEqual([0,0,1], self.r.licz())
         self.r.shift(1)
-        self.assertEqual((1,0,1), self.r.licz())
+        self.assertEqual([1,0,1], self.r.licz())
         self.r.shift(0)
-        self.assertEqual((1,1,1), self.r.licz())
+        self.assertEqual([1,1,1], self.r.licz())
         self.r.shift(1)
-        self.assertEqual((1,0,0), self.r.licz())
+        self.assertEqual([1,0,0], self.r.licz())
 
     def testZerowania(self):
         self.r.shift(1)
@@ -100,7 +100,7 @@ class TestyRejestruPrzesuwnego3(unittest.TestCase):
         
         self.r.reset()
         self.assertEqual("0000", str(self.r))
-        self.assertEqual((0,0,0), self.r.licz())
+        self.assertEqual([0,0,0], self.r.licz())
         
 if __name__ == '__main__':
     unittest.main()

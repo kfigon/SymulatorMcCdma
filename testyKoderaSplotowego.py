@@ -46,13 +46,27 @@ class TestViterbiego(unittest.TestCase):
         nadany = [1, 0, 1, 1, 0, 0]
         expZakodowany = [1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
         zakodowany = self.k.koduj(nadany)
-        self.assertEqual(expZakodowany, zakodowany)
-        self.assertEqual(nadany, self.k.dekoduj(zakodowany))
+        self.assertEqual(expZakodowany, zakodowany, "kodowanie sie nie udalo")
+        self.assertEqual(nadany, self.k.dekoduj(zakodowany), "dekodowanie sie nie udalo")
 
     def testZBledem(self):
         expNadany = [1,0,1,1,0,0]
         otrzymany = [1,0, 1,0, 0,0, 0,0, 0,1, 1,1]
         self.assertEqual(expNadany, self.k.dekoduj(otrzymany))
+
+    def test1Bit(self):
+        nadany=[1]
+        expZakodowany=[1,1]
+        zakodowany = self.k.koduj(nadany)
+        self.assertEqual(expZakodowany, zakodowany)
+        self.assertEqual(nadany, self.k.dekoduj(zakodowany))
+
+    def test2Bity(self):
+        nadany=[1,0]
+        expZakodowany=[1,1,1,0]
+        zakodowany = self.k.koduj(nadany)
+        self.assertEqual(expZakodowany, zakodowany)
+        self.assertEqual(nadany, self.k.dekoduj(zakodowany))
 
 if __name__ == '__main__':
     unittest.main()

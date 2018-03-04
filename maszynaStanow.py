@@ -1,5 +1,9 @@
 from rejestrPrzesuwny import RejestrPrzesuwny
 class MaszynaStanow:
+    IN = 'in'
+    OUT = 'out'
+    IN_STATE = 'inState'
+    OUT_STATE = 'outState'
     def __init__(self, rejestr, ileNaRaz):
         self.__rej = rejestr
         self.__ileNaRaz=ileNaRaz
@@ -51,7 +55,12 @@ class MaszynaStanow:
             stateKey += str(i)
         stateKey += state
         return stateKey
-    
+
+    # zwraca slownik
+    # [in] = inptBits
+    # [out] = output bits
+    # [inState] = inputState
+    # [outState] = outputState
     def getMozliwePrzejscia(self, stan):
         out = []
         for klucz in self.__stany:
