@@ -53,7 +53,12 @@ class KoderSplotowy:
                 for potencjalnyKolejnyStan in wszystkieStany:
                     potencjalneSciezki =
                         self.__getPotencjalneSciezkiMogaceTraficDoStanu(potencjalnyKolejnyStan, sciezki, m)
-                                
+
+                    for sciezka in sciezki:
+                        stanSciezki = sciezka.getOstatniStan()[MaszynaStanow.OUT_STATE]
+                     if(m.czyJestPrzejscie(potencjalnyKolejnyStan, stanSciezki))
+                     #dodaj to
+                # jesli konflikty - wybierz najlepsza
                         
             # else:
             #     wszystkieStany = m.getListaStanow()
