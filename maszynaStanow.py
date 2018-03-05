@@ -68,6 +68,7 @@ class MaszynaStanow:
                 out.append(st)
         return out
 
+    # zwraca slownik
     # input - str stanu np. '00'
     def getMozliweDojscia(self, stan):
         out = []
@@ -91,11 +92,13 @@ class MaszynaStanow:
     def getNumberOfStates(self):
         return 2**(self.__rej.getDlugoscRejestru()-self.__ileNaRaz)
 
+    # zwraca oznaczenie stanu (str)
     def getStanPoczatkowy(self):
         ile = self.__rej.getDlugoscRejestru() - self.__ileNaRaz
         szablon = '0%db' % ile
         return format(0, szablon)
 
+    # zwraca oznaczenia stanow (str)
     def getListaStanow(self):
         return self.__getPermutacje(self.__rej.getDlugoscRejestru()-self.__ileNaRaz)
 
