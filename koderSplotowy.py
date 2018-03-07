@@ -45,29 +45,20 @@ class KoderSplotowy:
                 pocz = m.getStanPoczatkowy()
                 mozliweStany = m.getMozliwePrzejscia(pocz)
                 for s in mozliweStany:
-                    sciezka = Sciezka(m)
+                    sciezka = Sciezka()
                     sciezka.dodajStan(s, odlegloscHamminga(porcja, s[MaszynaStanow.OUT]))
                     sciezki.append(sciezka)
             else:
-                wszystkieStany = m.getListStanow()
-                for potencjalnyKolejnyStan in wszystkieStany:
-                    potencjalneSciezki =
-                        self.__getPotencjalneSciezkiMogaceTraficDoStanu(potencjalnyKolejnyStan, sciezki, m)
-
-                    for sciezka in sciezki:
-                        stanSciezki = sciezka.getOstatniStan()[MaszynaStanow.OUT_STATE]
-                     if(m.czyJestPrzejscie(potencjalnyKolejnyStan, stanSciezki))
-                     #dodaj to
+##                wszystkieStany = m.getListStanow()
+##                for potencjalnyKolejnyStan in wszystkieStany:
+##                    potencjalneSciezki = self.__getPotencjalneSciezkiMogaceTraficDoStanu(potencjalnyKolejnyStan, sciezki, m)
+##
+##                    for sciezka in sciezki:
+##                        stanSciezki = sciezka.getOstatniStan()[MaszynaStanow.OUT_STATE]
+##                     if(m.czyJestPrzejscie(potencjalnyKolejnyStan, stanSciezki))
+##                     #dodaj to
                 # jesli konflikty - wybierz najlepsza
                         
-            # else:
-            #     wszystkieStany = m.getListaStanow()
-            #     for potencjalnyStan in wszystkieStany:
-            #         sciezkiDojsciaDoStanu = []
-            #         for sciezka in sciezki:
-            #             ostatniStan = sciezka.getOstatniStan()
-            # nie tak. outState to stan wejsciowy dla nowego stanu ;<
-            #             if(ostatniStan[MaszynaStanow.OUT_STATE] == potencjalnyStan):
 
         return self.__traceBackNajlepszejSciezki(sciezki)
     
@@ -83,7 +74,6 @@ class Sciezka:
     def __init__(self, maszynaStanow):
         self.__stany = []
         self.__zakumulowanyStan = 0
-        self.__maszynaStanow = maszynaStanow
         
     def dodajStan(self, stan, hamming):
         self.__zakumulowanyStan += hamming
@@ -100,14 +90,6 @@ class Sciezka:
 
     def getZakumulowanyHamming(self):
         return self.__zakumulowanyStan
-
-    # czy z ostatniego stanu sciezki mozna dosc do stanu x
-    def czyJestDojscie(self, stan):
-        # moze 'stan' 'stan2' i w wywolaniu getOstatniStan? latwiej testowac
-        # albo przeniesc do maszynyStanow to, chyba najlepiej
-        ostatniStan = self.getOstatniStan()
-        
-        pass
 
 # utils
 def odlegloscHamminga(daneA, daneB):

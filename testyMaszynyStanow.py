@@ -103,6 +103,20 @@ class TestMaszynyStanow(unittest.TestCase):
         self.assertEqual('10', stany[2])
         self.assertEqual('11', stany[3])
 
+    def testPolaczenia(self):
+        self.assertTrue(self.m.czyPolaczone('00', '00'))
+        self.assertTrue(self.m.czyPolaczone('00', '10'))
+        self.assertTrue(self.m.czyPolaczone('10', '01'))
+        self.assertTrue(self.m.czyPolaczone('10', '11'))
+        self.assertTrue(self.m.czyPolaczone('01', '00'))
+        self.assertTrue(self.m.czyPolaczone('01', '10'))
+        self.assertTrue(self.m.czyPolaczone('11', '01'))
+        self.assertTrue(self.m.czyPolaczone('11', '11'))
+
+        self.assertFalse(self.m.czyPolaczone('00', '11'))
+        self.assertFalse(self.m.czyPolaczone('11', '00'))
+        self.assertFalse(self.m.czyPolaczone('01', '11'))
+
 class TestMaszynyStanow2(unittest.TestCase):
     def setUp(self):
         #inne odczepy
