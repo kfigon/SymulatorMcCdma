@@ -102,12 +102,23 @@ class MaszynaStanow:
     def getListaStanow(self):
         return self.__getPermutacje(self.__rej.getDlugoscRejestru()-self.__ileNaRaz)
 
+    # przyjmuje oznaczenia stanow (str)
     def czyPolaczone(self, stan1, stan2):
         dojscia = self.getMozliweDojscia(stan2)
         for d in dojscia:
             if(stan1 == d[MaszynaStanow.IN_STATE]):
                 return True
         return False
+
+    # zwraca obiekt na podstawie dwoch stringow.
+    # MUSI byc polaczenie!
+    def getStan(self, stanPocz, stanKonc):
+        przejscia = self.getMozliwePrzejscia(stanPocz)
+        for p in przejscia:
+            if(p[MaszynaStanow.OUT_STATE] == stanKonc):
+                return p
+        return None
+
 # utils
 def str2List(data):
     out = [0]*len(data)

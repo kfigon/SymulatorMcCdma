@@ -49,16 +49,40 @@ class KoderSplotowy:
                     sciezka.dodajStan(s, odlegloscHamminga(porcja, s[MaszynaStanow.OUT]))
                     sciezki.append(sciezka)
             else:
-##                wszystkieStany = m.getListStanow()
-##                for potencjalnyKolejnyStan in wszystkieStany:
-##                    potencjalneSciezki = self.__getPotencjalneSciezkiMogaceTraficDoStanu(potencjalnyKolejnyStan, sciezki, m)
-##
-##                    for sciezka in sciezki:
-##                        stanSciezki = sciezka.getOstatniStan()[MaszynaStanow.OUT_STATE]
-##                     if(m.czyJestPrzejscie(potencjalnyKolejnyStan, stanSciezki))
-##                     #dodaj to
-                # jesli konflikty - wybierz najlepsza
-                        
+                doDodania =[]
+                wszystkieStany = m.getListaStanow()
+                for potencjalnyKolejnyStan in wszystkieStany:
+                    for sciezka in sciezki:
+                        s = sciezka.getOstatniStan()[MaszynaStanow.OUT_STATE]
+                        if (m.czyPolaczone(s, potencjalnyKolejnyStan)):
+                            # dodac stan do sciezki - trzeba wydlubac obiekt
+                            kolejnyKrokSciezki = m.getStan(s, potencjalnyKolejnyStan)
+                            hamming = odlegloscHamminga(kolejnyKrokSciezki[MaszynaStanow.OUT], porcja)
+                            ob = {'sciezka': sciezka, 'krok':kolejnyKrokSciezki, 'hamming': hamming}
+                            if(len(doDodania) == 0):
+                                doDodania.append(ob)
+                                break
+                            docelowyStanOb = kolejnyKrokSciezki[MaszynaStanow.OUT_STATE]
+                            # wykrywanie konfliktow, wybor najlepszej sciezki
+                            for naLiscie in doDodania:
+                                docelowyStanL = naLiscie['krok'][MaszynaStanow.OUT_STATE]
+                                if(docelowyStanOb == docelowyStanL):
+                                    if(naLiscie['hamming'] > hamming):
+                                        doDodania.remove(naLiscie)
+                                        doDodania.append(ob)
+                                else:
+                                    doDodania.append(ob)
+
+                juzRozszerzoneSciezki=[]
+                for el in doDodania:
+                    sciezka = el['sciezka']
+                    if(sciezka in juzRozszerzoneSciezki):
+                        nowa = sciezka.kopiujSciezke()
+                        nowa.dodajStan(el['krok'], el['hamming'])
+                        sciezki.append(nowa)
+                    else:
+                        sciezka.dodajStan(el['krok'], el['hamming'])
+                        juzRozszerzoneSciezki.append(sciezka)
 
         return self.__traceBackNajlepszejSciezki(sciezki)
     
@@ -69,9 +93,9 @@ class KoderSplotowy:
                 najlepszaSciezka = s
 
         return najlepszaSciezka.traceBack()
-    
+
 class Sciezka:
-    def __init__(self, maszynaStanow):
+    def __init__(self):
         self.__stany = []
         self.__zakumulowanyStan = 0
         
@@ -90,6 +114,13 @@ class Sciezka:
 
     def getZakumulowanyHamming(self):
         return self.__zakumulowanyStan
+
+    def kopiujSciezke(self):
+        nowa = Sciezka()
+        for i in range(len(self.__stany)-1):
+            nowa.dodajStan(i,0)
+        nowa.dodajStan(self.getOstatniStan(), self.getZakumulowanyHamming())
+        return nowa
 
 # utils
 def odlegloscHamminga(daneA, daneB):

@@ -13,10 +13,10 @@ class TestMaszynyStanow(unittest.TestCase):
         self.assertEqual(4, self.m.getNumberOfStates())
 
     def sprawdzStan(self, stan, expIn, expOut, expInSt, expOutSt):
-        self.assertEqual(expIn, stan['in'])
-        self.assertEqual(expOut, stan['out'])
-        self.assertEqual(expInSt, stan['inState'])
-        self.assertEqual(expOutSt, stan['outState'])
+        self.assertEqual(expIn, stan['in'], 'blad! Bity wejsciowe')
+        self.assertEqual(expOut, stan['out'], 'blad! Bity wyjsciowe')
+        self.assertEqual(expInSt, stan['inState'], 'blad! Stan wejsciowy')
+        self.assertEqual(expOutSt, stan['outState'], 'blad! Stan wyjsciowy')
 
     def testStan00_0(self):
         stan = self.m.checkState("00", [0])
@@ -116,6 +116,17 @@ class TestMaszynyStanow(unittest.TestCase):
         self.assertFalse(self.m.czyPolaczone('00', '11'))
         self.assertFalse(self.m.czyPolaczone('11', '00'))
         self.assertFalse(self.m.czyPolaczone('01', '11'))
+
+    def testGetStan(self):
+        self.sprawdzStan(self.m.getStan('00', '00'),
+                         [0], [0,0], '00','00')
+
+        self.sprawdzStan(self.m.getStan('10', '01'),
+                         [0], [1, 1], '10', '01')
+
+        self.sprawdzStan(self.m.getStan('11', '01'),
+                         [0], [0,0], '11','01')
+
 
 class TestMaszynyStanow2(unittest.TestCase):
     def setUp(self):
