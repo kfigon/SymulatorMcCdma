@@ -60,28 +60,8 @@ class KoderSplotowy:
                             hamming = odlegloscHamminga(kolejnyKrokSciezki[MaszynaStanow.OUT], porcja)
                             ob = {'sciezka': sciezka, 'krok':kolejnyKrokSciezki, 'hamming': hamming}
                             doDodania.append(ob)
-                            #
-                            # # todo: to psuje wszysstko, nawet 2 bitowy scenariusz
-                            # if(len(doDodania) == 0):
-                            #     doDodania.append(ob)
-                            #     break
-                            #
-                            # docelowyStanOb = kolejnyKrokSciezki[MaszynaStanow.OUT_STATE]
-                            # # wykrywanie konfliktow, wybor najlepszej sciezki
-                            # for naLiscie in doDodania:
-                            #     docelowyStanL = naLiscie['krok'][MaszynaStanow.OUT_STATE]
-                            #     if(docelowyStanOb == docelowyStanL):
-                            #         if(naLiscie['hamming'] > hamming):
-                            #             naLiscie['hamming'] = hamming
-                            #             naLiscie['krok']=kolejnyKrokSciezki
-                            #             naLiscie['sciezka'] = sciezka
-                            #     else:
-                            #         doDodania.append(ob)
 
-                # wszystkie permutacje, rozwiazac konflikty
-                for d in doDodania:
-
-
+                self.__usunKonflikty(doDodania)
 
                 juzRozszerzoneSciezki=[]
                 for el in doDodania:
@@ -95,7 +75,19 @@ class KoderSplotowy:
                         juzRozszerzoneSciezki.append(sciezka)
 
         return self.__traceBackNajlepszejSciezki(sciezki)
-    
+
+    def __usunKonflikty(self, lista):
+        for pierwszy in lista:
+            for drugi in lista:
+                outSt1 = pierwszy['krok'][MaszynaStanow.OUT_STATE]
+                outSt2 = drugi['krok'][MaszynaStanow.OUT_STATE]
+                ham1 = pierwszy['hamming'] + pierwszy['sciezka'].getZakumulowanyHamming()
+                ham2 = drugi['hamming'] + drugi['sciezka'].getZakumulowanyHamming()
+
+                if (drugi != pierwszy and outSt1 == outSt2 and ham1 > ham2):
+                    lista.remove(pierwszy)
+
+
     def __traceBackNajlepszejSciezki(self, sciezki):
         najlepszaSciezka = sciezki[0]
         for s in sciezki:
