@@ -59,6 +59,9 @@ class KoderSplotowy:
                             kolejnyKrokSciezki = m.getStan(s, potencjalnyKolejnyStan)
                             hamming = odlegloscHamminga(kolejnyKrokSciezki[MaszynaStanow.OUT], porcja)
                             ob = {'sciezka': sciezka, 'krok':kolejnyKrokSciezki, 'hamming': hamming}
+                            # doDodania.append(ob)
+
+                            # todo: to psuje wszysstko, nawet 2 bitowy scenariusz
                             if(len(doDodania) == 0):
                                 doDodania.append(ob)
                                 break
