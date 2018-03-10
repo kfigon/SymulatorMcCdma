@@ -59,23 +59,29 @@ class KoderSplotowy:
                             kolejnyKrokSciezki = m.getStan(s, potencjalnyKolejnyStan)
                             hamming = odlegloscHamminga(kolejnyKrokSciezki[MaszynaStanow.OUT], porcja)
                             ob = {'sciezka': sciezka, 'krok':kolejnyKrokSciezki, 'hamming': hamming}
-                            # doDodania.append(ob)
+                            doDodania.append(ob)
+                            #
+                            # # todo: to psuje wszysstko, nawet 2 bitowy scenariusz
+                            # if(len(doDodania) == 0):
+                            #     doDodania.append(ob)
+                            #     break
+                            #
+                            # docelowyStanOb = kolejnyKrokSciezki[MaszynaStanow.OUT_STATE]
+                            # # wykrywanie konfliktow, wybor najlepszej sciezki
+                            # for naLiscie in doDodania:
+                            #     docelowyStanL = naLiscie['krok'][MaszynaStanow.OUT_STATE]
+                            #     if(docelowyStanOb == docelowyStanL):
+                            #         if(naLiscie['hamming'] > hamming):
+                            #             naLiscie['hamming'] = hamming
+                            #             naLiscie['krok']=kolejnyKrokSciezki
+                            #             naLiscie['sciezka'] = sciezka
+                            #     else:
+                            #         doDodania.append(ob)
 
-                            # todo: to psuje wszysstko, nawet 2 bitowy scenariusz
-                            if(len(doDodania) == 0):
-                                doDodania.append(ob)
-                                break
-                            docelowyStanOb = kolejnyKrokSciezki[MaszynaStanow.OUT_STATE]
-                            # wykrywanie konfliktow, wybor najlepszej sciezki
-                            for naLiscie in doDodania:
-                                docelowyStanL = naLiscie['krok'][MaszynaStanow.OUT_STATE]
-                                if(docelowyStanOb == docelowyStanL):
-                                    if(naLiscie['hamming'] > hamming):
-                                        naLiscie['hamming'] = hamming
-                                        naLiscie['krok']=kolejnyKrokSciezki
-                                        naLiscie['sciezka'] = sciezka
-                                else:
-                                    doDodania.append(ob)
+                # wszystkie permutacje, rozwiazac konflikty
+                for d in doDodania:
+
+
 
                 juzRozszerzoneSciezki=[]
                 for el in doDodania:
