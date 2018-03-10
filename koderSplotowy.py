@@ -68,8 +68,9 @@ class KoderSplotowy:
                                 docelowyStanL = naLiscie['krok'][MaszynaStanow.OUT_STATE]
                                 if(docelowyStanOb == docelowyStanL):
                                     if(naLiscie['hamming'] > hamming):
-                                        doDodania.remove(naLiscie)
-                                        doDodania.append(ob)
+                                        naLiscie['hamming'] = hamming
+                                        naLiscie['krok']=kolejnyKrokSciezki
+                                        naLiscie['sciezka'] = sciezka
                                 else:
                                     doDodania.append(ob)
 
