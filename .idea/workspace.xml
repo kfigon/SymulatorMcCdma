@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e417df85-78c9-473e-8c13-bbf94b07e7fa" name="Default" comment="in progress">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/koderSplotowy.py" afterPath="$PROJECT_DIR$/koderSplotowy.py" />
       <change beforePath="$PROJECT_DIR$/testyKoderaSplotowego.py" afterPath="$PROJECT_DIR$/testyKoderaSplotowego.py" />
     </list>
@@ -22,14 +21,14 @@
     <favorites_list name="SymulatorMcCdma" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.21784566">
+    <splitter split-orientation="horizontal" split-proportion="0.329582">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="testyKoderaSplotowego.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+                <state relative-caret-position="427">
+                  <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
                   </folding>
@@ -61,8 +60,8 @@
           <file leaf-file-name="koderSplotowy.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="242">
-                  <caret line="86" column="62" lean-forward="false" selection-start-line="86" selection-start-column="62" selection-end-line="86" selection-end-column="62" />
+                <state relative-caret-position="220">
+                  <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -383,9 +382,9 @@
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in testyKoderaSplotowego.py" />
         <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestViterbiego" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestViterbiego.test2Bity" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestViterbiego.test3Bity2" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestViterbiego.test3Bity" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestViterbiego.test3Bity2" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestViterbiego.test2Bity" />
       </list>
     </recent_temporary>
   </component>
@@ -406,34 +405,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 19m 49s.xml">
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestViterbiego - 2018.03.10 at 18h 03m 36s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestViterbiego" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestViterbiego_test3Bity - 2018.03.10 at 17h 56m 31s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestViterbiego.test3Bity" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestViterbiego_test3Bity - 2018.03.10 at 17h 57m 51s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestViterbiego.test3Bity" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestViterbiego_test3Bity - 2018.03.10 at 18h 02m 48s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestViterbiego.test3Bity" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestViterbiego_test3Bity2 - 2018.03.10 at 17h 58m 40s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestViterbiego.test3Bity2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestViterbiego_test3Bity2 - 2018.03.10 at 17h 59m 48s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestViterbiego.test3Bity2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestViterbiego_test3Bity2 - 2018.03.10 at 18h 03m 21s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestViterbiego.test3Bity2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 57m 24s.xml">
       <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 20m 33s.xml">
+    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 18h 01m 41s.xml">
       <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 22m 12s.xml">
-      <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 24m 42s.xml">
-      <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 24m 51s.xml">
-      <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 24m 57s.xml">
-      <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 25m 09s.xml">
-      <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 25m 19s.xml">
-      <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 25m 25s.xml">
-      <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 17h 26m 44s.xml">
+    <history-entry file="Unittests_in_testyKoderaSplotowego_py - 2018.03.10 at 21h 26m 13s.xml">
       <configuration name="Unittests in testyKoderaSplotowego.py" configurationId="tests" />
     </history-entry>
   </component>
@@ -443,12 +442,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11898017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3909465" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2639087" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44079885" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281027" sideWeight="0.49722221" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1783167" sideWeight="0.49722221" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3352354" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59343797" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -478,14 +477,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/koderSplotowy.py</url>
-          <line>65</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -872,8 +864,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="427">
+          <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -882,8 +874,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="86" column="62" lean-forward="false" selection-start-line="86" selection-start-column="62" selection-end-line="86" selection-end-column="62" />
+        <state relative-caret-position="220">
+          <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>

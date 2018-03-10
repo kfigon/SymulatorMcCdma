@@ -74,6 +74,11 @@ class KoderSplotowy:
                         sciezka.dodajStan(el['krok'], el['hamming'])
                         juzRozszerzoneSciezki.append(sciezka)
 
+        # sciezki ktore zostaly usuniete w ostatniej iteracji
+        for s in sciezki:
+            if(s.getDlugoscSciezki() != len(podzielone)):
+                sciezki.remove(s)
+
         return self.__traceBackNajlepszejSciezki(sciezki)
 
     def __usunKonflikty(self, lista):
@@ -108,6 +113,9 @@ class Sciezka:
     def getOstatniStan(self):
         return self.__stany[len(self.__stany)-1]
 
+    def getDlugoscSciezki(self):
+        return len(self.__stany)
+
     def traceBack(self):
         out = []
         for s in self.__stany:
@@ -120,7 +128,7 @@ class Sciezka:
     def kopiujSciezke(self):
         nowa = Sciezka()
         for i in range(len(self.__stany)-1):
-            nowa.dodajStan(i,0)
+            nowa.dodajStan(self.__stany[i],0)
         nowa.dodajStan(self.getOstatniStan(), self.getZakumulowanyHamming())
         return nowa
 

@@ -42,7 +42,6 @@ class TestViterbiego(unittest.TestCase):
         r = RejestrPrzesuwny(3, odczepy)
         self.k = KoderSplotowy(r,1)
 
-    #@unittest.skip("infinite loop inside")
     def testBezBledu(self):
         nadany = [1, 0, 1, 1, 0, 0]
         expZakodowany = [1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
@@ -50,7 +49,6 @@ class TestViterbiego(unittest.TestCase):
         self.assertEqual(expZakodowany, zakodowany, "kodowanie sie nie udalo")
         self.assertEqual(nadany, self.k.dekoduj(zakodowany), "dekodowanie sie nie udalo")
 
-    #@unittest.skip("infinite loop inside")
     def testZBledem(self):
         expNadany = [1,0,1,1,0,0]
         otrzymany = [1,0, 1,0, 0,0, 0,0, 0,1, 1,1]
@@ -65,6 +63,7 @@ class TestViterbiego(unittest.TestCase):
         nadany=[1]
         expZakodowany=[1,1]
         self.fullSprawdzenie(nadany, expZakodowany)
+
     def test2Bity(self):
         nadany=[1,0]
         expZakodowany=[1,1,1,0]
