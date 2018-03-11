@@ -55,8 +55,8 @@ class TestyViterbiego(unittest.TestCase):
 
         self.assertEqual(4, len(sciezki))
         self.sprawdzStanSciezki(sciezki[0], '00', '00', 3)
-        self.sprawdzStanSciezki(sciezki[1], '00', '10', 3)
-        self.sprawdzStanSciezki(sciezki[2], '10', '01', 0)
+        self.sprawdzStanSciezki(sciezki[2], '00', '10', 3)
+        self.sprawdzStanSciezki(sciezki[1], '10', '01', 0)
         self.sprawdzStanSciezki(sciezki[3], '10', '11', 2)
 
 if __name__ == '__main__':

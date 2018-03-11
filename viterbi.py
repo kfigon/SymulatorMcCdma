@@ -17,13 +17,41 @@ class Viterbi:
         return self.__sciezki
 
     def liczSciezke(self, dane):
-        stany = self.__maszyna.getListaStanow()
-        for stan in stany:
-            konfliktujaceSciezki = self.getSciezkiDochodzaceDoStanu(stan)
-            if(len(konfliktujaceSciezki) == 1):
-                pass
-            elif(len(konfliktujaceSciezki) > 1):
-                pass
+        doDodania=[]
+        for sciezka in self.__sciezki:
+            przejscia = self.__maszyna.getMozliwePrzejscia(sciezka.getOstatniStan()[MaszynaStanow.OUT_STATE])
+            for i, p in enumerate(przejscia):
+                hamming = odlegloscHamminga(p[MaszynaStanow.OUT], dane)
+                if(i==0):
+                    ob = {'sciezka': sciezka, 'krok': p, 'hamming': hamming, 'nowaSciezka':False}
+                    doDodania.append(ob)
+                else:
+                    nowa = sciezka.kopiujSciezke()
+                    ob = {'sciezka': nowa, 'krok': p, 'hamming': hamming, 'nowaSciezka':True}
+                    doDodania.append(ob)
+
+        for d in doDodania:
+            if(d['nowaSciezka'] == True):
+                d['sciezka'].dodajStan(d['krok'], d['hamming'])
+                self.__sciezki.append(d['sciezka'])
+            else:
+                d['sciezka'].dodajStan(d['krok'], d['hamming'])
+
+        # stany = self.__maszyna.getListaStanow()
+        # for stan in stany:
+        #     # konfliktujaceSciezki = self.getSciezkiDochodzaceDoStanu(stan)
+        #     # if(len(konfliktujaceSciezki) == 1):
+        #     #     stanSciezki = konfliktujaceSciezki[0].getOstatniStan()
+        #     #     kolejnyKrokSciezki = self.__maszyna.getStan(stanSciezki[MaszynaStanow.OUT_STATE], stan)
+        #     #     hamming = odlegloscHamminga(kolejnyKrokSciezki[MaszynaStanow.OUT], dane)
+        #     #     ob = {'sciezka': konfliktujaceSciezki[0], 'krok':kolejnyKrokSciezki, 'hamming':hamming}
+        #     #
+        #     #     for sciezka in self.__sciezki:
+        #     #         if()
+        #     #
+        #     # elif(len(konfliktujaceSciezki) > 1):
+        #     #     pass
+
 
         return self.__sciezki
 
