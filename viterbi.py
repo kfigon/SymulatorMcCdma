@@ -30,27 +30,15 @@ class Viterbi:
                     ob = {'sciezka': nowa, 'krok': p, 'hamming': hamming, 'nowaSciezka':True}
                     doDodania.append(ob)
 
+        # usuwanie konfliktow
+
+
         for d in doDodania:
             if(d['nowaSciezka'] == True):
                 d['sciezka'].dodajStan(d['krok'], d['hamming'])
                 self.__sciezki.append(d['sciezka'])
             else:
                 d['sciezka'].dodajStan(d['krok'], d['hamming'])
-
-        # stany = self.__maszyna.getListaStanow()
-        # for stan in stany:
-        #     # konfliktujaceSciezki = self.getSciezkiDochodzaceDoStanu(stan)
-        #     # if(len(konfliktujaceSciezki) == 1):
-        #     #     stanSciezki = konfliktujaceSciezki[0].getOstatniStan()
-        #     #     kolejnyKrokSciezki = self.__maszyna.getStan(stanSciezki[MaszynaStanow.OUT_STATE], stan)
-        #     #     hamming = odlegloscHamminga(kolejnyKrokSciezki[MaszynaStanow.OUT], dane)
-        #     #     ob = {'sciezka': konfliktujaceSciezki[0], 'krok':kolejnyKrokSciezki, 'hamming':hamming}
-        #     #
-        #     #     for sciezka in self.__sciezki:
-        #     #         if()
-        #     #
-        #     # elif(len(konfliktujaceSciezki) > 1):
-        #     #     pass
 
 
         return self.__sciezki
