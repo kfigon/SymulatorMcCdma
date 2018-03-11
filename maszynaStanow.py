@@ -1,4 +1,6 @@
 from rejestrPrzesuwny import RejestrPrzesuwny
+from utils import str2List
+
 class MaszynaStanow:
     IN = 'in'
     OUT = 'out'
@@ -119,9 +121,4 @@ class MaszynaStanow:
                 return p
         return None
 
-# utils
-def str2List(data):
-    out = [0]*len(data)
-    for i in range(len(data)):
-        out[i]=int(data[i])
-    return out
+

@@ -1,6 +1,7 @@
 from rejestrPrzesuwny import RejestrPrzesuwny
 from maszynaStanow import MaszynaStanow
-import math
+from utils import podziel
+from utils import odlegloscHamminga
 
 class KoderSplotowy:
     def __init__(self, rejestrPrzesuwny, ileBitowNaRaz):
@@ -35,117 +36,71 @@ class KoderSplotowy:
         self.__rejestr.reset()
 
     def dekoduj(self, daneBinarne):
-        self.reset()
-        m = MaszynaStanow(self.__rejestr, self.__ileBitowNaRaz)
-        podzielone = podziel(daneBinarne, self.__rejestr.getIleBitowWyjsciowych())
+        pass
+        # self.reset()
+        # m = MaszynaStanow(self.__rejestr, self.__ileBitowNaRaz)
+        # podzielone = podziel(daneBinarne, self.__rejestr.getIleBitowWyjsciowych())
+        #
+        # sciezki = []
+        # for i, porcja in enumerate(podzielone):
+        #     if(i == 0):
+        #         pocz = m.getStanPoczatkowy()
+        #         mozliweStany = m.getMozliwePrzejscia(pocz)
+        #         for s in mozliweStany:
+        #             sciezka = Sciezka()
+        #             sciezka.dodajStan(s, odlegloscHamminga(porcja, s[MaszynaStanow.OUT]))
+        #             sciezki.append(sciezka)
+        #     else:
+        #         doDodania =[]
+        #         wszystkieStany = m.getListaStanow()
+        #         for potencjalnyKolejnyStan in wszystkieStany:
+        #             for sciezka in sciezki:
+        #                 s = sciezka.getOstatniStan()[MaszynaStanow.OUT_STATE]
+        #                 if (m.czyPolaczone(s, potencjalnyKolejnyStan)):
+        #                     # dodac stan do sciezki - trzeba wydlubac obiekt
+        #                     kolejnyKrokSciezki = m.getStan(s, potencjalnyKolejnyStan)
+        #                     hamming = odlegloscHamminga(kolejnyKrokSciezki[MaszynaStanow.OUT], porcja)
+        #                     ob = {'sciezka': sciezka, 'krok':kolejnyKrokSciezki, 'hamming': hamming}
+        #                     doDodania.append(ob)
+        #
+        #         self.__usunKonflikty(doDodania)
+        #
+        #         juzRozszerzoneSciezki=[]
+        #         for el in doDodania:
+        #             sciezka = el['sciezka']
+        #             if(sciezka in juzRozszerzoneSciezki):
+        #                 nowa = sciezka.kopiujSciezke()
+        #                 nowa.dodajStan(el['krok'], el['hamming'])
+        #                 sciezki.append(nowa)
+        #             else:
+        #                 sciezka.dodajStan(el['krok'], el['hamming'])
+        #                 juzRozszerzoneSciezki.append(sciezka)
+        #
+        # # sciezki ktore zostaly usuniete w ostatniej iteracji
+        # for s in sciezki:
+        #     if(s.getDlugoscSciezki() != len(podzielone)):
+        #         sciezki.remove(s)
+        #
+        # return self.__traceBackNajlepszejSciezki(sciezki)
 
-        sciezki = []
-        for i, porcja in enumerate(podzielone):
-            if(i == 0):
-                pocz = m.getStanPoczatkowy()
-                mozliweStany = m.getMozliwePrzejscia(pocz)
-                for s in mozliweStany:
-                    sciezka = Sciezka()
-                    sciezka.dodajStan(s, odlegloscHamminga(porcja, s[MaszynaStanow.OUT]))
-                    sciezki.append(sciezka)
-            else:
-                doDodania =[]
-                wszystkieStany = m.getListaStanow()
-                for potencjalnyKolejnyStan in wszystkieStany:
-                    for sciezka in sciezki:
-                        s = sciezka.getOstatniStan()[MaszynaStanow.OUT_STATE]
-                        if (m.czyPolaczone(s, potencjalnyKolejnyStan)):
-                            # dodac stan do sciezki - trzeba wydlubac obiekt
-                            kolejnyKrokSciezki = m.getStan(s, potencjalnyKolejnyStan)
-                            hamming = odlegloscHamminga(kolejnyKrokSciezki[MaszynaStanow.OUT], porcja)
-                            ob = {'sciezka': sciezka, 'krok':kolejnyKrokSciezki, 'hamming': hamming}
-                            doDodania.append(ob)
-
-                self.__usunKonflikty(doDodania)
-
-                juzRozszerzoneSciezki=[]
-                for el in doDodania:
-                    sciezka = el['sciezka']
-                    if(sciezka in juzRozszerzoneSciezki):
-                        nowa = sciezka.kopiujSciezke()
-                        nowa.dodajStan(el['krok'], el['hamming'])
-                        sciezki.append(nowa)
-                    else:
-                        sciezka.dodajStan(el['krok'], el['hamming'])
-                        juzRozszerzoneSciezki.append(sciezka)
-
-        # sciezki ktore zostaly usuniete w ostatniej iteracji
-        for s in sciezki:
-            if(s.getDlugoscSciezki() != len(podzielone)):
-                sciezki.remove(s)
-
-        return self.__traceBackNajlepszejSciezki(sciezki)
-
-    def __usunKonflikty(self, lista):
-        for pierwszy in lista:
-            for drugi in lista:
-                outSt1 = pierwszy['krok'][MaszynaStanow.OUT_STATE]
-                outSt2 = drugi['krok'][MaszynaStanow.OUT_STATE]
-                ham1 = pierwszy['hamming'] + pierwszy['sciezka'].getZakumulowanyHamming()
-                ham2 = drugi['hamming'] + drugi['sciezka'].getZakumulowanyHamming()
-
-                if (drugi != pierwszy and outSt1 == outSt2 and ham1 > ham2):
-                    lista.remove(pierwszy)
+    # def __usunKonflikty(self, lista):
+    #     for pierwszy in lista:
+    #         for drugi in lista:
+    #             outSt1 = pierwszy['krok'][MaszynaStanow.OUT_STATE]
+    #             outSt2 = drugi['krok'][MaszynaStanow.OUT_STATE]
+    #             ham1 = pierwszy['hamming'] + pierwszy['sciezka'].getZakumulowanyHamming()
+    #             ham2 = drugi['hamming'] + drugi['sciezka'].getZakumulowanyHamming()
+    #
+    #             if (drugi != pierwszy and outSt1 == outSt2 and ham1 > ham2):
+    #                 lista.remove(pierwszy)
+    #
+    #
+    # def __traceBackNajlepszejSciezki(self, sciezki):
+    #     najlepszaSciezka = sciezki[0]
+    #     for s in sciezki:
+    #         if(s.getZakumulowanyHamming() < najlepszaSciezka.getZakumulowanyHamming()):
+    #             najlepszaSciezka = s
+    #
+    #     return najlepszaSciezka.traceBack()
 
 
-    def __traceBackNajlepszejSciezki(self, sciezki):
-        najlepszaSciezka = sciezki[0]
-        for s in sciezki:
-            if(s.getZakumulowanyHamming() < najlepszaSciezka.getZakumulowanyHamming()):
-                najlepszaSciezka = s
-
-        return najlepszaSciezka.traceBack()
-
-class Sciezka:
-    def __init__(self):
-        self.__stany = []
-        self.__zakumulowanyStan = 0
-        
-    def dodajStan(self, stan, hamming):
-        self.__zakumulowanyStan += hamming
-        self.__stany.append(stan)
-
-    def getOstatniStan(self):
-        return self.__stany[len(self.__stany)-1]
-
-    def getDlugoscSciezki(self):
-        return len(self.__stany)
-
-    def traceBack(self):
-        out = []
-        for s in self.__stany:
-            out.extend(s[MaszynaStanow.IN])
-        return out
-
-    def getZakumulowanyHamming(self):
-        return self.__zakumulowanyStan
-
-    def kopiujSciezke(self):
-        nowa = Sciezka()
-        for i in range(len(self.__stany)-1):
-            nowa.dodajStan(self.__stany[i],0)
-        nowa.dodajStan(self.getOstatniStan(), self.getZakumulowanyHamming())
-        return nowa
-
-# utils
-def odlegloscHamminga(daneA, daneB):
-    assert (len(daneA) == len(daneB))
-    roznica = 0
-    for i in range(len(daneA)):
-        if (daneA[i] != daneB[i]):
-            roznica += 1
-    return roznica
-
-# utils
-def podziel(dane, ileNaRaz):
-    assert (len(dane) % ileNaRaz == 0)
-    out=[None]* (len(dane)//ileNaRaz)
-    for i in range(len(out)):
-        out[i] = dane[i*ileNaRaz: ((i+1)*ileNaRaz)]
-
-    return out

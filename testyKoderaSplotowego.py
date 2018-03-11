@@ -1,8 +1,8 @@
 import unittest
 from rejestrPrzesuwny import RejestrPrzesuwny
 from koderSplotowy import KoderSplotowy
-from koderSplotowy import odlegloscHamminga
-from koderSplotowy import podziel
+from utils import odlegloscHamminga
+from utils import podziel
 
 class TestKoderaSplotowego(unittest.TestCase):
     def setUp(self):
@@ -36,7 +36,7 @@ class TestKoderaSplotowego(unittest.TestCase):
         exp = [[1,0,1], [0,1,1], [0,0,1]]
         self.assertEqual(exp, podziel(wej,3))
 
-class TestViterbiego(unittest.TestCase):
+class TestyDekodowania(unittest.TestCase):
     def setUp(self):
         odczepy = [[0,1,2], [0,2]]
         r = RejestrPrzesuwny(3, odczepy)
