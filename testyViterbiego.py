@@ -71,27 +71,12 @@ class TestyViterbiego(unittest.TestCase):
         self.sprawdzStanSciezki(sciezki[3], '10', '11', 4)
 
     def testAsd(self):
-        tab=[{'id':1, 'val':1, 'czyUsunac':False},
-             {'id': 5, 'val': 2, 'czyUsunac':False},
-             {'id':2, 'val':1, 'czyUsunac':False},
-             {'id': 4, 'val': 2, 'czyUsunac':False},
-             {'id':1, 'val':0, 'czyUsunac':False},
-             {'id':4, 'val':2, 'czyUsunac':False},
-             {'id':5, 'val':3, 'czyUsunac':False},
-             {'id': 1, 'val': 1, 'czyUsunac': False},
-             {'id': 5, 'val': 1, 'czyUsunac': False},
-             {'id': 2, 'val': 1, 'czyUsunac': False},
-             {'id': 4, 'val': 2, 'czyUsunac': False},
-             {'id': 1, 'val': 3, 'czyUsunac': False},
-             {'id': 4, 'val': 2, 'czyUsunac': False},
-             {'id': 5, 'val': 0, 'czyUsunac': False},
-             {'id': 1, 'val': 1, 'czyUsunac': False},
-             {'id': 5, 'val': 1, 'czyUsunac': False},
-             {'id': 2, 'val': 1, 'czyUsunac': False},
-             {'id': 4, 'val': 2, 'czyUsunac': False},
-             {'id': 1, 'val': 0, 'czyUsunac': False},
-             {'id': 4, 'val': 2, 'czyUsunac': False},
-             {'id': 5, 'val': 3, 'czyUsunac': False}]
+        tab=[{'id': 0, 'val': 5, 'czyUsunac': False},
+             {'id': 2, 'val': 3, 'czyUsunac': False},
+             {'id': 0, 'val': 0, 'czyUsunac': False},
+             {'id': 1, 'val': 4, 'czyUsunac': False},
+             {'id': 3, 'val': 4, 'czyUsunac': False},
+             {'id': 3, 'val': 4, 'czyUsunac': False},]
 
 
         for i in range(len(tab)):
@@ -112,10 +97,10 @@ class TestyViterbiego(unittest.TestCase):
 
         outTab = list(filter(lambda x: not x['czyUsunac'], tab))
 
-        expTab=[{'id':2, 'val':1, 'czyUsunac':False},
-                {'id': 4, 'val': 2, 'czyUsunac':False},
-                {'id': 1, 'val': 0, 'czyUsunac':False},
-                {'id': 5, 'val': 0, 'czyUsunac': False}]
+        expTab=[{'id':2, 'val':3, 'czyUsunac':False},
+                {'id': 0, 'val': 0, 'czyUsunac':False},
+                {'id': 1, 'val': 4, 'czyUsunac':False},
+                {'id': 3, 'val': 4, 'czyUsunac': False}]
 
         self.assertEqual(expTab, outTab)
 

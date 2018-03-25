@@ -31,6 +31,7 @@ class Viterbi:
                     doDodania.append(ob)
 
         # usuwanie konfliktow
+        print("konfliktow szukam\n")
         for i in range(len(doDodania)):
             el1 = doDodania[i]
             if(el1['czyUsunac']):
@@ -39,13 +40,29 @@ class Viterbi:
                 if(i==j):
                     continue
                 el2 = doDodania[j]
+                if(el2['czyUsunac']):
+                    continue
+
                 if(el1['krok'][MaszynaStanow.OUT_STATE] == el2['krok'][MaszynaStanow.OUT_STATE]):
-                    if(el1['hamming'] == el2['hamming']):
+                    ham1 = el1['hamming'] + el1['sciezka'].getZakumulowanyHamming()
+                    ham2 = el2['hamming'] + el2['sciezka'].getZakumulowanyHamming()
+
+                    print("konflikt na stanie: " + el1['krok'][MaszynaStanow.OUT_STATE])
+                    print(el1['krok'][MaszynaStanow.IN_STATE] + "->"+el1['krok'][MaszynaStanow.OUT_STATE])
+                    print(el2['krok'][MaszynaStanow.IN_STATE] + "->"+el2['krok'][MaszynaStanow.OUT_STATE])
+                    print("%d vs %d" % (ham1, ham2))
+
+                    if(ham1 <= ham2):
                         el2['czyUsunac'] = True
-                    elif(el1['hamming'] > el2['hamming']):
-                        el1['czyUsunac'] = True
+                        if(not el2['nowaSciezka']):
+                            self.__sciezki.remove(el2['sciezka'])
+                        print("usuwam drugi")
                     else:
-                        el2['czyUsunac'] = True
+                        el1['czyUsunac'] = True
+                        if (not el1['nowaSciezka']):
+                            self.__sciezki.remove(el1['sciezka'])
+                        print("usuwam pierwszy")
+                    print()
 
         outTab = list(filter(lambda x: not x['czyUsunac'], doDodania))
 
@@ -55,7 +72,6 @@ class Viterbi:
                 self.__sciezki.append(d['sciezka'])
             else:
                 d['sciezka'].dodajStan(d['krok'], d['hamming'])
-
 
         return self.__sciezki
 
