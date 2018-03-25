@@ -22,14 +22,14 @@
     <favorites_list name="SymulatorMcCdma" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.58798283">
+    <splitter split-orientation="horizontal" split-proportion="0.3023622">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="testyViterbiego.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/testyViterbiego.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="93" column="52" lean-forward="false" selection-start-line="93" selection-start-column="52" selection-end-line="93" selection-end-column="52" />
+                <state relative-caret-position="22">
+                  <caret line="72" column="12" lean-forward="false" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
                   </folding>
@@ -44,10 +44,32 @@
           <file leaf-file-name="viterbi.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/viterbi.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="418">
-                  <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+                <state relative-caret-position="22">
+                  <caret line="23" column="53" lean-forward="false" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="testyKoderaSplotowego.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1210">
+                  <caret line="59" column="44" lean-forward="false" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="koderSplotowy.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="748">
+                  <caret line="37" column="8" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+                  <folding>
+                    <element signature="e#0#45#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -96,8 +118,8 @@
         <option value="$PROJECT_DIR$/maszynaStanow.py" />
         <option value="$PROJECT_DIR$/testyKoderaSplotowego.py" />
         <option value="$PROJECT_DIR$/koderSplotowy.py" />
-        <option value="$PROJECT_DIR$/viterbi.py" />
         <option value="$PROJECT_DIR$/testyViterbiego.py" />
+        <option value="$PROJECT_DIR$/viterbi.py" />
       </list>
     </option>
   </component>
@@ -144,8 +166,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -157,6 +177,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,20 +340,6 @@
       <option name="_new_target" value="&quot;testyViterbiego.TestyViterbiego.testAsd&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for testyViterbiego.TestyViterbiego.testDrugiegoKroku" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SymulatorMcCdma" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testyViterbiego.TestyViterbiego.testDrugiegoKroku&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
     <configuration name="Unittests for testyViterbiego.TestyViterbiego.testTrzeciegoKroku" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -360,20 +368,34 @@
       <option name="_new_target" value="&quot;$PROJECT_DIR$&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
+    <configuration name="Unittests in testyViterbiego.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SymulatorMcCdma" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/testyViterbiego.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testDrugiegoKroku" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testTrzeciegoKroku" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testAsd" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in SymulatorMcCdma" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testTrzeciegoKroku" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testAsd" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in SymulatorMcCdma" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in testyViterbiego.py" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in SymulatorMcCdma" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testAsd" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testTrzeciegoKroku" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testDrugiegoKroku" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in testyViterbiego.py" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testAsd" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testTrzeciegoKroku" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego" />
       </list>
     </recent_temporary>
   </component>
@@ -394,47 +416,47 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.11 at 21h 36m 31s.xml">
-      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.11 at 21h 38m 04s.xml">
-      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.11 at 21h 38m 35s.xml">
-      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.11 at 21h 38m 51s.xml">
-      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.11 at 21h 39m 02s.xml">
-      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.11 at 21h 39m 31s.xml">
-      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.11 at 21h 39m 38s.xml">
-      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.11 at 21h 39m 55s.xml">
       <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.11 at 21h 40m 14s.xml">
       <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testAsd - 2018.03.17 at 23h 02m 09s.xml">
+      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" configurationId="tests" />
+    </history-entry>
     <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.11 at 21h 54m 12s.xml">
       <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.17 at 23h 00m 31s.xml">
+      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.17 at 23h 03m 30s.xml">
+      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.17 at 23h 04m 23s.xml">
+      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.17 at 23h 06m 05s.xml">
+      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.17 at 23h 10m 11s.xml">
+      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_testyViterbiego_py - 2018.03.17 at 23h 08m 24s.xml">
+      <configuration name="Unittests in testyViterbiego.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1458" height="870" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17492917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10056657" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3909465" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5221113" sideWeight="0.49722221" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.574893" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37660486" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -843,27 +865,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="40" column="8" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="42" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testyMaszynyStanow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="19" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="60" column="87" lean-forward="true" selection-start-line="60" selection-start-column="87" selection-end-line="60" selection-end-column="87" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,22 +882,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viterbi.py">
+    <entry file="file://$PROJECT_DIR$/testyViterbiego.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+        <state relative-caret-position="22">
+          <caret line="72" column="12" lean-forward="false" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testyViterbiego.py">
+    <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="93" column="52" lean-forward="false" selection-start-line="93" selection-start-column="52" selection-end-line="93" selection-end-column="52" />
+        <state relative-caret-position="1210">
+          <caret line="59" column="44" lean-forward="false" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="37" column="8" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viterbi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="23" column="53" lean-forward="false" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -23,17 +23,33 @@ class Viterbi:
             for i, p in enumerate(przejscia):
                 hamming = odlegloscHamminga(p[MaszynaStanow.OUT], dane)
                 if(i==0):
-                    ob = {'sciezka': sciezka, 'krok': p, 'hamming': hamming, 'nowaSciezka':False}
+                    ob = {'sciezka': sciezka, 'krok': p, 'hamming': hamming, 'nowaSciezka':False, 'czyUsunac': False}
                     doDodania.append(ob)
                 else:
                     nowa = sciezka.kopiujSciezke()
-                    ob = {'sciezka': nowa, 'krok': p, 'hamming': hamming, 'nowaSciezka':True}
+                    ob = {'sciezka': nowa, 'krok': p, 'hamming': hamming, 'nowaSciezka':True, 'czyUsunac': False}
                     doDodania.append(ob)
 
         # usuwanie konfliktow
+        for i in range(len(doDodania)):
+            el1 = doDodania[i]
+            if(el1['czyUsunac']):
+                continue
+            for j in range(len(doDodania)):
+                if(i==j):
+                    continue
+                el2 = doDodania[j]
+                if(el1['krok'][MaszynaStanow.OUT_STATE] == el2['krok'][MaszynaStanow.OUT_STATE]):
+                    if(el1['hamming'] == el2['hamming']):
+                        el2['czyUsunac'] = True
+                    elif(el1['hamming'] > el2['hamming']):
+                        el1['czyUsunac'] = True
+                    else:
+                        el2['czyUsunac'] = True
 
+        outTab = list(filter(lambda x: not x['czyUsunac'], doDodania))
 
-        for d in doDodania:
+        for d in outTab:
             if(d['nowaSciezka'] == True):
                 d['sciezka'].dodajStan(d['krok'], d['hamming'])
                 self.__sciezki.append(d['sciezka'])

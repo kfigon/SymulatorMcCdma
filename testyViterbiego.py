@@ -110,10 +110,7 @@ class TestyViterbiego(unittest.TestCase):
                     else:
                         el2['czyUsunac'] = True
 
-        outTab = []
-        for i in tab:
-            if(i['czyUsunac']==False):
-                outTab.append(i)
+        outTab = list(filter(lambda x: not x['czyUsunac'], tab))
 
         expTab=[{'id':2, 'val':1, 'czyUsunac':False},
                 {'id': 4, 'val': 2, 'czyUsunac':False},
