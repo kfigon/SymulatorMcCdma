@@ -1,7 +1,6 @@
 from rejestrPrzesuwny import RejestrPrzesuwny
 from maszynaStanow import MaszynaStanow
 from utils import podziel
-from utils import odlegloscHamminga
 from viterbi import Viterbi
 
 class KoderSplotowy:
@@ -39,15 +38,18 @@ class KoderSplotowy:
     def dekoduj(self, daneBinarne):
         maszyna = MaszynaStanow(self.__rejestr, self.__ileBitowNaRaz)
         v = Viterbi(maszyna)
-        podzielone = podziel(daneBinarne, self.__ileBitowNaRaz)
+        podzielone = podziel(daneBinarne, self.__rejestr.getIleBitowWyjsciowych())
 
-        sciezki = None
         for i, paczka in enumerate(podzielone):
             if(i==0):
                 v.liczPierwszy(paczka)
             else:
-                sciezki = v.liczSciezke(paczka)
-        return self.__traceBackNajlepszejSciezki(sciezki)
+                v.liczSciezke(paczka)
+
+        for i in v.getSciezki():
+            print(i)
+
+        return self.__traceBackNajlepszejSciezki(v.getSciezki())
 
     def __traceBackNajlepszejSciezki(self, sciezki):
         najlepszaSciezka = sciezki[0]

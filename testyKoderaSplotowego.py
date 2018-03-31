@@ -21,21 +21,6 @@ class TestKoderaSplotowego(unittest.TestCase):
     def test2(self):
         self.assertEqual([1,0,1,1], self.k.koduj([1,1,1]))
 
-    def testHamminga(self):
-        self.assertEqual(0, odlegloscHamminga([1,1,1,0],[1,1,1,0]))
-        self.assertEqual(1, odlegloscHamminga([1,1,1,0],[1,1,1,1]))                        
-        self.assertEqual(2, odlegloscHamminga([1,0,1,0],[0,1,1,0]))
-
-    def testDzielenia1(self):
-        wej = [1,0, 1,0, 1,1, 0,0]
-        exp = [[1,0],[1,0],[1,1],[0,0]]
-        self.assertEqual(exp, podziel(wej,2))
-
-    def testDzielenia2(self):
-        wej = [1,0, 1,0, 1,1, 0,0,1]
-        exp = [[1,0,1], [0,1,1], [0,0,1]]
-        self.assertEqual(exp, podziel(wej,3))
-
 class TestyDekodowania(unittest.TestCase):
     def setUp(self):
         odczepy = [[0,1,2], [0,2]]
@@ -70,13 +55,13 @@ class TestyDekodowania(unittest.TestCase):
         self.fullSprawdzenie(nadany, expZakodowany)
 
     def test3Bity(self):
-        nadany=[1,0,1]
-        expZakodowany=[1,1,1,0,0,0]
+        nadany=[1,0,0]
+        expZakodowany = [1, 1, 1, 0, 1, 1]
         self.fullSprawdzenie(nadany, expZakodowany)
 
     def test3Bity2(self):
-        nadany=[1,0,0]
-        expZakodowany=[1,1,1,0,1,1]
+        nadany=[1,0,1]
+        expZakodowany=[1,1,1,0,0,0]
         self.fullSprawdzenie(nadany, expZakodowany)
 
 if __name__ == '__main__':

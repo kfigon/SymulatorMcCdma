@@ -6,7 +6,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/koderSplotowy.py" afterPath="$PROJECT_DIR$/koderSplotowy.py" />
-      <change beforePath="$PROJECT_DIR$/testyViterbiego.py" afterPath="$PROJECT_DIR$/testyViterbiego.py" />
+      <change beforePath="$PROJECT_DIR$/testyKoderaSplotowego.py" afterPath="$PROJECT_DIR$/testyKoderaSplotowego.py" />
       <change beforePath="$PROJECT_DIR$/viterbi.py" afterPath="$PROJECT_DIR$/viterbi.py" />
     </list>
     <ignored path="SymulatorMcCdma.iws" />
@@ -25,48 +25,27 @@
     <favorites_list name="SymulatorMcCdma" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.46103364">
+    <splitter split-orientation="horizontal" split-proportion="0.31793267">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="testyViterbiego.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/testyViterbiego.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="76" column="21" lean-forward="false" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+                <state relative-caret-position="126">
+                  <caret line="26" column="8" lean-forward="false" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
+                    <marker date="1522499651429" expanded="true" signature="2825:2831" ph="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="testyKoderaSplotowego.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="testyKoderaSplotowego.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="88">
-                  <caret line="61" column="8" lean-forward="false" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="koderSplotowy.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#45#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/utils.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+                <state relative-caret-position="383">
+                  <caret line="63" column="12" lean-forward="false" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -76,25 +55,49 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="viterbi.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="viterbi.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/viterbi.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="61" column="32" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="32" />
+                <state relative-caret-position="97">
+                  <caret line="62" column="53" lean-forward="false" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
+                    <element signature="e#2053#2446#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="maszynaStanow.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/maszynaStanow.py">
+          <file leaf-file-name="sciezka.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sciezka.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1037">
-                  <caret line="62" column="40" lean-forward="false" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
+                <state relative-caret-position="66">
+                  <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="testySciezki.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/testySciezki.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="koderSplotowy.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1056">
+                  <caret line="48" column="23" lean-forward="false" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
+                    <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -107,15 +110,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Unit Test" />
         <option value="Python Script" />
+        <option value="Python Unit Test" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>odlegloscHamminga</find>
       <find>podziel</find>
+      <find>odlegloscHamminga</find>
+      <find>getId</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -127,12 +131,15 @@
         <option value="$PROJECT_DIR$/rejestrPrzesuwny.py" />
         <option value="$PROJECT_DIR$/testyRejestru.py" />
         <option value="$PROJECT_DIR$/testyMaszynyStanow.py" />
-        <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/maszynaStanow.py" />
-        <option value="$PROJECT_DIR$/testyKoderaSplotowego.py" />
-        <option value="$PROJECT_DIR$/viterbi.py" />
         <option value="$PROJECT_DIR$/testyViterbiego.py" />
+        <option value="$PROJECT_DIR$/utils.py" />
+        <option value="$PROJECT_DIR$/testUtils.py" />
+        <option value="$PROJECT_DIR$/testyKoderaSplotowego.py" />
         <option value="$PROJECT_DIR$/koderSplotowy.py" />
+        <option value="$PROJECT_DIR$/viterbi.py" />
+        <option value="$PROJECT_DIR$/sciezka.py" />
+        <option value="$PROJECT_DIR$/testySciezki.py" />
       </list>
     </option>
   </component>
@@ -325,7 +332,7 @@
       <option name="_new_target" value="&quot;testyKoderaSplotowego.TestKoderaSplotowego.testDzielenia&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test1Bit" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -336,10 +343,10 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SymulatorMcCdma" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testyKoderaSplotowego.TestyDekodowania.test1Bit&quot;" />
+      <option name="_new_target" value="&quot;testyKoderaSplotowego.TestyDekodowania&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for testyViterbiego.TestyViterbiego.testAsd" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -350,10 +357,10 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SymulatorMcCdma" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testyViterbiego.TestyViterbiego.testAsd&quot;" />
+      <option name="_new_target" value="&quot;testyKoderaSplotowego.TestyDekodowania.test3Bity&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for testyViterbiego.TestyViterbiego.testDrugiegoKroku" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity2" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -364,21 +371,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SymulatorMcCdma" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testyViterbiego.TestyViterbiego.testDrugiegoKroku&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests for testyViterbiego.TestyViterbiego.testTrzeciegoKroku" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SymulatorMcCdma" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testyViterbiego.TestyViterbiego.testTrzeciegoKroku&quot;" />
+      <option name="_new_target" value="&quot;testyKoderaSplotowego.TestyDekodowania.test3Bity2&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests in SymulatorMcCdma" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -395,20 +388,34 @@
       <option name="_new_target" value="&quot;$PROJECT_DIR$&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
+    <configuration name="Unittests in testyKoderaSplotowego.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SymulatorMcCdma" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/testyKoderaSplotowego.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testTrzeciegoKroku" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testAsd" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in SymulatorMcCdma" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testDrugiegoKroku" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.test1Bit" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in SymulatorMcCdma" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity2" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testyKoderaSplotowego.py" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in SymulatorMcCdma" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.test1Bit" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testTrzeciegoKroku" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testDrugiegoKroku" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyViterbiego.TestyViterbiego.testAsd" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testyKoderaSplotowego.py" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity2" />
       </list>
     </recent_temporary>
   </component>
@@ -429,69 +436,59 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania_test1Bit - 2018.03.25 at 21h 05m 21s.xml">
-      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test1Bit" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania - 2018.03.31 at 20h 11m 54s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania_test1Bit - 2018.03.25 at 21h 05m 23s.xml">
-      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test1Bit" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania_test3Bity - 2018.03.31 at 20h 05m 56s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testDrugiegoKroku - 2018.03.25 at 20h 50m 22s.xml">
-      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testDrugiegoKroku" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania_test3Bity - 2018.03.31 at 20h 06m 45s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_testyViterbiego_TestyViterbiego_testTrzeciegoKroku - 2018.03.25 at 20h 54m 16s.xml">
-      <configuration name="Unittests for testyViterbiego.TestyViterbiego.testTrzeciegoKroku" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania_test3Bity - 2018.03.31 at 20h 10m 30s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.25 at 20h 38m 50s.xml">
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania_test3Bity - 2018.03.31 at 20h 11m 43s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania_test3Bity - 2018.03.31 at 20h 24m 46s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test3Bity" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.31 at 20h 05m 48s.xml">
       <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.25 at 20h 47m 53s.xml">
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.31 at 20h 16m 46s.xml">
       <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.25 at 20h 49m 39s.xml">
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.31 at 20h 23m 04s.xml">
       <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.25 at 20h 54m 22s.xml">
-      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.25 at 21h 02m 57s.xml">
-      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.25 at 21h 05m 43s.xml">
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.03.31 at 20h 27m 13s.xml">
       <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-9" y="-9" width="1458" height="870" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10761347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09560907" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3909465" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4896989" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952926" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5221113" sideWeight="0.49722221" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37660486" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43740094" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39800286" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3909465" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5221113" sideWeight="0.49722221" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37660486" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10056657" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39800286" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -512,18 +509,28 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/testyViterbiego.py</url>
           <line>41</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/testyViterbiego.py</url>
           <line>66</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="51" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="59" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -537,21 +544,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/teamcity/diff_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testyRejestru.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="102" column="32" lean-forward="false" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python36-32/Lib/unittest/case.py" />
     <entry file="file://$PROJECT_DIR$/rejestrPrzesuwny.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -578,7 +570,7 @@
         <state relative-caret-position="401">
           <caret line="72" column="8" lean-forward="false" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -589,6 +581,7 @@
           <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
@@ -613,6 +606,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
@@ -622,7 +616,7 @@
         <state relative-caret-position="2530">
           <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -646,7 +640,7 @@
         <state relative-caret-position="2530">
           <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -671,6 +665,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
@@ -680,7 +675,7 @@
         <state relative-caret-position="2530">
           <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -698,6 +693,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
@@ -722,6 +718,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
@@ -731,7 +728,7 @@
         <state relative-caret-position="2016">
           <caret line="96" column="14" lean-forward="false" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="14" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -756,6 +753,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
@@ -765,7 +763,7 @@
         <state relative-caret-position="2016">
           <caret line="96" column="14" lean-forward="false" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="14" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -783,6 +781,7 @@
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
@@ -800,6 +799,7 @@
           <caret line="11" column="52" lean-forward="false" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
@@ -824,6 +824,7 @@
           <caret line="11" column="46" lean-forward="false" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
@@ -863,15 +864,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/Python36-32/Lib/unittest/case.py" />
     <entry file="file://$PROJECT_DIR$/skrypt.py" />
-    <entry file="file://$PROJECT_DIR$/rejestrPrzesuwny.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-39">
-          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testyMaszynyStanow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -879,59 +872,104 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/maszynaStanow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
+        <state relative-caret-position="1364">
           <caret line="62" column="40" lean-forward="false" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viterbi.py">
+    <entry file="file://C:/Program Files/Python36-32/Lib/unittest/case.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="61" column="32" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="130">
+          <caret line="604" column="0" lean-forward="false" selection-start-line="604" selection-start-column="0" selection-end-line="604" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rejestrPrzesuwny.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testUtils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="12" column="35" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testyViterbiego.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="76" column="21" lean-forward="false" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+        <state relative-caret-position="126">
+          <caret line="26" column="8" lean-forward="false" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+            <marker date="1522499651429" expanded="true" signature="2825:2831" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="61" column="8" lean-forward="false" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
+        <state relative-caret-position="383">
+          <caret line="63" column="12" lean-forward="false" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="1056">
+          <caret line="48" column="23" lean-forward="false" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+            <marker date="1522519829360" expanded="true" signature="1950:1990" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
+    <entry file="file://$PROJECT_DIR$/viterbi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="97">
+          <caret line="62" column="53" lean-forward="false" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#2053#2446#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sciezka.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testySciezki.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
