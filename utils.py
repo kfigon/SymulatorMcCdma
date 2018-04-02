@@ -1,3 +1,5 @@
+from random import randint
+
 # tablice
 def odlegloscHamminga(daneA, daneB):
     assert (len(daneA) == len(daneB))
@@ -20,4 +22,10 @@ def str2List(data):
     out = [0]*len(data)
     for i in range(len(data)):
         out[i]=int(data[i])
+    return out
+
+def generujDaneBinarne(ile):
+    out = [0]*ile
+    for i in range(len(out)):
+        out[i]=randint(0,1)
     return out

@@ -17,6 +17,12 @@ class TestyUtilsow(unittest.TestCase):
         exp = [[1,0,1], [0,1,1], [0,0,1]]
         self.assertEqual(exp, podziel(wej,3))
 
+    def testGeneratoraBinarnego(self):
+        dane = generujDaneBinarne(1000)
+        self.assertEqual(1000, len(dane))
+        for i in dane:
+            if(i != 0 and i != 1):
+                self.fail('element %d nie jest binarny!' % i)
 
 if __name__ == '__main__':
     unittest.main()
