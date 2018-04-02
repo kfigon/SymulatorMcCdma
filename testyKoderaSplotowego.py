@@ -29,15 +29,16 @@ class TestyDekodowania(unittest.TestCase):
 
     def testBezBledu(self):
         nadany = [1, 0, 1, 1, 0, 0]
-        expZakodowany = [1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1]
-        zakodowany = self.k.koduj(nadany)
-        self.assertEqual(expZakodowany, zakodowany, "kodowanie sie nie udalo")
-        self.assertEqual(nadany, self.k.dekoduj(zakodowany), "dekodowanie sie nie udalo")
+        expZakodowany = [1,1, 1,0, 0,0, 0,1, 0,1, 1,1]
+        self.fullSprawdzenie(nadany, expZakodowany)
 
     def testZBledem(self):
-        expNadany = [1,0,1,1,0,0]
-        otrzymany = [1,0, 1,0, 0,0, 0,0, 0,1, 1,1]
-        self.assertEqual(expNadany, self.k.dekoduj(otrzymany))
+        nadany = [1,0,1,1,0,0]
+        expZakodowany = [1,1, 1,0, 0,0, 0,1, 0,1, 1,1]
+        otrzymany =     [1,1, 1,0, 1,0, 0,1, 0,1, 0,1]
+        zakodowany = self.k.koduj(nadany)
+        self.assertEqual(expZakodowany, zakodowany, 'blad zakodowanych')
+        self.assertEqual(nadany, self.k.dekoduj(otrzymany), 'blad dekodowania')
 
     def fullSprawdzenie(self, nadany, expZakodowany):
         zakodowany = self.k.koduj(nadany)
@@ -68,7 +69,6 @@ class TestyDekodowania(unittest.TestCase):
         nadany=[0,1,1,0,1,0,1,0,1,1]
         expZakodowany=[0,0, 1,1, 0,1, 0,1, 0,0, 1,0, 0,0, 1,0, 0,0, 0,1]
         self.fullSprawdzenie(nadany, expZakodowany)
-
 
 if __name__ == '__main__':
     unittest.main()

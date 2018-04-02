@@ -46,11 +46,11 @@ class KoderSplotowy:
             else:
                 v.liczSciezke(paczka)
 
-        for i in v.getSciezki():
-            print(i)
+        v.wyfiltrujSciezkiKtoreNieSkonczyly(len(podzielone))
 
-        # todo: pominiecie sciezek, ktore nawet nie dotarly do konca
-        # (dlugosc sciezki)
+        # for i in v.getSciezki():
+        #     print(i)
+
         return self.__traceBackNajlepszejSciezki(v.getSciezki())
 
     def __traceBackNajlepszejSciezki(self, sciezki):

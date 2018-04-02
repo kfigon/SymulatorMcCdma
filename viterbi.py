@@ -76,6 +76,11 @@ class Viterbi:
 
         return self.__sciezki
 
+    def wyfiltrujSciezkiKtoreNieSkonczyly(self, dlugoscPodzielonychDanych):
+        self.__sciezki = list(filter(
+            lambda s: s.getDlugoscSciezki() == dlugoscPodzielonychDanych,
+            self.__sciezki))
+
     def getSciezkiDochodzaceDoStanu(self, stan):
         out=[]
         for sciezka in self.__sciezki:
