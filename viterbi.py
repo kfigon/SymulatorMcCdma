@@ -36,31 +36,32 @@ class Viterbi:
                     else:
                         el1['czyUsunac'] = True
 
+    def __rozgaleziajSciezki(self, doDodania):
+        # poszukac duplikatow - te same sciezki
+        # pierwsza z nich nowaSciezka:False
+        # reszta nowaSciezka:True i kopie + podmianka ['sciezka']
+        pass
+
     def liczSciezke(self, dane):
         doDodania=[]
         for sciezka in self.__sciezki:
-            sciezka.czyJuzRozszerzona = False
             przejscia = self.__maszyna.getMozliwePrzejscia(sciezka.getOstatniStan()[MaszynaStanow.OUT_STATE])
             for i, p in enumerate(przejscia):
                 hamming = odlegloscHamminga(p[MaszynaStanow.OUT], dane)
-                ob = {'sciezka': sciezka,
-                      'krok': p,
-                      'hamming': hamming,
-                      'czyUsunac': False}
+                ob = {'sciezka': sciezka, 'krok': p,
+                      'hamming': hamming, 'czyUsunac': False,
+                      'nowaSciezka': False}
                 doDodania.append(ob)
 
         self.__oznaczKonflikty(doDodania)
         outTab = list(filter(lambda x: not x['czyUsunac'], doDodania))
+        self.__rozgaleziajSciezki(doDodania)
 
         for d in outTab:
-            if(d['sciezka'].czyJuzRozszerzona == True):
-                nowa = Sciezka.kopiujSciezke(d['sciezka'])
-                nowa.dodajStan(d['krok'], d['hamming'])
-                nowa.czyJuzRozszerzona = False
+            d['sciezka'].dodajStan(d['krok'], d['hamming'])
+            if (d['nowaSciezka'] == True):
                 self.__sciezki.append(d['sciezka'])
-            else:
-                d['sciezka'].dodajStan(d['krok'], d['hamming'])
-                d['sciezka'].czyJuzRozszerzona = True
+
         return self.__sciezki
 
     def getSciezkiDochodzaceDoStanu(self, stan):
