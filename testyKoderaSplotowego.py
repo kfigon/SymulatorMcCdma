@@ -1,8 +1,7 @@
 import unittest
 from rejestrPrzesuwny import RejestrPrzesuwny
 from koderSplotowy import KoderSplotowy
-from utils import odlegloscHamminga
-from utils import podziel
+from utils import generujDaneBinarne
 
 class TestKoderaSplotowego(unittest.TestCase):
     def setUp(self):
@@ -69,6 +68,18 @@ class TestyDekodowania(unittest.TestCase):
         nadany=[0,1,1,0,1,0,1,0,1,1]
         expZakodowany=[0,0, 1,1, 0,1, 0,1, 0,0, 1,0, 0,0, 1,0, 0,0, 0,1]
         self.fullSprawdzenie(nadany, expZakodowany)
+
+class StresTestKodera(unittest.TestCase):
+    def setUp(self):
+        odczepy = [[0,1,5,7], [2,4,7]]
+        r = RejestrPrzesuwny(8, odczepy)
+        self.k = KoderSplotowy(r, 1)
+
+    def testStres(self):
+        dane = generujDaneBinarne(10)
+        zakodowany = self.k.koduj(dane)
+        zdekodowane = self.k.dekoduj(zakodowany)
+        self.assertEqual(dane, zdekodowane)
 
 if __name__ == '__main__':
     unittest.main()

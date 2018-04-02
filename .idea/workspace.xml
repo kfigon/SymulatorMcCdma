@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e417df85-78c9-473e-8c13-bbf94b07e7fa" name="Default" comment="in progress">
-      <change beforePath="$PROJECT_DIR$/testUtils.py" afterPath="$PROJECT_DIR$/testUtils.py" />
-      <change beforePath="$PROJECT_DIR$/utils.py" afterPath="$PROJECT_DIR$/utils.py" />
+      <change beforePath="$PROJECT_DIR$/testyKoderaSplotowego.py" afterPath="$PROJECT_DIR$/testyKoderaSplotowego.py" />
     </list>
     <ignored path="SymulatorMcCdma.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,7 +20,7 @@
     <favorites_list name="SymulatorMcCdma" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.56363636">
+    <splitter split-orientation="horizontal" split-proportion="0.22409436">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="testUtils.py" pinned="false" current-in-tab="true">
@@ -40,12 +39,14 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/utils.py">
+          <file leaf-file-name="testyKoderaSplotowego.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="489">
-                  <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="26" />
-                  <folding />
+                <state relative-caret-position="313">
+                  <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -64,9 +65,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>podziel</find>
       <find>odlegloscHamminga</find>
       <find>getId</find>
+      <find>podziel</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -84,9 +85,9 @@
         <option value="$PROJECT_DIR$/testyViterbiego.py" />
         <option value="$PROJECT_DIR$/viterbi.py" />
         <option value="$PROJECT_DIR$/koderSplotowy.py" />
-        <option value="$PROJECT_DIR$/testyKoderaSplotowego.py" />
         <option value="$PROJECT_DIR$/testUtils.py" />
         <option value="$PROJECT_DIR$/utils.py" />
+        <option value="$PROJECT_DIR$/testyKoderaSplotowego.py" />
       </list>
     </option>
   </component>
@@ -265,6 +266,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
+    <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SymulatorMcCdma" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;testyKoderaSplotowego.StresTestKodera.testStres&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
     <configuration name="Unittests for testyKoderaSplotowego.TestKoderaSplotowego.testDzielenia" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -291,20 +306,6 @@
       <module name="SymulatorMcCdma" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;testyKoderaSplotowego.TestyDekodowania&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.test10Bitow" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SymulatorMcCdma" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testyKoderaSplotowego.TestyDekodowania.test10Bitow&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.testBezBledu" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -351,18 +352,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in SymulatorMcCdma" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.test10Bitow" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.testZBledem" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.testBezBledu" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.testZBledem" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.testBezBledu" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.StresTestKodera.testStres" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in SymulatorMcCdma" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.testZBledem" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.testBezBledu" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.test10Bitow" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.StresTestKodera.testStres" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.testZBledem" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for testyKoderaSplotowego.TestyDekodowania.testBezBledu" />
       </list>
     </recent_temporary>
   </component>
@@ -383,41 +384,41 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania - 2018.04.02 at 20h 38m 21s.xml">
-      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_StresTestKodera_testStres - 2018.04.02 at 20h 54m 33s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania_testZBledem - 2018.04.02 at 20h 38m 03s.xml">
-      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.testZBledem" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_StresTestKodera_testStres - 2018.04.02 at 20h 54m 40s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_testyKoderaSplotowego_TestyDekodowania_testZBledem - 2018.04.02 at 20h 38m 14s.xml">
-      <configuration name="Unittests for testyKoderaSplotowego.TestyDekodowania.testZBledem" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_StresTestKodera_testStres - 2018.04.02 at 20h 55m 04s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.04.02 at 20h 38m 25s.xml">
-      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_StresTestKodera_testStres - 2018.04.02 at 20h 56m 31s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.04.02 at 20h 43m 37s.xml">
-      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_StresTestKodera_testStres - 2018.04.02 at 20h 57m 36s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.04.02 at 20h 44m 49s.xml">
-      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_StresTestKodera_testStres - 2018.04.02 at 20h 58m 42s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.04.02 at 20h 45m 06s.xml">
-      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_StresTestKodera_testStres - 2018.04.02 at 20h 59m 04s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.04.02 at 20h 46m 05s.xml">
-      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_StresTestKodera_testStres - 2018.04.02 at 20h 59m 11s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.04.02 at 20h 46m 11s.xml">
-      <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
+    <history-entry file="Unittests_for_testyKoderaSplotowego_StresTestKodera_testStres - 2018.04.02 at 20h 59m 19s.xml">
+      <configuration name="Unittests for testyKoderaSplotowego.StresTestKodera.testStres" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.04.02 at 20h 46m 22s.xml">
+    <history-entry file="Unittests_in_SymulatorMcCdma - 2018.04.02 at 20h 59m 51s.xml">
       <configuration name="Unittests in SymulatorMcCdma" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1458" height="870" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10056657" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15934844" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3909465" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952926" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -455,13 +456,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/testyViterbiego.py</url>
-          <line>34</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -833,36 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testyViterbiego.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-            <element signature="e#349#988#0" expanded="false" />
-            <marker date="1522694327352" expanded="true" signature="2016:2056" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/viterbi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
@@ -881,18 +845,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testUtils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
           <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testyViterbiego.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koderSplotowy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#349#988#0" expanded="false" />
+            <marker date="1522694327352" expanded="true" signature="2016:2056" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testyKoderaSplotowego.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
