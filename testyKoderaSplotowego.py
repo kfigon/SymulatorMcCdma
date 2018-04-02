@@ -64,5 +64,11 @@ class TestyDekodowania(unittest.TestCase):
         expZakodowany=[1,1,1,0,0,0]
         self.fullSprawdzenie(nadany, expZakodowany)
 
+    def test10Bitow(self):
+        nadany=[0,1,1,0,1,0,1,0,1,1]
+        expZakodowany=[0,0, 1,1, 0,1, 0,1, 0,0, 1,0, 0,0, 1,0, 0,0, 0,1]
+        self.fullSprawdzenie(nadany, expZakodowany)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -40,7 +40,19 @@ class Viterbi:
         # poszukac duplikatow - te same sciezki
         # pierwsza z nich nowaSciezka:False
         # reszta nowaSciezka:True i kopie + podmianka ['sciezka']
-        pass
+        ktoreJuzByly = []
+        for i in doDodania:
+            if (i['sciezka'] in ktoreJuzByly):
+                continue
+            duplikaty = list(filter(lambda el: el['sciezka'] == i['sciezka'], doDodania))
+            for d in range(len(duplikaty)):
+                if(d == 0):
+                    duplikaty[0]['nowaSciezka'] = False
+                    ktoreJuzByly.append(duplikaty[0]['sciezka'])
+                else:
+                    nowa = Sciezka.kopiujSciezke(duplikaty[d]['sciezka'])
+                    duplikaty[d]['sciezka'] = nowa
+                    duplikaty[d]['nowaSciezka'] = True
 
     def liczSciezke(self, dane):
         doDodania=[]
@@ -55,7 +67,7 @@ class Viterbi:
 
         self.__oznaczKonflikty(doDodania)
         outTab = list(filter(lambda x: not x['czyUsunac'], doDodania))
-        self.__rozgaleziajSciezki(doDodania)
+        self.__rozgaleziajSciezki(outTab)
 
         for d in outTab:
             d['sciezka'].dodajStan(d['krok'], d['hamming'])

@@ -44,10 +44,11 @@ class Sciezka:
     def __eq__(self, other):
         if(other.getDlugoscSciezki() != self.getDlugoscSciezki()):
             return False
+
         for i in range(self.getDlugoscSciezki()):
             x = self.stany[i]
             y = other.stany[i]
-            if(x[MaszynaStanow.IN_STATE] != y[MaszynaStanow.OUT_STATE] or
+            if(x[MaszynaStanow.IN_STATE] != y[MaszynaStanow.IN_STATE] or
             y[MaszynaStanow.OUT_STATE] != x[MaszynaStanow.OUT_STATE]):
                 return False
         return True
