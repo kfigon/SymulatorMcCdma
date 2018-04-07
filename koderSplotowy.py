@@ -49,7 +49,7 @@ class KoderSplotowy:
             else:
                 v.licz(paczka)
 
-        v.pisz()
+        # v.pisz()
         return v.traceback()
 
 

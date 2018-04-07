@@ -49,24 +49,33 @@ class Viterbi:
 
     def traceback(self):
         out = []
-        minimalnyHamming = -1
 
-        for krok in self.__trellis:
+        # przejscie z minimalnym hammingiem
+        przejscie=None 
+        ostatniKrok = self.__trellis[len(self.__trellis)-1]
+        for p in ostatniKrok['przejscia']:
+            if(p['usunac']==True):
+                continue
+            ham = p['hamming']
+            if(przejscie is None):
+                przejscie = p
+            elif(ham < przejscie['hamming']):
+                przejscie = p
+
+        for i in range(len(self.__trellis)-2, -1, -1):
+            krok = self.__trellis[i]
             for p in krok['przejscia']:
-                if(p['usunac'] == True):
+                if(p['usunac']==True):
                     continue
-                ham = p['hamming']
-                if(minimalnyHamming == -1):
-                    minimalnyHamming = ham
-                elif(ham < minimalnyHamming):
-                    minimalnyHamming = ham
-        
-        for krok in self.__trellis:
-             for p in krok['przejscia']:
-                if(p['usunac'] == False and p['hamming'] == minimalnyHamming):
-                    out.extend(p['danePrzejscia'][MaszynaStanow.IN])
+                if(p['danePrzejscia'][MaszynaStanow.OUT_STATE] == 
+                    przejscie['danePrzejscia'][MaszynaStanow.IN_STATE]):
+                    out.extend(przejscie['danePrzejscia'][MaszynaStanow.IN])
+                    przejscie = p
+                    break
 
-        return out
+        out.extend(przejscie['danePrzejscia'][MaszynaStanow.IN])
+
+        return list(reversed(out))
 
     def pisz(self):
         for i,krok in enumerate(self.__trellis):
@@ -95,5 +104,7 @@ class Viterbi:
                     # print('konflikt: ' + pStr + ", " + pxStr)
                     if(px['hamming'] > p['hamming']):
                         px['usunac'] = True
+                        # print('usuwam '+pxStr)
                     else:
                         p['usunac'] = True
+                        # print('usuwam '+pStr)
