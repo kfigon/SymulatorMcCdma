@@ -20,5 +20,14 @@ class TestyViterbiego(unittest.TestCase):
         wynik = self.v.traceback()
         self.assertEqual([1], wynik)
 
+    def test1(self):
+        expectedWynik = [1,0]
+        self.v.liczPierwszy([1,1])
+        self.v.licz([1,0])
+
+        wynik = self.v.traceback()
+        self.assertEqual(expectedWynik, wynik)
+
+
 if __name__ == '__main__':
     unittest.main()
