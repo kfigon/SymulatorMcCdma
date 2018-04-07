@@ -28,8 +28,10 @@ class Viterbi:
                     continue
 
                 hamming = odlegloscHamminga(dane, p[MaszynaStanow.OUT])
-                przejscie = {'danePrzejscia': p, 'hamming': hamming+poprzedniePrzejscie['hamming']}
+                przejscie = {'danePrzejscia': p, 'hamming': hamming+poprzedniePrzejscie['hamming'], 'usunac': False}
                 krok['przejscia'].append(przejscie)
+        
+        self.__rozwiazKonflikty(krok)
         self.__trellis.append(krok)
 
     # dane - podzielona paczka bitow
@@ -40,7 +42,7 @@ class Viterbi:
 
         for p in przejscia:
             hamming = odlegloscHamminga(dane, p[MaszynaStanow.OUT])
-            przejscie = {'danePrzejscia': p, 'hamming': hamming}
+            przejscie = {'danePrzejscia': p, 'hamming': hamming, 'usunac': False}
             krok['przejscia'].append(przejscie)
 
         self.__trellis.append(krok)
@@ -51,6 +53,8 @@ class Viterbi:
 
         for krok in self.__trellis:
             for p in krok['przejscia']:
+                if(p['usunac'] == True):
+                    continue
                 ham = p['hamming']
                 if(minimalnyHamming == -1):
                     minimalnyHamming = ham
@@ -59,7 +63,34 @@ class Viterbi:
         
         for krok in self.__trellis:
              for p in krok['przejscia']:
-                if(p['hamming'] == minimalnyHamming):
+                if(p['usunac'] == False and p['hamming'] == minimalnyHamming):
                     out.extend(p['danePrzejscia'][MaszynaStanow.IN])
 
         return out
+
+    def pisz(self):
+        for i,krok in enumerate(self.__trellis):
+            print('\n'+str(i))
+            for p in krok['przejscia']:
+                if(p['usunac'] == True):
+                    continue
+                d = p['danePrzejscia']
+                przejscieStr = str(d[MaszynaStanow.IN_STATE]) + "->" + str(d[MaszynaStanow.OUT_STATE]) 
+                print(przejscieStr + ", ham: " + str(p['hamming']))
+
+    def __rozwiazKonflikty(self, krok):
+        for i,p in enumerate(krok['przejscia']):
+            for j in range(i+1, len(krok['przejscia'])):
+                if(i >= len(krok['przejscia'])):
+                    break
+                    
+                px = krok['przejscia'][j]
+                if(p['danePrzejscia'][MaszynaStanow.OUT_STATE] == px['danePrzejscia'][MaszynaStanow.OUT_STATE]):
+                    pStr = str(p['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(p['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
+                    pxStr = str(px['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(px['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
+                    
+                    print('konflikt: ' + pStr + ", " + pxStr)
+                    if(px['hamming'] > p['hamming']):
+                        px['usunac'] = True
+                    else:
+                        p['usunac'] = True

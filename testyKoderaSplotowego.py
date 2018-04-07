@@ -69,7 +69,8 @@ class TestyDekodowania(unittest.TestCase):
         expZakodowany=[0,0, 1,1, 0,1, 0,1, 0,0, 1,0, 0,0, 1,0, 0,0, 0,1]
         self.fullSprawdzenie(nadany, expZakodowany)
 
-@unittest.skip
+# poprawic dane
+@unittest.SkipTest
 class StresTestKodera(unittest.TestCase):
     def setUp(self):
         odczepy = [[1,4,6,8],
@@ -86,7 +87,7 @@ class StresTestKodera(unittest.TestCase):
         self.assertEqual(wejscie, zdekodowane)
 
     def testStres(self):
-        dane = generujDaneBinarne(1000)
+        dane = generujDaneBinarne(33)
         zakodowany = self.k.koduj(dane)
         zdekodowane = self.k.dekoduj(zakodowany)
         self.assertEqual(dane, zdekodowane)

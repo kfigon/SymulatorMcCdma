@@ -38,6 +38,9 @@ class KoderSplotowy:
     def dekoduj(self, daneBinarne):
         maszyna = MaszynaStanow(self.__rejestr, self.__ileBitowNaRaz)
         v = Viterbi(maszyna)
+
+        # todo: potencjalne miejsce do optymalizacji, 
+        # nie tworzyc nowej tablicy, uzyc indeksow
         podzielone = podziel(daneBinarne, self.__rejestr.getIleBitowWyjsciowych())
 
         for i, paczka in enumerate(podzielone):
@@ -46,9 +49,7 @@ class KoderSplotowy:
             else:
                 v.licz(paczka)
 
-        # for i in v.getSciezki():
-        #     print(i)
-
+        v.pisz()
         return v.traceback()
 
 
