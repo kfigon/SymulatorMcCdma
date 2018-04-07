@@ -44,21 +44,11 @@ class KoderSplotowy:
             if(i==0):
                 v.liczPierwszy(paczka)
             else:
-                v.liczSciezke(paczka)
-
-        v.wyfiltrujSciezkiKtoreNieSkonczyly(len(podzielone))
+                v.licz(paczka)
 
         # for i in v.getSciezki():
         #     print(i)
 
-        return self.__traceBackNajlepszejSciezki(v.getSciezki())
-
-    def __traceBackNajlepszejSciezki(self, sciezki):
-        najlepszaSciezka = sciezki[0]
-        for s in sciezki:
-            if(s.getZakumulowanyHamming() < najlepszaSciezka.getZakumulowanyHamming()):
-                najlepszaSciezka = s
-
-        return najlepszaSciezka.traceBack()
+        return v.traceback()
 
 

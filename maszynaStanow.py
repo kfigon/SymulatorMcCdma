@@ -6,6 +6,7 @@ class MaszynaStanow:
     OUT = 'out'
     IN_STATE = 'inState'
     OUT_STATE = 'outState'
+
     def __init__(self, rejestr, ileNaRaz):
         self.__rej = rejestr
         self.__ileNaRaz=ileNaRaz
