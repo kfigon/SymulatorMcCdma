@@ -94,13 +94,15 @@ class TestyDekodowania(unittest.TestCase):
 class StresTestKodera(unittest.TestCase):
     def setUp(self):
         odczepy = [[1,4,6,8],
-                   [0,2,4]]
+                   [0,2,4],
+                   [2,3,5,7],
+                   [1,5,6,8]]
         r = RejestrPrzesuwny(9, odczepy)
         self.k = KoderSplotowy(r,3)
 
     @unittest.skip
     def testStres(self):
-        dane = generujDaneBinarne(50)
+        dane = generujDaneBinarne(60)
         zakodowany = self.k.koduj(dane)
         zdekodowane = self.k.dekoduj(zakodowany)
         self.assertEqual(dane, zdekodowane)

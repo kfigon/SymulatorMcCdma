@@ -61,6 +61,9 @@ class Viterbi:
                 przejscie = p
             elif(ham < przejscie['hamming']):
                 przejscie = p
+        
+        if(przejscie is None):
+            raise RuntimeError('nie znaleziono najlepszej sciezki')
 
         for i in range(len(self.__trellis)-2, -1, -1):
             krok = self.__trellis[i]
@@ -102,9 +105,11 @@ class Viterbi:
                     # pStr = str(p['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(p['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
                     # pxStr = str(px['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(px['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
                     # print('konflikt: ' + pStr + ", " + pxStr)
-                    if(px['hamming'] > p['hamming']):
+                    if(px['hamming'] >= p['hamming']):
                         px['usunac'] = True
+                        p['usunac'] = False
                         # print('usuwam '+pxStr)
                     else:
                         p['usunac'] = True
+                        px['usunac'] = False
                         # print('usuwam '+pStr)
