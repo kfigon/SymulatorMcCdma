@@ -80,15 +80,18 @@ class Viterbi:
 
     def __rozwiazKonflikty(self, krok):
         for i,p in enumerate(krok['przejscia']):
-            for j in range(i+1, len(krok['przejscia'])):
-                if(i >= len(krok['przejscia'])):
-                    break
+            if(p['usunac']==True):
+                continue
+
+            for j in range(len(krok['przejscia'])):
+                if(i==j):
+                    continue
 
                 px = krok['przejscia'][j]
                 if(p['danePrzejscia'][MaszynaStanow.OUT_STATE] == px['danePrzejscia'][MaszynaStanow.OUT_STATE]):
-                    pStr = str(p['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(p['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
-                    pxStr = str(px['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(px['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
-                    
+
+                    # pStr = str(p['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(p['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
+                    # pxStr = str(px['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(px['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
                     # print('konflikt: ' + pStr + ", " + pxStr)
                     if(px['hamming'] > p['hamming']):
                         px['usunac'] = True

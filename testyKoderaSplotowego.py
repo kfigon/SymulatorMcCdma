@@ -64,6 +64,11 @@ class TestyDekodowania(unittest.TestCase):
         expZakodowany=[1,1,1,0,0,0]
         self.fullSprawdzenie(nadany, expZakodowany)
 
+    def test3Bity2Blad(self):
+        nadany=[1,0,1]
+        otrzymany=[1,1,1,0,1,0]
+        self.assertEqual(nadany, self.k.dekoduj(otrzymany), 'blad dekodowania')
+
     def test7(self):
         nadany=[0,1,1,1,0,0,1]
         expZakodowany=[0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1]
