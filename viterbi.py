@@ -10,7 +10,7 @@ class Viterbi:
     def __znajdzPoprzedniePrzejscie(self, stanDocelowy):
         poprzedniKrok = self.__trellis[len(self.__trellis)-1]
         for p in poprzedniKrok['przejscia']:
-            if(p['danePrzejscia'][MaszynaStanow.OUT_STATE] == stanDocelowy):
+            if(p['usunac'] == False and p['danePrzejscia'][MaszynaStanow.OUT_STATE] == stanDocelowy):
                 return p
         return None
 
@@ -83,13 +83,13 @@ class Viterbi:
             for j in range(i+1, len(krok['przejscia'])):
                 if(i >= len(krok['przejscia'])):
                     break
-                    
+
                 px = krok['przejscia'][j]
                 if(p['danePrzejscia'][MaszynaStanow.OUT_STATE] == px['danePrzejscia'][MaszynaStanow.OUT_STATE]):
                     pStr = str(p['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(p['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
                     pxStr = str(px['danePrzejscia'][MaszynaStanow.IN_STATE]) + "->" + str(px['danePrzejscia'][MaszynaStanow.OUT_STATE]) 
                     
-                    print('konflikt: ' + pStr + ", " + pxStr)
+                    # print('konflikt: ' + pStr + ", " + pxStr)
                     if(px['hamming'] > p['hamming']):
                         px['usunac'] = True
                     else:

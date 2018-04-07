@@ -64,13 +64,23 @@ class TestyDekodowania(unittest.TestCase):
         expZakodowany=[1,1,1,0,0,0]
         self.fullSprawdzenie(nadany, expZakodowany)
 
+    def test7(self):
+        nadany=[0,1,1,1,0,0,1]
+        expZakodowany=[0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1]
+        self.fullSprawdzenie(nadany, expZakodowany)
+
+    def testWiele(self):
+        dane = generujDaneBinarne(1000)
+        zakodowany = self.k.koduj(dane)
+        zdekodowane = self.k.dekoduj(zakodowany)
+        self.assertEqual(dane, zdekodowane)
+
     def test10Bitow(self):
         nadany=[0,1,1,0,1,0,1,0,1,1]
         expZakodowany=[0,0, 1,1, 0,1, 0,1, 0,0, 1,0, 0,0, 1,0, 0,0, 0,1]
         self.fullSprawdzenie(nadany, expZakodowany)
 
-# poprawic dane
-@unittest.SkipTest
+
 class StresTestKodera(unittest.TestCase):
     def setUp(self):
         odczepy = [[1,4,6,8],
