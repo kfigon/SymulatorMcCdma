@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e417df85-78c9-473e-8c13-bbf94b07e7fa" name="Default" comment="in progress">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/testUtils.py" afterPath="$PROJECT_DIR$/testy/testUtils.py" />
-      <change beforePath="$PROJECT_DIR$/testyKoderaSplotowego.py" afterPath="$PROJECT_DIR$/testy/testyKoderaSplotowego.py" />
-      <change beforePath="$PROJECT_DIR$/testyMaszynyStanow.py" afterPath="$PROJECT_DIR$/testy/testyMaszynyStanow.py" />
-      <change beforePath="$PROJECT_DIR$/testyRejestru.py" afterPath="$PROJECT_DIR$/testy/testyRejestru.py" />
-      <change beforePath="$PROJECT_DIR$/testyViterbiego.py" afterPath="$PROJECT_DIR$/testy/testyViterbiego.py" />
-      <change beforePath="$PROJECT_DIR$/utils.py" afterPath="$PROJECT_DIR$/utils.py" />
+      <change beforePath="$PROJECT_DIR$/testy/testyModulatoraQpsk.py" afterPath="$PROJECT_DIR$/testy/testyModulatoraQpsk.py" />
     </list>
     <ignored path="SymulatorMcCdma.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,14 +20,14 @@
     <favorites_list name="SymulatorMcCdma" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.43346938">
+    <splitter split-orientation="horizontal" split-proportion="0.56489795">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="modulatorQpsk.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/modulatorQpsk.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="141">
-                  <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+                <state relative-caret-position="493">
+                  <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="12" />
                   <folding>
                     <element signature="e#0#12#0" expanded="true" />
                   </folding>
@@ -48,8 +42,8 @@
           <file leaf-file-name="testyModulatoraQpsk.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/testy/testyModulatoraQpsk.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="176">
-                  <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+                <state relative-caret-position="352">
+                  <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
                     <element signature="e#189#1022#0" expanded="false" />
@@ -97,8 +91,8 @@
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/testy/testUtils.py" />
         <option value="$PROJECT_DIR$/testy/testyModulatoraQps.py" />
-        <option value="$PROJECT_DIR$/testy/testyModulatoraQpsk.py" />
         <option value="$PROJECT_DIR$/modulatorQpsk.py" />
+        <option value="$PROJECT_DIR$/testy/testyModulatoraQpsk.py" />
       </list>
     </option>
   </component>
@@ -423,9 +417,6 @@
     <history-entry file="Unittests_for_testyModulatoraQpsk_TestModulatoraQpsk_testSzeregowoRownoleglego - 2018.04.14 at 20h 04m 08s.xml">
       <configuration name="Unittests for testyModulatoraQpsk.TestModulatoraQpsk.testSzeregowoRownoleglego" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_testy - 2018.04.14 at 19h 33m 00s.xml">
-      <configuration name="Unittests in testy" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_testy - 2018.04.14 at 19h 43m 47s.xml">
       <configuration name="Unittests in testy" configurationId="tests" />
     </history-entry>
@@ -435,15 +426,17 @@
     <history-entry file="Unittests_in_testy - 2018.04.14 at 20h 06m 16s.xml">
       <configuration name="Unittests in testy" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_testy - 2018.04.14 at 20h 14m 25s.xml">
+      <configuration name="Unittests in testy" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1458" height="870" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13243626" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3909465" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3951498" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3951498" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5221113" sideWeight="0.49722221" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -838,8 +831,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modulatorQpsk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="493">
+          <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="12" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -848,8 +841,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testy/testyModulatoraQpsk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="352">
+          <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
             <element signature="e#189#1022#0" expanded="false" />

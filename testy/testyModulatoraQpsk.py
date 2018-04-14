@@ -23,7 +23,7 @@ class TestModulatoraQpsk(unittest.TestCase):
 
     def testMod(self):
         dane = [1,0,1,0,0]
-        pass
+        self.fail('todo')
 
 
 if __name__ == '__main__':
