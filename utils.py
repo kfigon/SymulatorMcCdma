@@ -25,7 +25,26 @@ def str2List(data):
     return out
 
 def generujDaneBinarne(ile):
-    out = [0]*ile
-    for i in range(len(out)):
-        out[i]=randint(0,1)
-    return out
+    return list(generujDaneBinarneGen(ile))
+
+def generujDaneBinarneGen(ile):
+    '''
+    generator
+    '''
+    for i in range(ile):
+        yield randint(0,1)
+
+def probkuj(dane, fp, fs):
+    '''
+    :param dane: dane binarne
+    :param fp: cz. probkowania
+    :param fs: cz. sygnalu
+    :return:  sprobkowane dane
+    '''
+    return list(probkujGen(dane, fp, fs))
+
+def probkujGen(dane, fp, fs):
+    ileProbekNaBit = int(fp/fs)
+    for b in dane:
+        for _ in range(ileProbekNaBit):
+            yield b

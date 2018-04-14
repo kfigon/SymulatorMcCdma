@@ -24,5 +24,21 @@ class TestyUtilsow(unittest.TestCase):
             if(i != 0 and i != 1):
                 self.fail('element %d nie jest binarny!' % i)
 
+    def testProbkowaniaBinarnego1(self):
+        dane = [1,0,1,1]
+        exp = [1,1,1, 0,0,0, 1,1,1, 1,1,1]
+        self.assertEqual(exp, probkuj(dane, 3, 1))
+
+    def testProbkowaniaBinarnego2(self):
+        dane = [1,0,1,1]
+        exp = [1,1,1, 0,0,0, 1,1,1, 1,1,1]
+        self.assertEqual(exp, probkuj(dane, 6, 2))
+
+    def testProbkowaniaBinarnego3(self):
+        dane = [1,0,1,1]
+        exp = [1,1,1,1, 0,0,0,0, 1,1,1,1, 1,1,1,1]
+        self.assertEqual(exp, probkuj(dane, 4, 1))
+
+
 if __name__ == '__main__':
     unittest.main()
