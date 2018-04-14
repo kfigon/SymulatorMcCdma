@@ -1,15 +1,15 @@
-import utils
 import math
+import utils
 
 class Qpsk:
-    def __init__(self, fp, fc, ampl=1):
+    def __init__(self, fp, fn, ampl=1):
         '''
         :param fp: cz. probkowania
-        :param fc: cz. nosnej
+        :param fn: cz. nosnej
         :param ampl:
         '''
         self.__fp = fp
-        self.__fc = fc
+        self.__fn = fn
         self.__ampl = ampl
 
     def generujCzas(self, czasTrwania):
@@ -23,7 +23,7 @@ class Qpsk:
         :return:
         '''
         for t in czas:
-            yield self.__ampl * math.cos(2 * math.pi * self.__fc * t + faza)
+            yield self.__ampl * math.cos(2 * math.pi * self.__fn * t + faza)
 
     def __getQI(self, dane, czyI):
         modulo = 1
@@ -41,3 +41,26 @@ class Qpsk:
 
     def moduluj(self, dane):
         pass
+
+    def __symbol2Faza(self, i, q):
+        if(i == 0 and q == 0):
+            return math.pi/4
+        elif(i == 0 and q == 1):
+            return 3*math.pi / 4
+        elif (i == 1 and q == 0):
+            return 5*math.pi / 4
+        elif (i == 1 and q == 1):
+            return 7*math.pi / 4
+        raise Exception('Blad I{}, Q{}'.format(str(i), str(q)))
+
+# import matplotlib.pyplot as plt
+def main():
+    dane = utils.generujDaneBinarneGen(20)
+    fp = 10
+    fn=1
+    probki = utils.probkuj(dane, fp,fn)
+    q = Qpsk(fp, fn)
+    # plt.stem(dane)
+    # plt.show()
+
+main()
