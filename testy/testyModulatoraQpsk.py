@@ -4,7 +4,7 @@ import utils
 
 class TestModulatoraQpsk(unittest.TestCase):
     def setUp(self):
-        self.q = Qpsk(10, 2,1)
+        self.q = Qpsk(30, 10,5)
 
     def testSzeregowoRownoleglego(self):
         dane = [1,0,1,0,0,1]
@@ -16,8 +16,14 @@ class TestModulatoraQpsk(unittest.TestCase):
         self.q.walidujDlugosci(dane)
 
     def testMod(self):
-        zmodulowany = self.q.moduluj(utils.generujDaneBinarne(10))
-        self.assertEqual(100, len(zmodulowany))
+        zmodulowany = self.q.moduluj(utils.generujDaneBinarne(30))
+        self.assertEqual(180, len(zmodulowany))
+
+    def testDemod(self):
+        dane = utils.generujDaneBinarne(30)
+        zmodulowany = self.q.moduluj(dane)
+        self.assertEqual(180, len(zmodulowany))
+        self.assertEqual(dane, self.q.demodulacja(zmodulowany))
 
 if __name__ == '__main__':
     unittest.main()

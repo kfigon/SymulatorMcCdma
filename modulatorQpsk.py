@@ -72,7 +72,7 @@ class Qpsk:
                         str(dlCzas), 
                         str(dI),
                         str(dQ)))
-
+            
     def __symbol2Faza(self, i, q):
         if(i == 0 and q == 0):
             return math.pi/4
@@ -83,24 +83,66 @@ class Qpsk:
         elif (i == 1 and q == 1):
             return 7*math.pi / 4
         raise Exception('Blad, nie ma fazy dla: I{}, Q{}'.format(str(i), str(q)))
+    def __decyzjaBitowa(self, calkaI, calkaQ):
+            if(calkaI >= 0 and calkaQ >= 0):
+                return [0,0]
+            elif(calkaI < 0 and calkaQ >= 0):
+                return [0,1]
+            elif(calkaI < 0 and calkaQ < 0):
+                return [1,0]
+            else:
+                return [1,1]
 
+    def demodulacja(self, odebrany):
+        czasTrwania = int(len(odebrany)/self.__fp)
+        czas = self.generujCzas(czasTrwania)
+        czasTrwaniaSymbolu = int((2*self.__fp)/self.__fb)
 
+        out = []
+        calkaI = 0
+        calkaQ = 0
+
+        i = 0
+        for o,t in zip(odebrany, czas):
+            nosnaI = self.__ampl*math.cos(2*math.pi*self.__fn*t)
+            nosnaQ = (-1) * self.__ampl*math.sin(2*math.pi*self.__fn*t)
+            calkaI += nosnaI*o
+            calkaQ += nosnaQ*o
+
+            i += 1
+            if(i>=czasTrwaniaSymbolu):
+                out.extend(self.__decyzjaBitowa(calkaI, calkaQ))
+                calkaI = 0
+                calkaQ = 0
+                i=0
+        
+        print(calkaI, calkaQ)
+        if(calkaI != 0 and calkaQ != 0):
+            out.extend(self.__decyzjaBitowa(calkaI, calkaQ))
+
+        return out
 
 # todo: odkomentowac dla testu
 
 # import matplotlib.pyplot as plt
 # def wykresQpsk():
 #     dane = utils.generujDaneBinarne(20)
-#     fp = 50
-#     fn=2
-#     fb = 1
+#     fp = 30
+#     fn= 3
+#     fb =2
 #     qpsk = Qpsk(fp, fn,fb)
 #     modulowany = qpsk.moduluj(dane)
+#     zdemodulowany = qpsk.demodulacja(modulowany)
+#     print(dane)
+#     print(zdemodulowany)
 
-#     plt.subplot(2,1,1)
+#     plt.subplot(3,1,1)
 #     plt.stem(dane)
-#     plt.subplot(2, 1, 2)
+#     plt.subplot(3, 1, 2)
 #     plt.plot(modulowany)
+    
+#     plt.subplot(3,1,3)
+#     plt.stem(zdemodulowany)
 #     plt.show()
 
-# wykresQps()
+# wykresQpsk()

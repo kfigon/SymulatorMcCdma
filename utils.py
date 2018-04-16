@@ -31,7 +31,7 @@ def generujDaneBinarneGen(ile):
     '''
     generator
     '''
-    for i in range(ile):
+    for _ in range(ile):
         yield randint(0,1)
 
 def probkuj(dane, fp, fs):
