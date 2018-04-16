@@ -21,6 +21,11 @@ class TestModulatoraQpsk(unittest.TestCase):
         self.assertEqual([1,1,0], list(self.q.getI(dane)))
         self.assertEqual([0,0,1], list(self.q.getQ(dane)))
 
+    def testCzasuTrwania(self):
+        self.assertEqual(10, self.q.getCzasTransmisji(10,1))
+        self.assertEqual(10, self.q.getCzasTransmisji(5, 0.5))
+        self.assertEqual(5, self.q.getCzasTransmisji(10, 2))
+
     def testMod(self):
         dane = [1,0,1,0,0]
         self.fail('todo')
