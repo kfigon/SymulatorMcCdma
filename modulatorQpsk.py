@@ -39,7 +39,7 @@ class Qpsk:
         if(len(dane) % 2 != 0):
             raise Exception('Dlugosc danych powinna byc parzysta, jest {}'.format(str(len(dane))))
         
-        czasTrwania = self.getCzasTransmisji(len(dane), self.__fb) 
+        czasTrwania = utils.getCzasTransmisji(len(dane), self.__fb) 
         czas = self.generujCzas(czasTrwania)
 
         qbity = self.getQ(dane)
@@ -61,7 +61,7 @@ class Qpsk:
         ibity = self.getI(dane)
         probkiQ = list(utils.probkujGen(qbity, self.__fp, self.__fb/2))
         probkiI = list(utils.probkujGen(ibity, self.__fp, self.__fb/2))
-        czasTrwania = self.getCzasTransmisji(len(dane), self.__fb) 
+        czasTrwania = utils.getCzasTransmisji(len(dane), self.__fb) 
         czas = list(self.generujCzas(czasTrwania))        
 
         dlCzas = len(czas)
@@ -72,10 +72,6 @@ class Qpsk:
                         str(dlCzas), 
                         str(dI),
                         str(dQ)))
-
-    def getCzasTransmisji(self, ileBitow, fb):
-        return int(ileBitow/fb)
-
 
     def __symbol2Faza(self, i, q):
         if(i == 0 and q == 0):

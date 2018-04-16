@@ -39,6 +39,10 @@ class TestyUtilsow(unittest.TestCase):
         exp = [1,1,1,1, 0,0,0,0, 1,1,1,1, 1,1,1,1]
         self.assertEqual(exp, probkuj(dane, 4, 1))
 
+    def testCzasuTrwania(self):
+        self.assertEqual(10, getCzasTransmisji(10,1))
+        self.assertEqual(10, getCzasTransmisji(5, 0.5))
+        self.assertEqual(5, getCzasTransmisji(10, 2))
 
 if __name__ == '__main__':
     unittest.main()

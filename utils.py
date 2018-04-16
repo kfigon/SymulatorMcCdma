@@ -48,3 +48,6 @@ def probkujGen(dane, fp, fs):
     for b in dane:
         for _ in range(ileProbekNaBit):
             yield b
+
+def getCzasTransmisji(ileBitow, fb):
+    return int(ileBitow/fb)
