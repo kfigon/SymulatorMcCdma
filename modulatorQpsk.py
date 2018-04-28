@@ -95,6 +95,7 @@ class Qpsk:
                 return [1,1]
 
     def demodulacja(self, odebrany):
+        # z gorka, zip wezmie minimum
         czasTrwania = math.ceil(len(odebrany)/self.__fp)
         czas = self.generujCzas(czasTrwania)
         czasTrwaniaSymbolu = int((2*self.__fp)/self.__fb)
@@ -125,32 +126,26 @@ class Qpsk:
 
 # todo: odkomentowac dla testu
 
-import matplotlib.pyplot as plt
-def wykresQpsk():
-    dane = utils.generujDaneBinarne(20)
-    fp = 30
-    fn= 3
-    fb =5
-    qpsk = Qpsk(fp, fn,fb)
-    modulowany = qpsk.moduluj(dane)
-    zdemodulowany = qpsk.demodulacja(modulowany)
-    print(dane)
-    print(zdemodulowany)
-    assert(dane == zdemodulowany)
+# import matplotlib.pyplot as plt
+# def wykresQpsk():
+#     dane = utils.generujDaneBinarne(20)
+#     fp = 30
+#     fn= 3
+#     fb =5
+#     qpsk = Qpsk(fp, fn,fb)
+#     modulowany = qpsk.moduluj(dane)
+#     zdemodulowany = qpsk.demodulacja(modulowany)
+#     print(dane)
+#     print(zdemodulowany)
+#     assert(dane == zdemodulowany)
 
-    plt.subplot(3,1,1)
-    plt.stem(dane)
-    plt.subplot(3, 1, 2)
-    plt.plot(modulowany)
+#     plt.subplot(3,1,1)
+#     plt.stem(dane)
+#     plt.subplot(3, 1, 2)
+#     plt.plot(modulowany)
     
-    plt.subplot(3,1,3)
-    plt.stem(zdemodulowany)
-    plt.show()
+#     plt.subplot(3,1,3)
+#     plt.stem(zdemodulowany)
+#     plt.show()
 
-wykresQpsk()
-
-
-def furier():
-    pass
-
-furier()
+# wykresQpsk()
