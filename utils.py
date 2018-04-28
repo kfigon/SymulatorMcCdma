@@ -1,4 +1,5 @@
 from random import randint
+import math
 
 # tablice
 def odlegloscHamminga(daneA, daneB):
@@ -50,4 +51,4 @@ def probkujGen(dane, fp, fs):
             yield b
 
 def getCzasTransmisji(ileBitow, fb):
-    return int(ileBitow/fb)
+    return math.ceil(ileBitow/fb)

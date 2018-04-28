@@ -47,7 +47,7 @@ class Qpsk:
 
         probkiQ = utils.probkujGen(qbity, self.__fp, self.__fb/2)
         probkiI = utils.probkujGen(ibity, self.__fp, self.__fb/2)
-        
+
         out = []
         for t, q, i in zip(czas, probkiQ, probkiI):
             faza = self.__symbol2Faza(i,q)
@@ -68,11 +68,11 @@ class Qpsk:
         dI = len(probkiI)
         dQ = len(probkiQ)
         if(dlCzas != dI and dlCzas != dQ and dI != dQ):
-            raise Exception('dlugosc czasu: {}, dlugosc I {}, dlugosc Q {}'.format(
+            raise Exception('Nieprawidlowe dlugosci: dlugosc czasu: {}, dlugosc I {}, dlugosc Q {}'.format(
                         str(dlCzas), 
                         str(dI),
-                        str(dQ)))
-            
+                        str(dQ)))     
+
     def __symbol2Faza(self, i, q):
         if(i == 0 and q == 0):
             return math.pi/4
@@ -83,6 +83,7 @@ class Qpsk:
         elif (i == 1 and q == 1):
             return 7*math.pi / 4
         raise Exception('Blad, nie ma fazy dla: I{}, Q{}'.format(str(i), str(q)))
+    
     def __decyzjaBitowa(self, calkaI, calkaQ):
             if(calkaI >= 0 and calkaQ >= 0):
                 return [0,0]
@@ -94,7 +95,7 @@ class Qpsk:
                 return [1,1]
 
     def demodulacja(self, odebrany):
-        czasTrwania = int(len(odebrany)/self.__fp)
+        czasTrwania = math.ceil(len(odebrany)/self.__fp)
         czas = self.generujCzas(czasTrwania)
         czasTrwaniaSymbolu = int((2*self.__fp)/self.__fb)
 
@@ -124,25 +125,32 @@ class Qpsk:
 
 # todo: odkomentowac dla testu
 
-# import matplotlib.pyplot as plt
-# def wykresQpsk():
-#     dane = utils.generujDaneBinarne(20)
-#     fp = 30
-#     fn= 3
-#     fb =2
-#     qpsk = Qpsk(fp, fn,fb)
-#     modulowany = qpsk.moduluj(dane)
-#     zdemodulowany = qpsk.demodulacja(modulowany)
-#     print(dane)
-#     print(zdemodulowany)
+import matplotlib.pyplot as plt
+def wykresQpsk():
+    dane = utils.generujDaneBinarne(20)
+    fp = 30
+    fn= 3
+    fb =5
+    qpsk = Qpsk(fp, fn,fb)
+    modulowany = qpsk.moduluj(dane)
+    zdemodulowany = qpsk.demodulacja(modulowany)
+    print(dane)
+    print(zdemodulowany)
+    assert(dane == zdemodulowany)
 
-#     plt.subplot(3,1,1)
-#     plt.stem(dane)
-#     plt.subplot(3, 1, 2)
-#     plt.plot(modulowany)
+    plt.subplot(3,1,1)
+    plt.stem(dane)
+    plt.subplot(3, 1, 2)
+    plt.plot(modulowany)
     
-#     plt.subplot(3,1,3)
-#     plt.stem(zdemodulowany)
-#     plt.show()
+    plt.subplot(3,1,3)
+    plt.stem(zdemodulowany)
+    plt.show()
 
-# wykresQpsk()
+wykresQpsk()
+
+
+def furier():
+    pass
+
+furier()
