@@ -127,9 +127,12 @@ class Qpsk:
 # todo: odkomentowac dla testu
 
 # import matplotlib.pyplot as plt
+# import numpy as np
+# import scipy.fftpack
+
 # def wykresQpsk():
 #     dane = utils.generujDaneBinarne(20)
-#     fp = 30
+#     fp = 50
 #     fn= 3
 #     fb =5
 #     qpsk = Qpsk(fp, fn,fb)
@@ -146,6 +149,16 @@ class Qpsk:
     
 #     plt.subplot(3,1,3)
 #     plt.stem(zdemodulowany)
+#     plt.show()
+
+
+#     #cz sygnalu = Fs/dlugosc * nrProbki z pikiem
+#     fourier = scipy.fftpack.fft(modulowany)
+#     plt.subplot(2,1,1)
+#     plt.stem(np.abs(fourier))
+
+#     plt.subplot(2,1,2)
+#     plt.stem(np.angle(fourier))
 #     plt.show()
 
 # wykresQpsk()
