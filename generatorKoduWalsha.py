@@ -1,5 +1,6 @@
 import math
 
+# algorytm z ksiazki o cdma2000
 class GeneratorKoduWalsha:
     def __init__(self, dlugoscCiagu):
         self.__ileZmiennych = math.log2(dlugoscCiagu)
