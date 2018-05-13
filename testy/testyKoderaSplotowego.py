@@ -100,6 +100,7 @@ class StresTestKodera(unittest.TestCase):
         r = RejestrPrzesuwny(9, odczepy)
         self.k = KoderSplotowy(r,3)
 
+# todo: investigate this
     @unittest.skip
     def testStres(self):
         dane = generujDaneBinarne(60)
