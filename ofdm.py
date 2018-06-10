@@ -44,12 +44,12 @@ class Ofdm(Qpsk):
             
             x = self.__ampl*f.real*math.cos(2*math.pi*self.__fn*t)
             y = self.__ampl*f.imag*math.sin(2*math.pi*self.__fn*t)
-            out.append(x+y)
+            out.append(complex(x,y))
         return out        
 
 def main():
     dane = utils.generujDaneBinarne(30)
-    fp = 200
+    fp = 100
     fn= 3
     fb =5
     ofdm  = Ofdm(fp, fn,fb)
@@ -57,10 +57,10 @@ def main():
     N = len(modulowany)
 
     plt.subplot(2,1,1)
-    plt.plot(modulowany)
+    plt.plot(list(map(lambda x: abs(x), modulowany)))
 
     plt.subplot(2,1,2)
-    plt.plot(abs(fft.fft(modulowany[0:int(N/2)])))
+    plt.stem(abs(fft.fft(modulowany[0:int(N/2)])))
     plt.show()
 
 if __name__ == '__main__':
