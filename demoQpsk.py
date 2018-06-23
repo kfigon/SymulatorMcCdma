@@ -18,6 +18,7 @@ def wykresQpsk():
     assert(dane == zdemodulowany)
 
     plt.subplot(3,1,1)
+    plt.title("QPSK")
     plt.stem(dane)
     plt.subplot(3, 1, 2)
     plt.plot(modulowany)
@@ -29,9 +30,11 @@ def wykresQpsk():
     #cz sygnalu = Fs/dlugosc * nrProbki z pikiem
     fourier = scipy.fftpack.fft(modulowany)
     plt.subplot(2,1,1)
+    plt.title("Fourier")
     plt.stem(np.abs(fourier))
 
     plt.subplot(2,1,2)
+    plt.title("Fourier kat")
     plt.stem(np.angle(fourier))
     plt.show()
 

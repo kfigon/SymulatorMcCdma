@@ -7,7 +7,7 @@
         "test*.py"
     ],
     "python.unitTest.unittestEnabled": true,
-    "python.pythonPath": "C:\\Users\\Kamil\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
+    "python.pythonPath": "C:\\Users\\mniewiax\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
     "python.unitTest.pyTestEnabled": false,
     "python.unitTest.nosetestsEnabled": false
 }

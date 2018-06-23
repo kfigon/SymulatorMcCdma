@@ -35,8 +35,7 @@ class Ofdm:
             wynik = q.moduluj(s)
             
             if(len(out) == 0):
-                for b in wynik:
-                    out.append(b)
+                out = wynik
             else:
                 for i in range(len(out)):
                     out[i] += wynik[i]
