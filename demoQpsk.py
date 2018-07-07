@@ -1,4 +1,4 @@
-from modulatorQpsk import Qpsk
+from modulatorQpsk import Qpsk, WalidatorPredkosciSygnalow
 
 import utils
 import matplotlib.pyplot as plt
@@ -6,10 +6,14 @@ import numpy as np
 import scipy.fftpack
 
 def wykresQpsk():
-    dane = utils.generujDaneBinarne(20)
-    fp = 50
-    fn= 3
-    fb =5
+    dane = utils.generujDaneBinarne(10)
+    fp = 60
+    fn= 2
+    fb =1
+    if not WalidatorPredkosciSygnalow.waliduj(fn, fb, fp):
+        print("Niewlasciwe predkosci probkowania")
+        return
+
     qpsk = Qpsk(fp, fn,fb)
     modulowany = qpsk.moduluj(dane)
     zdemodulowany = qpsk.demodulacja(modulowany)

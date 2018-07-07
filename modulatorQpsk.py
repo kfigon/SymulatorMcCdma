@@ -1,5 +1,17 @@
 import math
 import utils
+import numpy as np
+
+class WalidatorPredkosciSygnalow:
+    @staticmethod
+    def waliduj(fn, fb, fp):
+        if fn < fb:
+            return False
+        # nosna >= bity
+        # probkowanie podzielne przez bity
+        # nosna podzielna przez bity
+        # nyquist
+        return (fp % fn == 0) and (fn % fb == 0) and (fn <= fp/2)
 
 class Qpsk:
     def __init__(self, fp, fn, fb, ampl=1):
@@ -14,64 +26,35 @@ class Qpsk:
         self.__fb = fb
         self.__ampl = ampl
 
-    def generujCzas(self, czasTrwania):
-        for i in range(czasTrwania * self.__fp):
-            yield (i / self.__fp)
+    def mapujSymbole(self, dane):
+        for i in range(0, len(dane)-1, 2):
+            yield complex(dane[i], dane[i+1])
 
-    def __getQI(self, dane, czyI):
-        if(len(dane) % 2 != 0):
-            raise Exception('Dlugosc danych powinna byc parzysta, jest {}'.format(str(len(dane))))
-
-        modulo = 1
-        if(czyI):
-            modulo = 0
-        for i in range(len(dane)):
-            if(i%2==modulo):
-                yield dane[i]
-
-    def getQ(self, dane):
-        return self.__getQI(dane, False)
-
-    def getI(self, dane):
-        return self.__getQI(dane, True)
+    def __ileProbekNaSymbol(self):
+        return self.__fp//self.__fb
 
     def moduluj(self, dane):
         if(len(dane) % 2 != 0):
             raise Exception('Dlugosc danych powinna byc parzysta, jest {}'.format(str(len(dane))))
         
-        czasTrwania = utils.getCzasTransmisji(len(dane), self.__fb) 
-        czas = self.generujCzas(czasTrwania)
-
-        qbity = self.getQ(dane)
-        ibity = self.getI(dane)
-
-        probkiQ = utils.probkujGen(qbity, self.__fp, self.__fb/2)
-        probkiI = utils.probkujGen(ibity, self.__fp, self.__fb/2)
+        symbole = self.mapujSymbole(dane)
+        ileProbekNaSymbol = self.__ileProbekNaSymbol()
 
         out = []
-        for t, q, i in zip(czas, probkiQ, probkiI):
+        t = 0
+        timeStep = 1/self.__fp
+
+        for s in symbole:
+            i = s.real
+            q = s.imag
             faza = self.__symbol2Faza(i,q)
-            x = self.__ampl*math.cos(faza)*math.cos(2*math.pi*self.__fn*t)
-            y = self.__ampl*math.sin(faza)*math.sin(2*math.pi*self.__fn*t)
-            out.append(x-y)
+            for _ in range(ileProbekNaSymbol):
+                x = self.__ampl*math.cos(faza)*math.cos(2*math.pi*self.__fn*t)
+                y = self.__ampl*math.sin(faza)*math.sin(2*math.pi*self.__fn*t)
+                t += timeStep
+                out.append(x-y)
+        
         return out
-
-    def walidujDlugosci(self, dane):
-        qbity = self.getQ(dane)
-        ibity = self.getI(dane)
-        probkiQ = list(utils.probkujGen(qbity, self.__fp, self.__fb/2))
-        probkiI = list(utils.probkujGen(ibity, self.__fp, self.__fb/2))
-        czasTrwania = utils.getCzasTransmisji(len(dane), self.__fb) 
-        czas = list(self.generujCzas(czasTrwania))        
-
-        dlCzas = len(czas)
-        dI = len(probkiI)
-        dQ = len(probkiQ)
-        if(dlCzas != dI and dlCzas != dQ and dI != dQ):
-            raise Exception('Nieprawidlowe dlugosci: dlugosc czasu: {}, dlugosc I {}, dlugosc Q {}'.format(
-                        str(dlCzas), 
-                        str(dI),
-                        str(dQ)))     
 
     def __symbol2Faza(self, i, q):
         if(i == 0 and q == 0):
@@ -95,31 +78,33 @@ class Qpsk:
                 return [1,1]
 
     def demodulacja(self, odebrany):
-        # z gorka, zip wezmie minimum
-        czasTrwania = math.ceil(len(odebrany)/self.__fp)
-        czas = self.generujCzas(czasTrwania)
-        czasTrwaniaSymbolu = int((2*self.__fp)/self.__fb)
+        ileProbekNaSymbol = self.__ileProbekNaSymbol()
 
         out = []
         calkaI = 0
         calkaQ = 0
+        t = 0
+        timeStep = 1/self.__fp
 
-        i = 0
-        for o,t in zip(odebrany, czas):
+        licznikProbekDoCalki = 0
+        for o in odebrany:
             nosnaI = self.__ampl*math.cos(2*math.pi*self.__fn*t)
             nosnaQ = (-1) * self.__ampl*math.sin(2*math.pi*self.__fn*t)
+            t += timeStep
+
             calkaI += nosnaI*o
             calkaQ += nosnaQ*o
-
-            i += 1
-            if(i>=czasTrwaniaSymbolu):
+            
+            licznikProbekDoCalki += 1
+            if licznikProbekDoCalki >= ileProbekNaSymbol:
                 out.extend(self.__decyzjaBitowa(calkaI, calkaQ))
                 calkaI = 0
                 calkaQ = 0
-                i=0
+                licznikProbekDoCalki=0
         
-        print(calkaI, calkaQ)
+        # jesli zostaly resztki - nie powinny
         if(calkaI != 0 and calkaQ != 0):
+            print("Zostaly resztki z calki %d, %d" % (calkaI, calkaQ))
             out.extend(self.__decyzjaBitowa(calkaI, calkaQ))
 
         return out
