@@ -52,3 +52,6 @@ def probkujGen(dane, fp, fs):
 
 def getCzasTransmisji(ileBitow, fb):
     return math.ceil(ileBitow/fb)
+
+def bipolar(binarne):
+    return 1 if binarne == 0 else -1

@@ -44,5 +44,11 @@ class TestyUtilsow(unittest.TestCase):
         self.assertEqual(10, getCzasTransmisji(5, 0.5))
         self.assertEqual(5, getCzasTransmisji(10, 2))
 
+    def testBipolar(self):
+        dane = [1,0,1,1,0]
+        exp = [-1, 1, -1, -1, 1]
+        tab = [bipolar(i) for i in dane]
+        self.assertEqual(exp, tab)
+
 if __name__ == '__main__':
     unittest.main()
