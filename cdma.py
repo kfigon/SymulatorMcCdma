@@ -32,8 +32,10 @@ Q=[1,-1,-1]
 
 modI=moduluj(I, cosinus)
 modQ=moduluj(Q, sinus)
-# plt.plot(modI+modQ)
-# plt.show()
+zmodulowany = modI+modQ
+plt.title('qpsk')
+plt.plot(zmodulowany)
+plt.show()
 
 # generuje PN tak gesty jak cz probkowania
 # kazda probka jest rozproszona
@@ -41,12 +43,19 @@ modQ=moduluj(Q, sinus)
 # znaczenia kolejnosc, cyz mnozymy probki nosnej czy sygnalu
 # mnozenie jest przemienne
 modIs = modulujSpread(generujPN(t), cosinus)
-# plt.plot(modIs)
-# plt.show()
-fIs = fourier.fft(modIs)
-fI = fourier.fft(modI)
+modQs = modulujSpread(generujPN(t), sinus)
+zmodulowanyS = modIs+modQs
+plt.figure()
+plt.title('rozproszony qpsk')
+plt.plot(zmodulowanyS)
+plt.show()
 
-plt.plot(np.abs(fI[:len(fI)//2]), label='zmodulowany')
-plt.plot(np.abs(fIs[:len(fIs)//2]), label='rozproszony')
+fftSpread = fourier.fft(zmodulowanyS)
+fftMod = fourier.fft(zmodulowany)
+
+plt.figure()
+plt.title('fourier')
+plt.plot(np.abs(fftMod[:len(fftMod)//2]), label='zmodulowany')
+plt.plot(np.abs(fftSpread[:len(fftSpread)//2]), label='rozproszony')
 plt.legend()
 plt.show()
