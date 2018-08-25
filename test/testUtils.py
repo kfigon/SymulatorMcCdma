@@ -50,5 +50,22 @@ class TestyUtilsow(unittest.TestCase):
         tab = [bipolar(i) for i in dane]
         self.assertEqual(exp, tab)
 
+    def testDzieleniaNaKanaly(self):
+
+        dane = [
+            { 'tab': [0,1,1,1,0,0,1,0,1,0], 'poIle': 2, 'exp': [[0,1,0,1,1], [1,1,0,0,0]] },
+            { 'tab': [0,1,1,1,0,0,1,0,1], 'poIle': 3, 'exp': [[0,1,1], [1,0,0], [1,0,1]] },
+            
+        ]
+
+        for d in dane:
+            with self.subTest(name='po '+ str(d['poIle'])):
+
+                result = podzielDaneNaKanaly(d['tab'], ileKanalow=d['poIle'])
+
+                self.assertEqual(len(d['exp']), len(result))
+                for r,e in zip(result, d['exp']):
+                    self.assertEqual(e, r)
+
 if __name__ == '__main__':
     unittest.main()

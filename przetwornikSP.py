@@ -1,4 +1,6 @@
-# podzial na rowno
+# podzial na rowno:
+# np po 3 kolejne bity do strumienia. input - ile ma byc na wyjsciu kanalow, 
+# dizeli na rowno
 class PrzetwornikSzeregowoRownolegly:
     def __init__(self, ileStrumieni):
         self.__ileStrumieni = ileStrumieni

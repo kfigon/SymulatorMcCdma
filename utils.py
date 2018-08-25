@@ -10,13 +10,27 @@ def odlegloscHamminga(daneA, daneB):
             roznica += 1
     return roznica
 
-# podzialListy
 def podziel(dane, ileNaRaz):
+    ''' podzialListy z X bitami '''
+
     assert (len(dane) % ileNaRaz == 0)
     out=[None]* (len(dane)//ileNaRaz)
     for i in range(len(out)):
         out[i] = dane[i*ileNaRaz: ((i+1)*ileNaRaz)]
+    
+    return out
 
+def podzielDaneNaKanaly(dane, ileKanalow=2):
+    '''
+    podzial danych jak przy qpsk - co drugi bit
+    '''
+    if len(dane) % ileKanalow != 0:
+        raise Exception('nierowny sturmien danych, len: {}, ileKanalow: {}'.format(str(len(dane)), str(ileKanalow)))
+    
+    out=[]
+    for i in range(ileKanalow):
+        skipped = [dane[i] for i in range(i, len(dane), ileKanalow)]
+        out.append(skipped)
     return out
 
 def str2List(data):
