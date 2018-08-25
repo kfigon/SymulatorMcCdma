@@ -8,3 +8,6 @@ znamy ile probek na symbol, wiec tylko mnozymy
 
 https://dsp.stackexchange.com/questions/20132/ofdm-transmitter-bandwidth
 https://ihelptostudy.com/ofdm-matlab-code-thesis-writing.html
+
+# swiety graal
+http://complextoreal.com/tutorials/#.W4F51Oj7SUk
