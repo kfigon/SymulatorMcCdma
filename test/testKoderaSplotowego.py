@@ -20,11 +20,20 @@ class TestKoderaSplotowego(unittest.TestCase):
     def test2(self):
         self.assertEqual([1,0,1,1], self.k.koduj([1,1,1]))
 
+    def testParametrow(self):
+        nkm = self.k.getNKM()
+        self.assertEqual((4, 3, 9), nkm)
+
 class TestyDekodowania(unittest.TestCase):
     def setUp(self):
         odczepy = [[0,1,2], [0,2]]
         r = RejestrPrzesuwny(3, odczepy)
         self.k = KoderSplotowy(r,1)
+
+
+    def testParametrow(self):
+        nkm = self.k.getNKM()
+        self.assertEqual((2, 1, 3), nkm)
 
     def testBezBledu(self):
         nadany = [1, 0, 1, 1, 0, 0]
