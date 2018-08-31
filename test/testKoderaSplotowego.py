@@ -30,7 +30,6 @@ class TestyDekodowania(unittest.TestCase):
         r = RejestrPrzesuwny(3, odczepy)
         self.k = KoderSplotowy(r,1)
 
-
     def testParametrow(self):
         nkm = self.k.getNKM()
         self.assertEqual((2, 1, 3), nkm)

@@ -35,5 +35,17 @@ class TestPrzeplotu(unittest.TestCase):
             with self.subTest(name=nazwa):
                 self.assertRaises(Exception, p.przeplot, d['in'])
 
+    def testBezPrzeplotu(self):
+        dane = [1,2,3,4,5]
+        p = Przeplatacz()
+        przeplecione = p.przeplot(dane)
+        self.assertEqual(dane, przeplecione)
+
+    def testBezRozplotu(self):
+        dane=[1,2,3,4]
+        p = Przeplatacz()
+        rozplecione = p.rozplot(dane)
+        self.assertEqual(dane, rozplecione)
+
 if __name__ == '__main__':
     unittest.main()

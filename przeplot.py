@@ -1,15 +1,20 @@
 import math
 
 class Przeplatacz:
-    def __init__(self, szerokoscPrzeplotu):
+    def __init__(self, szerokoscPrzeplotu=1):
         ''' przeplot realizowany na zasadzie transpozycji macierzy '''
+        if szerokoscPrzeplotu == 0:
+            raise Exception("krok przeplotu nie moze byc 0!")
+
         self.szerokoscPrzeplotu = szerokoscPrzeplotu
 
-    def przeplot(self, dane):
+    def validateData(self,dane):
         if len(dane) % self.szerokoscPrzeplotu != 0:
             raise Exception('Ilosc danych {} powinna byc podzielna przez krok przeplotu {}'
             .format(str(len(dane),str(self.szerokoscPrzeplotu))))
 
+    def przeplot(self, dane):
+        self.validateData(dane)
         return self._przeplotInternal(dane, self.szerokoscPrzeplotu)
 
     def _przeplotInternal(self, dane, krok):
