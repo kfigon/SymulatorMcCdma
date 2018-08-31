@@ -21,7 +21,19 @@ class TestPrzeplotu(unittest.TestCase):
 
                 rozplecione = p.rozplot(przeplecione)
                 self.assertEqual(d['in'], rozplecione, 'rozplot failed')
-        
+    
+    def testUnaligned(self):
+        dane = [
+            {'in':[1,2,3, 4,5,6, 7,8],'szerokoscPrzeplotu': 3},
+            {'in':[1,2,3,4 ,5,6,7,8,9], 'szerokoscPrzeplotu': 4},
+            {'in':[1,2,3,4,5 ,6,7,8,9,10, 11,12,14,15], 'szerokoscPrzeplotu': 5}]
+
+        for d in dane:
+            nazwa = 'test z szerokoscia ' + str(d['szerokoscPrzeplotu'])
+            p = Przeplatacz(d['szerokoscPrzeplotu'])
+                
+            with self.subTest(name=nazwa):
+                self.assertRaises(Exception, p.przeplot, d['in'])
 
 if __name__ == '__main__':
     unittest.main()

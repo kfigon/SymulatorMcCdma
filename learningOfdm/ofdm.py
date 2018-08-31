@@ -2,17 +2,23 @@ import scipy.fftpack as fft
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-from utils import podziel, generujDaneBinarne
+
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0,parentdir) 
+
+import utils
 
 # dane = [1,0,1,1, 0,1,0,1, 0,1,1,1, 1,0,0,1, 0,1,1,1, 1,1,1,1, 0,1,1,0, 1,0,0,1]
-dane = generujDaneBinarne(1024)
+dane = utils.generujDaneBinarne(1024)
 bipolar = lambda x: 1 if x==0 else -1
 
 # BPSK:
 bipolarne = [bipolar(d) for d in dane]
 
 # 4 nosne, s/p
-podzielone = podziel(bipolarne, ileNaRaz = 4)
+podzielone = utils.podziel(bipolarne, ileNaRaz = 4)
 
 kanaly = []
 for p in podzielone:
