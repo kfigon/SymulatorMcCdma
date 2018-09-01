@@ -10,22 +10,18 @@ class KoderSplotowy:
 
     def kodujBezMultipleksowania(self, daneBinarne):
         assert(len(daneBinarne) % self.__ileBitowNaRaz == 0)
-        self.reset()
 
+        self.reset()
+        maszyna = MaszynaStanow(self.__rejestr, self.__ileBitowNaRaz)
+        
         krok = self.__ileBitowNaRaz
+        stan = maszyna.getStanPoczatkowy()
 
         for i in range(0, len(daneBinarne), krok):
             podCiag = daneBinarne[i:i+krok]
-
-            # wchodza wszystkie na raz!
-            for obrot in reversed(range(krok)):
-                b = podCiag[obrot]
-                self.__rejestr.shift(b)
-            wynikObrotu = self.__rejestr.licz()
-            
-            # tablica tablic (kolejne wyjscia z poszczegolnych odczepow)
-            yield wynikObrotu
-
+            daneStanu = maszyna.checkState(stan, podCiag)
+            stan = daneStanu['outState']
+            yield daneStanu['out']
 
     def koduj(self, daneBinarne):
         out = self.kodujBezMultipleksowania(daneBinarne)
