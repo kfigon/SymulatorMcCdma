@@ -1,27 +1,36 @@
 import unittest
 from koderTurbo import KoderTurbo
-from unittest.mock import MagicMock
 from przeplot import Przeplatacz
+from rejestrPrzesuwny import RejestrPrzesuwny
 
 class TestKoderaTurbo(unittest.TestCase):
     def setUp(self):
-        self.k1 = MagicMock()
-        self.k2 = MagicMock()
-        self.k=KoderTurbo(koder1=self.k1, koder2=self.k2, przeplatacz=Przeplatacz())
-
+        r1 = RejestrPrzesuwny(4, [[0,2,3], [0,1]])
+        r2 = RejestrPrzesuwny(4, [[0,2,3], [0,1]])
+        self.k = KoderTurbo(rejestr1 = r1, 
+                            rejestr2 = r2,
+                            przeplatacz=Przeplatacz())
+    
     def test(self):
-        k1output = [1,2,3,4]
-        k2output = [5, 6, 7, 8, 9]
-        self.k1.koduj = MagicMock(return_value=k1output)
-        self.k2.koduj = MagicMock(return_value=k2output)
-        indata = [1,2]
+        indata = [1,0,1,0,1,1,0,0,1]
 
-        wynik = self.k.koduj(indata)
+        [d, c1, c2] = self.k.koduj(indata)
+        self.assertEqual(indata, d)
+        self.fail("todo")
 
-        self.assertEqual(k2output, wynik)
-        self.k1.koduj.assert_called_with(indata)
-        self.k2.koduj.assert_called_with(k1output)
+    def testCombine(self):
+        tab1=[1,2,3]
+        tab2=[4,5,6]
 
+        res = KoderTurbo.combine(tab1, tab2)
+        exp = [1,4,2,5,3,6]
+        self.assertEqual(exp, res)
+
+    def testCombineNotEven(self):
+        tab1=[1,2,3]
+        tab2=[4,5,6,3]
+        self.assertRaises(Exception, KoderTurbo.combine, tab1, tab2)
+            
 
 if __name__ =='__main__':
     unittest.main()

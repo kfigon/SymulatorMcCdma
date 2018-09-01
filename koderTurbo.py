@@ -1,24 +1,44 @@
-from koderSplotowy import KoderSplotowy
 from przeplot import Przeplatacz
 from rejestrPrzesuwny import RejestrPrzesuwny
+from maszynaStanow import MaszynaStanow
+from utils import flat
 
 class KoderTurbo:
-    def __init__(self, koder1, koder2, przeplatacz = Przeplatacz()):
-        self.__koder1 = koder1
-        self.__koder2 = koder2
+    def __init__(self, rejestr1, rejestr2, przeplatacz = Przeplatacz()):
+        if rejestr1.getIleBitowWyjsciowych() != 2 or rejestr2.getIleBitowWyjsciowych() != 2:
+            raise Exception('rejestry kodera turbo musza miec 2 gazie do odczepow!')
+
+        self.__rej1 = rejestr1
+        self.__rej2 = rejestr2
         self.__przeplatacz = przeplatacz
 
+    def __koduj(self, rejestr, dane):
+        rejestr.reset()
+        for b in dane:
+            wynik = rejestr.licz()
+            wejscie = b ^ wynik[0]
+            rejestr.shift(wejscie)
+        
+            yield wynik[1]
+
     def koduj(self, dane):
-        zakodowane = self.__koder1.koduj(dane)
-        przeplecione = self.__przeplatacz.przeplot(zakodowane)
-        return self.__koder2.koduj(przeplecione)
+        # todo: dane reversed?
+        przeplecione = self.__przeplatacz.przeplot(dane)
 
+        out1 = list(self.__koduj(self.__rej1, dane)) + self.__rej1.terminate()
+        out2 = list(self.__koduj(self.__rej2, przeplecione)) + self.__rej2.terminate()
 
-# k1 = KoderSplotowy(RejestrPrzesuwny(3, [0,1,2]))
-# k2 = KoderSplotowy(RejestrPrzesuwny(3,[0,1]))
-# p = Przeplatacz()
-# k = KoderTurbo(koder1 = k1, koder2 = k2, przeplatacz = p)
+        return [dane, out1, out2]
+        
+    @staticmethod
+    def combine(tab1, tab2):
+        if len(tab1) != len(tab2):
+            raise Exception("kombinator musi dostac rowne tablice")
 
+        out = []
+        for a,b in zip(tab1, tab2):
+            out.append(a)
+            out.append(b)
+        return out
+    
 
-# out = k.koduj()
-# print(out)

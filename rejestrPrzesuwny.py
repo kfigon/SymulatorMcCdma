@@ -1,3 +1,5 @@
+from utils import flat
+
 class RejestrPrzesuwny:
     def __init__(self, dlugosc, odczepy):
         '''
@@ -27,6 +29,14 @@ class RejestrPrzesuwny:
         for galazOdczepow in self.__odczepy:
             out.append(self.__liczGalaz(galazOdczepow))
         return out
+
+    def terminate(self):
+        ''' wypluwa z siebie stan na zewnatrz'''
+        out = []
+        for _ in range(self.getDlugoscRejestru()-1):
+            self.shift(0)
+            out.append(self.licz())
+        return flat(out)
 
     def getDlugoscRejestru(self):
         return len(self.__tab)

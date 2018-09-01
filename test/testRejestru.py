@@ -10,6 +10,16 @@ class TestyRejestruPrzesuwnego1(unittest.TestCase):
         self.assertEqual(3, self.r.getDlugoscRejestru())
         self.assertEqual(2, self.r.getIleBitowWyjsciowych())
 
+    def testOgona(self):
+        self.r.shift(1)
+        self.r.shift(1)
+        self.r.shift(1)
+
+        out = self.r.terminate()
+        exp=[0,1,1,1]
+        self.assertEqual(exp, out)
+        self.assertEqual('001', str(self.r)) # ta jedynka i tak idzie do kosza
+
     def test1(self):
         self.r.shift(1)
         self.assertEqual([1,1], self.r.licz())
