@@ -69,3 +69,6 @@ def getCzasTransmisji(ileBitow, fb):
 
 def bipolar(binarne):
     return 1 if binarne == 0 else -1
+
+def flat(tab):
+    return [item for sublist in tab for item in sublist]

@@ -66,6 +66,15 @@ class TestyUtilsow(unittest.TestCase):
                 self.assertEqual(len(d['exp']), len(result))
                 for r,e in zip(result, d['exp']):
                     self.assertEqual(e, r)
+    def testFlat1(self):
+        dane = [[1,2,3], [4,5],[6],[7,8,9]]
+        flatted = flat(dane)
+        self.assertEqual([1,2,3,4,5,6,7,8,9], flatted)
+    
+    def testFlat2(self):
+        dane = [[1,2,3], [], [4,5],[6],[7,8,9]]
+        flatted = flat(dane)
+        self.assertEqual([1,2,3,4,5,6,7,8,9], flatted)
 
 if __name__ == '__main__':
     unittest.main()
