@@ -36,6 +36,15 @@ class TestPrzeplotu(unittest.TestCase):
         out = p.przeplot(dane)
         rozplecione = p.rozplot(out)
         self.assertEqual(dane, rozplecione)
+    
+    def testBasic(self):
+        p = Przeplatacz()
+        dane = [i+1 for i in range(100)]
+        
+        przeplecione = p.przeplot(dane)
+        rozplecione = p.rozplot(przeplecione)
+        self.assertEqual(dane, rozplecione)
+        self.assertEqual(dane, przeplecione)
 
 if __name__ == '__main__':
     unittest.main()
