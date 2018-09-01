@@ -23,9 +23,10 @@ class KoderTurbo:
 
     def koduj(self, dane):
         # todo: dane reversed?
-        przeplecione = self.__przeplatacz.przeplot(dane)
 
         out1 = list(self.__koduj(self.__rej1, dane)) + self.__rej1.terminate()
+
+        przeplecione = self.__przeplatacz.przeplot(dane)
         out2 = list(self.__koduj(self.__rej2, przeplecione)) + self.__rej2.terminate()
 
         return [dane, out1, out2]
@@ -41,4 +42,5 @@ class KoderTurbo:
             out.append(b)
         return out
     
-
+    def dekoduj(self, dane):
+        pass
