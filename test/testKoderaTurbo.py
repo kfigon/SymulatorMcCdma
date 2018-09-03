@@ -5,18 +5,24 @@ from rejestrPrzesuwny import RejestrPrzesuwny
 
 class TestKoderaTurbo(unittest.TestCase):
     def setUp(self):
-        r1 = RejestrPrzesuwny(4, [[0,2,3], [0,1]])
-        r2 = RejestrPrzesuwny(4, [[0,2,3], [0,1]])
+        # jakby o jeden mniej niz w matlabie
+        r1 = RejestrPrzesuwny(3, [[1,2], [0,2]])
+        r2 = RejestrPrzesuwny(3, [[1,2], [0,2]])
         self.k = KoderTurbo(rejestr1 = r1, 
                             rejestr2 = r2,
                             przeplatacz=Przeplatacz())
     
     def test(self):
-        indata = [1,0,1,0,1,1,0,0,1]
+        # od skrajnego po lewej
+        indata = [1,1,0,0,1]
 
         [d, c1, c2] = self.k.koduj(indata)
         self.assertEqual(indata, d)
-        self.fail("todo")
+        expC = [0,1,1,0,1]
+        # to samo bo przeplot przezroczysty
+        self.assertEqual(expC, c1, "pierwszy koder zle!")
+        self.assertEqual(expC, c2, "koder po przeplocie zle!")
+
 
     def testCombine(self):
         tab1=[1,2,3]
