@@ -36,7 +36,12 @@ class TestKoderaTurbo(unittest.TestCase):
         tab1=[1,2,3]
         tab2=[4,5,6,3]
         self.assertRaises(Exception, KoderTurbo.combine, tab1, tab2)
-            
+
+    def testEndToEnd(self):
+        indata = [1,1,0,0,1]
+
+        [d, c1, c2] = self.k.koduj(indata)
+        self.fail("todo")
 
 if __name__ =='__main__':
     unittest.main()

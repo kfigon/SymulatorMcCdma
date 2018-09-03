@@ -18,13 +18,13 @@ class KoderTurbo:
             wynik = rejestr.licz()
             wejscie = b ^ wynik[0]
             rejestr.shift(wejscie)
-        
+
             yield wynik[1]
 
     def koduj(self, dane):
         # todo: uncomment termination, fix test
         out1 = list(self.__koduj(self.__rej1, dane))# + self.__rej1.terminate()
-
+        # terminacja tylko pierwszego? literatura tak sugeruje
         przeplecione = self.__przeplatacz.przeplot(dane)
         out2 = list(self.__koduj(self.__rej2, przeplecione)) #+ self.__rej2.terminate()
 
