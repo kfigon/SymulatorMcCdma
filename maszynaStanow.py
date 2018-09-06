@@ -121,5 +121,3 @@ class MaszynaStanow:
             if(p[MaszynaStanow.OUT_STATE] == stanKonc):
                 return p
         return None
-
-
