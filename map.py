@@ -52,7 +52,7 @@ class MapAlgorithm:
 
         # pewne stany
         alfy[0][0] = 1
-        bety[ileOdebranychSymboli-1][0]=1
+        bety[ileOdebranychSymboli][0]=1
     
         print()
         for i,o in enumerate(odebrane):
@@ -77,7 +77,7 @@ class MapAlgorithm:
                 sp = int(stanPoczatkowy, 2)
 
                 zwykleB = bety[i][sp] * gammy[i-1][sp][sk]
-                bety[i-1][sk] += zwykleB
+                bety[i-1][sk] += zwykleB # todo - to dziala, tylko przestawione sa wartosci
 
         sumaBet = sum(bety[i-1])
 
