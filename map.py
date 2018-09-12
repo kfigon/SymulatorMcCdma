@@ -40,7 +40,7 @@ class MapAlgorithm:
         # wyliczyc wszystkie alfa (+ normowanie)
         # beta
         # wyliczyc L, decyzja przy ostatniej iteracji.
-        if len(apriori) = 0:
+        if len(apriori) == 0:
             pass # todo: zainicjalizowac zerami jesli nie podano. jesli podano to wyrzkosyatc
 
         ileStanow = self.__maszyna.getNumberOfStates()
@@ -50,16 +50,38 @@ class MapAlgorithm:
         bety = [[0 for _ in range(ileStanow)] for _ in range(ileOdebranychSymboli)]
         gammy = [ [[0 for _ in range(ileStanow)] for _ in range(ileStanow)] for _ in range(ileOdebranychSymboli) ]
 
-        stany = self.__maszyna.getListaStanow()        
-
         # pewne stany
         alfy[0][0] = 1
         bety[ileOdebranychSymboli-1][0]=1
 
+        # gammas
+    
+        for i,o in enumerate(odebrane):
+        # o = odebrane[0]
+            self.__liczGammaGammaDlaSymbolu(gammy, i,o)
 
 
         return [1,2,3]
+    def __liczGammaGammaDlaSymbolu(self, gammy, i,o):
+        stany = self.__maszyna.getListaStanow()
+        for s in stany:
+            przejscia = self.__maszyna.getMozliwePrzejscia(s)
+            for p in przejscia:
+                stanPocz = p['inState']
+                stanKoncowy = p['outState']
+                codedBits = list(map(mapujBit, p['out']))
 
+                g = gamma(odebrane=o,
+                    zakodowane = codedBits,
+                    uk = self.__uk,
+                    Luk = self.__luk,
+                    Lc = self.__lc)
+
+                gs = int(stanPocz, 2)
+                gk = int(stanKoncowy, 2)
+                gammy[i][gs][gk] = g
+                # print("g[{}][{}][{}] = {}".format(str(i),str(gs),str(gk), str(g))) 
+    
 # if __name__ =="__main__":
 
     # mapping = {
