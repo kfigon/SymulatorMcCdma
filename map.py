@@ -46,23 +46,70 @@ class MapAlgorithm:
         ileStanow = self.__maszyna.getNumberOfStates()
         ileOdebranychSymboli = len(odebrane)
         
-        alfy = [[0 for _ in range(ileStanow)] for _ in range(ileOdebranychSymboli)]
-        bety = [[0 for _ in range(ileStanow)] for _ in range(ileOdebranychSymboli)]
+        alfy = [[0 for _ in range(ileStanow)] for _ in range(ileOdebranychSymboli+1)]
+        bety = [[0 for _ in range(ileStanow)] for _ in range(ileOdebranychSymboli+1)]
         gammy = [ [[0 for _ in range(ileStanow)] for _ in range(ileStanow)] for _ in range(ileOdebranychSymboli) ]
 
         # pewne stany
         alfy[0][0] = 1
         bety[ileOdebranychSymboli-1][0]=1
-
-        # gammas
     
+        print()
         for i,o in enumerate(odebrane):
-        # o = odebrane[0]
-            self.__liczGammaGammaDlaSymbolu(gammy, i,o)
-
+            self.__liczGammaDlaSymbolu(gammy, i,o)
+            self.__liczAlfaDlaSymbolu(alfy, gammy, i, o)
+        
+        print()
+        for i,o in enumerate(reversed(odebrane)):
+            self.__liczBetaDlaSymbolu(bety, gammy, len(odebrane)-i, o)
 
         return [1,2,3]
-    def __liczGammaGammaDlaSymbolu(self, gammy, i,o):
+
+# todo: zle
+    def __liczBetaDlaSymbolu(self, bety, gammy, i, o):
+        stany = self.__maszyna.getListaStanow()
+        for s in stany:
+            dojscia = self.__maszyna.getMozliweDojscia(s)
+            for d in dojscia:
+                stanPoczatkowy = d['inState']     
+                stanKoncowy = d['outState']                
+                sk = int(stanKoncowy, 2)
+                sp = int(stanPoczatkowy, 2)
+
+                zwykleB = bety[i][sp] * gammy[i-1][sp][sk]
+                bety[i-1][sk] += zwykleB
+
+        sumaBet = sum(bety[i-1])
+
+        for j,b in enumerate(bety[i-1]):
+            bety[i-1][j] = b/sumaBet
+            print("b[{}][{}] = {}".format(str(i-1),str(j),str(bety[i-1][j])))
+        print()
+
+
+    def __liczAlfaDlaSymbolu(self, alfy, gammy, i, o):
+        stany = self.__maszyna.getListaStanow()
+        for s in stany:
+            dojscia = self.__maszyna.getMozliweDojscia(s)
+            for d in dojscia:
+                stanPoczatkowy = d['inState']     
+                stanKoncowy = d['outState']                
+                sk = int(stanKoncowy, 2)
+                sp = int(stanPoczatkowy, 2)
+
+                zwykleA = alfy[i][sp] * gammy[i][sp][sk]
+                alfy[i+1][sk] += zwykleA
+
+        sumaAlf = sum(alfy[i+1])
+
+        # todo: na koncu normuje tez nieistniejace przejscia.
+        # nie wiem czy to blad, ale inaczej niz w przykladach
+        for j,a in enumerate(alfy[i+1]):
+            alfy[i+1][j] = a/sumaAlf
+            print("a[{}][{}] = {}".format(str(i+1),str(j),str(alfy[i+1][j])))
+        print()
+
+    def __liczGammaDlaSymbolu(self, gammy, i,o):
         stany = self.__maszyna.getListaStanow()
         for s in stany:
             przejscia = self.__maszyna.getMozliwePrzejscia(s)
@@ -80,8 +127,9 @@ class MapAlgorithm:
                 gs = int(stanPocz, 2)
                 gk = int(stanKoncowy, 2)
                 gammy[i][gs][gk] = g
-                # print("g[{}][{}][{}] = {}".format(str(i),str(gs),str(gk), str(g))) 
-    
+                print("g[{}][{}][{}] = {}".format(str(i),str(gs),str(gk), str(g))) 
+        print()
+
 # if __name__ =="__main__":
 
     # mapping = {
