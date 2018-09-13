@@ -41,7 +41,7 @@ class TestMap(unittest.TestCase):
         maszyna = MaszynaStanow(rej, 1)
         self.m = MapAlgorithm(maszyna)
 
-    def test(self):
+    def testMetryk(self):
         odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
         (alfy, bety, gammy) = self.m.liczMetryki(odebrane)
 
@@ -58,6 +58,31 @@ class TestMap(unittest.TestCase):
         self.assertAlmostEqual(0.98, bety[4][2],2)
         self.assertAlmostEqual(0.67, bety[2][1],2)
 
+    @unittest.skip # zaokraglenia i bug (?) z poczatkiem i koncem metryk
+    def testPrawodopodobienstw(self):
+        odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
+        (alfy, bety, gammy) = self.m.liczMetryki(odebrane)
+
+        out = []
+        out.append(self.m.liczPrawdopodobienstwa(odebrane[0], 0, alfy, bety, gammy, [0]))
+        out.append(self.m.liczPrawdopodobienstwa(odebrane[0], 0, alfy, bety, gammy, [1]))
+
+        out.append(self.m.liczPrawdopodobienstwa(odebrane[1], 1, alfy, bety, gammy, [0]))
+        out.append(self.m.liczPrawdopodobienstwa(odebrane[1], 1, alfy, bety, gammy, [1]))
+        
+        out.append(self.m.liczPrawdopodobienstwa(odebrane[2], 2, alfy, bety, gammy, [0]))
+        out.append(self.m.liczPrawdopodobienstwa(odebrane[2], 2, alfy, bety, gammy, [1]))
+        
+        out.append(self.m.liczPrawdopodobienstwa(odebrane[3], 3, alfy, bety, gammy, [0]))
+        out.append(self.m.liczPrawdopodobienstwa(odebrane[3], 3, alfy, bety, gammy, [1]))
+        
+        exp = [0.203, 1.214, 0.139, 0.177, 0.493, 0.068, 0.0, 0.306]
+        self.assertEqual(exp, out)
+
+    def testE2E(self):
+        odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
+        res = self.m.dekoduj(odebrane)
+        self.assertEqual([1,1,0,1,0,0], res)
 
 if __name__ == '__main__':
     unittest.main()

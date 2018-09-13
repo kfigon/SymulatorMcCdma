@@ -65,6 +65,54 @@ class MapAlgorithm:
 
         return (alfy, bety, gammy)
 
+    def dekoduj(self, odebrane):
+        (alfy, bety, gammy) = self.liczMetryki(odebrane)
+        prawdopodobienstwa = []
+        for i,o in enumerate(odebrane):
+            p0 = self.liczPrawdopodobienstwa(o, i, alfy, bety, gammy, [0])
+            p1 = self.liczPrawdopodobienstwa(o, i, alfy, bety, gammy, [1])
+            prawdopodobienstwa.append([p0,p1])
+
+        # normowanie
+        for i,p in enumerate(prawdopodobienstwa):
+            suma = sum(p)
+            for j,px in enumerate(p):
+                prawdopodobienstwa[i][j] = px/suma
+
+        out = []
+        for p in prawdopodobienstwa:
+            p0 = p[0]
+            p1= p[1]
+            
+            l = 0
+            if p1 == 0:
+                out.append(0)
+                continue
+            elif p0 == 0:
+                l = p1
+            else:
+                l = math.log(p1/p0)
+                
+            out.append(1 if l >=0 else 0)
+
+        return out        
+        
+    def liczPrawdopodobienstwa(self, o, i, alfy, bety,gammy, spodziewanyNadanyBit):
+        stany = self.__maszyna.getListaStanow()
+        prawdopodobienstwa = 0.0
+        for s in stany:
+            przejscia = self.__maszyna.getMozliwePrzejscia(s)
+            for p in przejscia:
+                stanPocz = p['inState']
+                stanKoncowy = p['outState']
+                sk = int(stanKoncowy, 2)
+                sp = int(stanPocz, 2)
+                bitNadany = p['in']
+
+                if bitNadany == spodziewanyNadanyBit:
+                    prawdopodobienstwa += alfy[i][sp]*gammy[i][sp][sk]*bety[i+1][sk]
+        return prawdopodobienstwa
+
     def __liczBetaDlaSymbolu(self, bety, gammy, i, o):
         stany = self.__maszyna.getListaStanow()
         for s in stany:
@@ -127,50 +175,5 @@ class MapAlgorithm:
                 gs = int(stanPocz, 2)
                 gk = int(stanKoncowy, 2)
                 gammy[i][gs][gk] = g
-                print("g[{}][{}][{}] = {}".format(str(i),str(gs),str(gk), str(g))) 
-        print()
-
-# if __name__ =="__main__":
-
-    # mapping = {
-    #     '00':   [-1,-1],
-    #     '02':   [1,1],
-    #     '10':   [1,1],
-    #     '12':   [-1,-1],
-    #     '21':   [1,-1],
-    #     '23':   [-1,1],
-    #     '31':   [-1,1],
-    #     '33':   [1,-1],
-    # }
-
-    # odebrane = [[0.3, 0.1], [-0.5, 0.2], [0.8, 0.5], [-0.5, 0.3]]
-    # Lc = 5
-    # Luk = 0 # prawdopodobienstwo Uk=1 -> 1/2
-    # uk = 123 # any, since Luk is 0
-    # g = [gamma(odebrane[0], mapping['00']), gamma(odebrane[0], mapping['02'])]
-    # print(g)
-
-    # a00n=alfa([1],[g[0]])
-    # a02n=alfa([1],[g[1]])
-    
-    # a00 = normuj(a00n, [a00n, a02n])
-    # a02 = normuj(a02n,[a00n, a02n])
-
-    # print(a00, a02)
-
-    # g2 = [
-    #     gamma(odebrane[1], mapping['00']),
-    #     gamma(odebrane[1], mapping['02']),
-    #     gamma(odebrane[1], mapping['21']),
-    #     gamma(odebrane[1], mapping['23']),
-    #     ]
-    # print(g2)
-
-    # a2n = [
-    #     alfa([a00],[g2[0]]),
-    #     alfa([a00],[g2[1]]),
-    #     alfa([a02],[g2[2]]),
-    #     alfa([a02],[g2[3]]),
-    # ]
-    # a2 = [normuj(i,a2n) for i in a2n]
-    # print(a2)
+                # print("g[{}][{}][{}] = {}".format(str(i),str(gs),str(gk), str(g))) 
+        # print()
