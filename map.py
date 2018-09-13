@@ -65,7 +65,6 @@ class MapAlgorithm:
 
         return [1,2,3]
 
-# todo: zle
     def __liczBetaDlaSymbolu(self, bety, gammy, i, o):
         stany = self.__maszyna.getListaStanow()
         for s in stany:
@@ -77,13 +76,13 @@ class MapAlgorithm:
                 sp = int(stanPoczatkowy, 2)
 
                 zwykleB = bety[i+1][sk] * gammy[i][sp][sk]
-                bety[i][sp] += zwykleB # todo - to dziala, tylko przestawione sa wartosci
+                bety[i][sp] += zwykleB
 
-        sumaBet = sum(bety[i+1])
+        sumaBet = sum(bety[i])
 
-        for j,b in enumerate(bety[i+1]):
-            bety[i+1][j] = b/sumaBet
-            print("b[{}][{}] = {}".format(str(i+1),str(j),str(bety[i+1][j])))
+        for j,b in enumerate(bety[i]):
+            bety[i][j] = b/sumaBet
+            print("b[{}][{}] = {}".format(str(i),str(j),str(bety[i][j])))
         print()
 
 
@@ -104,6 +103,7 @@ class MapAlgorithm:
 
         # todo: na koncu normuje tez nieistniejace przejscia.
         # nie wiem czy to blad, ale inaczej niz w przykladach
+        # todo: dla beta tez tak jest
         for j,a in enumerate(alfy[i+1]):
             alfy[i+1][j] = a/sumaAlf
             print("a[{}][{}] = {}".format(str(i+1),str(j),str(alfy[i+1][j])))
