@@ -82,7 +82,7 @@ class TestMap(unittest.TestCase):
     def testE2E(self):
         odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
         res = self.m.dekoduj(odebrane)
-        self.assertEqual([1,1,0,1,0,0], res)
+        self.assertEqual([1,1,0,1,0,0], self.m.proguj(res))
 
 if __name__ == '__main__':
     unittest.main()

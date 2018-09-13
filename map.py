@@ -32,7 +32,7 @@ class MapAlgorithm:
         self.__luk=Luk # prawdopodobienstwo zajscia uk
         self.__lc=Lc # miara jakosci kanalu
 
-    def liczMetryki(self, odebrane, apriori=[]):
+    def liczMetryki(self, odebrane):
         '''liczy iteracje map
         odebrane w formie 2 wymiarowej tablicy - [ [symbol1], [symbol2] ]'''
         
@@ -40,8 +40,6 @@ class MapAlgorithm:
         # wyliczyc wszystkie alfa (+ normowanie)
         # beta
         # wyliczyc L, decyzja przy ostatniej iteracji.
-        if len(apriori) == 0:
-            pass # todo: zainicjalizowac zerami jesli nie podano. jesli podano to wyrzkosyatc
 
         ileStanow = self.__maszyna.getNumberOfStates()
         ileOdebranychSymboli = len(odebrane)
@@ -78,7 +76,10 @@ class MapAlgorithm:
             suma = sum(p)
             for j,px in enumerate(p):
                 prawdopodobienstwa[i][j] = px/suma
+        
+        return prawdopodobienstwa
 
+    def proguj(self, prawdopodobienstwa):
         out = []
         for p in prawdopodobienstwa:
             p0 = p[0]
@@ -92,11 +93,11 @@ class MapAlgorithm:
                 l = p1
             else:
                 l = math.log(p1/p0)
-                
+
             out.append(1 if l >=0 else 0)
 
         return out        
-        
+
     def liczPrawdopodobienstwa(self, o, i, alfy, bety,gammy, spodziewanyNadanyBit):
         stany = self.__maszyna.getListaStanow()
         prawdopodobienstwa = 0.0
