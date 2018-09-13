@@ -61,7 +61,7 @@ class MapAlgorithm:
         
         print()
         for i,o in enumerate(reversed(odebrane)):
-            self.__liczBetaDlaSymbolu(bety, gammy, len(odebrane)-i, o)
+            self.__liczBetaDlaSymbolu(bety, gammy, len(odebrane)-i-1, o)
 
         return [1,2,3]
 
@@ -76,14 +76,14 @@ class MapAlgorithm:
                 sk = int(stanKoncowy, 2)
                 sp = int(stanPoczatkowy, 2)
 
-                zwykleB = bety[i][sp] * gammy[i-1][sp][sk]
-                bety[i-1][sk] += zwykleB # todo - to dziala, tylko przestawione sa wartosci
+                zwykleB = bety[i+1][sk] * gammy[i][sp][sk]
+                bety[i][sp] += zwykleB # todo - to dziala, tylko przestawione sa wartosci
 
-        sumaBet = sum(bety[i-1])
+        sumaBet = sum(bety[i+1])
 
-        for j,b in enumerate(bety[i-1]):
-            bety[i-1][j] = b/sumaBet
-            print("b[{}][{}] = {}".format(str(i-1),str(j),str(bety[i-1][j])))
+        for j,b in enumerate(bety[i+1]):
+            bety[i+1][j] = b/sumaBet
+            print("b[{}][{}] = {}".format(str(i+1),str(j),str(bety[i+1][j])))
         print()
 
 
