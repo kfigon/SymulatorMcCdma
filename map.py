@@ -32,7 +32,7 @@ class MapAlgorithm:
         self.__luk=Luk # prawdopodobienstwo zajscia uk
         self.__lc=Lc # miara jakosci kanalu
 
-    def licz(self, odebrane, apriori=[]):
+    def liczMetryki(self, odebrane, apriori=[]):
         '''liczy iteracje map
         odebrane w formie 2 wymiarowej tablicy - [ [symbol1], [symbol2] ]'''
         
@@ -54,16 +54,16 @@ class MapAlgorithm:
         alfy[0][0] = 1
         bety[ileOdebranychSymboli][0]=1
     
-        print()
+        # print()
         for i,o in enumerate(odebrane):
             self.__liczGammaDlaSymbolu(gammy, i,o)
             self.__liczAlfaDlaSymbolu(alfy, gammy, i, o)
         
-        print()
+        # print()
         for i,o in enumerate(reversed(odebrane)):
             self.__liczBetaDlaSymbolu(bety, gammy, len(odebrane)-i-1, o)
 
-        return [1,2,3]
+        return (alfy, bety, gammy)
 
     def __liczBetaDlaSymbolu(self, bety, gammy, i, o):
         stany = self.__maszyna.getListaStanow()
@@ -82,8 +82,8 @@ class MapAlgorithm:
 
         for j,b in enumerate(bety[i]):
             bety[i][j] = b/sumaBet
-            print("b[{}][{}] = {}".format(str(i),str(j),str(bety[i][j])))
-        print()
+            # print("b[{}][{}] = {}".format(str(i),str(j),str(bety[i][j])))
+        # print()
 
 
     def __liczAlfaDlaSymbolu(self, alfy, gammy, i, o):
@@ -106,8 +106,8 @@ class MapAlgorithm:
         # todo: dla beta tez tak jest
         for j,a in enumerate(alfy[i+1]):
             alfy[i+1][j] = a/sumaAlf
-            print("a[{}][{}] = {}".format(str(i+1),str(j),str(alfy[i+1][j])))
-        print()
+            # print("a[{}][{}] = {}".format(str(i+1),str(j),str(alfy[i+1][j])))
+        # print()
 
     def __liczGammaDlaSymbolu(self, gammy, i,o):
         stany = self.__maszyna.getListaStanow()

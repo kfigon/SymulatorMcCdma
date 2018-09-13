@@ -43,8 +43,21 @@ class TestMap(unittest.TestCase):
 
     def test(self):
         odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
-        wynik = self.m.licz(odebrane)
-        self.assertEqual([], wynik)
-        
+        (alfy, bety, gammy) = self.m.liczMetryki(odebrane)
+
+        self.assertAlmostEqual(0.37, gammy[0][0][0],2)
+        self.assertAlmostEqual(25.79, gammy[2][1][0],2)
+        self.assertAlmostEqual(4.48, gammy[4][0][0],2)
+        self.assertAlmostEqual(15.64, gammy[5][1][0],2)
+
+        self.assertAlmostEqual(1, alfy[0][0],2)
+        self.assertAlmostEqual(0.105, alfy[3][1],2)
+        self.assertAlmostEqual(0.45, alfy[3][3],2)
+
+        self.assertAlmostEqual(1, bety[6][0],2)
+        self.assertAlmostEqual(0.98, bety[4][2],2)
+        self.assertAlmostEqual(0.67, bety[2][1],2)
+
+
 if __name__ == '__main__':
     unittest.main()
