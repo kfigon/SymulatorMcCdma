@@ -49,7 +49,7 @@ class TestKoderaTurbo(unittest.TestCase):
 
     def testEndToEnd(self):
         # dane musza byc terminowane!
-        indata = [1,1,0,0,0,0,0,0]
+        indata = [1,1,0,1,1,1,0,0,0,0,0]
         zakodowane = self.k.koduj(indata)
         zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
         zdekodowane = self.k.dekoduj(zakodowane)

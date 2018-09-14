@@ -92,8 +92,8 @@ class KoderTurbo:
         for i in range(ileItracji):
             prawdopodobienstwa1 = map1.dekoduj(podzielone1, lu)
             extr1 = self.__liczExtrinsic(prawdopodobienstwa1, lc, lu, systematyczne)
-
             intr1 = self.__przeplatacz.przeplot(extr1)
+            
             prawdopodobienstwa2 = map2.dekoduj(podzielone2, intr1)
             wynikDekodera2 = prawdopodobienstwa2
             extr2 = self.__liczExtrinsic(prawdopodobienstwa2, lc, intr1, przeplecioneSystematyczne)
