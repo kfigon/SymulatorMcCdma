@@ -1,18 +1,10 @@
 import unittest
-from map import MapAlgorithm, liczL, decyzja, gamma, alfa, normujAlfa
+from map import MapAlgorithm, gamma, alfa, normujAlfa
 from maszynaStanow import MaszynaStanow
 from rejestrPrzesuwny import RejestrPrzesuwny
 
 class TestMatematykiMap(unittest.TestCase):
-    def testL(self):
-        x = liczL(1/2, 1/2)
-        self.assertEqual(0, x)
-
-    def testDecyzji(self):
-        self.assertEqual(1, decyzja(0))
-        self.assertEqual(-1, decyzja(-1))
-        self.assertEqual(1, decyzja(12))
-
+  
     def testGamma(self):
         odebrane=[0.3, 0.1]
         Lc = 5

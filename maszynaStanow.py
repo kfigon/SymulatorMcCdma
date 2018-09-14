@@ -7,7 +7,7 @@ class MaszynaStanow:
     IN_STATE = 'inState'
     OUT_STATE = 'outState'
 
-    def __init__(self, rejestr, ileNaRaz):
+    def __init__(self, rejestr, ileNaRaz=1):
         self.__rej = rejestr
         self.__ileNaRaz=ileNaRaz
         self.__stany={}

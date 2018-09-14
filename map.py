@@ -1,11 +1,5 @@
 import math
 
-def liczL(prawodobienstwo1, prawodopobienstwo0):
-    return math.log(prawodobienstwo1/prawodopobienstwo0)
-
-def decyzja(val):
-    return 1 if val >=0 else -1
-
 def mapujBit(val):
     return -1 if val == 0 else 1
 
@@ -23,16 +17,14 @@ def normujAlfa(alfa, wszystkieAlfa):
 
 
 class MapAlgorithm:
-    def __init__(self, maszyna, uk=0, Luk=0, Lc=5):
+    def __init__(self, maszyna, Lc=5):
         '''
         algorytm MAP
         '''
         self.__maszyna = maszyna
-        self.__uk=uk # ?
-        self.__luk=Luk # prawdopodobienstwo zajscia uk
         self.__lc=Lc # miara jakosci kanalu
 
-    def liczMetryki(self, odebrane):
+    def liczMetryki(self, odebrane, u=[], lu=[]):
         '''liczy iteracje map
         odebrane w formie 2 wymiarowej tablicy - [ [symbol1], [symbol2] ]'''
         
@@ -52,19 +44,24 @@ class MapAlgorithm:
         alfy[0][0] = 1
         bety[ileOdebranychSymboli][0]=1
     
+        if len(u) == 0:
+            u = [0 for _ in range(len(odebrane))]
+        if len(lu) == 0:
+            lu = [0 for _ in range(len(odebrane))]
         # print()
-        for i,o in enumerate(odebrane):
-            self.__liczGammaDlaSymbolu(gammy, i,o)
+        i=0
+        for o,uk,luk in zip(odebrane, u, lu):
+            self.__liczGammaDlaSymbolu(gammy, i,o, uk, luk)
             self.__liczAlfaDlaSymbolu(alfy, gammy, i, o)
-        
+            i+=1
         # print()
         for i,o in enumerate(reversed(odebrane)):
             self.__liczBetaDlaSymbolu(bety, gammy, len(odebrane)-i-1, o)
 
         return (alfy, bety, gammy)
 
-    def dekoduj(self, odebrane):
-        (alfy, bety, gammy) = self.liczMetryki(odebrane)
+    def dekoduj(self, odebrane, u=[], lu=[]):
+        (alfy, bety, gammy) = self.liczMetryki(odebrane, u, lu)
         prawdopodobienstwa = []
         for i,o in enumerate(odebrane):
             p0 = self.liczPrawdopodobienstwa(o, i, alfy, bety, gammy, [0])
@@ -158,7 +155,7 @@ class MapAlgorithm:
             # print("a[{}][{}] = {}".format(str(i+1),str(j),str(alfy[i+1][j])))
         # print()
 
-    def __liczGammaDlaSymbolu(self, gammy, i,o):
+    def __liczGammaDlaSymbolu(self, gammy, i,o, uk, luk):
         stany = self.__maszyna.getListaStanow()
         for s in stany:
             przejscia = self.__maszyna.getMozliwePrzejscia(s)
@@ -169,8 +166,8 @@ class MapAlgorithm:
 
                 g = gamma(odebrane=o,
                     zakodowane = codedBits,
-                    uk = self.__uk,
-                    Luk = self.__luk,
+                    uk = uk,
+                    Luk = luk,
                     Lc = self.__lc)
 
                 gs = int(stanPocz, 2)
