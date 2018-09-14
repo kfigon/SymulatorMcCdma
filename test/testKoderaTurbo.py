@@ -18,7 +18,7 @@ class TestKoderaTurbo(unittest.TestCase):
 
         [d, c1, c2] = self.k.koduj(indata)
         self.assertEqual(indata, d)
-        expC = [0,1,1,0,1,1,0,1,1]
+        expC = [0,1,1,0,1]
         # to samo bo przeplot przezroczysty
         self.assertEqual(expC, c1, "pierwszy koder zle!")
         self.assertEqual(expC, c2, "koder po przeplocie zle!")
@@ -40,15 +40,17 @@ class TestKoderaTurbo(unittest.TestCase):
 
     def testDecombine1(self):
         tab = [1,2,3,4,5,6]
-        self.assertEqual([1,2,4,5], KoderTurbo.decombine(tab,1))
+        self.assertEqual([[1,2],[4,5]], KoderTurbo.decombine(tab,1))
 
     def testDecombine2(self):
         tab = [1,2,3,4,5,6]
-        self.assertEqual([1,3,4,6], KoderTurbo.decombine(tab,2))
+        self.assertEqual([[1,3],[4,6]], KoderTurbo.decombine(tab,2))
 
     def testEndToEnd(self):
-        indata = [1,1,0,0,1]
+        # dane musza byc terminowane!
+        indata = [1,1,0,0,0,0,0,0]
         zakodowane = self.k.koduj(indata)
+        zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
         zdekodowane = self.k.dekoduj(zakodowane)
 
         self.assertEqual(indata, zdekodowane)

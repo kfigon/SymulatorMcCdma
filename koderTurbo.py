@@ -23,18 +23,19 @@ class KoderTurbo:
             yield wynik[1]
 
     def koduj(self, dane):
-        # todo: uncomment termination, fix test
-        out1 = list(self.__koduj(self.__rej1, dane)) + self.__rej1.terminate()
-        # terminacja tylko pierwszego? literatura tak sugeruje
+        out1 = list(self.__koduj(self.__rej1, dane))
         przeplecione = self.__przeplatacz.przeplot(dane)
-        out2 = list(self.__koduj(self.__rej2, przeplecione)) + self.__rej2.terminate()
+        out2 = list(self.__koduj(self.__rej2, przeplecione))
 
         return [dane, out1, out2]
     
     @staticmethod
     def combine(tab1, tab2, tab3):
-        if len(tab1) != len(tab2) or len(tab2) != len(tab3) or len(tab1) != len(tab3):
-            raise Exception("kombinator musi dostac rowne tablice")
+        dl1 = len(tab1)
+        dl2 = len(tab2)
+        dl3 = len(tab3)
+        if dl1 != dl2 or dl2 != dl3 or dl1 != dl3:
+            raise Exception("kombinator musi dostac rowne tablice: {},{},{}".format(str(dl1),str(dl2),str(dl3)))
 
         out = []
         for a,b,c in zip(tab1, tab2,tab3):
@@ -47,8 +48,7 @@ class KoderTurbo:
     def decombine(tab, skok):
         out = []
         for i in range(0, len(tab),3):
-            out.append(tab[i])
-            out.append(tab[i+skok])
+            out.append([tab[i], tab[i+skok]])
 
         return out
 
