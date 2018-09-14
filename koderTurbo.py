@@ -52,10 +52,16 @@ class KoderTurbo:
 
         return out
 
-    def dekoduj(self, dane, ileItracji = 5):
-        maszyna1 = MaszynaStanow(self.__rej1)
-        map1 = MapAlgorithm(maszyna1)
+    def dekoduj(self, dane, ileItracji = 5, lc=1):
         podzielone1 = KoderTurbo.decombine(dane, 1)
         
-        prawdopodobienstwa1 = map1.dekoduj(podzielone1)
+        maszyna1 = MaszynaStanow(self.__rej1)
+        map1 = MapAlgorithm(maszyna1, Lc=1)
+        lu = [0 for _ in range(len(dane)//3)]
 
+        prawdopodobienstwa1 = map1.dekoduj(podzielone1, lu)
+        extrinsic = []
+        systematyczne = list(map(lambda v: v[0], podzielone1))
+        
+        for p,luk,sys in zip(prawdopodobienstwa1, lu, systematyczne):
+            extrinsic.append(p-luk-lc*sys)
