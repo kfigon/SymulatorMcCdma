@@ -5,6 +5,14 @@ from utils import flat
 from map import MapAlgorithm
 import math
 
+def mapujP(p):
+    if p[1] == 0:
+        return -99999999
+    elif p[0] == 0:
+        return 9999999
+    else:
+        return math.log(p[1]/p[0])
+
 class KoderTurbo:
     def __init__(self, rejestr1, rejestr2, przeplatacz = Przeplatacz()):
         if rejestr1.getIleBitowWyjsciowych() != 2 or rejestr2.getIleBitowWyjsciowych() != 2:
@@ -46,31 +54,35 @@ class KoderTurbo:
         return out
     
     @staticmethod
-    def decombine(tab, skok):
-        out = []
-        for i in range(0, len(tab),3):
-            out.append([tab[i], tab[i+skok]])
+    def decombine(tab):
+        a=[]
+        b=[]
+        c=[]
 
-        return out
+        for i in range(0,len(tab)-2, 3):
+            a.append(tab[i])
+            b.append(tab[i+1])
+            c.append(tab[i+2])
+
+        return [a,b,c]
 
     def dekoduj(self, dane, ileItracji = 5, lc=1):
-        podzielone1 = KoderTurbo.decombine(dane, 1)
-        
         maszyna1 = MaszynaStanow(self.__rej1)
-        map1 = MapAlgorithm(maszyna1, Lc=1)
+        map1 = MapAlgorithm(maszyna1, lc)
         lu = [0 for _ in range(len(dane)//3)]
+
+        [systematyczne, par1, par2] = self.decombine(dane)
+        podzielone1 = []
+        for s,p in zip(systematyczne, par1):
+            podzielone1.append([s,p])
 
         prawdopodobienstwa1 = map1.dekoduj(podzielone1, lu)
         extrinsic = []
-        systematyczne = list(map(lambda v: v[0], podzielone1))
-        
-        def mapujP(p):
-            if p[1] == 0:
-                return -99999999
-            elif p[0] == 0:
-                l = 9999999
-            else:
-                return math.log(p[1]/p[0])
 
         for p,luk,sys in zip(prawdopodobienstwa1, lu, systematyczne):            
             extrinsic.append(mapujP(p)-luk-lc*sys)
+
+        maszyna2 = MaszynaStanow(self.__rej2)
+        map2 = MapAlgorithm(maszyna2, lc) 
+        systPrzeplecione = self.__przeplatacz.przeplot(systematyczne)       
+        # prawdopodobienstwa2 = map2.dekoduj(odebrane)

@@ -38,13 +38,14 @@ class TestKoderaTurbo(unittest.TestCase):
         tab3=[1,2,3]
         self.assertRaises(Exception, KoderTurbo.combine, tab1, tab2, tab3)
 
-    def testDecombine1(self):
-        tab = [1,2,3,4,5,6]
-        self.assertEqual([[1,2],[4,5]], KoderTurbo.decombine(tab,1))
+    def testDecombin(self):
+        tab = [1,4,7,2,5,8,3,6,9]
 
-    def testDecombine2(self):
-        tab = [1,2,3,4,5,6]
-        self.assertEqual([[1,3],[4,6]], KoderTurbo.decombine(tab,2))
+        [a,b,c] = KoderTurbo.decombine(tab)
+        self.assertEqual([1,2,3],a)
+        self.assertEqual([4,5,6],b)
+        self.assertEqual([7,8,9],c)
+
 
     def testEndToEnd(self):
         # dane musza byc terminowane!
