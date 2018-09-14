@@ -3,6 +3,7 @@ from rejestrPrzesuwny import RejestrPrzesuwny
 from maszynaStanow import MaszynaStanow
 from utils import flat
 from map import MapAlgorithm
+import math
 
 class KoderTurbo:
     def __init__(self, rejestr1, rejestr2, przeplatacz = Przeplatacz()):
@@ -63,5 +64,13 @@ class KoderTurbo:
         extrinsic = []
         systematyczne = list(map(lambda v: v[0], podzielone1))
         
-        for p,luk,sys in zip(prawdopodobienstwa1, lu, systematyczne):
-            extrinsic.append(p-luk-lc*sys)
+        def mapujP(p):
+            if p[1] == 0:
+                return -99999999
+            elif p[0] == 0:
+                l = 9999999
+            else:
+                return math.log(p[1]/p[0])
+
+        for p,luk,sys in zip(prawdopodobienstwa1, lu, systematyczne):            
+            extrinsic.append(mapujP(p)-luk-lc*sys)
