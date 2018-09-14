@@ -7,9 +7,9 @@ import math
 
 def mapujP(p):
     if p[1] == 0:
-        return -99999999
+        return -100
     elif p[0] == 0:
-        return 9999999
+        return 100
     else:
         return math.log(p[1]/p[0])
 
@@ -66,23 +66,37 @@ class KoderTurbo:
 
         return [a,b,c]
 
-    def dekoduj(self, dane, ileItracji = 5, lc=1):
-        maszyna1 = MaszynaStanow(self.__rej1)
-        map1 = MapAlgorithm(maszyna1, lc)
-        lu = [0 for _ in range(len(dane)//3)]
+    def __rozdziel(self, sys, par):
+        podzielone = []
+        for s,p in zip(sys, par):
+            podzielone.append([s,p])
+        return podzielone
 
-        [systematyczne, par1, par2] = self.decombine(dane)
-        podzielone1 = []
-        for s,p in zip(systematyczne, par1):
-            podzielone1.append([s,p])
-
-        prawdopodobienstwa1 = map1.dekoduj(podzielone1, lu)
+    def __liczExtrinsic(self, prawdopodobienstwa, lc, lu, systematyczne):
         extrinsic = []
-
-        for p,luk,sys in zip(prawdopodobienstwa1, lu, systematyczne):            
+        for p,luk,sys in zip(prawdopodobienstwa, lu, systematyczne):            
             extrinsic.append(mapujP(p)-luk-lc*sys)
+        return extrinsic 
 
-        maszyna2 = MaszynaStanow(self.__rej2)
-        map2 = MapAlgorithm(maszyna2, lc) 
-        systPrzeplecione = self.__przeplatacz.przeplot(systematyczne)       
-        # prawdopodobienstwa2 = map2.dekoduj(odebrane)
+    def dekoduj(self, dane, ileItracji = 5, lc=1):
+        map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
+        map2 = MapAlgorithm(MaszynaStanow(self.__rej2), lc) 
+        [systematyczne, par1, par2] = self.decombine(dane)
+        przeplecioneSystematyczne = self.__przeplatacz.przeplot(systematyczne)
+        
+        podzielone1 = self.__rozdziel(systematyczne, par1)
+        podzielone2 = self.__rozdziel(przeplecioneSystematyczne, par2)
+        
+        lu = [0 for _ in range(len(dane)//3)]
+        wynikDekodera2 = None
+        for i in range(ileItracji):
+            prawdopodobienstwa1 = map1.dekoduj(podzielone1, lu)
+            extr1 = self.__liczExtrinsic(prawdopodobienstwa1, lc, lu, systematyczne)
+
+            intr1 = self.__przeplatacz.przeplot(extr1)
+            prawdopodobienstwa2 = map2.dekoduj(podzielone2, intr1)
+            wynikDekodera2 = prawdopodobienstwa2
+            extr2 = self.__liczExtrinsic(prawdopodobienstwa2, lc, intr1, przeplecioneSystematyczne)
+            lu = self.__przeplatacz.rozplot(extr2)
+
+        return MapAlgorithm.proguj(wynikDekodera2)

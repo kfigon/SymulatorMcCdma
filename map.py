@@ -75,7 +75,8 @@ class MapAlgorithm:
         
         return prawdopodobienstwa
 
-    def proguj(self, prawdopodobienstwa):
+    @staticmethod
+    def proguj(prawdopodobienstwa):
         out = []
         for p in prawdopodobienstwa:
             p0 = p[0]
