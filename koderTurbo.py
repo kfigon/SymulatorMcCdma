@@ -78,7 +78,7 @@ class KoderTurbo:
             extrinsic.append(mapujP(p)-luk-lc*sys)
         return extrinsic 
 
-    def dekoduj(self, dane, ileItracji = 5, lc=1):
+    def dekoduj(self, dane, ileItracji = 5, lc=5):
         map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
         map2 = MapAlgorithm(MaszynaStanow(self.__rej2), lc) 
         [systematyczne, par1, par2] = self.decombine(dane)
@@ -90,6 +90,7 @@ class KoderTurbo:
         lu = [0 for _ in range(len(dane)//3)]
         wynikDekodera2 = None
         for _ in range(ileItracji):
+            # odebrane powinno byc bipolarne w liczeniu gamma
             prawdopodobienstwa1 = map1.dekoduj(podzielone1, lu)
             extr1 = self.__liczExtrinsic(prawdopodobienstwa1, lc, lu, systematyczne)
             intr1 = self.__przeplatacz.przeplot(extr1)
@@ -98,6 +99,11 @@ class KoderTurbo:
             wynikDekodera2 = prawdopodobienstwa2
             extr2 = self.__liczExtrinsic(prawdopodobienstwa2, lc, intr1, przeplecioneSystematyczne)
             lu = self.__przeplatacz.rozplot(extr2)
-        
+            out = []
+            for x in wynikDekodera2:
+                out.append(mapujP(x))
+            print(self.__przeplatacz.rozplot(out))
+
+        # todo: nie zmienia sie z iteracji na iteracje!!!
         przeplecioneSprogowane = MapAlgorithm.proguj(wynikDekodera2)
         return self.__przeplatacz.rozplot(przeplecioneSprogowane)
