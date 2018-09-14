@@ -7,9 +7,9 @@ import math
 
 def mapujP(p):
     if p[1] == 0:
-        return -100
+        return -10
     elif p[0] == 0:
-        return 100
+        return 10
     else:
         return math.log(p[1]/p[0])
 
@@ -89,7 +89,7 @@ class KoderTurbo:
         
         lu = [0 for _ in range(len(dane)//3)]
         wynikDekodera2 = None
-        for i in range(ileItracji):
+        for _ in range(ileItracji):
             prawdopodobienstwa1 = map1.dekoduj(podzielone1, lu)
             extr1 = self.__liczExtrinsic(prawdopodobienstwa1, lc, lu, systematyczne)
             intr1 = self.__przeplatacz.przeplot(extr1)
@@ -98,5 +98,6 @@ class KoderTurbo:
             wynikDekodera2 = prawdopodobienstwa2
             extr2 = self.__liczExtrinsic(prawdopodobienstwa2, lc, intr1, przeplecioneSystematyczne)
             lu = self.__przeplatacz.rozplot(extr2)
-
-        return MapAlgorithm.proguj(wynikDekodera2)
+        
+        przeplecioneSprogowane = MapAlgorithm.proguj(wynikDekodera2)
+        return self.__przeplatacz.rozplot(przeplecioneSprogowane)

@@ -47,14 +47,55 @@ class TestKoderaTurbo(unittest.TestCase):
         self.assertEqual([7,8,9],c)
 
 
+    def testEndToEndSame0(self):
+        # dane musza byc terminowane!
+        indata = [0 for _ in range(20)]
+        bipolar = list(map(lambda x: 1 if x==1 else -1, indata))
+        zakodowane = self.k.koduj(bipolar)
+        zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=20)
+
+        self.assertEqual(indata, zdekodowane)
+
+    def testEndToEndSame1(self):
+        # dane musza byc terminowane!
+        indata = [1 for _ in range(20)]
+        for _ in range(5):
+            indata.append(0)
+        bipolar = list(map(lambda x: 1 if x==1 else -1, indata))
+        zakodowane = self.k.koduj(bipolar)
+        zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=20)
+
+        self.assertEqual(indata, zdekodowane)
+
+    def testEndToEnd(self):
+        # dane musza byc terminowane!
+        indata = [1,0,1,1,0,0,1,0,0,0,0,0]
+        bipolar = list(map(lambda x: 1 if x==1 else -1, indata))
+        zakodowane = self.k.koduj(bipolar)
+        zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=20)
+
+        self.assertEqual(indata, zdekodowane)
+class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
+    def setUp(self):
+        r1 = RejestrPrzesuwny(3, [[1,2], [0,2]])
+        r2 = RejestrPrzesuwny(3, [[1,2], [0,2]])
+        self.k = KoderTurbo(rejestr1 = r1, 
+                            rejestr2 = r2,
+                            przeplatacz=Przeplatacz(3))
+
     def testEndToEnd(self):
         # dane musza byc terminowane!
         indata = [1,1,0,1,1,1,0,0,0,0,0]
-        zakodowane = self.k.koduj(indata)
+        bipolar = list(map(lambda x: 1 if x==1 else -1, indata))
+        zakodowane = self.k.koduj(bipolar)
         zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
-        zdekodowane = self.k.dekoduj(zakodowane)
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=10)
 
         self.assertEqual(indata, zdekodowane)
+
 
 if __name__ =='__main__':
     unittest.main()

@@ -49,7 +49,7 @@ class MapAlgorithm:
         # print()
         i=0
         for o,luk in zip(odebrane, lu):
-            uk = -1 if luk < 0 else 1
+            uk = 1 if luk >=0 else -1
             self.__liczGammaDlaSymbolu(gammy, i,o, uk, luk)
             self.__liczAlfaDlaSymbolu(alfy, gammy, i, o)
             i+=1
