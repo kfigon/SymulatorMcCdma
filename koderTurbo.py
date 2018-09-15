@@ -93,12 +93,15 @@ class KoderTurbo:
             
             prawdopodobienstwa2 = map2.dekoduj(podzielone2, przeplecioneExtr1)
             wynikDekodera2 = prawdopodobienstwa2
+            
+            # self.piszFloat(wynikDekodera2)
             extr2 = self.__liczExtrinsic(prawdopodobienstwa2, lc, przeplecioneExtr1, przeplecioneSystematyczne)
 
             lu = self.__przeplatacz.rozplot(extr2)
             
-            out = self.__przeplatacz.rozplot(wynikDekodera2)
-            self.piszFloat(out)
+            # out = self.__przeplatacz.rozplot(wynikDekodera2)
+            # self.piszFloat(out)
 
         przeplecioneSprogowane = list(map(lambda p: 1 if p >=0 else 0, wynikDekodera2))
+        # return przeplecioneSprogowane
         return self.__przeplatacz.rozplot(przeplecioneSprogowane)

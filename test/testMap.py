@@ -73,6 +73,7 @@ class TestMap(unittest.TestCase):
         self.assertAlmostEqual(0.98, bety[4][2],2)
         self.assertAlmostEqual(0.67, bety[2][1],2)
 
+    
     # @unittest.skip # zaokraglenia i bug (?) z poczatkiem i koncem metryk
     def testPrawodopodobienstw(self):
         odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
@@ -108,6 +109,14 @@ class TestMap(unittest.TestCase):
         odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
         res = self.m.dekoduj(odebrane)
         self.assertEqual([1,1,0,1,0,0], self.m.proguj(res))
+
+    def testE2E_zApriori(self):
+        odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
+        apriori = [1, 1, 1, 1, 1, 1]
+        res = self.m.dekoduj(odebrane, apriori)
+        self.assertEqual([1,1,0,1,0,0], self.m.proguj(res))
+# [1.7757192839926113, 0.23798799301509832, -1.9669801211812925, 5.519476088431515, -10, -10]
+
 
 if __name__ == '__main__':
     unittest.main()
