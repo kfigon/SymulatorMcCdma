@@ -1,4 +1,6 @@
 import math
+from rejestrPrzesuwny import RejestrPrzesuwny
+from maszynaStanow import MaszynaStanow
 
 def mapujBit(val):
     return -1 if val == 0 else 1
@@ -73,15 +75,19 @@ class MapAlgorithm:
             p0 = self.liczPrawdopodobienstwa(o, i, alfy, bety, gammy, [0])
             p1 = self.liczPrawdopodobienstwa(o, i, alfy, bety, gammy, [1])
             prawdopodobienstwa.append([p0,p1])
-
-        # normowanie
-        for i,p in enumerate(prawdopodobienstwa):
-            suma = sum(p)
-            for j,px in enumerate(p):
-                prawdopodobienstwa[i][j] = px/suma
         
-        prawdopodobienstwa = list(map(mapujP, prawdopodobienstwa))
-        return prawdopodobienstwa
+        # print(prawdopodobienstwa)
+        # normowanie
+        sumy = list(map(lambda ps: sum(ps), prawdopodobienstwa))
+        
+        i=0
+        for ps, s in zip(prawdopodobienstwa, sumy):
+            prawdopodobienstwa[i][0] = ps[0]/s
+            prawdopodobienstwa[i][1] = ps[1]/s
+            i+=1
+
+        out = list(map(mapujP, prawdopodobienstwa))
+        return out
 
     @staticmethod
     def proguj(prawdopodobienstwa):
@@ -170,3 +176,21 @@ class MapAlgorithm:
                 gammy[i][gs][gk] = g
                 # print("g[{}][{}][{}] = {}".format(str(i),str(gs),str(gk), str(g))) 
         # print()
+
+
+#todo remove imports
+#odczepy = [[0,1,2],[0,2]]
+#rej = RejestrPrzesuwny(3, odczepy)
+#maszyna = MaszynaStanow(rej, 1)
+#m = MapAlgorithm(maszyna)
+
+#odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
+#apriori = [1, 1, 1, 1, 1, 1]
+
+#res1 = m.dekoduj(odebrane)
+#res2 = m.dekoduj(odebrane, apriori)
+
+# print()
+# print(res1)
+# print()
+# print(res2)

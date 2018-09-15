@@ -112,10 +112,10 @@ class TestMap(unittest.TestCase):
 
     def testE2E_zApriori(self):
         odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
-        apriori = [1, 1, 1, 1, 1, 1]
+        apriori = [-12, -1, -1, -12, 1, 1]
         res = self.m.dekoduj(odebrane, apriori)
-        self.assertEqual([1,1,0,1,0,0], self.m.proguj(res))
-# [1.7757192839926113, 0.23798799301509832, -1.9669801211812925, 5.519476088431515, -10, -10]
+        self.assertNotEqual([1,1,0,1,0,0], self.m.proguj(res))
+# [1.7757192839926113, 0.23798799301509832, -1.9669801211812925, 5.519476088431515, -10, -10]        
 
 
 if __name__ == '__main__':

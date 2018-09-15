@@ -2,6 +2,7 @@ import unittest
 from koderTurbo import KoderTurbo
 from przeplot import Przeplatacz
 from rejestrPrzesuwny import RejestrPrzesuwny
+import random
 
 class TestKoderaTurbo(unittest.TestCase):
     def setUp(self):
@@ -38,7 +39,7 @@ class TestKoderaTurbo(unittest.TestCase):
         tab3=[1,2,3]
         self.assertRaises(Exception, KoderTurbo.combine, tab1, tab2, tab3)
 
-    def testDecombin(self):
+    def testDecombine(self):
         tab = [1,4,7,2,5,8,3,6,9]
 
         [a,b,c] = KoderTurbo.decombine(tab)
@@ -91,6 +92,20 @@ class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
         zdekodowane = self.k.dekoduj(bipolar, ileItracji=20)
 
         self.assertEqual(indata, zdekodowane)
+
+    def testStres(self):
+        indata = [random.randint(0,1) for _ in range(100)]
+
+        zakodowane = self.k.koduj(indata)
+        zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
+        bipolar = list(map(lambda x: 1 if x==1 else -1, zakodowane))
+        zdekodowane = self.k.dekoduj(bipolar, ileItracji=20)
+
+        ileBledow=0
+        for i,z in zip(indata, zdekodowane):
+            if i != z:
+                ileBledow+=1
+        self.assertLess(ileBledow, 5)
 
 if __name__ =='__main__':
     unittest.main()

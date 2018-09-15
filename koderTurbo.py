@@ -105,3 +105,4 @@ class KoderTurbo:
         przeplecioneSprogowane = list(map(lambda p: 1 if p >=0 else 0, wynikDekodera2))
         # return przeplecioneSprogowane
         return self.__przeplatacz.rozplot(przeplecioneSprogowane)
+
