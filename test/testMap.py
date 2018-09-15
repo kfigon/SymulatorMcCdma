@@ -9,11 +9,19 @@ class TestMatematykiMap(unittest.TestCase):
         odebrane=[0.3, 0.1]
         Lc = 5
         Luk = 0
-        uk = 123 # any, since Luk=0
         zakodowane = [-1,-1]
-        g = gamma(odebrane, zakodowane, uk, Luk, Lc)
+        g = gamma(odebrane, zakodowane, Luk, Lc)
 
         self.assertAlmostEqual(0.3678, g, 3)
+
+    def testGammaZApriori(self):
+        odebrane=[0.3, 0.1]
+        zakodowane = [-1, 1]
+        Luk = -0.13
+        Lc= 5
+        result = gamma(odebrane, zakodowane, Luk, Lc)
+        
+        self.assertAlmostEqual(0.647, result, 3)
 
     def testAlfa(self):
         a=[1,2,3,4]

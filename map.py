@@ -3,9 +3,10 @@ import math
 def mapujBit(val):
     return -1 if val == 0 else 1
 
-def gamma(odebrane, zakodowane, uk, Luk, Lc):
+def gamma(odebrane, zakodowane, Luk, Lc):
     iloczyny = [x*y for x,y in zip(odebrane, zakodowane)]
     suma = sum(iloczyny)
+    uk = 1 if Luk >=0 else -1
     return math.exp(uk * Luk/2)*math.exp(Lc*suma/2)
 
 def alfa(a, g):
@@ -49,8 +50,7 @@ class MapAlgorithm:
         # print()
         i=0
         for o,luk in zip(odebrane, lu):
-            uk = 1 if luk >=0 else -1
-            self.__liczGammaDlaSymbolu(gammy, i,o, uk, luk)
+            self.__liczGammaDlaSymbolu(gammy, i,o, luk)
             self.__liczAlfaDlaSymbolu(alfy, gammy, i, o)
             i+=1
         # print()
@@ -155,7 +155,7 @@ class MapAlgorithm:
             # print("a[{}][{}] = {}".format(str(i+1),str(j),str(alfy[i+1][j])))
         # print()
 
-    def __liczGammaDlaSymbolu(self, gammy, i,o, uk, luk):
+    def __liczGammaDlaSymbolu(self, gammy, i,o, luk):
         stany = self.__maszyna.getListaStanow()
         for s in stany:
             przejscia = self.__maszyna.getMozliwePrzejscia(s)
@@ -166,7 +166,6 @@ class MapAlgorithm:
 
                 g = gamma(odebrane=o,
                     zakodowane = codedBits,
-                    uk = uk,
                     Luk = luk,
                     Lc = self.__lc)
 
