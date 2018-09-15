@@ -58,7 +58,7 @@ class TestMap(unittest.TestCase):
         self.assertAlmostEqual(0.98, bety[4][2],2)
         self.assertAlmostEqual(0.67, bety[2][1],2)
 
-    @unittest.skip # zaokraglenia i bug (?) z poczatkiem i koncem metryk
+    # @unittest.skip # zaokraglenia i bug (?) z poczatkiem i koncem metryk
     def testPrawodopodobienstw(self):
         odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
         (alfy, bety, gammy) = self.m.liczMetryki(odebrane)
@@ -76,8 +76,18 @@ class TestMap(unittest.TestCase):
         out.append(self.m.liczPrawdopodobienstwa(odebrane[3], 3, alfy, bety, gammy, [0]))
         out.append(self.m.liczPrawdopodobienstwa(odebrane[3], 3, alfy, bety, gammy, [1]))
         
-        exp = [0.203, 1.214, 0.139, 0.177, 0.493, 0.068, 0.0, 0.306]
-        self.assertEqual(exp, out)
+        # exp = [0.203, 1.214, 0.139, 0.177, 0.493, 0.068, 0.0, 0.306]
+        exp = [0.02878,
+                0.1699,
+                0.1400,
+                0.1776,
+                0.4946,
+                0.0691,
+                0.0012,
+                0.3074]
+        self.assertEqual(len(exp), len(out))
+        for e, o in zip(exp, out):
+            self.assertAlmostEqual(e, o, 2)
 
     def testE2E(self):
         odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
