@@ -170,29 +170,3 @@ class MapAlgorithm:
                 gammy[i][gs][gk] = g
                 # print("g[{}][{}][{}] = {}".format(str(i),str(gs),str(gk), str(g))) 
         # print()
-
-# todo: remove imports
-odczepy = [[0,1,2],[0,2]]
-rej = RejestrPrzesuwny(3, odczepy)
-maszyna = MaszynaStanow(rej, 1)
-m = MapAlgorithm(maszyna)
-
-odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
-apriori = [1, 3, 4, 5, -1, 0]
-# alfy sa zle!!!
-
-# (a1,b1,g1) = m.liczMetryki(odebrane)
-# print()
-# (a2,b2,g2) = m.liczMetryki(odebrane, apriori)
-
-# print("===============")
-# print(a1)
-# print(a2)
-
-p1 = m.dekoduj(odebrane)
-p2 = m.dekoduj(odebrane,apriori)
-
-print("---------------")
-print(p1)
-print()
-print(p2)
