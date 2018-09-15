@@ -16,6 +16,13 @@ def alfa(a, g):
 def normujAlfa(alfa, wszystkieAlfa):
     return alfa/sum(wszystkieAlfa)
 
+def mapujP(p):
+    if p[1] == 0:
+        return -10
+    elif p[0] == 0:
+        return 10
+    else:
+        return math.log(p[1]/p[0])
 
 class MapAlgorithm:
     def __init__(self, maszyna, Lc=5):
@@ -73,26 +80,15 @@ class MapAlgorithm:
             for j,px in enumerate(p):
                 prawdopodobienstwa[i][j] = px/suma
         
+        prawdopodobienstwa = list(map(mapujP, prawdopodobienstwa))
         return prawdopodobienstwa
 
     @staticmethod
     def proguj(prawdopodobienstwa):
         out = []
         for p in prawdopodobienstwa:
-            p0 = p[0]
-            p1= p[1]
-            
-            l = 0
-            if p1 == 0:
-                out.append(0)
-                continue
-            elif p0 == 0:
-                l = p1
-            else:
-                l = math.log(p1/p0)
-
-            out.append(1 if l >=0 else 0)
-
+            out.append(1 if p >=0 else 0)
+        
         return out        
 
     def liczPrawdopodobienstwa(self, o, i, alfy, bety,gammy, spodziewanyNadanyBit):

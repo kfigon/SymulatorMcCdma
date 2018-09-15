@@ -5,14 +5,6 @@ from utils import flat
 from map import MapAlgorithm
 import math
 
-def mapujP(p):
-    if p[1] == 0:
-        return -10
-    elif p[0] == 0:
-        return 10
-    else:
-        return math.log(p[1]/p[0])
-
 class KoderTurbo:
     def __init__(self, rejestr1, rejestr2, przeplatacz = Przeplatacz()):
         if rejestr1.getIleBitowWyjsciowych() != 2 or rejestr2.getIleBitowWyjsciowych() != 2:
@@ -75,8 +67,13 @@ class KoderTurbo:
     def __liczExtrinsic(self, prawdopodobienstwa, lc, lu, systematyczne):
         extrinsic = []
         for p,luk,sys in zip(prawdopodobienstwa, lu, systematyczne):            
-            extrinsic.append(mapujP(p)-luk-lc*sys)
+            extrinsic.append(p-luk-lc*sys)
         return extrinsic 
+
+    def piszFloat(self, tab):
+        for o in tab:
+            print("{0:.2f}".format(o), end=', ')
+        print()
 
     def dekoduj(self, dane, ileItracji = 5, lc=5):
         map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
@@ -90,20 +87,18 @@ class KoderTurbo:
         lu = [0 for _ in range(len(dane)//3)]
         wynikDekodera2 = None
         for _ in range(ileItracji):
-            # odebrane powinno byc bipolarne w liczeniu gamma
             prawdopodobienstwa1 = map1.dekoduj(podzielone1, lu)
             extr1 = self.__liczExtrinsic(prawdopodobienstwa1, lc, lu, systematyczne)
-            intr1 = self.__przeplatacz.przeplot(extr1)
+            przeplecioneExtr1 = self.__przeplatacz.przeplot(extr1)
             
-            prawdopodobienstwa2 = map2.dekoduj(podzielone2, intr1)
+            prawdopodobienstwa2 = map2.dekoduj(podzielone2, przeplecioneExtr1)
             wynikDekodera2 = prawdopodobienstwa2
-            extr2 = self.__liczExtrinsic(prawdopodobienstwa2, lc, intr1, przeplecioneSystematyczne)
-            lu = self.__przeplatacz.rozplot(extr2)
-            out = []
-            for x in wynikDekodera2:
-                out.append(mapujP(x))
-            print(self.__przeplatacz.rozplot(out))
+            extr2 = self.__liczExtrinsic(prawdopodobienstwa2, lc, przeplecioneExtr1, przeplecioneSystematyczne)
 
-        # todo: nie zmienia sie z iteracji na iteracje!!!
-        przeplecioneSprogowane = MapAlgorithm.proguj(wynikDekodera2)
+            lu = self.__przeplatacz.rozplot(extr2)
+            
+            out = self.__przeplatacz.rozplot(wynikDekodera2)
+            self.piszFloat(out)
+
+        przeplecioneSprogowane = list(map(lambda p: 1 if p >=0 else 0, wynikDekodera2))
         return self.__przeplatacz.rozplot(przeplecioneSprogowane)

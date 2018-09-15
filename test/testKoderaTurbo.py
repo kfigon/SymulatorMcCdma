@@ -1,5 +1,5 @@
 import unittest
-from koderTurbo import KoderTurbo, mapujP
+from koderTurbo import KoderTurbo
 from przeplot import Przeplatacz
 from rejestrPrzesuwny import RejestrPrzesuwny
 
@@ -46,7 +46,6 @@ class TestKoderaTurbo(unittest.TestCase):
         self.assertEqual([4,5,6],b)
         self.assertEqual([7,8,9],c)
 
-
     def testEndToEndSame0(self):
         # dane musza byc terminowane!
         indata = [0 for _ in range(20)]
@@ -72,21 +71,6 @@ class TestKoderaTurbo(unittest.TestCase):
         indata = [1,0,1,1,0,0,1,0,0,0,0,0]
         self.end2end(indata)
 
-    def testMapowaniaPrawodpodobienstwa(self):
-        data = [
-            # p0, p1, exp
-            (1,2,0.693),
-            (2,3,0.405),
-            (0, 123, 10),
-            (123, 0, -10)
-            ]
-        for d in data:
-            nazwa = "ln{}/{} = {}".format(str(d[0]),str(d[1]),str(d[2]))
-            with self.subTest(name=nazwa):
-                p = [d[0], d[1]]
-                result = mapujP(p)
-                self.assertAlmostEqual(d[2], result, 2)
-
 class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
     def setUp(self):
         r1 = RejestrPrzesuwny(3, [[1,2], [0,2]])
@@ -97,7 +81,7 @@ class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
 
     def testEndToEnd(self):
         # dane musza byc terminowane!
-        indata = [1,1,0,1,1,1,0,0,0,0,0]
+        indata = [1,1,0,1,1,1,0,0,0,0,0,0]
         self.end2end(indata)
         
     def end2end(self, indata):

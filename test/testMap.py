@@ -1,5 +1,5 @@
 import unittest
-from map import MapAlgorithm, gamma, alfa, normujAlfa
+from map import MapAlgorithm, gamma, alfa, normujAlfa, mapujP
 from maszynaStanow import MaszynaStanow
 from rejestrPrzesuwny import RejestrPrzesuwny
 
@@ -33,6 +33,21 @@ class TestMatematykiMap(unittest.TestCase):
         a=50
         alfy=[1,2,3,4]
         self.assertEqual(5.0, normujAlfa(a, alfy))
+
+    def testMapowaniaPrawodpodobienstwa(self):
+        data = [
+            # p0, p1, exp
+            (1,2,0.693),
+            (2,3,0.405),
+            (0, 123, 10),
+            (123, 0, -10)
+            ]
+        for d in data:
+            nazwa = "ln{}/{} = {}".format(str(d[0]),str(d[1]),str(d[2]))
+            with self.subTest(name=nazwa):
+                p = [d[0], d[1]]
+                result = mapujP(p)
+                self.assertAlmostEqual(d[2], result, 2)
 
 class TestMap(unittest.TestCase):
     def setUp(self):
