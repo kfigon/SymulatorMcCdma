@@ -115,8 +115,33 @@ class TestMap(unittest.TestCase):
         apriori = [-12, -1, -1, -12, 1, 1]
         res = self.m.dekoduj(odebrane, apriori)
         self.assertNotEqual([1,1,0,1,0,0], self.m.proguj(res))
-# [1.7757192839926113, 0.23798799301509832, -1.9669801211812925, 5.519476088431515, -10, -10]        
 
+class TestMap2(unittest.TestCase):
+    def setUp(self):
+        odczepy = [[0,1,2],[0,2]]
+        rej = RejestrPrzesuwny(3, odczepy)
+        maszyna = MaszynaStanow(rej, 1)
+        self.m = MapAlgorithm(maszyna, 1)
 
+    def sprawdzTablice(self, exp, actual):
+        self.assertEqual(len(exp), len(actual))
+        for e, o in zip(exp, actual):
+            self.assertAlmostEqual(e, o, 2)
+
+    def testDekodera_pierwszaIteracja(self):
+        odebrane = [[0.3, -4],[-1.9, 0],[-2.4, -1.3],[1.2, 0],[0.7, -2],[-1.0, 0], [-0.2, -1.4],[-0.3, 0],[-1.1, 0.3]]
+        res = self.m.dekoduj(odebrane)
+        # exp=[-4.74, -3.08, -3.66, 1.59, 1.45, -0.74, 0.04, 0.04, -1.63]
+        exp=[-4.74, -3.08, -3.66, 1.59, 1.45, -0.74, 0.04, 0.04, -1.63]
+        self.assertEqual(exp, res)
+        self.sprawdzTablice(exp, res)
+
+    def testDekodera_drugaIteracja(self):
+        odebrane=[[0.3, 0], [1.2, -2], [-0.2, 0], [-1.9, -1.1], [0.7,0],[-1.1, -2.1],[-2.4, 0],[-1, -0.1],[-0.3,0]]
+        apriori = [-5.04, 0.39, 0.24, -1.3, 0.75, -0.53, -1.26, 0.26, 0.34]
+        exp = [-3.9, 0.25, 0.18, -3.04, 1.23, -1.44, -3.65, -0.72, 0.04]
+        res = self.m.dekoduj(odebrane, apriori)
+        self.assertEqual(exp, res)
+                
 if __name__ == '__main__':
     unittest.main()
