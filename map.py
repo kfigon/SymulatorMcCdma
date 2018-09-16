@@ -71,9 +71,9 @@ class MapAlgorithm:
     def dekoduj(self, odebrane, lu=[]):
         (alfy, bety, gammy) = self.liczMetryki(odebrane, lu)
         prawdopodobienstwa = []
-        for i,o in enumerate(odebrane):
-            p0 = self.liczPrawdopodobienstwa(o, i, alfy, bety, gammy, [0])
-            p1 = self.liczPrawdopodobienstwa(o, i, alfy, bety, gammy, [1])
+        for i in range(len(odebrane)):
+            p0 = self.liczPrawdopodobienstwa(i, alfy, bety, gammy, [0])
+            p1 = self.liczPrawdopodobienstwa(i, alfy, bety, gammy, [1])
             prawdopodobienstwa.append([p0,p1])
         
         # print(prawdopodobienstwa)
@@ -97,7 +97,7 @@ class MapAlgorithm:
         
         return out        
 
-    def liczPrawdopodobienstwa(self, o, i, alfy, bety,gammy, spodziewanyNadanyBit):
+    def liczPrawdopodobienstwa(self, i, alfy, bety,gammy, spodziewanyNadanyBit):
         stany = self.__maszyna.getListaStanow()
         prawdopodobienstwa = 0.0
         for s in stany:

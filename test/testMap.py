@@ -80,17 +80,17 @@ class TestMap(unittest.TestCase):
         (alfy, bety, gammy) = self.m.liczMetryki(odebrane)
 
         out = []
-        out.append(self.m.liczPrawdopodobienstwa(odebrane[0], 0, alfy, bety, gammy, [0]))
-        out.append(self.m.liczPrawdopodobienstwa(odebrane[0], 0, alfy, bety, gammy, [1]))
+        out.append(self.m.liczPrawdopodobienstwa( 0, alfy, bety, gammy, [0]))
+        out.append(self.m.liczPrawdopodobienstwa(0, alfy, bety, gammy, [1]))
 
-        out.append(self.m.liczPrawdopodobienstwa(odebrane[1], 1, alfy, bety, gammy, [0]))
-        out.append(self.m.liczPrawdopodobienstwa(odebrane[1], 1, alfy, bety, gammy, [1]))
+        out.append(self.m.liczPrawdopodobienstwa(1, alfy, bety, gammy, [0]))
+        out.append(self.m.liczPrawdopodobienstwa(1, alfy, bety, gammy, [1]))
         
-        out.append(self.m.liczPrawdopodobienstwa(odebrane[2], 2, alfy, bety, gammy, [0]))
-        out.append(self.m.liczPrawdopodobienstwa(odebrane[2], 2, alfy, bety, gammy, [1]))
+        out.append(self.m.liczPrawdopodobienstwa(2, alfy, bety, gammy, [0]))
+        out.append(self.m.liczPrawdopodobienstwa(2, alfy, bety, gammy, [1]))
         
-        out.append(self.m.liczPrawdopodobienstwa(odebrane[3], 3, alfy, bety, gammy, [0]))
-        out.append(self.m.liczPrawdopodobienstwa(odebrane[3], 3, alfy, bety, gammy, [1]))
+        out.append(self.m.liczPrawdopodobienstwa(3, alfy, bety, gammy, [0]))
+        out.append(self.m.liczPrawdopodobienstwa(3, alfy, bety, gammy, [1]))
         
         # exp = [0.203, 1.214, 0.139, 0.177, 0.493, 0.068, 0.0, 0.306]
         exp = [0.02878,#!
@@ -142,6 +142,6 @@ class TestMap2(unittest.TestCase):
         exp = [-3.9, 0.25, 0.18, -3.04, 1.23, -1.44, -3.65, -0.72, 0.04]
         res = self.m.dekoduj(odebrane, apriori)
         self.assertEqual(exp, res)
-                
+
 if __name__ == '__main__':
     unittest.main()
