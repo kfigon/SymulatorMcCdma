@@ -9,7 +9,8 @@ def gamma(odebrane, zakodowane, Luk, Lc):
     iloczyny = [x*y for x,y in zip(odebrane, zakodowane)]
     suma = sum(iloczyny)
     uk = 1 if Luk >=0 else -1
-    return math.exp(uk * Luk/2)*math.exp(Lc*suma/2)
+    asd = (Luk+Lc*odebrane[0])*uk/2
+    return math.exp(asd)*math.exp(Lc*suma/2)
 
 def alfa(a, g):
     '''poprzednie alfa i korespondujace z nim gamma'''

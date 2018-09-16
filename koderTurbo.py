@@ -87,22 +87,24 @@ class KoderTurbo:
         lu = [0 for _ in range(len(dane)//3)]
         wynikDekodera2 = None
         for _ in range(ileItracji):
-            prawdopodobienstwa1 = map1.dekoduj(podzielone1, lu)
-            extr1 = self.__liczExtrinsic(prawdopodobienstwa1, lc, lu, systematyczne)
+            extr1 = map1.dekoduj(podzielone1, lu)
+            # extr1 = self.__liczExtrinsic(prawdopodobienstwa1, lc, lu, systematyczne)
             przeplecioneExtr1 = self.__przeplatacz.przeplot(extr1)
             
-            prawdopodobienstwa2 = map2.dekoduj(podzielone2, przeplecioneExtr1)
-            wynikDekodera2 = prawdopodobienstwa2
-            
-            # self.piszFloat(wynikDekodera2)
-            extr2 = self.__liczExtrinsic(prawdopodobienstwa2, lc, przeplecioneExtr1, przeplecioneSystematyczne)
-
+            extr2 = map2.dekoduj(podzielone2, przeplecioneExtr1)
+            wynikDekodera2 = extr2
             lu = self.__przeplatacz.rozplot(extr2)
             
             # out = self.__przeplatacz.rozplot(wynikDekodera2)
             # self.piszFloat(out)
 
+        # 1) rozplot i licz Luk | y
+        i=0
+        for sys in systematyczne:
+           wynikDekodera2[i] += lc*sys
+           i+=1 
+        # 2) licz Luk | y i rozplot
         przeplecioneSprogowane = list(map(lambda p: 1 if p >=0 else 0, wynikDekodera2))
-        # return przeplecioneSprogowane
-        return self.__przeplatacz.rozplot(przeplecioneSprogowane)
+        return przeplecioneSprogowane
+        # return self.__przeplatacz.rozplot(przeplecioneSprogowane)
 
