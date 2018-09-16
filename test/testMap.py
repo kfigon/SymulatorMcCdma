@@ -93,8 +93,8 @@ class TestMap(unittest.TestCase):
         out.append(self.m.liczPrawdopodobienstwa(odebrane[3], 3, alfy, bety, gammy, [1]))
         
         # exp = [0.203, 1.214, 0.139, 0.177, 0.493, 0.068, 0.0, 0.306]
-        exp = [0.02878,
-                0.1699,
+        exp = [0.02878,#!
+                0.1699,#!
                 0.1400,
                 0.1776,
                 0.4946,

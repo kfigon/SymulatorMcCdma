@@ -103,14 +103,16 @@ class MapAlgorithm:
         for s in stany:
             przejscia = self.__maszyna.getMozliwePrzejscia(s)
             for p in przejscia:
+                bitNadany = p['in']
+                if bitNadany != spodziewanyNadanyBit:
+                    continue
+
                 stanPocz = p['inState']
                 stanKoncowy = p['outState']
                 sk = int(stanKoncowy, 2)
                 sp = int(stanPocz, 2)
-                bitNadany = p['in']
-
-                if bitNadany == spodziewanyNadanyBit:
-                    prawdopodobienstwa += alfy[i][sp]*gammy[i][sp][sk]*bety[i+1][sk]
+                
+                prawdopodobienstwa += alfy[i][sp]*gammy[i][sp][sk]*bety[i+1][sk]
         return prawdopodobienstwa
 
     def __liczBetaDlaSymbolu(self, bety, gammy, i, o):
@@ -178,19 +180,21 @@ class MapAlgorithm:
         # print()
 
 
-#todo remove imports
-#odczepy = [[0,1,2],[0,2]]
-#rej = RejestrPrzesuwny(3, odczepy)
-#maszyna = MaszynaStanow(rej, 1)
-#m = MapAlgorithm(maszyna)
+def main():
+    #todo remove imports
+    odczepy = [[0,1,2],[0,2]]
+    rej = RejestrPrzesuwny(3, odczepy)
+    maszyna = MaszynaStanow(rej, 1)
+    m = MapAlgorithm(maszyna)
 
-#odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
-#apriori = [1, 1, 1, 1, 1, 1]
+    odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
+    apriori = [-12, -5, -1, 1, 1, 1]
 
-#res1 = m.dekoduj(odebrane)
-#res2 = m.dekoduj(odebrane, apriori)
+    res1 = m.dekoduj(odebrane)
+    res2 = m.dekoduj(odebrane, apriori)
 
-# print()
-# print(res1)
-# print()
-# print(res2)
+    print()
+    print(res1)
+    print(res2)
+
+# main()
