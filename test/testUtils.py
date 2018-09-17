@@ -77,12 +77,12 @@ class TestyUtilsow(unittest.TestCase):
         self.assertEqual([1,2,3,4,5,6,7,8,9], flatted)
 
     def testGenerujSzum(self):
-        res = list(generujSzum(ile=500))
+        res = generujSzum(ile=500)
         self.assertEqual(500, len(res))
 
         for i in res:
-            self.assertLessEqual(i, 1)
-            self.assertGreaterEqual(i, -1)
+            self.assertLessEqual(i, 3)
+            self.assertGreaterEqual(i, -3)
 
 if __name__ == '__main__':
     unittest.main()

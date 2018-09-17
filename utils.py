@@ -1,5 +1,6 @@
 from random import randint, randrange
 import math
+import numpy as np
 
 # tablice
 def odlegloscHamminga(daneA, daneB):
@@ -73,7 +74,5 @@ def bipolar(binarne):
 def flat(tab):
     return [item for sublist in tab for item in sublist]
 
-def generujSzum(ile):
-    '''generuje <ile> probek z zakresu <-1; 1>, z krokiem 0.01'''
-    for _ in range(ile):
-        yield randrange(-100,100,1)*0.01
+def generujSzum(ile, a=0,b=1):
+    return np.random.normal(a,b,ile)
