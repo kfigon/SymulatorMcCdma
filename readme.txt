@@ -11,3 +11,9 @@ https://ihelptostudy.com/ofdm-matlab-code-thesis-writing.html
 
 # swiety graal
 http://complextoreal.com/tutorials/#.W4F51Oj7SUk
+
+
+
+
+odbiornik ofdm
+nadajnik/odbiornik mc-cdma - Lie-Yang multicarrier communications 123
