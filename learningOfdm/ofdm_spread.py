@@ -25,6 +25,7 @@ def addPadding(tab):
     # tab = [0] + tab
     tab[0]=0
     dl = len(tab)*dopasowanieNyquista
+    dl-=len(tab) # 5 bitow, padding 50, wychodzi 55. A ja chce 50 na wyjsciu
     for _ in range(dl):
         tab.append(0)
 
@@ -37,18 +38,13 @@ bity = [generujDaneBinarne(dlugoscStrumienia),
         generujDaneBinarne(dlugoscStrumienia),]
 
 out=[]
-zmodulowane = []
 rozproszony = []
 for strumien in bity:
     zmodulowany = moduluj(strumien)
-    zmodulowane.append(zmodulowany)
     bipolar = lambda x: 1 if x>=0.5 else -1
     for x in zmodulowany:
         out.append(x)
         rozproszony.append(x*bipolar(random.random()))
-
-print(len(bity[0]))
-print(len(out))
 
 # plt.subplot(2,1,1)
 # plt.plot(np.real(out))
@@ -60,3 +56,32 @@ print(len(out))
 
 
 # odbiornik
+podzielone = []
+ileProbekNaStrumien = len(out)//len(bity)
+ileStrumieni = len(out)//ileProbekNaStrumien
+for i in range(ileStrumieni):
+    podzielone.append(out[i*ileProbekNaStrumien:(i+1)*ileProbekNaStrumien])
+
+def demod(val):
+    if (val < 0.000001 and val >= 0) or (val > -0.00001 and val <= 0):
+        return 0
+    if val > 0:
+        return 1
+    else:
+        return -1
+
+zdemodulowane=[]
+for strumien in podzielone:
+    probkiCzestotliwosci = fft.fft(strumien)
+    zdemodulowaneBity=[]
+    for p in probkiCzestotliwosci:
+        bi=demod(p.real)
+        bq = demod(p.imag)
+        toAdd = 0
+        if bi != 0 and bq != 0:
+            toAdd = complex(bi, bq)
+        zdemodulowaneBity.append(toAdd)
+    zdemodulowane.append(zdemodulowaneBity)
+
+assert zdemodulowane[0] == bity[0]
+print("YEAH!")
