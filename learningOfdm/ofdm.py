@@ -22,6 +22,10 @@ podzielone = utils.podziel(bipolarne, ileNaRaz = 4)
 
 kanaly = []
 for p in podzielone:
+    # todo: to jest jeden duzy symbol
+    # nosne powinny byc bardziej rozstrzelone!
+    # dlatego dostaje tylko jeden prazek!
+
     # add zero frequency (DC) as 0 - non existing
     p = [0] + p
     # padding to fulfill nyquist theorem

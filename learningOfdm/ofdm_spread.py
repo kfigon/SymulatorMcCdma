@@ -4,6 +4,7 @@ import numpy as np
 
 probkiCzestotliwosci = [0 for _ in range(100)]
 
+
 # probkiCzestotliwosci[0] = 1 skladowa stala
 # wartosc x -> amplituda = x/dlugosc
 probkiCzestotliwosci[2] = 1 # im wieksza liczba, tym gestszy sinus
