@@ -29,7 +29,8 @@ def addPadding(tab):
         tab.append(0)
 
 dlugoscStrumienia = 10
-
+# bawiac sie algorytmem mozna ustawic dl strumienia na 2 i duzo strumieni
+# i bedzie zwykle QPSK
 bity = [generujDaneBinarne(dlugoscStrumienia),
         generujDaneBinarne(dlugoscStrumienia),
         generujDaneBinarne(dlugoscStrumienia),
