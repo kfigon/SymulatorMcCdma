@@ -1,48 +1,43 @@
 import scipy.fftpack as fft
 import matplotlib.pyplot as plt
 import numpy as np
-import math
+import random
 
-import os,sys,inspect
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-sys.path.insert(0,parentdir) 
+def generujDaneBinarne(ile):
+    out = []
+    for _ in range(ile):
+        bit = 1 if random.random() >=0.5 else -1
+        out.append(bit) 
+    return out
 
-import utils
+def moduluj(bity):
+    addPadding(bity)
+    return fft.ifft(bity)
 
-# dane = [1,0,1,1, 0,1,0,1, 0,1,1,1, 1,0,0,1, 0,1,1,1, 1,1,1,1, 0,1,1,0, 1,0,0,1]
-dane = utils.generujDaneBinarne(1024)
-bipolar = lambda x: 1 if x==0 else -1
+def addPadding(tab):
+    # to jest w celu dostosowania bitow do nyquista i IFFT w OFDM
+    # tab = [0] + tab
+    dl = len(tab)*30
 
-# BPSK:
-bipolarne = [bipolar(d) for d in dane]
+    for _ in range(dl):
+        tab.append(0)
 
-# 4 nosne, s/p
-podzielone = utils.podziel(bipolarne, ileNaRaz = 4)
+dlugoscStrumienia = 20
 
-kanaly = []
-for p in podzielone:
-    # todo: to jest jeden duzy symbol
-    # nosne powinny byc bardziej rozstrzelone!
-    # dlatego dostaje tylko jeden prazek!
+bity = [generujDaneBinarne(dlugoscStrumienia),
+        generujDaneBinarne(dlugoscStrumienia),
+        generujDaneBinarne(dlugoscStrumienia),
+        generujDaneBinarne(dlugoscStrumienia),]
 
-    # add zero frequency (DC) as 0 - non existing
-    p = [0] + p
-    # padding to fulfill nyquist theorem
-    while len(p) < 500:
-        p.append(0)
-    kanal = fft.ifft(p)
-    kanaly.append(kanal)
+out=[]
+for strumien in bity:
+    zmodulowany = moduluj(strumien)
+    for x in zmodulowany:
+        out.append(x)
 
-# p/s - sum stuff
-suma = [complex(0,0) for i in range(500)]
-for kanal in kanaly:
-    for i in range(len(kanal)):
-        suma[i] += kanal[i]
+plt.subplot(2,1,1)
+plt.plot(np.real(out))
 
-# todo: chyba dobrze?
-plt.plot(suma)
-plt.show()
-
-plt.plot(np.abs(fft.fft(suma)))
+plt.subplot(2,1,2)
+plt.plot(np.abs(np.fft.fft(out[:len(out)//2])))
 plt.show()
