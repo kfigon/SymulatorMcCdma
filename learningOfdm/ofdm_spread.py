@@ -4,10 +4,11 @@ import numpy as np
 import random
 
 # ofdm + qpsk
+dopasowanieNyquista = 10 # parametr do wygladzenia przebiegu - dodania padingu x razy
 
 def generujDaneBinarne(ile):
     out = []
-    ile//2
+    ile=ile//2
     bipolar = lambda x: 1 if x>=0.5 else -1
     for _ in range(ile):
         bitI = bipolar(random.random())
@@ -23,8 +24,7 @@ def addPadding(tab):
     # to jest w celu dostosowania bitow do nyquista i IFFT w OFDM
     # tab = [0] + tab
     tab[0]=0
-    dl = len(tab)*10
-
+    dl = len(tab)*dopasowanieNyquista
     for _ in range(dl):
         tab.append(0)
 
@@ -47,10 +47,16 @@ for strumien in bity:
         out.append(x)
         rozproszony.append(x*bipolar(random.random()))
 
-plt.subplot(2,1,1)
-plt.plot(np.real(out))
+print(len(bity[0]))
+print(len(out))
 
-plt.subplot(2,1,2)
-plt.plot(np.abs(np.fft.fft(out[:len(out)//2])))
-plt.plot(np.abs(np.fft.fft(rozproszony[:len(rozproszony)//2])))
-plt.show()
+# plt.subplot(2,1,1)
+# plt.plot(np.real(out))
+
+# plt.subplot(2,1,2)
+# plt.plot(np.abs(np.fft.fft(out[:len(out)//2])))
+# plt.plot(np.abs(np.fft.fft(rozproszony[:len(rozproszony)//2])))
+# plt.show()
+
+
+# odbiornik
