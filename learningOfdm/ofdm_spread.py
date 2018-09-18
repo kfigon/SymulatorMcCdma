@@ -83,5 +83,6 @@ for strumien in podzielone:
         zdemodulowaneBity.append(toAdd)
     zdemodulowane.append(zdemodulowaneBity)
 
-assert zdemodulowane[0] == bity[0]
+for i in range(len(bity)):
+    assert zdemodulowane[i] == bity[i]
 print("YEAH!")
