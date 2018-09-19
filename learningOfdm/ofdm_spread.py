@@ -9,14 +9,18 @@ dopasowanieNyquista = 10 # parametr do wygladzenia przebiegu - dodania padingu x
 def generujDaneBinarne(ile):
     out = []
     ile=ile//2
-    bipolar = lambda x: 1 if x>=0.5 else -1
+    binar = lambda x: 1 if x>=0.5 else 0
     for _ in range(ile):
-        bitI = bipolar(random.random())
-        bitQ = bipolar(random.random())
+        bitI = binar(random.random())
+        bitQ = binar(random.random())
         out.append(complex(bitI, bitQ)) 
     return out
 
 def moduluj(bity):
+    bipolar = lambda x: -1 if x >= 0 else 1
+    for i,b in enumerate(bity):
+        bity[i] = complex(bipolar(b.real), bipolar(b.imag))
+
     addPadding(bity)
     return fft.ifft(bity)
 
@@ -75,7 +79,7 @@ for strumien in podzielone:
     probkiCzestotliwosci = fft.fft(strumien)
     zdemodulowaneBity=[]
     for p in probkiCzestotliwosci:
-        bi=demod(p.real)
+        bi = demod(p.real)
         bq = demod(p.imag)
         toAdd = 0
         if bi != 0 and bq != 0:
