@@ -10,7 +10,7 @@ def budujDomyslnyKoder():
     r2 = RejestrPrzesuwny(3, [[1,2], [0,2]])
     return KoderTurbo(rejestr1 = r1, 
                             rejestr2 = r2,
-                            przeplatacz=Przeplatacz(10)))
+                            przeplatacz=Przeplatacz(10))
 
 
 class KoderTurbo:
