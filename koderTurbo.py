@@ -5,6 +5,14 @@ from utils import flat
 from map import MapAlgorithm
 import math
 
+def budujDomyslnyKoder():
+    r1 = RejestrPrzesuwny(3, [[1,2], [0,2]])
+    r2 = RejestrPrzesuwny(3, [[1,2], [0,2]])
+    return KoderTurbo(rejestr1 = r1, 
+                            rejestr2 = r2,
+                            przeplatacz=Przeplatacz(10)))
+
+
 class KoderTurbo:
     def __init__(self, rejestr1, rejestr2, przeplatacz = Przeplatacz()):
         if rejestr1.getIleBitowWyjsciowych() != 2 or rejestr2.getIleBitowWyjsciowych() != 2:
