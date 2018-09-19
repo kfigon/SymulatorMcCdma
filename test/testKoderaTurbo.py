@@ -56,8 +56,8 @@ class TestKoderaTurbo(unittest.TestCase):
     def end2end(self, indata):
         zakodowane = self.k.koduj(indata)
         zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
-        bipolar = list(map(lambda x: 1 if x==1 else -1, zakodowane))
-        zdekodowane = self.k.dekoduj(bipolar, ileItracji=20)
+
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=20)
 
         self.assertEqual(indata, zdekodowane)
 
@@ -89,8 +89,8 @@ class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
     def end2end(self, indata):
         zakodowane = self.k.koduj(indata)
         zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
-        bipolar = list(map(lambda x: 1 if x==1 else -1, zakodowane))
-        zdekodowane = self.k.dekoduj(bipolar, ileItracji=20)
+        
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=20)
 
         self.assertEqual(indata, zdekodowane)
 
@@ -100,8 +100,7 @@ class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
             indata.append(0)
         zakodowane = self.k.koduj(indata)
         zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
-        bipolar = list(map(lambda x: 1 if x==1 else -1, zakodowane))
-        zdekodowane = self.k.dekoduj(bipolar, ileItracji=20)
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=20)
 
         ileBledow=0
         for i,z in zip(indata, zdekodowane):

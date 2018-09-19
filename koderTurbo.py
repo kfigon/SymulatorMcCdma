@@ -76,8 +76,12 @@ class KoderTurbo:
         print()
 
     def dekoduj(self, dane, ileItracji = 5, lc=5):
+        '''wchodza bity, wychodza bity. Maping bipolarny juz sie zadzieje sam'''
         map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
         map2 = MapAlgorithm(MaszynaStanow(self.__rej2), lc) 
+        
+        dane = list(map(lambda x: 1 if x==1 else -1, dane))
+
         [systematyczne, par1, par2] = self.decombine(dane)
         przeplecioneSystematyczne = self.__przeplatacz.przeplot(systematyczne)
         
@@ -88,23 +92,17 @@ class KoderTurbo:
         wynikDekodera2 = None
         for _ in range(ileItracji):
             extr1 = map1.dekoduj(podzielone1, lu)
-            # extr1 = self.__liczExtrinsic(prawdopodobienstwa1, lc, lu, systematyczne)
             przeplecioneExtr1 = self.__przeplatacz.przeplot(extr1)
             
             extr2 = map2.dekoduj(podzielone2, przeplecioneExtr1)
             wynikDekodera2 = extr2
             lu = self.__przeplatacz.rozplot(extr2)
             
-            # out = self.__przeplatacz.rozplot(wynikDekodera2)
-            # self.piszFloat(out)
 
-        # 1) rozplot i licz Luk | y
         i=0
         for sys in systematyczne:
            wynikDekodera2[i] += lc*sys
            i+=1 
-        # 2) licz Luk | y i rozplot
         przeplecioneSprogowane = list(map(lambda p: 1 if p >=0 else 0, wynikDekodera2))
         return przeplecioneSprogowane
-        # return self.__przeplatacz.rozplot(przeplecioneSprogowane)
 
