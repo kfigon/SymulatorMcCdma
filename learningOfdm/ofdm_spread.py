@@ -46,13 +46,13 @@ for strumien in bity:
         out.append(x)
         rozproszony.append(x*bipolar(random.random()))
 
-# plt.subplot(2,1,1)
-# plt.plot(np.real(out))
+plt.subplot(2,1,1)
+plt.plot(np.real(out))
 
-# plt.subplot(2,1,2)
-# plt.plot(np.abs(np.fft.fft(out[:len(out)//2])))
-# plt.plot(np.abs(np.fft.fft(rozproszony[:len(rozproszony)//2])))
-# plt.show()
+plt.subplot(2,1,2)
+plt.plot(np.abs(np.fft.fft(out[:len(out)//2])))
+plt.plot(np.abs(np.fft.fft(rozproszony[:len(rozproszony)//2])))
+plt.show()
 
 
 # odbiornik

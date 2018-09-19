@@ -81,8 +81,8 @@ class TestyUtilsow(unittest.TestCase):
         self.assertEqual(500, len(res))
 
         for i in res:
-            self.assertLessEqual(i, 3)
-            self.assertGreaterEqual(i, -3)
+            self.assertLessEqual(i, 5)
+            self.assertGreaterEqual(i, -5)
 
 if __name__ == '__main__':
     unittest.main()
