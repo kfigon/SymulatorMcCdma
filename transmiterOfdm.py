@@ -17,7 +17,7 @@ class TransmiterOfdm:
         Jeden strumien szeregowy, ale zespolony'''
         self.__dlugoscCiaguDanych = len(strumienComplexBipolarny)
         daneZPaddingiem = addPadding(strumienComplexBipolarny, self.__dopasowanieNyquista)
-        return fft.ifft(daneZPaddingiem)
+        return fft.ifft(daneZPaddingiem)*len(daneZPaddingiem)
 
     def __zaokragleniaBipolar(self, val):
         if (val < 0.0001 and val >= 0) or (val > -0.0001 and val <= 0):

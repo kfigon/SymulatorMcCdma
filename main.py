@@ -4,7 +4,7 @@ import numpy as np
 import random
 from transmiterOfdm import TransmiterOfdm
 from przetwornikSP import PrzetwornikSzeregowoRownolegly
-from koderTurbo import *
+from koderTurbo import KoderTurbo, budujDomyslnyKoder
 import utils
 from rozpraszaczWidma import RozpraszaczBipolarny
 from generatorKoduWalsha import GeneratorKoduWalsha
@@ -48,12 +48,12 @@ def main(ileBitow, ileStrumieni, ciagRozpraszajacy, awgnParams):
     # plt.show()
 
 
-    odebrane = nadany
-    # odebrane = []
-    # for i in range(len(nadany)):
-    #     noweI = nadany[i].real + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
-    #     noweQ = nadany[i].imag + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
-    #     odebrane.append(complex(noweI, noweQ))
+    # odebrane = nadany
+    odebrane = []
+    for i in range(len(nadany)):
+        noweI = nadany[i].real + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
+        noweQ = nadany[i].imag + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
+        odebrane.append(complex(noweI, noweQ))
 
     odebraneStrumienie = pSP.rozdziel(odebrane)
     zdemodulowaneStrumienie = []
@@ -68,9 +68,9 @@ def main(ileBitow, ileStrumieni, ciagRozpraszajacy, awgnParams):
         zdemodulowaneStrumienie.append(zdemodulowanyStrumien)
         zdemodulowane += zdemodulowanyStrumien
 
-    for i in range(len(strumienie)):
-        assert zdemodulowaneStrumienie[i] == strumienie[i]
-    assert symboleBipolarne == zdemodulowane
+    # for i in range(len(strumienie)):
+    #     assert zdemodulowaneStrumienie[i] == strumienie[i]
+    # assert symboleBipolarne == zdemodulowane
 
 
     # dekodowanie
@@ -89,14 +89,13 @@ def main(ileBitow, ileStrumieni, ciagRozpraszajacy, awgnParams):
     return ber
     
 
-ileIteracji = 5
-ileBitow = 490
+ileIteracji = 1
+ileBitow = 90
 ileStrumieni = 5
-awgnParams = (0,0)
+awgnParams = (1,1)
 generatorKoduWalsha = GeneratorKoduWalsha(64)
 ciagRozpraszajacy = generatorKoduWalsha.generuj(2)
 
 for i in range(ileIteracji):
-    # main(990)
     ber = main(ileBitow,ileStrumieni, ciagRozpraszajacy, awgnParams)
     print("ile bledow: " + str(ber) + "%")
