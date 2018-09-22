@@ -11,7 +11,8 @@ class GeneratorKoduWalsha:
         out = [0]
         for b in reversed(liczba):
             self.__dopisz(out, b == '1')
-        return out
+            
+        return list(map(lambda x: 1 if x == 0 else -1, out))
 
     def __dopisz(self, tab, czyOdwrocic):
         dl = len(tab)

@@ -29,7 +29,7 @@ def addPadding(tab):
     for _ in range(dl):
         tab.append(0)
 
-dlugoscStrumienia = 10
+dlugoscStrumienia = 90
 # bawiac sie algorytmem mozna ustawic dl strumienia na 2 i duzo strumieni
 # i bedzie zwykle QPSK
 bity = [generujDaneBinarne(dlugoscStrumienia),
@@ -51,7 +51,7 @@ plt.plot(np.real(out))
 
 plt.subplot(2,1,2)
 plt.plot(np.abs(fft.fft(out[:len(out)//2])))
-plt.plot(np.abs(fft.fft(rozproszony[:len(rozproszony)//2])))
+plt.plot(np.abs(fft.fft(rozproszony[:len(rozproszony)//2]))) # zle! to rozprasza calosc, a ma byc chip na symbol (nosna)
 plt.show()
 
 

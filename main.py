@@ -9,7 +9,8 @@ import utils
 from rozpraszaczWidma import RozpraszaczBipolarny
 from generatorKoduWalsha import GeneratorKoduWalsha
 
-def main(ileBitow, awgnParams):
+def main(ileBitow, ileStrumieni, ciagRozpraszajacy, awgnParams):
+
     daneBinarne = utils.generujDaneBinarne(ileBitow)
     for _ in range(10):
         daneBinarne.append(0)
@@ -19,41 +20,51 @@ def main(ileBitow, awgnParams):
     bityZakodowane = koder.combine(bityZakodowane[0], bityZakodowane[1], bityZakodowane[2])
 
     symboleBipolarne = utils.generujQpskZBitow(bityZakodowane)
-    pSP = PrzetwornikSzeregowoRownolegly(5)
+
+    pSP = PrzetwornikSzeregowoRownolegly(ileStrumieni)
     strumienie = pSP.rozdziel(symboleBipolarne)
 
     transmiter = TransmiterOfdm()
 
-    zmodulowany = []
-    for strumien in strumienie:
+    nadany = []
+    for i, strumien in enumerate(strumienie):
+        
         zmodulowanyStrumien = transmiter.modulujStrumien(strumien)
-        for x in zmodulowanyStrumien:
-            zmodulowany.append(x)
+        rozpraszaczWidma = RozpraszaczBipolarny()
+        chip = ciagRozpraszajacy[i]
+        rozproszony = rozpraszaczWidma.rozpraszajBipolarne(zmodulowanyStrumien, [chip])
 
-    generatorKoduWalsha = GeneratorKoduWalsha(30)
-    ciagRozpraszajacy = generatorKoduWalsha.generuj(5)
-    rozpraszaczWidma = RozpraszaczBipolarny()
-    rozproszony = rozpraszaczWidma.rozpraszajBipolarne()
+# zmienic na zmodulowanyStrumien jesli ma byc bez SS. i wyrzucic z demodulatora skupianie
+        for x in rozproszony:
+            nadany.append(x)
+        
+     
+    # plt.subplot(2,1,1)
+    # plt.plot(np.real(nadany))
+    # # plt.plot(np.real(rozproszony))
+    # plt.subplot(2,1,2)
+    # plt.plot(np.abs(fft.fft(nadany[:len(nadany)//2])))
+    # # plt.plot(np.abs(fft.fft(rozproszony[:len(rozproszony)//2])))
+    # plt.show()
 
-    plt.subplot(2,1,1)
-    plt.plot(np.real(zmodulowany))
 
-    plt.subplot(2,1,2)
-    plt.plot(np.abs(fft.fft(zmodulowany[:len(zmodulowany)//2])))
-    plt.show()
-
-    odebrane = zmodulowany
-
-    for i in range(len(odebrane)):
-        noweI = odebrane[i].real + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
-        noweQ = odebrane[i].imag + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
-        odebrane[i] = complex(noweI, noweQ)
+    odebrane = nadany
+    # odebrane = []
+    # for i in range(len(nadany)):
+    #     noweI = nadany[i].real + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
+    #     noweQ = nadany[i].imag + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
+    #     odebrane.append(complex(noweI, noweQ))
 
     odebraneStrumienie = pSP.rozdziel(odebrane)
     zdemodulowaneStrumienie = []
     zdemodulowane=[]
-    for strumien in odebraneStrumienie:
-        zdemodulowanyStrumien = transmiter.demoduluj(strumien)
+
+    for i, strumien in enumerate(odebraneStrumienie):
+        rozpraszaczWidma = RozpraszaczBipolarny()
+        chip = ciagRozpraszajacy[i]
+        skupiony = rozpraszaczWidma.skupBipolarne(strumien, [chip])
+
+        zdemodulowanyStrumien = transmiter.demoduluj(skupiony)
         zdemodulowaneStrumienie.append(zdemodulowanyStrumien)
         zdemodulowane += zdemodulowanyStrumien
 
@@ -64,7 +75,7 @@ def main(ileBitow, awgnParams):
 
     # dekodowanie
     bityOdebrane = utils.demodulujQpsk(zdemodulowane)
-    assert bityZakodowane == bityOdebrane
+    # assert bityZakodowane == bityOdebrane
     zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=10)
 
     ileBledow = 0
@@ -78,10 +89,14 @@ def main(ileBitow, awgnParams):
     return ber
     
 
-ileIteracji = 1
-ileBitow = 90
+ileIteracji = 5
+ileBitow = 490
+ileStrumieni = 5
 awgnParams = (0,0)
+generatorKoduWalsha = GeneratorKoduWalsha(64)
+ciagRozpraszajacy = generatorKoduWalsha.generuj(2)
+
 for i in range(ileIteracji):
     # main(990)
-    ber = main(ileBitow, awgnParams)
+    ber = main(ileBitow,ileStrumieni, ciagRozpraszajacy, awgnParams)
     print("ile bledow: " + str(ber) + "%")
