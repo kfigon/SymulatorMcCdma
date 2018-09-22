@@ -6,7 +6,7 @@ from transmiterOfdm import TransmiterOfdm
 from przetwornikSP import PrzetwornikSzeregowoRownolegly
 from koderTurbo import *
 import utils
-from rozpraszaczWidma import RozpraszaczWidma
+from rozpraszaczWidma import RozpraszaczBipolarny
 from generatorKoduWalsha import GeneratorKoduWalsha
 
 def main(ileBitow, awgnParams):
@@ -30,6 +30,10 @@ def main(ileBitow, awgnParams):
         for x in zmodulowanyStrumien:
             zmodulowany.append(x)
 
+    generatorKoduWalsha = GeneratorKoduWalsha(30)
+    ciagRozpraszajacy = generatorKoduWalsha.generuj(5)
+    rozpraszaczWidma = RozpraszaczBipolarny()
+    rozproszony = rozpraszaczWidma.rozpraszajBipolarne()
 
     plt.subplot(2,1,1)
     plt.plot(np.real(zmodulowany))

@@ -11,16 +11,31 @@ class RozpraszaczWidma:
                 if i >= len(ciagRozpraszajacy):
                     i = 0
 
+class IterateHelper:
+    def __init__(self, dlugoscCiagu):
+        self.j=0
+        self.len = dlugoscCiagu
+
+    def get(self):
+        if self.j >= self.len:
+            self.j=0
+        
+        toRet = self.j
+        self.j += 1
+        return toRet
 
 class RozpraszaczBipolarny:
     def rozpraszajBipolarne(self, probki, ciag):
-        j = 0
+        ''' probki - symbole complex'''
         out = []
-        for i in range(len(probki)):
-            if j >= len(ciag):
-                j = 0
-            out.append(probki[i] * ciag[j])
-            j+=1
+        it = IterateHelper(len(ciag))
+
+        for p in probki:
+            re = ciag[it.get()]
+            im = ciag[it.get()]
+            toAdd = complex(p.real*re, p.imag*im)
+            out.append(toAdd)
+
         return out
 
     def skupBipolarne(self, probki, ciag):
