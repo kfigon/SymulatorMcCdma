@@ -10,10 +10,12 @@ def addPadding(dane, dopasowanie):
 class TransmiterOfdm:
     def __init__(self, mnoznikNyquista=10):
         self.__dopasowanieNyquista = mnoznikNyquista
+        self.__dlugoscCiaguDanych = 0
 
     def modulujStrumien(self, strumienComplexBipolarny):
         '''strumienComplexBipolarny - bity, symbole zespolone z QPSK, dowolnie. 
         Jeden strumien szeregowy, ale zespolony'''
+        self.__dlugoscCiaguDanych = len(strumienComplexBipolarny)
         daneZPaddingiem = addPadding(strumienComplexBipolarny, self.__dopasowanieNyquista)
         return fft.ifft(daneZPaddingiem)
 
@@ -29,7 +31,11 @@ class TransmiterOfdm:
         '''demoduluje jeden strumien na symbole jak weszly'''
         probkiCzestotliwosci = fft.fft(odebranyStrumien)
         out = []
-        for p in probkiCzestotliwosci:
+        for i,p in enumerate(probkiCzestotliwosci):
+            # filtracja
+            if i < 1 or i > self.__dlugoscCiaguDanych:
+                continue
+
             bi = self.__zaokragleniaBipolar(p.real)
             bq = self.__zaokragleniaBipolar(p.imag)
             if bi != 0 or bq != 0:

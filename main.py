@@ -7,8 +7,8 @@ from przetwornikSP import PrzetwornikSzeregowoRownolegly
 from koderTurbo import *
 import utils
 
-def main():
-    daneBinarne = utils.generujDaneBinarne(90)
+def main(ileBitow, awgnParams):
+    daneBinarne = utils.generujDaneBinarne(ileBitow)
     for _ in range(10):
         daneBinarne.append(0)
 
@@ -36,7 +36,14 @@ def main():
     # plt.plot(np.abs(fft.fft(zmodulowany[:len(zmodulowany)//2])))
     # plt.show()
 
-    odebraneStrumienie = pSP.rozdziel(zmodulowany)
+    odebrane = zmodulowany
+
+    for i in range(len(odebrane)):
+        noweI = odebrane[i].real + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
+        noweQ = odebrane[i].imag + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
+        odebrane[i] = complex(noweI, noweQ)
+
+    odebraneStrumienie = pSP.rozdziel(odebrane)
     zdemodulowaneStrumienie = []
     zdemodulowane=[]
     for strumien in odebraneStrumienie:
@@ -44,15 +51,14 @@ def main():
         zdemodulowaneStrumienie.append(zdemodulowanyStrumien)
         zdemodulowane += zdemodulowanyStrumien
 
-    for i in range(len(strumienie)):
-        assert zdemodulowaneStrumienie[i] == strumienie[i]
-
-    assert symboleBipolarne == zdemodulowane
+    # for i in range(len(strumienie)):
+    #     assert zdemodulowaneStrumienie[i] == strumienie[i]
+    # assert symboleBipolarne == zdemodulowane
 
 
     # dekodowanie
     bityOdebrane = utils.demodulujQpsk(zdemodulowane)
-    assert bityZakodowane == bityOdebrane
+    # assert bityZakodowane == bityOdebrane
     zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=10)
 
     ileBledow = 0
@@ -62,10 +68,16 @@ def main():
             ileBledow +=1
 
 
-    ber =  ileBledow/len(daneBinarne)
-    print("ile bledow: " + str(ber))
+    ber =  100*ileBledow/len(daneBinarne)
+    return ber
+    
 
 
 
-for i in range(20):
-    main()
+ileIteracji = 1
+ileBitow = 90
+awgnParams = (0,0)
+for i in range(ileIteracji):
+    # main(990)
+    ber = main(ileBitow, awgnParams)
+    print("ile bledow: " + str(ber) + "%")

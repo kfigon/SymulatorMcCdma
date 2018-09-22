@@ -78,6 +78,9 @@ def flat(tab):
 def generujSzum(ile, a=0,b=1):
     return np.random.normal(a,b,ile)
 
+def generujProbkeSzumu(a=0,b=1):
+    return np.random.normal(a,b)
+
 def generujSymboleBipolarneZespolone(ile):
     out = []
     ile=ile//2
