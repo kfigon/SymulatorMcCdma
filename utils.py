@@ -1,6 +1,7 @@
 from random import randint, randrange
 import math
 import numpy as np
+import random
 
 # tablice
 def odlegloscHamminga(daneA, daneB):
@@ -76,3 +77,13 @@ def flat(tab):
 
 def generujSzum(ile, a=0,b=1):
     return np.random.normal(a,b,ile)
+
+def generujSymboleBipolarneZespolone(ile):
+    out = []
+    ile=ile//2
+    bipolar = lambda x: 1 if x>=0.5 else -1
+    for _ in range(ile):
+        bitI = bipolar(random.random())
+        bitQ = bipolar(random.random())
+        out.append(complex(bitI, bitQ)) 
+    return out
