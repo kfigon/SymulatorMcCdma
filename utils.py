@@ -87,3 +87,25 @@ def generujSymboleBipolarneZespolone(ile):
         bitQ = bipolar(random.random())
         out.append(complex(bitI, bitQ)) 
     return out
+
+def generujQpskZBitow(bity):
+    if len(bity) % 2 == 1:
+        raise Exception("dlugosc bitow musi byc parzysta, jest {}".format(str(len(bity))))
+    
+    out = []
+    for i in range(0, len(bity),2):
+        bitI = bipolar(bity[i])
+        bitQ = bipolar(bity[i+1])
+        out.append(complex(bitI, bitQ)) 
+    return out
+
+def demodulujQpsk(symbole):
+    '''zwraca bity'''
+    out = []
+    binar = lambda x : 1 if x == -1 else 0
+
+    for s in symbole:
+        out.append(binar(s.real))
+        out.append(binar(s.imag))
+
+    return out

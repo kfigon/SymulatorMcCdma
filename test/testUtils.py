@@ -84,5 +84,17 @@ class TestyUtilsow(unittest.TestCase):
             self.assertLessEqual(i, 5)
             self.assertGreaterEqual(i, -5)
 
+    def testModulatoraQpsk(self):
+        dane = [1,0,1,1,0,0]
+        qpsk = generujQpskZBitow(dane)
+        exp = [complex(-1,1),complex(-1,-1),complex(1,1)]
+        self.assertEqual(exp, qpsk)
+
+    def testDemodulatoraQpsk(self):
+        qpsk = [complex(-1,1),complex(-1,-1),complex(1,1)]
+        dane = demodulujQpsk(qpsk)
+        exp = [1,0,1,1,0,0]
+        self.assertEqual(exp, dane)
+
 if __name__ == '__main__':
     unittest.main()
