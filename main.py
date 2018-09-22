@@ -6,6 +6,8 @@ from transmiterOfdm import TransmiterOfdm
 from przetwornikSP import PrzetwornikSzeregowoRownolegly
 from koderTurbo import *
 import utils
+from rozpraszaczWidma import RozpraszaczWidma
+from generatorKoduWalsha import GeneratorKoduWalsha
 
 def main(ileBitow, awgnParams):
     daneBinarne = utils.generujDaneBinarne(ileBitow)
@@ -29,12 +31,12 @@ def main(ileBitow, awgnParams):
             zmodulowany.append(x)
 
 
-    # plt.subplot(2,1,1)
-    # plt.plot(np.real(zmodulowany))
+    plt.subplot(2,1,1)
+    plt.plot(np.real(zmodulowany))
 
-    # plt.subplot(2,1,2)
-    # plt.plot(np.abs(fft.fft(zmodulowany[:len(zmodulowany)//2])))
-    # plt.show()
+    plt.subplot(2,1,2)
+    plt.plot(np.abs(fft.fft(zmodulowany[:len(zmodulowany)//2])))
+    plt.show()
 
     odebrane = zmodulowany
 
@@ -51,14 +53,14 @@ def main(ileBitow, awgnParams):
         zdemodulowaneStrumienie.append(zdemodulowanyStrumien)
         zdemodulowane += zdemodulowanyStrumien
 
-    # for i in range(len(strumienie)):
-    #     assert zdemodulowaneStrumienie[i] == strumienie[i]
-    # assert symboleBipolarne == zdemodulowane
+    for i in range(len(strumienie)):
+        assert zdemodulowaneStrumienie[i] == strumienie[i]
+    assert symboleBipolarne == zdemodulowane
 
 
     # dekodowanie
     bityOdebrane = utils.demodulujQpsk(zdemodulowane)
-    # assert bityZakodowane == bityOdebrane
+    assert bityZakodowane == bityOdebrane
     zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=10)
 
     ileBledow = 0
@@ -71,8 +73,6 @@ def main(ileBitow, awgnParams):
     ber =  100*ileBledow/len(daneBinarne)
     return ber
     
-
-
 
 ileIteracji = 1
 ileBitow = 90
