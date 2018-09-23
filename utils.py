@@ -107,8 +107,6 @@ def demodulujQpsk(symbole):
 
     return out
 
-import numpy as np
-
 def awgn(sygnal, snrDb):
     
     rate = 1

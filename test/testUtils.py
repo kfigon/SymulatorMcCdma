@@ -76,14 +76,6 @@ class TestyUtilsow(unittest.TestCase):
         flatted = flat(dane)
         self.assertEqual([1,2,3,4,5,6,7,8,9], flatted)
 
-    def testGenerujSzum(self):
-        res = generujSzum(ile=500)
-        self.assertEqual(500, len(res))
-
-        for i in res:
-            self.assertLessEqual(i, 5)
-            self.assertGreaterEqual(i, -5)
-
     def testModulatoraQpsk(self):
         dane = [1,0,1,1,0,0]
         qpsk = generujQpskZBitow(dane)
