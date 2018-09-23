@@ -75,12 +75,6 @@ def bipolar(binarne):
 def flat(tab):
     return [item for sublist in tab for item in sublist]
 
-def generujSzum(ile, a=0,b=1):
-    return np.random.normal(a,b,ile)
-
-def generujProbkeSzumu(a=0,b=1):
-    return np.random.normal(a,b)
-
 def generujSymboleBipolarneZespolone(ile):
     out = []
     ile=ile//2
@@ -112,3 +106,23 @@ def demodulujQpsk(symbole):
         out.append(binar(s.imag))
 
     return out
+
+import numpy as np
+
+def awgn(sygnal, snrDb):
+    
+    rate = 1
+    dlSygnalu = len(sygnal)
+
+    sredniaEnergia = np.sum(np.abs(sygnal) * np.abs(sygnal))/dlSygnalu
+    srnLin = 10**(snrDb/10.0)
+    wariancjaSzumu =sredniaEnergia/(2*rate*srnLin)
+    szum = None
+
+    if isinstance(sygnal[0], complex):
+        szum = (np.sqrt(wariancjaSzumu) * np.random.randn(dlSygnalu))
+        +(np.sqrt(wariancjaSzumu) * np.random.randn(dlSygnalu))*1j
+    else:
+        szum = np.sqrt(2*wariancjaSzumu) * np.random.randn(dlSygnalu)
+
+    return sygnal + szum

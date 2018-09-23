@@ -9,7 +9,7 @@ import utils
 from rozpraszaczWidma import RozpraszaczBipolarny
 from generatorKoduWalsha import GeneratorKoduWalsha
 
-def main(ileBitow, ileStrumieni, ciagRozpraszajacy, awgnParams):
+def main(ileBitow, ileStrumieni, ciagRozpraszajacy, snr):
 
     daneBinarne = utils.generujDaneBinarne(ileBitow)
     for _ in range(10):
@@ -49,11 +49,7 @@ def main(ileBitow, ileStrumieni, ciagRozpraszajacy, awgnParams):
 
 
     # odebrane = nadany
-    odebrane = []
-    for i in range(len(nadany)):
-        noweI = nadany[i].real + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
-        noweQ = nadany[i].imag + utils.generujProbkeSzumu(awgnParams[0], awgnParams[1])
-        odebrane.append(complex(noweI, noweQ))
+    odebrane = utils.awgn(nadany, snr)
 
     odebraneStrumienie = pSP.rozdziel(odebrane)
     zdemodulowaneStrumienie = []
@@ -92,10 +88,10 @@ def main(ileBitow, ileStrumieni, ciagRozpraszajacy, awgnParams):
 ileIteracji = 1
 ileBitow = 90
 ileStrumieni = 5
-awgnParams = (1,1)
+snr = 20
 generatorKoduWalsha = GeneratorKoduWalsha(64)
 ciagRozpraszajacy = generatorKoduWalsha.generuj(2)
 
 for i in range(ileIteracji):
-    ber = main(ileBitow,ileStrumieni, ciagRozpraszajacy, awgnParams)
+    ber = main(ileBitow,ileStrumieni, ciagRozpraszajacy, snr)
     print("ile bledow: " + str(ber) + "%")
