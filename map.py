@@ -153,8 +153,6 @@ class MapAlgorithm:
         sumaAlf = sum(alfy[i+1])
 
         # todo: na koncu normuje tez nieistniejace przejscia.
-        # nie wiem czy to blad, ale inaczej niz w przykladach
-        # todo: dla beta tez tak jest
         for j,a in enumerate(alfy[i+1]):
             alfy[i+1][j] = a/sumaAlf
             # print("a[{}][{}] = {}".format(str(i+1),str(j),str(alfy[i+1][j])))

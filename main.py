@@ -8,10 +8,12 @@ from koderTurbo import KoderTurbo, budujDomyslnyKoder
 import utils
 from rozpraszaczWidma import RozpraszaczBipolarny
 from generatorKoduWalsha import GeneratorKoduWalsha
+from config import Konfiguracja
 
-def main(ileBitow, ileStrumieni, ciagRozpraszajacy, snr):
 
-    daneBinarne = utils.generujDaneBinarne(ileBitow)
+def main(konfiguracja, snr):
+
+    daneBinarne = utils.generujDaneBinarne(konfiguracja.read('ileBitow'))
     for _ in range(10):
         daneBinarne.append(0)
 
@@ -21,9 +23,12 @@ def main(ileBitow, ileStrumieni, ciagRozpraszajacy, snr):
 
     symboleBipolarne = utils.generujQpskZBitow(bityZakodowane)
 
-    pSP = PrzetwornikSzeregowoRownolegly(ileStrumieni)
+    pSP = PrzetwornikSzeregowoRownolegly(konfiguracja.read('ileStrumieni'))
     strumienie = pSP.rozdziel(symboleBipolarne)
-
+    
+    generatorKoduWalsha = GeneratorKoduWalsha(konfiguracja.read('dlugoscKoduWalsha'))
+    ciagRozpraszajacy = generatorKoduWalsha.generuj(konfiguracja.read('numerKoduWalsha'))
+    
     transmiter = TransmiterOfdm()
 
     nadany = []
@@ -38,15 +43,15 @@ def main(ileBitow, ileStrumieni, ciagRozpraszajacy, snr):
         for x in rozproszony:
             nadany.append(x)
         
-     
-    # plt.subplot(2,1,1)
-    # plt.plot(np.real(nadany))
-    # # plt.plot(np.real(rozproszony))
-    # plt.subplot(2,1,2)
-    # plt.plot(np.abs(fft.fft(nadany[:len(nadany)//2])))
-    # # plt.plot(np.abs(fft.fft(rozproszony[:len(rozproszony)//2])))
-    # plt.show()
-
+    if konfiguracja.read('tylkoPrzebiegiCzasowe'):
+        plt.subplot(2,1,1)
+        plt.plot(np.real(nadany))
+        # plt.plot(np.real(rozproszony))
+        plt.subplot(2,1,2)
+        plt.plot(np.abs(fft.fft(nadany[:len(nadany)//2])))
+        # plt.plot(np.abs(fft.fft(rozproszony[:len(rozproszony)//2])))
+        plt.show()
+        return
 
     # odebrane = nadany
     odebrane = utils.awgn(nadany, snr)
@@ -85,13 +90,16 @@ def main(ileBitow, ileStrumieni, ciagRozpraszajacy, snr):
     return ber
     
 
-ileIteracji = 1
-ileBitow = 90
-ileStrumieni = 5
-snr = 20
-generatorKoduWalsha = GeneratorKoduWalsha(64)
-ciagRozpraszajacy = generatorKoduWalsha.generuj(2)
 
-for i in range(ileIteracji):
-    ber = main(ileBitow,ileStrumieni, ciagRozpraszajacy, snr)
-    print("ile bledow: " + str(ber) + "%")
+
+konfiguracja = Konfiguracja()
+snr = 20
+# todo - snr do dekodowania map?
+# json do pliku config.json
+print(konfiguracja)
+
+for i in range(konfiguracja.read('ileIteracji')):
+    ber = main(konfiguracja, snr)
+    
+    if not konfiguracja.read('tylkoPrzebiegiCzasowe'):
+        print("ile bledow: " + str(ber) + "%")
