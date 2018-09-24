@@ -19,10 +19,12 @@ class Konfiguracja:
         return {
             'ileBitow':90,
             'ileStrumieni':5,
-            'ileIteracji':1,
+            'ileIteracji':5,
             'tylkoPrzebiegiCzasowe':False,
             'dlugoscKoduWalsha': 64,
-            'numerKoduWalsha':2
+            'numerKoduWalsha':2,
+            'minSnr': -10,
+            'maxSnr': 5
         }
 
     def __str__(self):

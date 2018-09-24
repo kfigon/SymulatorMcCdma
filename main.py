@@ -77,7 +77,9 @@ def main(konfiguracja, snr):
     # dekodowanie
     bityOdebrane = utils.demodulujQpsk(zdemodulowane)
     # assert bityZakodowane == bityOdebrane
-    zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=10)
+    eb,n0 = utils.liczEbN0(nadany, snr)
+
+    zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=10, lc = eb/n0)
 
     ileBledow = 0
     assert len(zdekodowane) == len(daneBinarne)
@@ -86,20 +88,32 @@ def main(konfiguracja, snr):
             ileBledow +=1
 
 
-    ber =  100*ileBledow/len(daneBinarne)
+    ber =  ileBledow/len(daneBinarne)
     return ber
     
 
-
-
 konfiguracja = Konfiguracja()
-snr = 20
 # todo - snr do dekodowania map?
 # json do pliku config.json
 print(konfiguracja)
 
-for i in range(konfiguracja.read('ileIteracji')):
-    ber = main(konfiguracja, snr)
-    
+ileIteracji = konfiguracja.read('ileIteracji')
+minSnr = konfiguracja.read('minSnr')
+maxSnr = konfiguracja.read('maxSnr')
+
+snrTab=[]
+wyniki=[]
+for snr in range(minSnr, maxSnr):
+    ber = 0
+    for _ in range(ileIteracji):
+        ber += main(konfiguracja, snr)
+        
     if not konfiguracja.read('tylkoPrzebiegiCzasowe'):
-        print("ile bledow: " + str(ber) + "%")
+        print("snr %d, ile bledow: %f" % (snr, ber/ileIteracji))
+    
+    snrTab.append(snr)
+    wyniki.append(ber/ileIteracji)
+
+plt.semilogy(snrTab, wyniki)
+plt.grid(True)
+plt.show()

@@ -107,14 +107,20 @@ def demodulujQpsk(symbole):
 
     return out
 
-def awgn(sygnal, snrDb):
-    
+def liczEbN0(sygnal, snrDb):
     rate = 1
     dlSygnalu = len(sygnal)
 
     sredniaEnergia = np.sum(np.abs(sygnal) * np.abs(sygnal))/dlSygnalu
     srnLin = 10**(snrDb/10.0)
     wariancjaSzumu =sredniaEnergia/(2*rate*srnLin)
+    
+    return sredniaEnergia, wariancjaSzumu 
+
+def awgn(sygnal, snrDb):
+
+    dlSygnalu = len(sygnal)
+    sredniaEnergia, wariancjaSzumu = liczEbN0(sygnal, snrDb)
     szum = None
 
     if isinstance(sygnal[0], complex):
