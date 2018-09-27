@@ -22,19 +22,6 @@ def podziel(dane, ileNaRaz):
     
     return out
 
-def podzielDaneNaKanaly(dane, ileKanalow=2):
-    '''
-    podzial danych jak przy qpsk - co drugi bit
-    '''
-    if len(dane) % ileKanalow != 0:
-        raise Exception('nierowny sturmien danych, len: {}, ileKanalow: {}'.format(str(len(dane)), str(ileKanalow)))
-    
-    out=[]
-    for i in range(ileKanalow):
-        skipped = [dane[i] for i in range(i, len(dane), ileKanalow)]
-        out.append(skipped)
-    return out
-
 def str2List(data):
     out = [0]*len(data)
     for i in range(len(data)):
@@ -42,32 +29,10 @@ def str2List(data):
     return out
 
 def generujDaneBinarne(ile):
-    return list(generujDaneBinarneGen(ile))
-
-def generujDaneBinarneGen(ile):
-    '''
-    generator
-    '''
-    for _ in range(ile):
-        yield randint(0,1)
-
-def probkuj(dane, fp, fs):
-    '''
-    :param dane: dane binarne
-    :param fp: cz. probkowania
-    :param fs: cz. sygnalu
-    :return:  sprobkowane dane
-    '''
-    return list(probkujGen(dane, fp, fs))
-
-def probkujGen(dane, fp, fs):
-    ileProbekNaBit = int(fp/fs)
-    for b in dane:
-        for _ in range(ileProbekNaBit):
-            yield b
-
-def getCzasTransmisji(ileBitow, fb):
-    return math.ceil(ileBitow/fb)
+    out = [0 for _ in range(ile)]
+    for i in range(ile):
+        out[i] = randint(0,1)
+    return out
 
 def bipolar(binarne):
     return 1 if binarne == 0 else -1

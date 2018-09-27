@@ -4,7 +4,6 @@ from przeplot import Przeplatacz
 from rejestrPrzesuwny import RejestrPrzesuwny
 import random
 
-@unittest.skip
 class TestKoderaTurbo(unittest.TestCase):
     def setUp(self):
         # jakby o jeden mniej niz w matlabie
@@ -49,7 +48,6 @@ class TestKoderaTurbo(unittest.TestCase):
         self.assertEqual([7,8,9],c)
 
     def testEndToEndSame0(self):
-        # dane musza byc terminowane!
         indata = [0 for _ in range(20)]
         self.end2end(indata)
 
@@ -69,7 +67,6 @@ class TestKoderaTurbo(unittest.TestCase):
         self.end2end(indata)
 
     def testEndToEnd(self):
-        # dane musza byc terminowane!
         indata = [1,0,1,1,0,0,1,0,0,0,0,0]
         self.end2end(indata)
 
@@ -80,7 +77,6 @@ class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
         self.k = KoderTurbo(rejestr1 = r1, 
                             rejestr2 = r2,
                             przeplatacz=Przeplatacz(3))
-    @unittest.skip
     def testEndToEnd(self):
         # dane musza byc terminowane!
         indata = [1,1,0,1,1,1,0,0,0,0,0,0]
