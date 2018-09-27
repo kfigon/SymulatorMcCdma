@@ -14,7 +14,7 @@ from config import Konfiguracja
 def main(konfiguracja, snr):
 
     daneBinarne = utils.generujDaneBinarne(konfiguracja.read('ileBitow'))
-    daneBinarne[-10:] = [0 for i in range(10)]
+    utils.zerujKoniec(daneBinarne, 10)
 
     koder = budujDomyslnyKoder()
     bityZakodowane = koder.koduj(daneBinarne)
