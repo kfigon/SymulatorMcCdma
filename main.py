@@ -14,8 +14,7 @@ from config import Konfiguracja
 def main(konfiguracja, snr):
 
     daneBinarne = utils.generujDaneBinarne(konfiguracja.read('ileBitow'))
-    for _ in range(10):
-        daneBinarne.append(0)
+    daneBinarne[-10:] = [0 for i in range(10)]
 
     koder = budujDomyslnyKoder()
     bityZakodowane = koder.koduj(daneBinarne)
@@ -76,7 +75,6 @@ def main(konfiguracja, snr):
 
     # dekodowanie
     bityOdebrane = utils.demodulujQpsk(zdemodulowane)
-    # assert bityZakodowane == bityOdebrane
     eb,n0 = utils.liczEbN0(nadany, snr)
 
     zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=10, lc = eb/n0)
@@ -87,32 +85,25 @@ def main(konfiguracja, snr):
         if z != d:
             ileBledow +=1
 
-
-    ber =  ileBledow/len(daneBinarne)
-    return ber
+    return ileBledow/len(daneBinarne)
     
 
 konfiguracja = Konfiguracja()
-# todo - snr do dekodowania map?
 # json do pliku config.json
 print(konfiguracja)
 
-ileIteracji = konfiguracja.read('ileIteracji')
 minSnr = konfiguracja.read('minSnr')
 maxSnr = konfiguracja.read('maxSnr')
 
-snrTab=[]
+snrTab=[snr for snr in range(minSnr, maxSnr)]
 wyniki=[]
-for snr in range(minSnr, maxSnr):
-    ber = 0
-    for _ in range(ileIteracji):
-        ber += main(konfiguracja, snr)
+for snr in snrTab:
+    ber = main(konfiguracja, snr)
         
     if not konfiguracja.read('tylkoPrzebiegiCzasowe'):
-        print("snr %d, ile bledow: %f" % (snr, ber/ileIteracji))
+        print("snr %d, ile bledow: %f" % (snr, ber))
     
-    snrTab.append(snr)
-    wyniki.append(ber/ileIteracji)
+    wyniki.append(ber)
 
 plt.semilogy(snrTab, wyniki)
 plt.grid(True)
