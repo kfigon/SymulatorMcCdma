@@ -16,9 +16,6 @@ def alfa(a, g):
     '''poprzednie alfa i korespondujace z nim gamma'''
     return sum([x*y for x,y in zip(a, g)])
 
-def normujAlfa(alfa, wszystkieAlfa):
-    return alfa/sum(wszystkieAlfa)
-
 def mapujP(p):
     if p[1] == 0:
         return -10
@@ -173,23 +170,3 @@ class MapAlgorithm:
                 gammy[i][gs][gk] = g
                 # print("g[{}][{}][{}] = {}".format(str(i),str(gs),str(gk), str(g))) 
         # print()
-
-
-def main():
-    #todo remove imports
-    odczepy = [[0,1,2],[0,2]]
-    rej = RejestrPrzesuwny(3, odczepy)
-    maszyna = MaszynaStanow(rej, 1)
-    m = MapAlgorithm(maszyna)
-
-    odebrane = [[0.3,0.1],[-0.5,0.2],[0.8,0.5],[-0.5,0.3],[0.1,-0.7],[1.5,-0.4]]
-    apriori = [-12, -5, -1, 1, 1, 1]
-
-    res1 = m.dekoduj(odebrane)
-    res2 = m.dekoduj(odebrane, apriori)
-
-    print()
-    print(res1)
-    print(res2)
-
-# main()
