@@ -9,7 +9,7 @@ import utils
 from rozpraszaczWidma import RozpraszaczBipolarny
 from generatorKoduWalsha import GeneratorKoduWalsha
 from config import Konfiguracja
-
+from modulator import Qpsk
 
 def main(konfiguracja, snr):
 
@@ -20,7 +20,9 @@ def main(konfiguracja, snr):
     bityZakodowane = koder.koduj(daneBinarne)
     bityZakodowane = koder.combine(bityZakodowane[0], bityZakodowane[1], bityZakodowane[2])
 
-    symboleBipolarne = utils.generujQpskZBitow(bityZakodowane)
+# todo: zamienic na to co w klasie modulator
+    modulator = Qpsk()
+    symboleBipolarne = modulator.mapuj(bityZakodowane)
 
     pSP = PrzetwornikSzeregowoRownolegly(konfiguracja.read('ileStrumieni'))
     strumienie = pSP.rozdziel(symboleBipolarne)
@@ -74,7 +76,7 @@ def main(konfiguracja, snr):
 
 
     # dekodowanie
-    bityOdebrane = utils.demodulujQpsk(zdemodulowane)
+    bityOdebrane = modulator.demapuj(zdemodulowane)
     eb,n0 = utils.liczEbN0(nadany, snr)
 
     zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=10, lc = eb/n0)

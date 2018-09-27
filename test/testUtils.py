@@ -40,18 +40,6 @@ class TestyUtilsow(unittest.TestCase):
         flatted = flat(dane)
         self.assertEqual([1,2,3,4,5,6,7,8,9], flatted)
 
-    def testModulatoraQpsk(self):
-        dane = [1,0,1,1,0,0]
-        qpsk = generujQpskZBitow(dane)
-        exp = [complex(-1,1),complex(-1,-1),complex(1,1)]
-        self.assertEqual(exp, qpsk)
-
-    def testDemodulatoraQpsk(self):
-        qpsk = [complex(-1,1),complex(-1,-1),complex(1,1)]
-        dane = demodulujQpsk(qpsk)
-        exp = [1,0,1,1,0,0]
-        self.assertEqual(exp, dane)
-
     def testTerminowaniaCiagu(self):
         tab=[1,2,3,4,5,6,7,8,9,10]
         zerujKoniec(tab, 3)
