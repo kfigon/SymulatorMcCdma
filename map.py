@@ -39,11 +39,6 @@ class MapAlgorithm:
         '''liczy iteracje map
         odebrane w formie 2 wymiarowej tablicy - [ [symbol1], [symbol2] ]'''
         
-        # wyliczyc wszystkie gamma
-        # wyliczyc wszystkie alfa (+ normowanie)
-        # beta
-        # wyliczyc L, decyzja przy ostatniej iteracji.
-
         ileStanow = self.__maszyna.getNumberOfStates()
         ileOdebranychSymboli = len(odebrane)
         
@@ -54,10 +49,11 @@ class MapAlgorithm:
         # pewne stany
         alfy[0][0] = 1
         bety[ileOdebranychSymboli][0]=1
-    
+
         if len(lu) == 0:
             lu = [0 for _ in range(len(odebrane))]
 
+# todo - metryki wyliczac raz, bo za dlugo to trwa
         i=0
         for o,luk in zip(odebrane, lu):
             self.__liczGammaDlaSymbolu(gammy, i,o, luk)

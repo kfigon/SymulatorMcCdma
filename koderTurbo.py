@@ -2,7 +2,7 @@ from przeplot import Przeplatacz
 from rejestrPrzesuwny import RejestrPrzesuwny
 from maszynaStanow import MaszynaStanow
 from utils import flat
-from map import MapAlgorithm
+from map import MapAlgorithm, mapujBit
 import math
 
 def budujDomyslnyKoder():
@@ -72,23 +72,13 @@ class KoderTurbo:
             podzielone.append([s,p])
         return podzielone
 
-    def __liczExtrinsic(self, prawdopodobienstwa, lc, lu, systematyczne):
-        extrinsic = []
-        for p,luk,sys in zip(prawdopodobienstwa, lu, systematyczne):            
-            extrinsic.append(p-luk-lc*sys)
-        return extrinsic 
-
-    def piszFloat(self, tab):
-        for o in tab:
-            print("{0:.2f}".format(o), end=', ')
-        print()
 
     def dekoduj(self, dane, ileItracji = 5, lc=5):
         '''wchodza bity, wychodza bity. Maping bipolarny juz sie zadzieje sam'''
         map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
         map2 = MapAlgorithm(MaszynaStanow(self.__rej2), lc) 
         
-        dane = list(map(lambda x: 1 if x==1 else -1, dane))
+        dane = list(map(mapujBit, dane))
 
         [systematyczne, par1, par2] = self.decombine(dane)
         przeplecioneSystematyczne = self.__przeplatacz.przeplot(systematyczne)
