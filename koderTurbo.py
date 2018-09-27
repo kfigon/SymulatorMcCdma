@@ -96,11 +96,9 @@ class KoderTurbo:
             wynikDekodera2 = extr2
             lu = self.__przeplatacz.rozplot(extr2)
             
-
         i=0
         for sys in systematyczne:
            wynikDekodera2[i] += lc*sys
            i+=1 
-        przeplecioneSprogowane = list(map(lambda p: 1 if p >=0 else 0, wynikDekodera2))
-        return przeplecioneSprogowane
+        return MapAlgorithm.proguj(wynikDekodera2)
 

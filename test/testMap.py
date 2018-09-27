@@ -1,5 +1,5 @@
 import unittest
-from map import MapAlgorithm, gamma, alfa, mapujP
+from map import MapAlgorithm, gamma, mapujP
 from maszynaStanow import MaszynaStanow
 from rejestrPrzesuwny import RejestrPrzesuwny
 
@@ -22,13 +22,6 @@ class TestMatematykiMap(unittest.TestCase):
         result = gamma(odebrane, zakodowane, Luk, Lc)
         
         self.assertAlmostEqual(0.647, result, 3)
-
-    def testAlfa(self):
-        a=[1,2,3,4]
-        g=[2,2,3,5]
-        wynik = alfa(a,g)
-        self.assertEqual(35, wynik)
-    
 
     def testMapowaniaPrawodpodobienstwa(self):
         data = [

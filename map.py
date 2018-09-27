@@ -12,10 +12,6 @@ def gamma(odebrane, zakodowane, Luk, Lc):
     asd = (Luk+Lc*odebrane[0])*uk/2
     return math.exp(asd)*math.exp(Lc*suma/2)
 
-def alfa(a, g):
-    '''poprzednie alfa i korespondujace z nim gamma'''
-    return sum([x*y for x,y in zip(a, g)])
-
 def mapujP(p):
     if p[1] == 0:
         return -10
