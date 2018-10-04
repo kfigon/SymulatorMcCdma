@@ -1,15 +1,11 @@
 class IterateHelper:
     def __init__(self, dlugoscCiagu):
-        self.j=0
+        self.j=-1
         self.len = dlugoscCiagu
 
     def get(self):
-        if self.j >= self.len:
-            self.j=0
-        
-        toRet = self.j
         self.j += 1
-        return toRet
+        return self.j % self.len
 
 class RozpraszaczBipolarny:
     def rozpraszajBipolarne(self, probki, ciag):
