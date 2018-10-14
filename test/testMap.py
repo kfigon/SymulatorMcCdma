@@ -3,6 +3,7 @@ from map import MapAlgorithm, gamma, mapujP
 from maszynaStanow import MaszynaStanow
 from rejestrPrzesuwny import RejestrPrzesuwny
 
+@unittest.skip
 class TestMatematykiMap(unittest.TestCase):
   
     def testGamma(self):
@@ -38,6 +39,7 @@ class TestMatematykiMap(unittest.TestCase):
                 result = mapujP(p)
                 self.assertAlmostEqual(d[2], result, 2)
 
+@unittest.skip
 class TestMap(unittest.TestCase):
     def setUp(self):
         odczepy = [[0,1,2],[0,2]]
@@ -106,6 +108,7 @@ class TestMap(unittest.TestCase):
         self.assertNotEqual([1,1,0,1,0,0], self.m.proguj(res))
 
 
+@unittest.skip
 class TestMap2(unittest.TestCase):
     def setUp(self):
         odczepy = [[0,1,2],[0,2]]

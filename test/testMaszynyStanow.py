@@ -1,5 +1,5 @@
 import unittest
-from rejestrPrzesuwny import RejestrPrzesuwny
+from rejestrPrzesuwny import RejestrPrzesuwny,RejestrSystematyczny
 from maszynaStanow import MaszynaStanow
 
 
@@ -281,6 +281,15 @@ class TestMaszynyStanow3(unittest.TestCase):
     def testStanPoczatkowy(self):
         stan = self.m.getStanPoczatkowy()
         self.assertEqual('000000', stan)
+
+
+class TestMaszynyStanowRejestruSystematyczego(unittest.TestCase):
+    def setUp(self):
+        r = RejestrSystematyczny(3, [[0,2]], [0,1,2])
+        self.m = MaszynaStanow(r,1)
+
+    def test(self):
+        self.fail("to do")
 
 if __name__ == '__main__':
     unittest.main()

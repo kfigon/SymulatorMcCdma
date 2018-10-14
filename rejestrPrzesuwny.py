@@ -68,3 +68,14 @@ class RejestrPrzesuwny:
 
     def __repr__(self):
         return str(self)
+
+class RejestrSystematyczny(RejestrPrzesuwny):
+    def __init__(self, dlugosc, odczepy, odczepySprzezenia):
+        '''dlugosc rejestru, 
+           odczepy do wyjscia,
+           odczepySprzezenia - odczepy ktorych wynik jest podawany na wejscie, lista pojedyncza'''
+        super().__init__(dlugosc, odczepy)
+        self.__odczepySprzezenia = odczepySprzezenia
+
+    def getIleBitowWyjsciowych(self):
+        return super().getDlugoscRejestru() + 1

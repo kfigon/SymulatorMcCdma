@@ -72,7 +72,6 @@ class KoderTurbo:
             podzielone.append([s,p])
         return podzielone
 
-
     def dekoduj(self, dane, ileItracji = 5, lc=5):
         '''wchodza bity, wychodza bity. Maping bipolarny juz sie zadzieje sam'''
         map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
@@ -88,17 +87,20 @@ class KoderTurbo:
         
         lu = [0 for _ in range(len(dane)//3)]
         wynikDekodera2 = None
+        intr = None
         for _ in range(ileItracji):
             extr1 = map1.dekoduj(podzielone1, lu)
             przeplecioneExtr1 = self.__przeplatacz.przeplot(extr1)
-            
+            intr = przeplecioneExtr1
+
             extr2 = map2.dekoduj(podzielone2, przeplecioneExtr1)
             wynikDekodera2 = extr2
             lu = self.__przeplatacz.rozplot(extr2)
-            
-        i=0
-        for sys in systematyczne:
-           wynikDekodera2[i] += lc*sys
-           i+=1 
-        return MapAlgorithm.proguj(wynikDekodera2)
+
+        out=[]
+        for sys,l,d in zip(przeplecioneSystematyczne, intr, wynikDekodera2):
+            w = d+ lc*sys + l
+            out.append(w)
+        out = self.__przeplatacz.rozplot(out)  
+        return MapAlgorithm.proguj(out)
 

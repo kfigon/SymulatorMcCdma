@@ -1,5 +1,5 @@
 import unittest
-from rejestrPrzesuwny import RejestrPrzesuwny
+from rejestrPrzesuwny import RejestrPrzesuwny, RejestrSystematyczny
 
 class TestyRejestruPrzesuwnego1(unittest.TestCase):
     def setUp(self):
@@ -111,7 +111,40 @@ class TestyRejestruPrzesuwnego3(unittest.TestCase):
         self.r.reset()
         self.assertEqual("0000", str(self.r))
         self.assertEqual([0,0,0], self.r.licz())
-        
+
+class TestRejestruSystematycznego(unittest.TestCase):
+    def setUp(self):
+        self.r = RejestrSystematyczny(3, [[0,2]],[0,1,2])
+
+    def testStalych(self):
+        self.assertEqual(3, self.r.getDlugoscRejestru())
+        self.assertEqual(2, self.r.getIleBitowWyjsciowych())
+
+    def testPusty(self):
+        self.assertEqual([0,0], self.r.licz())
+        self.assertEqual('000', str(self.r))
+    
+    def test1(self):
+        self.r.shift(1)
+        self.assertEqual([1,1], self.r.licz())
+        self.assertEqual('100', str(self.r))
+
+    def test2(self):
+        self.r.shift(1)
+        self.r.shift(1)
+
+        self.assertEqual([1,0], self.r.licz())
+        self.assertEqual('110', str(self.r))
+
+    def test3(self):
+        self.r.shift(1)
+        self.r.shift(1)
+        self.r.shift(0)
+
+        self.assertEqual([0, 0], self.r.licz())
+        self.assertEqual('011', str(self.r))
+
+
 if __name__ == '__main__':
     unittest.main()
 

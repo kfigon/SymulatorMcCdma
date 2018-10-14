@@ -47,6 +47,13 @@ class TestKoderaTurbo(unittest.TestCase):
         self.assertEqual([4,5,6],b)
         self.assertEqual([7,8,9],c)
 
+    def testCombDecomb(self):
+        combined = KoderTurbo.combine([1,2,3],[4,5,6],[7,8,9])
+        res = KoderTurbo.decombine(combined)
+        self.assertEqual([1,2,3],res[0])
+        self.assertEqual([4,5,6],res[1])
+        self.assertEqual([7,8,9],res[2])
+
     def testEndToEndSame0(self):
         indata = [0 for _ in range(20)]
         self.end2end(indata)
@@ -86,7 +93,7 @@ class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
         zakodowane = self.k.koduj(indata)
         zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
         
-        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=20)
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
 
         self.assertEqual(indata, zdekodowane)
 
@@ -96,7 +103,7 @@ class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
             indata.append(0)
         zakodowane = self.k.koduj(indata)
         zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
-        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=20)
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
 
         ileBledow=0
         for i,z in zip(indata, zdekodowane):
