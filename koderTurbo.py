@@ -1,13 +1,13 @@
 from przeplot import Przeplatacz
-from rejestrPrzesuwny import RejestrPrzesuwny
+from rejestrPrzesuwny import RejestrPrzesuwny, RejestrSystematyczny
 from maszynaStanow import MaszynaStanow
 from utils import flat
 from map import MapAlgorithm, mapujBit
 import math
 
 def budujDomyslnyKoder():
-    r1 = RejestrPrzesuwny(3, [[1,2], [0,2]])
-    r2 = RejestrPrzesuwny(3, [[1,2], [0,2]])
+    r1 = RejestrSystematyczny(3, [[0,2]], [1,2])
+    r2 = RejestrSystematyczny(3, [[0,2]], [1,2])
     return KoderTurbo(rejestr1 = r1, 
                             rejestr2 = r2,
                             przeplatacz=Przeplatacz(10))
@@ -25,10 +25,8 @@ class KoderTurbo:
     def __koduj(self, rejestr, dane):
         rejestr.reset()
         for b in dane:
+            rejestr.shift(b)
             wynik = rejestr.licz()
-            wejscie = b ^ wynik[0]
-            rejestr.shift(wejscie)
-
             yield wynik[1]
 
     def koduj(self, dane):

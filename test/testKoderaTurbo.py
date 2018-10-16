@@ -1,14 +1,14 @@
 import unittest
 from koderTurbo import KoderTurbo
 from przeplot import Przeplatacz
-from rejestrPrzesuwny import RejestrPrzesuwny
+from rejestrPrzesuwny import RejestrSystematyczny, RejestrPrzesuwny
 import random
 
 class TestKoderaTurbo(unittest.TestCase):
     def setUp(self):
         # jakby o jeden mniej niz w matlabie
-        r1 = RejestrPrzesuwny(3, [[1,2], [0,2]])
-        r2 = RejestrPrzesuwny(3, [[1,2], [0,2]])
+        r1 = RejestrSystematyczny(3, [[0,2]], [1,2])
+        r2 = RejestrSystematyczny(3, [[0,2]], [1,2])
         self.k = KoderTurbo(rejestr1 = r1, 
                             rejestr2 = r2,
                             przeplatacz=Przeplatacz())
