@@ -6,7 +6,6 @@ import random
 
 class TestKoderaTurbo(unittest.TestCase):
     def setUp(self):
-        # jakby o jeden mniej niz w matlabie
         r1 = RejestrSystematyczny(3, [[0,2]], [1,2])
         r2 = RejestrSystematyczny(3, [[0,2]], [1,2])
         self.k = KoderTurbo(rejestr1 = r1, 
@@ -19,7 +18,7 @@ class TestKoderaTurbo(unittest.TestCase):
 
         [d, c1, c2] = self.k.koduj(indata)
         self.assertEqual(indata, d)
-        expC = [0,1,1,0,1]
+        expC = [1,0,0,1,0]
         # to samo bo przeplot przezroczysty
         self.assertEqual(expC, c1, "pierwszy koder zle!")
         self.assertEqual(expC, c2, "koder po przeplocie zle!")
