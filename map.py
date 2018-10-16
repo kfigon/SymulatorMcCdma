@@ -5,7 +5,7 @@ from maszynaStanow import MaszynaStanow
 def mapujBit(val):
     return -1 if val == 0 else 1
 
-def gamma(odebrane, zakodowane, Luk, Lc):
+def gamma(odebrane, zakodowane, Lc):
     suma = zakodowane[1]*odebrane[1]
     return math.exp(Lc*suma/2)
 
@@ -25,7 +25,7 @@ class MapAlgorithm:
         self.__maszyna = maszyna
         self.__lc=Lc # miara jakosci kanalu
 
-    def liczMetryki(self, odebrane, lu=[]):
+    def liczMetryki(self, odebrane):
         '''liczy iteracje map
         odebrane w formie 2 wymiarowej tablicy - [ [symbol1], [symbol2] ]'''
         
@@ -40,13 +40,10 @@ class MapAlgorithm:
         alfy[0][0] = 1
         bety[ileOdebranychSymboli][0]=1
 
-        if len(lu) == 0:
-            lu = [0 for _ in range(len(odebrane))]
-
 # todo - metryki wyliczac raz, bo za dlugo to trwa
         i=0
-        for o,luk in zip(odebrane, lu):
-            self.__liczGammaDlaSymbolu(gammy, i,o, luk)
+        for o in odebrane:
+            self.__liczGammaDlaSymbolu(gammy, i,o)
             self.__liczAlfaDlaSymbolu(alfy, gammy, i, o)
             i+=1
 
@@ -55,8 +52,8 @@ class MapAlgorithm:
 
         return (alfy, bety, gammy)
 
-    def dekoduj(self, odebrane, lu=[]):
-        (alfy, bety, gammy) = self.liczMetryki(odebrane, lu)
+    def dekoduj(self, odebrane):
+        (alfy, bety, gammy) = self.liczMetryki(odebrane)
         prawdopodobienstwa = []
         for i in range(len(odebrane)):
             p0 = self.liczPrawdopodobienstwa(i, alfy, bety, gammy, [0])
@@ -144,7 +141,7 @@ class MapAlgorithm:
             # print("a[{}][{}] = {}".format(str(i+1),str(j),str(alfy[i+1][j])))
         # print()
 
-    def __liczGammaDlaSymbolu(self, gammy, i,o, luk):
+    def __liczGammaDlaSymbolu(self, gammy, i,o):
         stany = self.__maszyna.getListaStanow()
         for s in stany:
             przejscia = self.__maszyna.getMozliwePrzejscia(s)
@@ -155,7 +152,6 @@ class MapAlgorithm:
 
                 g = gamma(odebrane=o,
                     zakodowane = codedBits,
-                    Luk = luk,
                     Lc = self.__lc)
 
                 gs = int(stanPocz, 2)

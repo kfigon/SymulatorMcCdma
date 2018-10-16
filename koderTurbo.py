@@ -87,11 +87,11 @@ class KoderTurbo:
         wynikDekodera2 = None
         intr = None
         for _ in range(ileItracji):
-            extr1 = map1.dekoduj(podzielone1, lu)
+            extr1 = map1.dekoduj(podzielone1)
             przeplecioneExtr1 = self.__przeplatacz.przeplot(extr1)
             intr = przeplecioneExtr1
 
-            extr2 = map2.dekoduj(podzielone2, przeplecioneExtr1)
+            extr2 = map2.dekoduj(podzielone2)
             wynikDekodera2 = extr2
             lu = self.__przeplatacz.rozplot(extr2)
 
