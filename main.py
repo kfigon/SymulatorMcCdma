@@ -27,7 +27,9 @@ def budujKoder(konfiguracja):
 def main(konfiguracja, snr):
 
     daneBinarne = utils.generujDaneBinarne(konfiguracja.read('ileBitow'))
-    utils.zerujKoniec(daneBinarne, 10)
+    
+    if konfiguracja.read('koder'):
+        utils.zerujKoniec(daneBinarne, 10)
 
     koder = budujKoder(konfiguracja)
     bityZakodowane = koder.kodujE2E(daneBinarne)
@@ -118,6 +120,7 @@ for snr in snrTab:
     
     wyniki.append(ber)
 
-plt.semilogy(snrTab, wyniki)
-plt.grid(True)
-plt.show()
+if not konfiguracja.read('tylkoPrzebiegiCzasowe'):
+    plt.semilogy(snrTab, wyniki)
+    plt.grid(True)
+    plt.show()

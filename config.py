@@ -35,3 +35,8 @@ class Konfiguracja:
         for k,v in self.jsonDict.items():
             out += k + ":\t" + str(v) + '\n'
         return out
+
+    # bpsk bez mcdma:
+    # ilebitow=ileStrumieni, modulacja bpsk
+
+    # qpsk: ilebitow * 2 =ileStrumieni 
