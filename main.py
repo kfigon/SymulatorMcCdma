@@ -78,7 +78,7 @@ def main(konfiguracja, snr):
     bityOdebrane = modulator.demapuj(zdemodulowane)
     eb,n0 = utils.liczEbN0(nadany, snr)
 
-    zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=10, lc = eb/n0)
+    zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=konfiguracja.read('ileIteracjiDekodera'), lc = eb/n0)
 
     ileBledow = 0
     assert len(zdekodowane) == len(daneBinarne)

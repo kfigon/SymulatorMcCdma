@@ -17,14 +17,15 @@ class Konfiguracja:
 
     def __getDefaultDict(self):
         return {
-            # 'ileBitow':15000,
-            'ileBitow':100,
+            'ileBitow':15000,
+            # 'ileBitow':5000,
             'ileStrumieni':5,
             'tylkoPrzebiegiCzasowe':False,
             'dlugoscKoduWalsha': 64,
             'numerKoduWalsha':2,
             'minSnr': -10,
-            'maxSnr': 1
+            'maxSnr': 1,
+            'ileIteracjiDekodera': 10
         }
 
     def __str__(self):
