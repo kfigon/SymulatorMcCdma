@@ -20,7 +20,6 @@ def main(konfiguracja, snr):
     bityZakodowane = koder.koduj(daneBinarne)
     bityZakodowane = koder.combine(bityZakodowane[0], bityZakodowane[1], bityZakodowane[2])
 
-# todo: zamienic na to co w klasie modulator
     modulator = Qpsk()
     symboleBipolarne = modulator.mapuj(bityZakodowane)
 
