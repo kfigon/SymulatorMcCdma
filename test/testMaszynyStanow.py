@@ -224,6 +224,7 @@ class TestMaszynyStanow2(unittest.TestCase):
         stan = self.m.getStanPoczatkowy()
         self.assertEqual('000', stan)
 
+@unittest.skip('wiele inputow nie wspierane')
 class TestMaszynyStanow3(unittest.TestCase):
     def setUp(self):
         # wiele inputow
@@ -282,14 +283,48 @@ class TestMaszynyStanow3(unittest.TestCase):
         stan = self.m.getStanPoczatkowy()
         self.assertEqual('000000', stan)
 
-
 class TestMaszynyStanowRejestruSystematyczego(unittest.TestCase):
     def setUp(self):
         r = RejestrSystematyczny(3, [[0,2]], [0,1,2])
         self.m = MaszynaStanow(r,1)
 
-    def test(self):
-        self.fail("to do")
+    def sprawdzStan(self, stan, expIn, expOut, expInSt, expOutSt):
+        self.assertEqual(expIn, stan['in'])
+        self.assertEqual(expOut, stan['out'])
+        self.assertEqual(expInSt, stan['inState'])
+        self.assertEqual(expOutSt, stan['outState'])
+
+    def testStan00_0(self):
+        stan = self.m.checkState("00", [0])
+        self.sprawdzStan(stan, [0],[0,0], "00", "00")
+
+    def testStan00_1(self):
+        stan = self.m.checkState("00", [1])
+        self.sprawdzStan(stan, [1],[1,1], "00", "10")
+
+    def testStan01_0(self):
+        stan = self.m.checkState("01", [0])
+        self.sprawdzStan(stan, [0],[0,0], "01", "10")
+
+    def testStan01_1(self):
+        stan = self.m.checkState("01", [1])
+        self.sprawdzStan(stan, [1],[1,1], "01", "00")
+
+    def testStan10_0(self):
+        stan = self.m.checkState("10", [0])
+        self.sprawdzStan(stan, [0],[0,1], "10", "11")
+
+    def testStan10_1(self):
+        stan = self.m.checkState("10", [1])
+        self.sprawdzStan(stan, [1],[1,0], "10", "01")
+
+    def testStan11_0(self):
+        stan = self.m.checkState("11", [0])
+        self.sprawdzStan(stan, [0],[0,1], "11", "01")
+
+    def testStan11_1(self):
+        stan = self.m.checkState("11", [1])
+        self.sprawdzStan(stan, [1],[1,0], "11", "11")
 
 if __name__ == '__main__':
     unittest.main()

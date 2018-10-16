@@ -7,39 +7,35 @@ class TestyRejestruPrzesuwnego1(unittest.TestCase):
         self.assertEqual("000", str(self.r))
 
     def testStalych(self):
-        self.assertEqual(3, self.r.getDlugoscRejestru())
+        self.assertEqual(2, self.r.getDlugoscRejestru())
         self.assertEqual(2, self.r.getIleBitowWyjsciowych())
-
-    def testOgona(self):
-        self.r.shift(1)
-        self.r.shift(1)
-        self.r.shift(1)
-
-        out = self.r.terminate()
-        exp=[0,1,1,1]
-        self.assertEqual(exp, out)
-        self.assertEqual('001', str(self.r)) # ta jedynka i tak idzie do kosza
+        self.assertEqual(4, self.r.getNumberOfStates())
 
     def test1(self):
         self.r.shift(1)
         self.assertEqual([1,1], self.r.licz())
         self.assertEqual("100", str(self.r))
+        self.assertEqual("00", self.r.getState())
 
         self.r.shift(0)
         self.assertEqual([1,0], self.r.licz())
         self.assertEqual("010", str(self.r))
+        self.assertEqual("10", self.r.getState())
 
         self.r.shift(0)
         self.assertEqual([1,1], self.r.licz())
         self.assertEqual("001", str(self.r))
+        self.assertEqual("01", self.r.getState())
 
         self.r.shift(1)
         self.assertEqual([1,1], self.r.licz())
         self.assertEqual("100", str(self.r))
+        self.assertEqual("00", self.r.getState())
 
         self.r.shift(1)
         self.assertEqual([0,1], self.r.licz())
         self.assertEqual("110", str(self.r))
+        self.assertEqual("10", self.r.getState())
 
     def test2(self):
         self.r.shift(0)
@@ -57,8 +53,9 @@ class TestyRejestruPrzesuwnego2(unittest.TestCase):
         self.assertEqual("000", str(self.r))
 
     def testStalych(self):
-        self.assertEqual(3, self.r.getDlugoscRejestru())
+        self.assertEqual(2, self.r.getDlugoscRejestru())
         self.assertEqual(3, self.r.getIleBitowWyjsciowych())
+        self.assertEqual(4, self.r.getNumberOfStates())
 
     def test(self):
         self.r.shift(1)
@@ -82,7 +79,7 @@ class TestyRejestruPrzesuwnego3(unittest.TestCase):
         self.assertEqual("0000", str(self.r))
 
     def testStalych(self):
-        self.assertEqual(4, self.r.getDlugoscRejestru())
+        self.assertEqual(3, self.r.getDlugoscRejestru())
         self.assertEqual(3, self.r.getIleBitowWyjsciowych())
 
     def test(self):
@@ -114,11 +111,13 @@ class TestyRejestruPrzesuwnego3(unittest.TestCase):
 
 class TestRejestruSystematycznego(unittest.TestCase):
     def setUp(self):
-        self.r = RejestrSystematyczny(3, [[0,2]],[0,1,2])
+        # sprzezenie jest na 1,2, w matematyce jest 0,1,2
+        self.r = RejestrSystematyczny(3, [[0,2]],[1,2])
 
     def testStalych(self):
-        self.assertEqual(3, self.r.getDlugoscRejestru())
+        self.assertEqual(2, self.r.getDlugoscRejestru())
         self.assertEqual(2, self.r.getIleBitowWyjsciowych())
+        self.assertEqual(4, self.r.getNumberOfStates())
 
     def testPusty(self):
         self.assertEqual([0,0], self.r.licz())
@@ -134,16 +133,31 @@ class TestRejestruSystematycznego(unittest.TestCase):
         self.r.shift(1)
 
         self.assertEqual([1,0], self.r.licz())
-        self.assertEqual('110', str(self.r))
+        self.assertEqual('010', str(self.r))
 
-    def test3(self):
-        self.r.shift(1)
-        self.r.shift(1)
-        self.r.shift(0)
+    def testInject(self):
+        data = [
+            {'state':'00', 'in':0, 'expNext':'00' ,'expOut':[0,0]},
+            {'state':'00', 'in':1, 'expNext':'10' ,'expOut':[1,1]},
 
-        self.assertEqual([0, 0], self.r.licz())
-        self.assertEqual('011', str(self.r))
+            {'state':'01', 'in':0, 'expNext':'10' ,'expOut':[0,0]},
+            {'state':'01', 'in':1, 'expNext':'00' ,'expOut':[1,1]},
 
+            {'state':'10', 'in':0, 'expNext':'11' ,'expOut':[0,1]},
+            {'state':'10', 'in':1, 'expNext':'01' ,'expOut':[1,0]},
+
+            {'state':'11', 'in':0, 'expNext':'01' ,'expOut':[0,1]},
+            {'state':'11', 'in':1, 'expNext':'11' ,'expOut':[1,0]}
+        ]
+
+        for d in data:
+            with self.subTest('inject '+str(d)):
+                self.r.reset()
+                self.r.injectState(d['state'], d['in'])
+                
+                self.assertEqual(d['state'], self.r.getState())
+                self.assertEqual(d['expNext'], self.r.getStateAfterShift())
+                self.assertEqual(d['expOut'], self.r.licz())
 
 if __name__ == '__main__':
     unittest.main()

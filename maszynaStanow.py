@@ -15,28 +15,21 @@ class MaszynaStanow:
         # stan w srodku to
         # bityWej_StaNRej
         # 001 - stan 01, wejscie 0
+        permutacjeWejsc = self.__getPermutacje(ileNaRaz)
+        permutacjeStanow = self.__getPermutacje(self.__rej.getDlugoscRejestru())
+        for stan in permutacjeStanow:
+            for wejscie in permutacjeWejsc:
+                self.__rej.reset()            
+                self.__rej.injectState(stan, int(wejscie))
 
-        # lacznie z inputowymi 'komorkami',
-        # wiec metoda getNumberOfStates()
-        # nie moze byc
-        permutacjeBinarne = self.__getPermutacje(self.__rej.getDlugoscRejestru())
-        for liczba in permutacjeBinarne:
-            self.__rej.reset()
-            for bitStanu in reversed(liczba):
-                b = 0
-                if(bitStanu == '1'):
-                    b=1
-                self.__rej.shift(b)
+                stanNaWyjsciu = self.__rej.getStateAfterShift()
+                outcome = list(self.__rej.licz())
 
-            # kolejny stan to tak naprawde to, co bedzie
-            # gdy zrobimy kolejnego shifta o ileNaRaz
-            stanNaWyjsciu = str(self.__rej)[0:-ileNaRaz]
-            outcome = list(self.__rej.licz())
+                daneStanu = {'outputBits': outcome,
+                            'destState': stanNaWyjsciu}
+                klucz = wejscie + stan
+                self.__stany[klucz] = daneStanu  
 
-            daneStanu = {'outputBits': outcome,
-                         'destState': stanNaWyjsciu}
-            self.__stany[liczba] = daneStanu  
-        
     # zwraca slownik
     # [in] = inptBits
     # [out] = output bits
@@ -93,17 +86,17 @@ class MaszynaStanow:
         return out
 
     def getNumberOfStates(self):
-        return 2**(self.__rej.getDlugoscRejestru()-self.__ileNaRaz)
+        return 2**(self.__rej.getDlugoscRejestru())
 
     # zwraca oznaczenie stanu (str)
     def getStanPoczatkowy(self):
-        ile = self.__rej.getDlugoscRejestru() - self.__ileNaRaz
+        ile = self.__rej.getDlugoscRejestru()
         szablon = '0%db' % ile
         return format(0, szablon)
 
     # zwraca oznaczenia stanow (str)
     def getListaStanow(self):
-        return self.__getPermutacje(self.__rej.getDlugoscRejestru()-self.__ileNaRaz)
+        return self.__getPermutacje(self.__rej.getDlugoscRejestru())
 
     # przyjmuje oznaczenia stanow (str)
     def czyPolaczone(self, stan1, stan2):
