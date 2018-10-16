@@ -224,64 +224,6 @@ class TestMaszynyStanow2(unittest.TestCase):
         stan = self.m.getStanPoczatkowy()
         self.assertEqual('000', stan)
 
-@unittest.skip('wiele inputow nie wspierane')
-class TestMaszynyStanow3(unittest.TestCase):
-    def setUp(self):
-        # wiele inputow
-        odczepy = [[1,4,6,8],
-                   [0,2,4],
-                   [2,3,5,7],
-                   [1,5,6,8]]
-        r = RejestrPrzesuwny(9, odczepy)
-        self.m = MaszynaStanow(r,3)
-
-    def testListyStanow(self):
-        stany = self.m.getListaStanow()
-        self.assertEqual(64, len(stany))
-
-    def testDlugosc(self):
-        self.assertEqual(64, self.m.getNumberOfStates())
-
-    def sprawdzStan(self, stan, expIn, expOut, expInSt, expOutSt):
-        self.assertEqual(expIn, stan['in'])
-        self.assertEqual(expOut, stan['out'])
-        self.assertEqual(expInSt, stan['inState'])
-        self.assertEqual(expOutSt, stan['outState'])
-
-    def testStan000110_110(self):
-        stan = self.m.checkState("000110", [1,1,0])
-        self.sprawdzStan(stan, [1,1,0],[0,1,1,0],"000110", "110000")
-
-    def testStan110000_001(self):
-        stan = self.m.checkState("110000", [0,0,1])
-        self.sprawdzStan(stan, [0,0,1],[1,0,0,0],"110000", "001110")
-
-    def testStan100101_010(self):
-        stan = self.m.checkState("100101", [0,1,0])
-        self.sprawdzStan(stan, [0,1,0],[1,0,1,1],"100101", "010100")
-
-    def testStan110111_010(self):
-        stan = self.m.checkState("110111", [0,1,0])
-        self.sprawdzStan(stan, [0,1,0],[0,1,0,1],"110111", "010110")
-
-    def testStan001000_000(self):
-        stan = self.m.checkState("001000", [0,0,0])
-        self.sprawdzStan(stan, [0,0,0],[0,0,1,1],"001000", "000001")
-
-    def testStan111010_100(self):
-        stan = self.m.checkState("111010", [1,0,0])
-        self.sprawdzStan(stan, [1,0,0],[1,0,1,1],"111010", "100111")
-
-# moze nie dzialac co iles iteracji, albo na pewnych srodowiskach - kolejnosc dodawabua do stanow
-    def testPrzejscia000110(self):
-        stany = self.m.getMozliwePrzejscia("000110")
-        self.assertEqual(8, len(stany))
-        stan = stany[6]
-        self.sprawdzStan(stan, [1,1,0],[0,1,1,0],"000110", "110000")
-
-    def testStanPoczatkowy(self):
-        stan = self.m.getStanPoczatkowy()
-        self.assertEqual('000000', stan)
 
 class TestMaszynyStanowRejestruSystematyczego(unittest.TestCase):
     def setUp(self):
