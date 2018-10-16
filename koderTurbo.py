@@ -83,7 +83,6 @@ class KoderTurbo:
         podzielone1 = self.__rozdziel(systematyczne, par1)
         podzielone2 = self.__rozdziel(przeplecioneSystematyczne, par2)
         
-        lu = [0 for _ in range(len(dane)//3)]
         wynikDekodera2 = None
         intr = None
         for _ in range(ileItracji):
@@ -93,7 +92,6 @@ class KoderTurbo:
 
             extr2 = map2.dekoduj(podzielone2)
             wynikDekodera2 = extr2
-            lu = self.__przeplatacz.rozplot(extr2)
 
         out=[]
         for sys,l,d in zip(przeplecioneSystematyczne, intr, wynikDekodera2):

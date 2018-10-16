@@ -24,11 +24,14 @@ class MapAlgorithm:
         '''
         self.__maszyna = maszyna
         self.__lc=Lc # miara jakosci kanalu
+        self.__wyliczoneMetryki = None # cache, nie ma potrzeby wyliczac od nowa co iteracje
 
     def liczMetryki(self, odebrane):
         '''liczy iteracje map
         odebrane w formie 2 wymiarowej tablicy - [ [symbol1], [symbol2] ]'''
-        
+        if self.__wyliczoneMetryki is not None:
+            return self.__wyliczoneMetryki
+
         ileStanow = self.__maszyna.getNumberOfStates()
         ileOdebranychSymboli = len(odebrane)
         
@@ -50,7 +53,8 @@ class MapAlgorithm:
         for i,o in enumerate(reversed(odebrane)):
             self.__liczBetaDlaSymbolu(bety, gammy, len(odebrane)-i-1, o)
 
-        return (alfy, bety, gammy)
+        self.__wyliczoneMetryki = (alfy, bety, gammy)
+        return self.__wyliczoneMetryki
 
     def dekoduj(self, odebrane):
         (alfy, bety, gammy) = self.liczMetryki(odebrane)

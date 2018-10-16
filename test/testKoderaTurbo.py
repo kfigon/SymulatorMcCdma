@@ -97,18 +97,14 @@ class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
         self.assertEqual(indata, zdekodowane)
 
     def testStres(self):
-        indata = [random.randint(0,1) for _ in range(95)]
-        for i in range(5):
+        indata = [random.randint(0,1) for _ in range(995)]
+        for _ in range(5):
             indata.append(0)
         zakodowane = self.k.koduj(indata)
         zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
         zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
 
-        ileBledow=0
-        for i,z in zip(indata, zdekodowane):
-            if i != z:
-                ileBledow+=1
-        self.assertLess(ileBledow, 8)
+        self.assertEqual(indata, zdekodowane)
 
 if __name__ =='__main__':
     unittest.main()
