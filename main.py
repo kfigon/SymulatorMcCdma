@@ -4,23 +4,35 @@ import numpy as np
 import random
 from transmiterOfdm import TransmiterOfdm
 from przetwornikSP import PrzetwornikSzeregowoRownolegly
-from koderTurbo import KoderTurbo, budujDomyslnyKoder
+from koderTurbo import KoderTurbo, budujDomyslnyKoder, budujBrakKodowania
 import utils
 from rozpraszaczWidma import RozpraszaczBipolarny
 from generatorKoduWalsha import GeneratorKoduWalsha
 from config import Konfiguracja
-from modulator import Qpsk
+from modulator import Qpsk, Bpsk
+
+def stworzModulator(konfiguracja):
+    mod = konfiguracja.read('modulacja')
+    if mod == 'BPSK':
+        return Bpsk()
+    else:
+        return Qpsk()
+
+def budujKoder(konfiguracja):
+    if konfiguracja.read('koder'):
+        return budujDomyslnyKoder()
+    else:
+        return budujBrakKodowania()
 
 def main(konfiguracja, snr):
 
     daneBinarne = utils.generujDaneBinarne(konfiguracja.read('ileBitow'))
     utils.zerujKoniec(daneBinarne, 10)
 
-    koder = budujDomyslnyKoder()
-    bityZakodowane = koder.koduj(daneBinarne)
-    bityZakodowane = koder.combine(bityZakodowane[0], bityZakodowane[1], bityZakodowane[2])
+    koder = budujKoder(konfiguracja)
+    bityZakodowane = koder.kodujE2E(daneBinarne)
 
-    modulator = Qpsk()
+    modulator = stworzModulator(konfiguracja)
     symboleBipolarne = modulator.mapuj(bityZakodowane)
 
     pSP = PrzetwornikSzeregowoRownolegly(konfiguracja.read('ileStrumieni'))

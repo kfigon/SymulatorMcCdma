@@ -12,8 +12,18 @@ def budujDomyslnyKoder():
                             rejestr2 = r2,
                             przeplatacz=Przeplatacz(10))
 
+def budujBrakKodowania():
+    return Koder()
 
-class KoderTurbo:
+class Koder:
+    def kodujE2E(self, dane):
+        return dane
+
+    def dekoduj(self, dane, ileItracji = 5, lc=5):
+        return dane
+    
+
+class KoderTurbo(Koder):
     def __init__(self, rejestr1, rejestr2, przeplatacz = Przeplatacz()):
         if rejestr1.getIleBitowWyjsciowych() != 2 or rejestr2.getIleBitowWyjsciowych() != 2:
             raise Exception('rejestry kodera turbo musza miec 2 gazie do odczepow!')
@@ -35,7 +45,11 @@ class KoderTurbo:
         out2 = list(self.__koduj(self.__rej2, przeplecione))
 
         return [dane, out1, out2]
-    
+
+    def kodujE2E(self, dane):
+        [a,b,c] = self.koduj(dane)
+        return self.combine(a,b,c)
+
     @staticmethod
     def combine(tab1, tab2, tab3):
         dl1 = len(tab1)
