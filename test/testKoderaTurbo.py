@@ -23,7 +23,6 @@ class TestKoderaTurbo(unittest.TestCase):
         self.assertEqual(expC, c1, "pierwszy koder zle!")
         self.assertEqual(expC, c2, "koder po przeplocie zle!")
 
-
     def testCombine(self):
         tab1=[1,2,3]
         tab2=[4,5,6]
@@ -66,10 +65,7 @@ class TestKoderaTurbo(unittest.TestCase):
         self.assertEqual(indata, zdekodowane)
 
     def testEndToEndSame1(self):
-        # dane musza byc terminowane!
-        indata = [1 for _ in range(20)]
-        for _ in range(5):
-            indata.append(0)
+        indata = [1 for _ in range(25)]
         self.end2end(indata)
 
     def testEndToEnd(self):
@@ -78,32 +74,45 @@ class TestKoderaTurbo(unittest.TestCase):
 
 class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
     def setUp(self):
-        r1 = RejestrPrzesuwny(3, [[1,2], [0,2]])
-        r2 = RejestrPrzesuwny(3, [[1,2], [0,2]])
+        r1 = RejestrSystematyczny(3, [[0,2]], [1,2])
+        r2 = RejestrSystematyczny(3, [[0,2]], [1,2])
         self.k = KoderTurbo(rejestr1 = r1, 
                             rejestr2 = r2,
                             przeplatacz=Przeplatacz(3))
     def testEndToEnd(self):
-        # dane musza byc terminowane!
         indata = [1,1,0,1,1,1,0,0,0,0,0,0]
         self.end2end(indata)
         
     def end2end(self, indata):
-        zakodowane = self.k.koduj(indata)
-        zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
-        
+        zakodowane = self.k.kodujE2E(indata)        
         zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
-
         self.assertEqual(indata, zdekodowane)
 
     def testStres(self):
-        indata = [random.randint(0,1) for _ in range(995)]
-        for _ in range(5):
-            indata.append(0)
-        zakodowane = self.k.koduj(indata)
-        zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
-        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
+        indata = [random.randint(0,1) for _ in range(200)]
+        self.end2end(indata)
 
+class TestDekoderaTurboZPrzeplotem2(unittest.TestCase):
+    def setUp(self):
+        r1 = RejestrSystematyczny(5, [[0,2,4]], [1,2,3,4])
+        r2 = RejestrSystematyczny(5, [[0,1,3,4]], [1,3,4])
+        self.k = KoderTurbo(rejestr1 = r1, 
+                            rejestr2 = r2,
+                            przeplatacz=Przeplatacz(3))
+        
+    def end2end(self, indata):
+        zakodowane = self.k.kodujE2E(indata)        
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
+        self.assertEqual(indata, zdekodowane)
+
+    def testEndToEnd(self):
+        indata = [1,1,0,1,1,1,0,0,0,0,0,0]
+        self.end2end(indata)
+
+    def testStres(self):
+        indata = [random.randint(0,1) for _ in range(200)]
+        zakodowane = self.k.kodujE2E(indata)        
+        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
         self.assertEqual(indata, zdekodowane)
 
 if __name__ =='__main__':

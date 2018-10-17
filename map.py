@@ -41,14 +41,13 @@ class MapAlgorithm:
 
         # pewne stany
         alfy[0][0] = 1
-        bety[ileOdebranychSymboli][0]=1
+        for i in range(len(bety[ileOdebranychSymboli])):
+            bety[ileOdebranychSymboli][i]=1/ileStanow
 
-# todo - metryki wyliczac raz, bo za dlugo to trwa
-        i=0
-        for o in odebrane:
+
+        for i,o in enumerate(odebrane):
             self.__liczGammaDlaSymbolu(gammy, i,o)
             self.__liczAlfaDlaSymbolu(alfy, gammy, i, o)
-            i+=1
 
         for i,o in enumerate(reversed(odebrane)):
             self.__liczBetaDlaSymbolu(bety, gammy, len(odebrane)-i-1, o)

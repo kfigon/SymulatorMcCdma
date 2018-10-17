@@ -40,11 +40,6 @@ class TestyUtilsow(unittest.TestCase):
         flatted = flat(dane)
         self.assertEqual([1,2,3,4,5,6,7,8,9], flatted)
 
-    def testTerminowaniaCiagu(self):
-        tab=[1,2,3,4,5,6,7,8,9,10]
-        zerujKoniec(tab, 3)
-        exp = [1,2,3,4,5,6,7,0,0,0]
-        self.assertEqual(exp, tab)
 
 if __name__ == '__main__':
     unittest.main()

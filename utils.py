@@ -76,7 +76,3 @@ def awgn(sygnal, snrDb):
         szum = np.sqrt(2*wariancjaSzumu) * np.random.randn(dlSygnalu)
 
     return sygnal + szum
-
-def zerujKoniec(tab, ile):
-    '''zeruje ostatnie <ile> elementow tablicy'''
-    tab[-ile:] = [0 for _ in range(ile)]

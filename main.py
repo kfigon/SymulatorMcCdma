@@ -28,9 +28,6 @@ def main(konfiguracja, snr):
 
     daneBinarne = utils.generujDaneBinarne(konfiguracja.read('ileBitow'))
     
-    if konfiguracja.read('koder'):
-        utils.zerujKoniec(daneBinarne, 10)
-
     koder = budujKoder(konfiguracja)
     bityZakodowane = koder.kodujE2E(daneBinarne)
 
