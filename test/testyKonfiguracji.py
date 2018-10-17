@@ -19,6 +19,14 @@ class TestKonfiguracji(unittest.TestCase):
         self.assertEqual(5, k.read('ileStrumieni'))
         self.assertEqual(2, k.read('numerKoduWalsha'))
         self.assertEqual(False, k.read('tylkoPrzebiegiCzasowe'))
+        
+    def testWieluKonfiguracji(self):
+        self.fail("to impl")
+        # tablica konfigow, defauly, tytuly
 
+    def testOdczepowKodera(self):
+        self.fail("to impl")
+        # konfigurowalne kodery
+        
 if __name__ == '__main__':
     unittest.main()
