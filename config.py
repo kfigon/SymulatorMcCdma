@@ -17,7 +17,6 @@ class Konfiguracja:
 
     def __getDefaultDict(self):
         return {
-            # 'ileBitow':15000,
             'ileBitow': 100,
             'ileStrumieni':5,
             'tylkoPrzebiegiCzasowe':False,
@@ -27,7 +26,11 @@ class Konfiguracja:
             'maxSnr': 1,
             'ileIteracjiDekodera': 10,
             'modulacja': 'QPSK',
-            'koder': True
+            'koder': True,
+            'tytul': "tytul konfiguracji",
+            'ileKomorekRejestru': 4,
+            'odczepy': [[0,1,3],[0,1]],
+            'odczepySprzezenia': [2,4]
         }
 
     def __str__(self):
@@ -38,5 +41,4 @@ class Konfiguracja:
 
     # bpsk bez mcdma:
     # ilebitow=ileStrumieni, modulacja bpsk
-
     # qpsk: ilebitow * 2 =ileStrumieni 

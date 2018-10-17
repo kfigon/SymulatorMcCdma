@@ -64,7 +64,6 @@ def main(konfiguracja, snr):
         plt.show()
         return
 
-    # odebrane = nadany
     odebrane = utils.awgn(nadany, snr)
 
     odebraneStrumienie = pSP.rozdziel(odebrane)
@@ -79,11 +78,6 @@ def main(konfiguracja, snr):
         zdemodulowanyStrumien = transmiter.demoduluj(skupiony)
         zdemodulowaneStrumienie.append(zdemodulowanyStrumien)
         zdemodulowane += zdemodulowanyStrumien
-
-    # for i in range(len(strumienie)):
-    #     assert zdemodulowaneStrumienie[i] == strumienie[i]
-    # assert symboleBipolarne == zdemodulowane
-
 
     # dekodowanie
     bityOdebrane = modulator.demapuj(zdemodulowane)
