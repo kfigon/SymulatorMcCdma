@@ -101,8 +101,9 @@ for konfiguracja in konfiguracje:
     if konfiguracja.read('tylkoPrzebiegiCzasowe'):
         pass
 
-# labelki, tytuly
-    plt.semilogy(snrTab, wyniki, label = konfiguracja.read('tytul'))
+# labelki, osie, tytuly wykresow
+    plt.semilogy(snrTab, wyniki, label=konfiguracja.read('tytul'))
 
+plt.legend()
 plt.grid(True)
 plt.show()
