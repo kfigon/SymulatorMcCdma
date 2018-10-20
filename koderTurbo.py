@@ -12,9 +12,6 @@ def budujDomyslnyKoder():
                             rejestr2 = r2,
                             przeplatacz=Przeplatacz(10))
 
-def budujBrakKodowania():
-    return Koder()
-
 class Koder:
     def kodujE2E(self, dane):
         return dane

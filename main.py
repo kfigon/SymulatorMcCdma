@@ -4,34 +4,20 @@ import numpy as np
 import random
 from transmiterOfdm import TransmiterOfdm
 from przetwornikSP import PrzetwornikSzeregowoRownolegly
-from koderTurbo import KoderTurbo, budujDomyslnyKoder, budujBrakKodowania
 import utils
 from rozpraszaczWidma import RozpraszaczBipolarny
 from generatorKoduWalsha import GeneratorKoduWalsha
-from config import Konfiguracja
+from config import Konfiguracja, budujKonfiguracje
 from modulator import Qpsk, Bpsk
-
-def stworzModulator(konfiguracja):
-    mod = konfiguracja.read('modulacja')
-    if mod == 'BPSK':
-        return Bpsk()
-    else:
-        return Qpsk()
-
-def budujKoder(konfiguracja):
-    if konfiguracja.read('koder'):
-        return budujDomyslnyKoder()
-    else:
-        return budujBrakKodowania()
 
 def main(konfiguracja, snr):
 
     daneBinarne = utils.generujDaneBinarne(konfiguracja.read('ileBitow'))
     
-    koder = budujKoder(konfiguracja)
+    koder = konfiguracja.budujKoder()
     bityZakodowane = koder.kodujE2E(daneBinarne)
 
-    modulator = stworzModulator(konfiguracja)
+    modulator = konfiguracja.stworzModulator()
     symboleBipolarne = modulator.mapuj(bityZakodowane)
 
     pSP = PrzetwornikSzeregowoRownolegly(konfiguracja.read('ileStrumieni'))
@@ -93,25 +79,30 @@ def main(konfiguracja, snr):
 
     return ileBledow/len(daneBinarne)
     
+def iteracjaDlaKonfiga(konfiguracja):
+    print(konfiguracja)
 
-konfiguracja = Konfiguracja()
-# json do pliku config.json
-print(konfiguracja)
-
-minSnr = konfiguracja.read('minSnr')
-maxSnr = konfiguracja.read('maxSnr')
-
-snrTab=[snr for snr in range(minSnr, maxSnr)]
-wyniki=[]
-for snr in snrTab:
-    ber = main(konfiguracja, snr)
+    snrTab = konfiguracja.getSrnTab()
+    wyniki=[]
+    for snr in snrTab:
+        ber = main(konfiguracja, snr)
+            
+        if not konfiguracja.read('tylkoPrzebiegiCzasowe'):
+            print("snr %d, ile bledow: %f" % (snr, ber))
         
-    if not konfiguracja.read('tylkoPrzebiegiCzasowe'):
-        print("snr %d, ile bledow: %f" % (snr, ber))
-    
-    wyniki.append(ber)
+        wyniki.append(ber)
+    return snrTab, wyniki
 
-if not konfiguracja.read('tylkoPrzebiegiCzasowe'):
-    plt.semilogy(snrTab, wyniki)
-    plt.grid(True)
-    plt.show()
+konfiguracje = budujKonfiguracje()
+for konfiguracja in konfiguracje:
+    # json do pliku config.json
+    snrTab,wyniki = iteracjaDlaKonfiga(konfiguracja)
+    
+    if konfiguracja.read('tylkoPrzebiegiCzasowe'):
+        pass
+
+# labelki, tytuly
+    plt.semilogy(snrTab, wyniki, label = konfiguracja.read('tytul'))
+
+plt.grid(True)
+plt.show()
