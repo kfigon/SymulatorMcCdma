@@ -1,0 +1,31 @@
+[{
+	"tytul": "QPSK",
+	
+	"ileBitow": 5000,
+	"ileStrumieni":5,
+	"tylkoPrzebiegiCzasowe":false,
+	"dlugoscKoduWalsha": 64,
+	"numerKoduWalsha":2,
+	
+	"minSnr": -10,
+	"maxSnr": 1,
+	"modulacja": "QPSK",
+	
+	"koder": false
+},
+{
+	"tytul": "BPSK",
+	
+	"ileBitow": 5000,
+	"ileStrumieni":5,
+	"tylkoPrzebiegiCzasowe":false,
+	"dlugoscKoduWalsha": 64,
+	"numerKoduWalsha":2,
+	
+	"minSnr": -10,
+	"maxSnr": 1,
+	"modulacja": "BPSK",
+	
+	"koder": false
+}
+]

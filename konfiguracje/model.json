@@ -1,8 +1,7 @@
-[
-{	
-	"tytul": "QPSK",
+[{
+	"tytul": "Domyslna konfiguracja",
 	
-	"ileBitow": 5000,
+	"ileBitow": 100,
 	"ileStrumieni":5,
 	"tylkoPrzebiegiCzasowe":false,
 	"dlugoscKoduWalsha": 64,
@@ -12,7 +11,7 @@
 	"maxSnr": 1,
 	"modulacja": "QPSK",
 	
-	"koder": "True",
+	"koder": true,
 	"ileIteracjiDekodera": 10,
 	"dlugoscPrzeplotu": 10,
 	"koder1": {
@@ -27,9 +26,9 @@
 	}
 },
 {
-	"tytul": "BPSK",
+	"tytul": "Domyslna konfiguracja",
 	
-	"ileBitow": 5000,
+	"ileBitow": 100,
 	"ileStrumieni":5,
 	"tylkoPrzebiegiCzasowe":false,
 	"dlugoscKoduWalsha": 64,
@@ -37,9 +36,9 @@
 	
 	"minSnr": -10,
 	"maxSnr": 1,
-	"modulacja": "BPSK",
+	"modulacja": "QPSK",
 	
-	"koder": "True",
+	"koder": true,
 	"ileIteracjiDekodera": 10,
 	"dlugoscPrzeplotu": 10,
 	"koder1": {

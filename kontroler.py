@@ -41,6 +41,7 @@ def liczBer(konfiguracja, snr):
             nadany.append(x)
         
     if konfiguracja.read('tylkoPrzebiegiCzasowe') == True:
+        plt.title(konfiguracja.read("tytul"))
         plt.subplot(2,1,1)
         plt.plot(np.real(nadany))
         # plt.plot(np.real(rozproszony))

@@ -1,0 +1,43 @@
+[{
+	"tytul": "Z koderem",
+	
+	"ileBitow": 5000,
+	"ileStrumieni":5,
+	"tylkoPrzebiegiCzasowe":false,
+	"dlugoscKoduWalsha": 64,
+	"numerKoduWalsha":2,
+	
+	"minSnr": -10,
+	"maxSnr": 1,
+	"modulacja": "QPSK",
+	
+	"koder": true,
+	"ileIteracjiDekodera": 10,
+	"dlugoscPrzeplotu": 10,
+	"koder1": {
+		"ileKomorekRejestru": 3,
+		"odczepy": [[0,2]],
+		"odczepySprzezenia": [1,2]
+	},
+	"koder2": {
+		"ileKomorekRejestru": 3,
+		"odczepy": [[0,2]],
+		"odczepySprzezenia": [1,2]
+	}
+},
+{
+	"tytul": "Bez kodera",
+	
+	"ileBitow": 5000,
+	"ileStrumieni":5,
+	"tylkoPrzebiegiCzasowe":false,
+	"dlugoscKoduWalsha": 64,
+	"numerKoduWalsha":2,
+	
+	"minSnr": -10,
+	"maxSnr": 1,
+	"modulacja": "QPSK",
+	
+	"koder": false
+}
+]

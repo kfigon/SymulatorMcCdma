@@ -54,7 +54,7 @@ class Konfiguracja:
                 'ileKomorekRejestru': 3,
                 'odczepy': [[0,2]],
                 'odczepySprzezenia': [1,2],
-            },
+            }
         }
 
     def getSrnTab(self):
