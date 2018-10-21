@@ -10,7 +10,7 @@ from generatorKoduWalsha import GeneratorKoduWalsha
 from config import Konfiguracja, budujKonfiguracje
 from modulator import Qpsk, Bpsk
 
-def main(konfiguracja, snr):
+def liczBer(konfiguracja, snr):
 
     daneBinarne = utils.generujDaneBinarne(konfiguracja.read('ileBitow'))
     
@@ -85,7 +85,7 @@ def iteracjaDlaKonfiga(konfiguracja):
     snrTab = konfiguracja.getSrnTab()
     wyniki=[]
     for snr in snrTab:
-        ber = main(konfiguracja, snr)
+        ber = liczBer(konfiguracja, snr)
 
         if konfiguracja.read('tylkoPrzebiegiCzasowe') == False:
             print("snr %d, ile bledow: %f" % (snr, ber))

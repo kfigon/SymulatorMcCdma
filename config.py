@@ -30,7 +30,7 @@ class Konfiguracja:
 
     def __getDefaultDict(self):
         return {
-            'tytul': "tytul konfiguracji",
+            'tytul': "Domyslna konfiguracja",
             
             'ileBitow': 100,
             'ileStrumieni':5,
