@@ -12,8 +12,9 @@ def main(plik=None):
 
         # labelki, osie, tytuly wykresow
         plt.semilogy(snrTab, wyniki, label=konfiguracja.read('tytul'))
-
     plt.legend()
+    plt.xlabel('SNR [dB]')
+    plt.ylabel('BER')
     plt.grid(True)
     plt.show()
 
