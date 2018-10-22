@@ -8,7 +8,7 @@ def budujKonfiguracje(jsonString=None):
     if jsonString is None:
         return [Konfiguracja()]
 
-    readJsonDict = json.load(jsonString)
+    readJsonDict = json.loads(jsonString)
     konfigi = []
     for cfg in readJsonDict:
         konfigi.append(Konfiguracja(cfg))
