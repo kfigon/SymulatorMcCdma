@@ -24,7 +24,7 @@ if __name__ == '__main__':
         sciezka = sys.argv[1]
 
         with open(sciezka) as plik:
-            main(plik)
+            main(plik.read())
 
     else:
         main()
