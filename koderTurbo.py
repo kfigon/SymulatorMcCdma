@@ -1,7 +1,7 @@
 from przeplot import Przeplatacz
 from rejestrPrzesuwny import RejestrPrzesuwny, RejestrSystematyczny
 from maszynaStanow import MaszynaStanow
-from utils import flat
+from utils import flat, binar
 from map import MapAlgorithm, mapujBit
 import math
 
@@ -17,7 +17,7 @@ class Koder:
         return dane
 
     def dekoduj(self, dane, ileItracji = 5, lc=5):
-        return dane
+        return list(map(binar, dane))
     
 
 class KoderTurbo(Koder):
@@ -86,7 +86,7 @@ class KoderTurbo(Koder):
         map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
         map2 = MapAlgorithm(MaszynaStanow(self.__rej2), lc) 
         
-        dane = list(map(mapujBit, dane))
+        dane = list(map(lambda x: x*(-1), dane))
 
         [systematyczne, par1, par2] = self.decombine(dane)
         przeplecioneSystematyczne = self.__przeplatacz.przeplot(systematyczne)

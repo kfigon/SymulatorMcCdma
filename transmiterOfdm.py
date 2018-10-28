@@ -22,10 +22,11 @@ class TransmiterOfdm:
     def __zaokragleniaBipolar(self, val):
         if (val < 0.0001 and val >= 0) or (val > -0.0001 and val <= 0):
             return 0
-        if val > 0:
+        elif val > 100:
             return 1
-        else:
+        elif val < -100:
             return -1
+        return val
 
     def demoduluj(self, odebranyStrumien):
         '''demoduluje jeden strumien na symbole jak weszly'''

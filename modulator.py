@@ -23,8 +23,8 @@ class Qpsk(Modulator):
         '''zwraca bity'''
         out = []
         for s in symbole:
-            out.append(binar(s.real))
-            out.append(binar(s.imag))
+            out.append(s.real)
+            out.append(s.imag)
         return out
 
 class Bpsk(Modulator):
