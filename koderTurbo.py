@@ -82,10 +82,11 @@ class KoderTurbo(Koder):
         return podzielone
 
     def dekoduj(self, dane, ileItracji = 5, lc=5):
-        '''wchodza bity, wychodza bity. Maping bipolarny juz sie zadzieje sam'''
+        '''wchodza symbole z demodulatora, wychodza bity. Mapping na potrzeby kodera zrbione (-1)'''
         map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
         map2 = MapAlgorithm(MaszynaStanow(self.__rej2), lc) 
         
+        # TODO: po zmianie mapingu w dekoderze trzeba poprawic testy
         dane = list(map(lambda x: x*(-1), dane))
 
         [systematyczne, par1, par2] = self.decombine(dane)

@@ -22,7 +22,7 @@ class TestQpsk(unittest.TestCase):
     def testDemodulatoraQpsk(self):
         qpsk = [complex(-14,0.5),complex(-1.4,-4),complex(1,1)]
         dane = self.m.demapuj(qpsk)
-        exp = [1,0,1,1,0,0]
+        exp = [-14,0.5,-1.4,-4,1,1]
         self.assertEqual(exp, dane)
 
 class TestBpsk(unittest.TestCase):

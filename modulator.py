@@ -32,4 +32,4 @@ class Bpsk(Modulator):
         return [complex(bipolar(b),0) for b in bity]    
 
     def demapuj(self, symbole):
-        return [binar(s.real) for s in symbole]
+        return [s.real for s in symbole]
