@@ -82,7 +82,7 @@ class KoderTurbo(Koder):
         return podzielone
 
     def dekoduj(self, dane, ileItracji = 5, lc=5):
-        '''wchodza symbole z demodulatora, wychodza bity. Mapping na potrzeby kodera zrbione (-1)'''
+        '''wchodza symbole z demodulatora, wychodza bity. Mapping na potrzeby kodera zrobione (-1)'''
         map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
         map2 = MapAlgorithm(MaszynaStanow(self.__rej2), lc) 
         
