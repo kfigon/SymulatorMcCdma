@@ -19,6 +19,7 @@ class TestOfdm(unittest.TestCase):
                 complex(1,-1)]
         dopelnienie = 2
         wynik = addPadding(dane, dopelnienie)
+
         exp = [0,complex(1,0), complex(1,1), complex(1,-1), 0, 0]
         self.assertEqual(exp, wynik)
         self.assertEqual([complex(1,0),complex(1,1), complex(1,-1)], dane)
@@ -30,14 +31,18 @@ class TestOfdm(unittest.TestCase):
         zmodulowane = tr.modulujStrumien(dane)
 
         zdemodulowane = tr.demoduluj(zmodulowane)
+        # todo: moze to przycyzna bledow?
+        # expected = [i*50 for i in dane] # aplituda jest zmieniona, trzeba pomnozyc razy dlugosc i ilosc strumieni
         self.assertEqual(dane, zdemodulowane)
     
-    def testE2E_jedenStrumienBps(self):
+    def testE2E_jedenStrumienBpsk(self):
         dane = [complex(1,0), complex(-1,0), complex(1,0), complex(-1,0), complex(-1,0)]
         tr = TransmiterOfdm(10)
         zmodulowane = tr.modulujStrumien(dane)
 
         zdemodulowane = tr.demoduluj(zmodulowane)
+        # todo: moze to przycyzna bledow?
+        #expected = [i*50 for i in dane] # aplituda jest zmieniona, trzeba pomnozyc razy dlugosc i ilosc strumieni
         self.assertEqual(dane, zdemodulowane)
 if __name__ == '__main__':
     unittest.main()

@@ -38,7 +38,7 @@ class TestBpsk(unittest.TestCase):
     def testDemodulatoraBpsk(self):
         bpsk = [complex(-1.54,0),complex(14,0),complex(-1,0)]
         dane = self.m.demapuj(bpsk)
-        exp = [1,0,1]
+        exp = [-1.54, 14, -1]
         self.assertEqual(exp, dane)
 
 if __name__ == '__main__':

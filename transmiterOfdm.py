@@ -40,6 +40,9 @@ class TransmiterOfdm:
             bi = self.__zaokragleniaBipolar(p.real)
             bq = self.__zaokragleniaBipolar(p.imag)
             if bi != 0 or bq != 0:
+                # normowanie, czy potrzebne?!
+                #bi /= self.__dopasowanieNyquista*self.__dlugoscCiaguDanych
+                #bq /= self.__dopasowanieNyquista*self.__dlugoscCiaguDanych
                 out.append(complex(bi, bq))
 
         return out

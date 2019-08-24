@@ -70,8 +70,7 @@ def awgn(sygnal, snrDb):
     szum = None
 
     if isinstance(sygnal[0], complex):
-        szum = (np.sqrt(wariancjaSzumu) * np.random.randn(dlSygnalu))
-        +(np.sqrt(wariancjaSzumu) * np.random.randn(dlSygnalu))*1j
+        szum = (np.sqrt(wariancjaSzumu) * np.random.randn(dlSygnalu)) + (np.sqrt(wariancjaSzumu) * np.random.randn(dlSygnalu))*1j
     else:
         szum = np.sqrt(2*wariancjaSzumu) * np.random.randn(dlSygnalu)
 

@@ -78,7 +78,7 @@ def liczBer(konfiguracja, snr):
         if z != d:
             ileBledow +=1
 
-    return ileBledow/len(daneBinarne)
+    return ileBledow/len(daneBinarne), 100*ileBledow/len(daneBinarne)
     
 def iteracjaDlaKonfiga(konfiguracja):
     print(konfiguracja)
@@ -86,10 +86,10 @@ def iteracjaDlaKonfiga(konfiguracja):
     snrTab = konfiguracja.getSrnTab()
     wyniki=[]
     for snr in snrTab:
-        ber = liczBer(konfiguracja, snr)
+        ber,berProcent = liczBer(konfiguracja, snr)
 
         if konfiguracja.read('tylkoPrzebiegiCzasowe') == False:
-            print("snr %d, ile bledow: %f" % (snr, ber))
+            print("snr {}, ile bledow: {}, {}%".format(snr, ber, berProcent))
         
         wyniki.append(ber)
     return snrTab, wyniki
