@@ -57,15 +57,15 @@ class MapAlgorithm:
 
     def dekoduj(self, odebrane):
         (alfy, bety, gammy) = self.liczMetryki(odebrane)
-        prawdopodobienstwa = []
+        prawdopodobienstwa = [None]*len(odebrane)
         for i in range(len(odebrane)):
             p0 = self.liczPrawdopodobienstwa(i, alfy, bety, gammy, [0])
             p1 = self.liczPrawdopodobienstwa(i, alfy, bety, gammy, [1])
-            prawdopodobienstwa.append([p0,p1])
+            prawdopodobienstwa[i] = [p0,p1]
         
         # print(prawdopodobienstwa)
         # normowanie
-        sumy = list(map(lambda ps: sum(ps), prawdopodobienstwa))
+        sumy = map(lambda ps: sum(ps), prawdopodobienstwa)
         
         i=0
         for ps, s in zip(prawdopodobienstwa, sumy):
@@ -78,11 +78,7 @@ class MapAlgorithm:
 
     @staticmethod
     def proguj(prawdopodobienstwa):
-        out = []
-        for p in prawdopodobienstwa:
-            out.append(1 if p >=0 else 0)
-        
-        return out        
+        return [1 if p >= 0 else 0 for p in prawdopodobienstwa]
 
     def liczPrawdopodobienstwa(self, i, alfy, bety,gammy, spodziewanyNadanyBit):
         stany = self.__maszyna.getListaStanow()

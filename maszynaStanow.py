@@ -52,6 +52,7 @@ class MaszynaStanow:
         stateKey += state
         return stateKey
 
+# todo: optymalizacja - zapisac output w keszu
     # zwraca slownik
     # input - str stanu np. '00'
     def getMozliwePrzejscia(self, stan):
