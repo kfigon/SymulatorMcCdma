@@ -72,6 +72,27 @@ class TestKoderaTurbo(unittest.TestCase):
         indata = [1,0,1,1,0,0,1,0,0,0,0,0]
         self.end2end(indata)
 
+    def testZBledem(self):
+        indata = [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+        zakodowane = self.k.koduj(indata)
+        zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
+        odwroc = lambda x: 1 if x==0 else 0
+        zakodowane[1] = odwroc(zakodowane[1])
+
+        zdekodowane = self.k.dekoduj(list(map(bipolar, zakodowane)), ileItracji=20)
+        self.assertEqual(indata, zdekodowane)
+
+    def testMiekkodecyzyjny(self):
+        indata = [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+        zakodowane = self.k.koduj(indata)
+        zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
+        odebrane = list(map(bipolar, zakodowane))
+        szum = [-0.4, 0.2, -0.54, 0.3, -0.3, 0.2, 0.5, 0.2, -0.3, 0.1, -0.8, 0.3]
+        szum = szum+szum+szum
+        odebrane = [x+s for x, s in zip(odebrane, szum)]
+        zdekodowane = self.k.dekoduj(odebrane, ileItracji=20)
+        self.assertEqual(indata, zdekodowane)
+
 class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
     def setUp(self):
         r1 = RejestrSystematyczny(3, [[0,2]], [1,2])
