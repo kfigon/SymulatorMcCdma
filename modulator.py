@@ -20,7 +20,7 @@ class Qpsk(Modulator):
         return out
 
     def demapuj(self, symbole):
-        '''zwraca bity'''
+        '''zwraca symbole bipolarne'''
         out = []
         for s in symbole:
             out.append(s.real)

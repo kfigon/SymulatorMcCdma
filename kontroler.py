@@ -54,7 +54,7 @@ def liczBer(konfiguracja, snr):
     odebrane = utils.awgn(nadany, snr)
 
     odebraneStrumienie = pSP.rozdziel(odebrane)
-    zdemodulowaneStrumienie = []
+    zdemodulowaneStrumienie = [] #todo: po co to?
     zdemodulowane=[]
 
     for i, strumien in enumerate(odebraneStrumienie):
@@ -67,10 +67,10 @@ def liczBer(konfiguracja, snr):
         zdemodulowane += zdemodulowanyStrumien
 
     # dekodowanie
-    bityOdebrane = modulator.demapuj(zdemodulowane)
+    bipolarneOdebrane = modulator.demapuj(zdemodulowane)
     eb,n0 = utils.liczEbN0(nadany, snr)
 
-    zdekodowane = koder.dekoduj(bityOdebrane, ileItracji=konfiguracja.read('ileIteracjiDekodera'), lc = eb/n0)
+    zdekodowane = koder.dekoduj(bipolarneOdebrane, ileItracji=konfiguracja.read('ileIteracjiDekodera'), lc = eb/n0)
 
     ileBledow = 0
     assert len(zdekodowane) == len(daneBinarne)

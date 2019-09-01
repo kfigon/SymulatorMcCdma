@@ -2,6 +2,7 @@ import unittest
 from koderTurbo import KoderTurbo
 from przeplot import Przeplatacz
 from rejestrPrzesuwny import RejestrSystematyczny, RejestrPrzesuwny
+from utils import bipolar
 import random
 
 class TestKoderaTurbo(unittest.TestCase):
@@ -59,8 +60,7 @@ class TestKoderaTurbo(unittest.TestCase):
     def end2end(self, indata):
         zakodowane = self.k.koduj(indata)
         zakodowane = KoderTurbo.combine(zakodowane[0], zakodowane[1], zakodowane[2])
-
-        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=20)
+        zdekodowane = self.k.dekoduj(list(map(bipolar, zakodowane)), ileItracji=20)
 
         self.assertEqual(indata, zdekodowane)
 
@@ -84,8 +84,8 @@ class TestDekoderaTurboZPrzeplotem(unittest.TestCase):
         self.end2end(indata)
         
     def end2end(self, indata):
-        zakodowane = self.k.kodujE2E(indata)        
-        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
+        zakodowane = self.k.kodujE2E(indata)
+        zdekodowane = self.k.dekoduj(list(map(bipolar, zakodowane)), ileItracji=5)
         self.assertEqual(indata, zdekodowane)
 
     def testStres(self):
@@ -101,8 +101,8 @@ class TestDekoderaTurboZPrzeplotem2(unittest.TestCase):
                             przeplatacz=Przeplatacz(3))
         
     def end2end(self, indata):
-        zakodowane = self.k.kodujE2E(indata)        
-        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
+        zakodowane = self.k.kodujE2E(indata)
+        zdekodowane = self.k.dekoduj(list(map(bipolar, zakodowane)), ileItracji=5)
         self.assertEqual(indata, zdekodowane)
 
     def testEndToEnd(self):
@@ -111,9 +111,7 @@ class TestDekoderaTurboZPrzeplotem2(unittest.TestCase):
 
     def testStres(self):
         indata = [random.randint(0,1) for _ in range(200)]
-        zakodowane = self.k.kodujE2E(indata)        
-        zdekodowane = self.k.dekoduj(zakodowane, ileItracji=5)
-        self.assertEqual(indata, zdekodowane)
+        self.end2end(indata)
 
 if __name__ =='__main__':
     unittest.main()

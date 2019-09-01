@@ -86,7 +86,6 @@ class KoderTurbo(Koder):
         map1 = MapAlgorithm(MaszynaStanow(self.__rej1), lc)
         map2 = MapAlgorithm(MaszynaStanow(self.__rej2), lc) 
         
-        # TODO: po zmianie mapingu w dekoderze trzeba poprawic testy
         dane = list(map(lambda x: x*(-1), dane))
 
         [systematyczne, par1, par2] = self.decombine(dane)
