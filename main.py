@@ -5,15 +5,15 @@ import sys
 def main(plik=None):
     konfiguracje = budujKonfiguracje(plik)
     for konfiguracja in konfiguracje:
-        snrTab,wyniki = iteracjaDlaKonfiga(konfiguracja)
+        ebn0Tab,wyniki = iteracjaDlaKonfiga(konfiguracja)
             
         if konfiguracja.read('tylkoPrzebiegiCzasowe') or konfiguracja.read('tylkoKonstelacje'):
             continue
 
         # labelki, osie, tytuly wykresow
-        plt.semilogy(snrTab, wyniki, label=konfiguracja.read('tytul'))
+        plt.semilogy(ebn0Tab, wyniki, label=konfiguracja.read('tytul'))
     plt.legend()
-    plt.xlabel('SNR [dB]')
+    plt.xlabel('Eb/N0 [dB]')
     plt.ylabel('BER')
     plt.grid(True)
     plt.show()

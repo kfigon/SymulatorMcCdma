@@ -1,14 +1,13 @@
 import scipy.fftpack as fft
 import matplotlib.pyplot as plt
 import numpy as np
-import random
 from transmiterOfdm import TransmiterOfdm
 from przetwornikSP import PrzetwornikSzeregowoRownolegly
 import utils
 from rozpraszaczWidma import RozpraszaczBipolarny
 from generatorKoduWalsha import GeneratorKoduWalsha
-from config import Konfiguracja, budujKonfiguracje
-from modulator import Qpsk, Bpsk
+from math import log10
+from decimal import *
 
 def liczBer(konfiguracja, snr):
 
@@ -54,7 +53,6 @@ def liczBer(konfiguracja, snr):
     odebrane = utils.awgn(nadany, snr)
 
     odebraneStrumienie = pSP.rozdziel(odebrane)
-    zdemodulowaneStrumienie = [] #todo: po co to?
     zdemodulowane=[]
 
     for i, strumien in enumerate(odebraneStrumienie):
@@ -63,9 +61,7 @@ def liczBer(konfiguracja, snr):
         skupiony = rozpraszaczWidma.skupBipolarne(strumien, [chip])
 
         zdemodulowanyStrumien = transmiter.demoduluj(skupiony)
-        zdemodulowaneStrumienie.append(zdemodulowanyStrumien)
         zdemodulowane += zdemodulowanyStrumien
-
 
     if konfiguracja.read('tylkoKonstelacje') == True:
         plt.title(konfiguracja.read("tytul"))
@@ -89,19 +85,21 @@ def liczBer(konfiguracja, snr):
     for z,d in zip(zdekodowane, daneBinarne):
         if z != d:
             ileBledow +=1
-
-    return ileBledow/len(daneBinarne), 100*ileBledow/len(daneBinarne)
+    ber = Decimal(ileBledow)/Decimal(len(bityZakodowane))
+    return ber, 100*ber, 10*log10(eb/n0)
     
 def iteracjaDlaKonfiga(konfiguracja):
     print(konfiguracja)
 
     snrTab = konfiguracja.getSrnTab()
+    ebn0Tab = []
     wyniki=[]
     for snr in snrTab:
-        ber,berProcent = liczBer(konfiguracja, snr)
+        ber,berProcent,ebn0 = liczBer(konfiguracja, snr)
+        ebn0Tab.append(ebn0)
 
         if konfiguracja.read('tylkoPrzebiegiCzasowe') == False:
-            print("snr {}, ile bledow: {}, {}%".format(snr, ber, berProcent))
+            print("snr {}, eb/n0 {}, ile bledow: {}, {}%".format(snr, ebn0, ber, berProcent))
         
         wyniki.append(ber)
-    return snrTab, wyniki
+    return ebn0Tab, wyniki

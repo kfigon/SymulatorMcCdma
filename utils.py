@@ -29,10 +29,7 @@ def str2List(data):
     return out
 
 def generujDaneBinarne(ile):
-    out = [0 for _ in range(ile)]
-    for i in range(ile):
-        out[i] = randint(0,1)
-    return out
+    return [randint(0,1) for _ in range(ile)]
 
 def bipolar(binarne):
     return 1 if binarne == 0 else -1

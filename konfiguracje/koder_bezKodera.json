@@ -1,18 +1,18 @@
 [{
 	"tytul": "Z koderem",
 	
-	"ileBitow": 5000,
+	"ileBitow": 15000,
 	"ileStrumieni":5,
 	"tylkoPrzebiegiCzasowe":false,
 	"dlugoscKoduWalsha": 64,
 	"numerKoduWalsha":2,
 	
-	"minSnr": -10,
-	"maxSnr": 1,
+	"minSnr": -9,
+	"maxSnr": 2,
 	"modulacja": "QPSK",
 	
 	"koder": true,
-	"ileIteracjiDekodera": 10,
+	"ileIteracjiDekodera": 5,
 	"dlugoscPrzeplotu": 10,
 	"koder1": {
 		"ileKomorekRejestru": 3,
@@ -28,14 +28,14 @@
 {
 	"tytul": "Bez kodera",
 	
-	"ileBitow": 5000,
+	"ileBitow": 15000,
 	"ileStrumieni":5,
 	"tylkoPrzebiegiCzasowe":false,
 	"dlugoscKoduWalsha": 64,
 	"numerKoduWalsha":2,
 	
-	"minSnr": -10,
-	"maxSnr": 1,
+	"minSnr": -9,
+	"maxSnr": 2,
 	"modulacja": "QPSK",
 	
 	"koder": false
