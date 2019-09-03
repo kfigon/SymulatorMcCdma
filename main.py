@@ -7,7 +7,7 @@ def main(plik=None):
     for konfiguracja in konfiguracje:
         snrTab,wyniki = iteracjaDlaKonfiga(konfiguracja)
             
-        if konfiguracja.read('tylkoPrzebiegiCzasowe') == True:
+        if konfiguracja.read('tylkoPrzebiegiCzasowe') or konfiguracja.read('tylkoKonstelacje'):
             continue
 
         # labelki, osie, tytuly wykresow

@@ -35,6 +35,7 @@ class Konfiguracja:
             'ileBitow': 100,
             'ileStrumieni':5,
             'tylkoPrzebiegiCzasowe':False,
+            'tylkoKonstelacje': False,
             'dlugoscKoduWalsha': 64,
             'numerKoduWalsha':2,
             

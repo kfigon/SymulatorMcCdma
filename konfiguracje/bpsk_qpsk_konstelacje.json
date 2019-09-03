@@ -1,0 +1,33 @@
+[{
+	"tytul": "QPSK",
+	
+	"ileBitow": 5000,
+	"ileStrumieni":5,
+	"tylkoPrzebiegiCzasowe":false,
+	"tylkoKonstelacje": true,
+	"dlugoscKoduWalsha": 64,
+	"numerKoduWalsha":2,
+	
+	"minSnr": -5,
+	"maxSnr": 5,
+	"modulacja": "QPSK",
+	
+	"koder": false
+},
+{
+	"tytul": "BPSK",
+	
+	"ileBitow": 5000,
+	"ileStrumieni":5,
+	"tylkoPrzebiegiCzasowe":false,
+	"tylkoKonstelacje": true,
+	"dlugoscKoduWalsha": 64,
+	"numerKoduWalsha":2,
+	
+	"minSnr": -5,
+	"maxSnr": 5,
+	"modulacja": "BPSK",
+	
+	"koder": false
+}
+]

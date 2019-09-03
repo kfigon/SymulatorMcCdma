@@ -66,6 +66,16 @@ def liczBer(konfiguracja, snr):
         zdemodulowaneStrumienie.append(zdemodulowanyStrumien)
         zdemodulowane += zdemodulowanyStrumien
 
+
+    if konfiguracja.read('tylkoKonstelacje') == True:
+        plt.title(konfiguracja.read("tytul"))
+        re = [i.real for i in zdemodulowane]
+        im = [i.imag for i in zdemodulowane]
+        plt.scatter(re, im)
+        plt.grid()
+        plt.show()
+        return (0,0)
+
     # dekodowanie
     bipolarneOdebrane = modulator.demapuj(zdemodulowane)
     eb,n0 = utils.liczEbN0(nadany, snr)
