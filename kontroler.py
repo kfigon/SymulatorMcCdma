@@ -71,6 +71,8 @@ def liczBer(konfiguracja, snr):
         plt.title(konfiguracja.read("tytul"))
         re = [i.real for i in zdemodulowane]
         im = [i.imag for i in zdemodulowane]
+        plt.xlim(left=-4, right=4)
+        plt.ylim(bottom=-4, top=4)
         plt.scatter(re, im)
         plt.grid()
         plt.show()
