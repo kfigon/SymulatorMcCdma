@@ -2,8 +2,8 @@
 {	
 	"tytul": "QPSK",
 	
-	"ileBitow": 10,
-	"ileStrumieni":5,
+	"ileBitow": 20,
+	"ileStrumieni":10,
 	"tylkoPrzebiegiCzasowe":true,
 	"numerKoduWalsha":0,
 	"minSnr": 10,

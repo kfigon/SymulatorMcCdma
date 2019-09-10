@@ -12,6 +12,10 @@ def main(plik=None):
 
         # labelki, osie, tytuly wykresow
         plt.semilogy(ebn0Tab, wyniki, label=konfiguracja.read('tytul'))
+
+    if konfiguracja.read('tylkoPrzebiegiCzasowe') or konfiguracja.read('tylkoKonstelacje'):
+        return
+
     plt.legend()
     plt.xlabel('Eb/N0 [dB]')
     plt.ylabel('BER')

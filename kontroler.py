@@ -35,20 +35,17 @@ def liczBer(konfiguracja, snr):
         chip = ciagRozpraszajacy[i]
         rozproszony = rozpraszaczWidma.rozpraszajBipolarne(zmodulowanyStrumien, [chip])
 
-# zmienic na zmodulowanyStrumien jesli ma byc bez SS. i wyrzucic z demodulatora skupianie
         for x in rozproszony:
             nadany.append(x)
         
     if konfiguracja.read('tylkoPrzebiegiCzasowe') == True:
-        plt.title(konfiguracja.read("tytul"))
         plt.subplot(2,1,1)
+        plt.title(konfiguracja.read("tytul"))
         plt.plot(np.real(nadany))
-        # plt.plot(np.real(rozproszony))
         plt.subplot(2,1,2)
         plt.plot(np.abs(fft.fft(nadany[:len(nadany)//2])))
-        # plt.plot(np.abs(fft.fft(rozproszony[:len(rozproszony)//2])))
         plt.show()
-        return
+        return (0,0,0)
 
     odebrane = utils.awgn(nadany, snr)
 
@@ -72,7 +69,7 @@ def liczBer(konfiguracja, snr):
         plt.scatter(re, im)
         plt.grid()
         plt.show()
-        return (0,0)
+        return (0,0,0)
 
     # dekodowanie
     bipolarneOdebrane = modulator.demapuj(zdemodulowane)
